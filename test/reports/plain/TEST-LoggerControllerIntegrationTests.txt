@@ -1,0 +1,42 @@
+Testsuite: LoggerControllerIntegrationTests
+Tests run: 1, Failures: 0, Errors: 1, Time elapsed: 0.237 sec
+------------- Standard Output ---------------
+--Output from testSomething--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testSomething--
+------------- ---------------- ---------------
+
+Testcase: testSomething took 0.169 sec
+	Caused an ERROR
+No signature of method: static Player.findByChallenge() is applicable for argument types: (java.lang.Integer) values: [-462381704]
+groovy.lang.MissingMethodException: No signature of method: static Player.findByChallenge() is applicable for argument types: (java.lang.Integer) values: [-462381704]
+	at LoggerController.userInfo(LoggerController.groovy:20)
+	at ParseListener$userInfo.call(Unknown Source)
+	at LogParser$_readLine_closure1.doCall(LogParser.groovy:65)
+	at LogParser.readLine(LogParser.groovy:65)
+	at LogParser.this$2$readLine(LogParser.groovy)
+	at LogParser$this$2$readLine.callCurrent(Unknown Source)
+	at LogParser.parse(LogParser.groovy:36)
+	at LogParser$parse.call(Unknown Source)
+	at LoggerController$_closure1.doCall(LoggerController.groovy:9)
+	at LoggerController$_closure1.doCall(LoggerController.groovy)
+	at LoggerControllerIntegrationTests.testSomething(LoggerControllerIntegrationTests.groovy:14)
+	at _GrailsTest_groovy$_run_closure4.doCall(_GrailsTest_groovy:203)
+	at _GrailsTest_groovy$_run_closure4.call(_GrailsTest_groovy)
+	at _GrailsTest_groovy$_run_closure2.doCall(_GrailsTest_groovy:147)
+	at _GrailsTest_groovy$_run_closure1_closure19.doCall(_GrailsTest_groovy:113)
+	at _GrailsTest_groovy$_run_closure1.doCall(_GrailsTest_groovy:96)
+	at TestApp$_run_closure1.doCall(TestApp.groovy:66)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+
