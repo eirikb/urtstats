@@ -1,7 +1,7 @@
 class Team {
     static hasMany = [players:Player]
     
-    Integer urtTeamID
+    Integer urtID
 
     static constraints = {
     }

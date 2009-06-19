@@ -4,7 +4,7 @@ class Player {
 
     Team team
 
-    Integer urtPlayerID
+    Integer urtID
     String nick
     String login
     String email // TODO might remove

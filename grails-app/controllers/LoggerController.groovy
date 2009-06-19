@@ -4,7 +4,7 @@ class LoggerController implements ParseListener {
 
     def index = {
         if (parser == null) {
-            parser = new LogParser(new File("/home/eirikb/qconsole3.log"), false, false)
+            parser = new LogParser(new File("/home/eirikb/qconsole.log"), false, false)
             parser.addParseListener(this)
             parser.parse()
             //TODO THREAD!
@@ -20,9 +20,9 @@ class LoggerController implements ParseListener {
         def player = Player.findByChallenge(challenge)
         if (player == null) {
             player = new Player(challenge:challenge, ip:userInfo.ip, nick:userInfo.name, 
-                level:0, exp:0, nextlevel:10, urtPlayerID:id, kills:0, deaths:0)
+                level:0, exp:0, nextlevel:10, urtID:id, kills:0, deaths:0)
         } else {
-            player.setUrtPlayerID(id)
+            player.setUrtID(id)
         }
         // player.addToPlayerLogs(new PlayerLog(player:player))
         if(player.hasErrors() || !player.save(flush:true)) {
@@ -38,9 +38,9 @@ class LoggerController implements ParseListener {
 
     private void addPlayerToTeam(player, teamID) {
         long time = System.nanoTime()
-        def team = Team.findByUrtTeamID(teamID)
+        def team = Team.findByUrtID(teamID)
         if (team == null) {
-            team = new Team(urtTeamID:teamID)
+            team = new Team(urtID:teamID)
             if(team.hasErrors() || !team.save(flush:true)) {
                 println "******************** EEROORRRR"
                 println team.dump()
@@ -59,11 +59,11 @@ class LoggerController implements ParseListener {
 
     void userInfoChange(id, userInfo) {
         long time = System.nanoTime()
-        def player = Player.findByUrtPlayerID(id)
-        def urtTeamID = Integer.parseInt(userInfo.t)
-        def same = player.team.urtTeamID == urtTeamID
-        if (player.team.urtTeamID != urtTeamID) {
-            addPlayerToTeam(player, urtTeamID)
+        def player = Player.findByUrtID(id)
+        def urtID = Integer.parseInt(userInfo.t)
+        def same = player.team.urtID == urtID
+        if (player.team.urtID != urtID) {
+            addPlayerToTeam(player, urtID)
         }
         time = System.nanoTime() - time;
         // println time + " userinfochange"
@@ -71,9 +71,9 @@ class LoggerController implements ParseListener {
 
     void leave(id) {
         long time = System.nanoTime()
-        def player = Player.findByUrtPlayerID(id)
+        def player = Player.findByUrtID(id)
         player.team = null;
-        player.urtPlayerID = -1;
+        player.urtID = -1;
         if(player.hasErrors() || !player.save(flush:true)) {
             println "******************** EEROORRRR"
             println player.dump()
@@ -95,8 +95,8 @@ class LoggerController implements ParseListener {
 
     void kill(killerID, killedID, type) {
         long time = System.nanoTime()
-        def killer = Player.findByUrtPlayerID(killerID)
-        def killed = Player.findByUrtPlayerID(killedID)
+        def killer = Player.findByUrtID(killerID)
+        def killed = Player.findByUrtID(killedID)
         if (killer != null && killed != null) {
             def friendlyfire = killer.team == killed.team
             def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, weapon:type)
@@ -127,7 +127,7 @@ class LoggerController implements ParseListener {
 
     void chat(id, teammessage, message) {
         long time = System.nanoTime()
-        def player = Player.findByUrtPlayerID(id)
+        def player = Player.findByUrtID(id)
         def chat = new Chat(player:player, teamMessage:teammessage, message:message)
         if(chat.hasErrors() || !chat.save(flush:true)) {
             println "******************** EEROORRRR"
@@ -139,8 +139,8 @@ class LoggerController implements ParseListener {
 
     void hit(hitterID, victimID, hitpoint, weapon) {
         long time = System.nanoTime()
-        def hitter = Player.findByUrtPlayerID(hitterID)
-        def victim = Player.findByUrtPlayerID(victimID)
+        def hitter = Player.findByUrtID(hitterID)
+        def victim = Player.findByUrtID(victimID)
         if (hitter != null && victim != null) {
             def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.team == victim.team),
                 hitpoint:hitpoint, weapon:weapon)
