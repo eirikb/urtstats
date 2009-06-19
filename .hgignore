@@ -1,0 +1,7 @@
+syntasx: glob
+grails-app/conf/DataSource.groovy
+\.orig\..*$
+\.orig$
+\.chg\..*$
+\.rej$
+\.conflict\~$
