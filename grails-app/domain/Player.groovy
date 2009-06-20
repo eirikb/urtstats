@@ -1,7 +1,8 @@
 class Player {
-    static hasMany = [chats:Chat, hitters:Hit, victims:Hit, killers:Kill, killeds:Kill, playerLogs:PlayerLog, items:Item]
+    static hasMany = [chats:Chat, hitters:Hit, victims:Hit, killers:Kill, killeds:Kill, playerLogs:PlayerLog, items:Item, deathCauses:DeathCause]
     static mappedBy = [hitters:"hitter", victims:"victim", killers:"killer", killeds:"killed"]
-
+    static belongsTo = [Item, DeathCause]
+    
     Team team
 
     Integer urtID
@@ -15,6 +16,7 @@ class Player {
     Integer nextlevel
     Integer kills
     Integer deaths
+    Date createTime
     
     static constraints = {
         nick(nullable:false)
@@ -26,5 +28,6 @@ class Player {
         team(nullable: true)
         login(nullable: true)
         email(email:true, nullable: true)
+        items(nullable:true)
     }
 }

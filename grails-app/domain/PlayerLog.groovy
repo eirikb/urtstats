@@ -1,13 +1,8 @@
 class PlayerLog {
-    static belongsTo = [Player]
+    static belongsTo = [player:Player]
 
     Date startTime
     Date endTime
-    Player player
-
-    def beforeInsert = {
-        startTime = new Date()
-    }
 
     static constraints = {
         endTime(nullable:true)

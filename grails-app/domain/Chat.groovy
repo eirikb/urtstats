@@ -5,12 +5,8 @@ class Chat {
 
     String message
     Boolean teamMessage
-    Date dateCreated
+    Date createTime
 
-    def beforeInsert = {
-        dateCreated = new Date()
-    }
-    
     static constraints = {
     }
 }

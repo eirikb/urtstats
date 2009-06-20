@@ -4,13 +4,9 @@ class Kill {
     Player killer
     Player killed
 
-    Item weapon
+    DeathCause deathCause
     boolean friendlyfire
-    Date dateCreated
-
-    def beforeInsert = {
-        dateCreated = new Date()
-    }
+    Date createTime
         
     static constraints = {
     }

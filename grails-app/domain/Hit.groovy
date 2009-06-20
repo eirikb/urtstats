@@ -7,11 +7,7 @@ class Hit {
     Item weapon
     Integer hitpoint
     Boolean friendlyfire
-    Date dateCreated
-
-    def beforeInsert = {
-        dateCreated = new Date()
-    }
+    Date createTime
     
     static constraints = {
     }

@@ -1,6 +1,5 @@
 class Item {
-    static hasMany = [hits:Hit, kills:Kill, players:Player]
-    static belongsTo = [Player]
+    static hasMany = [hits:Hit, kills:Kill, players:Player, deathCauses:DeathCause]
     
     Integer urtID
     String name

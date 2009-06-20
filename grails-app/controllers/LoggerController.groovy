@@ -15,18 +15,26 @@ class LoggerController implements ParseListener {
     }
 
     void userInfo(id, userInfo) {
-        println userInfo.dump()
-
-
         def challenge = Integer.parseInt(userInfo.challenge)
         def player = Player.findByChallenge(challenge)
         if (player == null) {
             player = new Player(challenge:challenge, ip:userInfo.ip, nick:userInfo.name, 
-                level:0, exp:0, nextlevel:10, urtID:id, kills:0, deaths:0)
+                level:0, exp:0, nextlevel:10, urtID:id, kills:0, deaths:0, createTime:new Date())
         } else {
             player.setUrtID(id)
         }
-        player.addToPlayerLogs(new PlayerLog(player:player))
+
+        player.addToPlayerLogs(new PlayerLog(startTime:new Date()))
+
+        if (userInfo.gear != null) {
+            userInfo.gear.each() {
+                def item = Item.findBybinding(it)
+                if (item != null) {
+                    player.addToItems(item)
+                }
+            }
+        }
+
         if(player.hasErrors() || !player.save(flush:true)) {
             log.error("Unable to persist: " + player.dump())
         } else {
@@ -66,10 +74,10 @@ class LoggerController implements ParseListener {
         if(player.hasErrors() || !player.save(flush:true)) {
             log.error("Unable to persist: " + player.dump())
         }
-        //def playerLog = player.playerLogs.findByEndDateIsNull()
-        def playerLog = null
+        def playerLog = PlayerLog.findByPlayerAndEndTimeIsNull(player)
+        //def playerLog = null
         if (playerLog != null) {
-            playerLog.setEndDate(new Date())
+            playerLog.setEndTime(new Date())
             if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
                 log.error("Unable to persist: " + player.dump())
             }
@@ -83,31 +91,36 @@ class LoggerController implements ParseListener {
         def killed = Player.findByUrtID(killedID)
         if (killer != null && killed != null) {
             def friendlyfire = killer.team == killed.team
-            def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, weapon:type)
-            if(kill.hasErrors() || !kill.save(flush:true)) {
-                log.error("Unable to persist: " + kill.dump())
-            }
+            def death = DeathCause.findByUrtID(type)
+            if (death != null) {
+                def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death, createTime:new Date())
+                if(kill.hasErrors() || !kill.save(flush:true)) {
+                    log.error("Unable to persist: " + kill.dump())
+                }
 
-            if (!friendlyfire) {
-                def kills = Kill.countBykiller(killer)
-                def deaths = Kill.countByKilled(killed)
-                def incExp = (int)((killer.level + 1) * ((kills + 1) / (deaths + 1)))
-                killer.exp += incExp
-                if (killer.exp > killer.nextlevel) {
-                    killer.level++;
-                    killer.nextlevel = killer.exp * killer.level
-                    //  RCon.rcon("rcon bigtext \"Congratulations " + killer.nick.trim() + " you are now level " + killer.level + '"')
+                if (!friendlyfire) {
+                    def kills = Kill.countBykiller(killer)
+                    def deaths = Kill.countByKilled(killed)
+                    def incExp = (int)((killer.level + 1) * ((kills + 1) / (deaths + 1)))
+                    killer.exp += incExp
+                    if (killer.exp > killer.nextlevel) {
+                        killer.level++;
+                        killer.nextlevel = killer.exp * killer.level
+                        //  RCon.rcon("rcon bigtext \"Congratulations " + killer.nick.trim() + " you are now level " + killer.level + '"')
+                    }
+                    if(killer.hasErrors() || !killer.save(flush:true)) {
+                        log.error("Unable to persist: " + killer.dump())
+                    }
                 }
-                if(killer.hasErrors() || !killer.save(flush:true)) {
-                    log.error("Unable to persist: " + killer.dump())
-                }
+            } else {
+                log.error("Unknown type for death: " + type)
             }
         }
     }
 
     void chat(id, teammessage, message) {
         def player = Player.findByUrtID(id)
-        def chat = new Chat(player:player, teamMessage:teammessage, message:message)
+        def chat = new Chat(player:player, teamMessage:teammessage, message:message, createTime:new Date())
         if(chat.hasErrors() || !chat.save(flush:true)) {
             log.error("Unable to persist: " + chat.dump())
         }
@@ -117,7 +130,7 @@ class LoggerController implements ParseListener {
         def hitter = Player.findByUrtID(hitterID)
         def victim = Player.findByUrtID(victimID)
         if (hitter != null && victim != null) {
-            def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.team == victim.team),
+            def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.team == victim.team), createTime:new Date(),
                 hitpoint:hitpoint, weapon:weapon)
             if(hit.hasErrors() || !hit.save(flush:true)) {
                 log.error("Unable to persist: " + hit.dump())

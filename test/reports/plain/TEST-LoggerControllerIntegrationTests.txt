@@ -1,43 +1,205 @@
 Testsuite: LoggerControllerIntegrationTests
-Tests run: 1, Failures: 0, Errors: 1, Time elapsed: 0.247 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 4.439 sec
 ------------- Standard Output ---------------
 --Output from testSomething--
-<java.util.LinkedHashMap@a6277f07 header=null=null accessOrder=false table=[team_model=james, cl_guid=50CC5A90AE905ACE03E1B96CFFB29072, model=sarge, cl_anonymous=0, null, null, null, null, null, null, handicap=100, cg_predictitems=0, null, null, null, ip=91.107.85.192:27960, null, null, null, snaps=20, null, null, null, name=harry beasant, null, teamtask=0, null, headmodel=sarge, color2=5, color1=4, null, null] size=19 threshold=24 loadFactor=0.75 modCount=19 entrySet=[ip=91.107.85.192:27960, challenge=1041703203, qport=35326, protocol=68, name=harry beasant, rate=8000, cg_predictitems=0, cl_anonymous=0, sex=male, handicap=100, color2=5, color1=4, team_headmodel=*james, team_model=james, headmodel=sarge, model=sarge, snaps=20, teamtask=0, cl_guid=50CC5A90AE905ACE03E1B96CFFB29072] keySet=null values=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@5fb39192 urtID=25 name=null item=Item : 19 id=20 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@24a075e6 urtID=35 name=null item=Item : 25 id=26 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@b77b093 urtID=20 name=null item=Item : 15 id=16 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@78715052 urtID=14 name=null item=Item : 1 id=2 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@4a6774ee urtID=30 name=null item=Item : 23 id=24 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@4a6774ee urtID=30 name=null item=Item : 23 id=24 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@4a6774ee urtID=30 name=null item=Item : 23 id=24 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@1668cdca urtID=23 name=bleed item=null id=37 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@78715052 urtID=14 name=null item=Item : 1 id=2 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@1668cdca urtID=23 name=bleed item=null id=37 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@5d2cef5e urtID=31 name=Sploded item=null id=38 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@78715052 urtID=14 name=null item=Item : 1 id=2 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@78715052 urtID=14 name=null item=Item : 1 id=2 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@3117341c urtID=10 name=Change team item=null id=39 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@1668cdca urtID=23 name=bleed item=null id=37 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@1668cdca urtID=23 name=bleed item=null id=37 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@5d2cef5e urtID=31 name=Sploded item=null id=38 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@1668cdca urtID=23 name=bleed item=null id=37 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@68d88d5 urtID=15 name=null item=Item : 3 id=4 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@110bc436 urtID=17 name=null item=Item : 9 id=10 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@23a9bced urtID=28 name=null item=Item : 21 id=22 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@1668cdca urtID=23 name=bleed item=null id=37 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@b77b093 urtID=20 name=null item=Item : 15 id=16 version=0 kills=null players=null>
+!!!!!!!!!!!! <DeathCause@eb04d34 urtID=18 name=null item=Item : 7 id=8 version=0 kills=null players=null>
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 --Output from testSomething--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 0.214 sec
-	Caused an ERROR
-Cannot get property 'team' on null object
-java.lang.NullPointerException: Cannot get property 'team' on null object
-	at LoggerController.userInfoChange(LoggerController.groovy:56)
-	at ParseListener$userInfoChange.call(Unknown Source)
-	at LogParser$_readLine_closure2.doCall(LogParser.groovy:72)
-	at LogParser.readLine(LogParser.groovy:72)
-	at LogParser.this$2$readLine(LogParser.groovy)
-	at LogParser$this$2$readLine.callCurrent(Unknown Source)
-	at LogParser.parse(LogParser.groovy:36)
-	at LogParser$parse.call(Unknown Source)
-	at LoggerController$_closure1.doCall(LoggerController.groovy:9)
-	at LoggerController$_closure1.doCall(LoggerController.groovy)
-	at LoggerControllerIntegrationTests.testSomething(LoggerControllerIntegrationTests.groovy:14)
-	at _GrailsTest_groovy$_run_closure4.doCall(_GrailsTest_groovy:203)
-	at _GrailsTest_groovy$_run_closure4.call(_GrailsTest_groovy)
-	at _GrailsTest_groovy$_run_closure2.doCall(_GrailsTest_groovy:147)
-	at _GrailsTest_groovy$_run_closure1_closure19.doCall(_GrailsTest_groovy:113)
-	at _GrailsTest_groovy$_run_closure1.doCall(_GrailsTest_groovy:96)
-	at TestApp$_run_closure1.doCall(TestApp.groovy:66)
-	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
-	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
-	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
-	at gant.Gant.withBuildListeners(Gant.groovy:344)
-	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
-	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
-	at gant.Gant.dispatch(Gant.groovy:334)
-	at gant.Gant.this$2$dispatch(Gant.groovy)
-	at gant.Gant.invokeMethod(Gant.groovy)
-	at gant.Gant.processTargets(Gant.groovy:495)
-	at gant.Gant.processTargets(Gant.groovy:480)
-
+Testcase: testSomething took 4.412 sec
