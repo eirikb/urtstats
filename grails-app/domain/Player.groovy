@@ -1,5 +1,5 @@
 class Player {
-    static hasMany = [chats:Chat, hitters:Hit, victims:Hit, killers:Kill, killeds:Kill, playerLogs:PlayerLog]
+    static hasMany = [chats:Chat, hitters:Hit, victims:Hit, killers:Kill, killeds:Kill, playerLogs:PlayerLog, items:Item]
     static mappedBy = [hitters:"hitter", victims:"victim", killers:"killer", killeds:"killed"]
 
     Team team

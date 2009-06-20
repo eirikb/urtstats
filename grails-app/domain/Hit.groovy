@@ -4,7 +4,7 @@ class Hit {
     Player hitter
     Player victim
 
-//    Item weapon
+    Item weapon
     Integer hitpoint
     Boolean friendlyfire
     Date dateCreated

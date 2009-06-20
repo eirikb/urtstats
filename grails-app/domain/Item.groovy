@@ -1,6 +1,7 @@
 class Item {
-    //static hasMany = [hits:Hit, kills:Kill, players:Player]
-
+    static hasMany = [hits:Hit, kills:Kill, players:Player]
+    static belongsTo = [Player]
+    
     Integer urtID
     String name
     Integer mode

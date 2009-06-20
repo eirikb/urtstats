@@ -1,2 +1,596 @@
 --Output from testSomething--
+Kill: 1 1 10: EagleEye killed EagleEye by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@3c8f03a5 killer=Player : 25 killed=Player : 25 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@14621bd7 id=null version=null>
+Kill: 0 0 10: harrybeasant killed harrybeasant by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@e75a11 killer=Player : 22 killed=Player : 22 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@54ca128d id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@3554fe09 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5ef21c39 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@30d23f13 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3b2b116f id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@59a0d62f killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4e4dd5a1 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@11e95d95 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6ffeea62 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@78c8a027 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3b8a9e64 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@aad33f6 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@712e60f3 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@59a2a780 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@45a2f279 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@180f471e killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@13060ee9 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@6fc21535 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2efe83e5 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@76996f0c killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5349b9a8 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@20d1fa4 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2b984909 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@1d5bc8c5 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@74da0c91 id=null version=null>
+Kill: 0 1 28: harrybeasant killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7f4def4f killer=Player : 22 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@559a6cd4 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@2db5424e killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@57142653 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@12699df5 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@54014944 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@6fd3c2fa killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@37a5e471 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@320dafa2 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2085ce5a id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@305b7025 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@431fa5f0 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@3f2bc418 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5257240e id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@43bda1e0 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@56ce9bde id=null version=null>
+Kill: 1 0 25: EagleEye killed harrybeasant by UT_MOD_HEGRENADE
+******************** EEROORRRR
+<Kill@7eb71fa5 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1c2924cc id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@1097b7e5 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@58aa23e5 id=null version=null>
+Kill: 0 1 15: harrybeasant killed EagleEye by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@30307ae3 killer=Player : 22 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3ed3e5cc id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@6569a85d killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7baca5ae id=null version=null>
+Kill: 0 1 28: harrybeasant killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2ead3fd4 killer=Player : 22 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@70398f3c id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@203aab44 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6bc20de3 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@4c0335d killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@666c211a id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@439daaab killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@242fe33b id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@4d83c7a0 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6a70122 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@b4fb35d killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1d88a478 id=null version=null>
+Kill: 0 1 35: harrybeasant killed EagleEye by UT_MOD_NEGEV
+******************** EEROORRRR
+<Kill@37f844f7 killer=Player : 22 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@c77d0d6 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@771199f0 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@249198a2 id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@1c1681c killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@409a072a id=null version=null>
+Kill: 1 0 15: EagleEye killed harrybeasant by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@133321d6 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1f27273 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@799318fa killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@284d0371 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@41639ff killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4f399671 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@dbf2988 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@13fa6c5 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@4c6ca32e killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@704d4834 id=null version=null>
+Kill: 2 2 10: *|ENERGY|*WarNauD killed *|ENERGY|*WarNauD by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@4d50b06b killer=Player : 50 killed=Player : 50 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@6c6e6874 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@5c04e904 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@465e34ce id=null version=null>
+Kill: 0 1 20: harrybeasant killed EagleEye by UT_MOD_G36
+******************** EEROORRRR
+<Kill@5e16e2e5 killer=Player : 22 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@308a58a5 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7a3da671 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@657a8369 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@6eb285b6 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@a68a881 id=null version=null>
+Kill: 3 3 10: Lybra killed Lybra by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@170aeb17 killer=Player : 57 killed=Player : 57 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@4dd03ed2 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@39402772 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@22ddcabb id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2d486540 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6bef63f9 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@76ece7a6 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3b5c8049 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@49d159e4 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4f64ad98 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1afdc98d killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@bbb55d3 id=null version=null>
+Kill: 3 2 28: Lybra killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@79930089 killer=Player : 57 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@220860ba id=null version=null>
+Kill: 2 3 14: *|ENERGY|*WarNauD killed Lybra by UT_MOD_BERETTA
+******************** EEROORRRR
+<Kill@7213bc54 killer=Player : 50 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6db1694e id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@79b1a66b killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7e24f937 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@26a88765 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2510bb7 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@55c3b3af killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2349d226 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@72beaa01 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@438b6281 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@61438934 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@18e4e6cf id=null version=null>
+Kill: 3 2 18: Lybra killed *|ENERGY|*WarNauD by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@23053693 killer=Player : 57 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2b41fedb id=null version=null>
+Kill: 2 3 30: *|ENERGY|*WarNauD killed Lybra by UT_MOD_AK103
+******************** EEROORRRR
+<Kill@2a57a184 killer=Player : 50 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5f2cf6d3 id=null version=null>
+Kill: 3 3 10: Lybra killed Lybra by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@20e0e9d5 killer=Player : 57 killed=Player : 57 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@e17afd0 id=null version=null>
+Kill: 2 1 30: *|ENERGY|*WarNauD killed EagleEye by UT_MOD_AK103
+******************** EEROORRRR
+<Kill@783b67a7 killer=Player : 50 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@412429c id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1a943b29 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@79b80e60 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@307c197e killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@236db810 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@d8db7ce killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@531e3c55 id=null version=null>
+Kill: 2 1 30: *|ENERGY|*WarNauD killed EagleEye by UT_MOD_AK103
+******************** EEROORRRR
+<Kill@47711479 killer=Player : 50 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@50f73893 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@571ba4a2 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@57d5b45b id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2ae61f87 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6a1fee11 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@19d4894c killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5081e9d3 id=null version=null>
+Kill: 1 0 28: EagleEye killed harrybeasant by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@151c2b4 killer=Player : 25 killed=Player : 22 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1ec5b819 id=null version=null>
+FFFFFFFFFFFUUUUUUUUUUUUUU
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@49918c8f killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@72a32604 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@764e75bc killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1913c652 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2628de85 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@45290155 id=null version=null>
+Kill: 3 1 23: Lybra killed EagleEye by UT_MOD_BLED
+******************** EEROORRRR
+<Kill@725bf9cf killer=Player : 57 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@746dbfb0 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2c3b1633 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5b2e84f4 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@47f6b002 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@149d7837 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2b0dbc8d killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@12d5e310 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@3ae490fa killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@73ea2b4a id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@3ae75147 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@28892a87 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2ec195e3 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@27578210 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@21dd63a8 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4db9bbf6 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@50ed0a5 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@fa4033b id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7b6bb7b1 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5ce904c4 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7562f00 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2b27acc3 id=null version=null>
+Kill: 3 1 28: Lybra killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7621c3b0 killer=Player : 57 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@22b69467 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7fae1081 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7cbdc6a3 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@59e96ffd killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6cb77928 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@4888884e killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7bacde15 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7fbdf57 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2903ccd9 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@5522a7b5 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@563087bd id=null version=null>
+Kill: 2 2 10: *|ENERGY|*WarNauD killed *|ENERGY|*WarNauD by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@2c11b4c2 killer=Player : 50 killed=Player : 50 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@3e724328 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@58a1918e killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@575b2f17 id=null version=null>
+Kill: 0 0 10: deagle5 killed deagle5 by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@5a35dfb4 killer=Player : 63 killed=Player : 63 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@6f1d0b1 id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@55519d9b killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@614256df id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@6c9cce54 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2aae2481 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@550c6b37 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@22531380 id=null version=null>
+Kill: 2 2 10: *|ENERGY|*WarNauD killed *|ENERGY|*WarNauD by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@de96c95 killer=Player : 50 killed=Player : 50 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@57d7b155 id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1b4c72c8 killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3803b678 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2e93d13f killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6a8e96fc id=null version=null>
+Kill: 2 1 14: *|ENERGY|*WarNauD killed EagleEye by UT_MOD_BERETTA
+******************** EEROORRRR
+<Kill@1a51aee0 killer=Player : 50 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@68b0019f id=null version=null>
+Kill: 1 2 28: EagleEye killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7b0906da killer=Player : 25 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@da11151 id=null version=null>
+Kill: 0 1 18: deagle5 killed EagleEye by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@7a795d5f killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@35e146ca id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@3ff2caf4 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5cea79f8 id=null version=null>
+Kill: 2 2 10: *|ENERGY|*WarNauD killed *|ENERGY|*WarNauD by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@6a0bcf47 killer=Player : 50 killed=Player : 50 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@2d5574b5 id=null version=null>
+Kill: 1 0 18: EagleEye killed deagle5 by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@4a5d484a killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3235186a id=null version=null>
+Kill: 3 1 23: Lybra killed EagleEye by UT_MOD_BLED
+******************** EEROORRRR
+<Kill@3a72d4e5 killer=Player : 57 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@48f7245d id=null version=null>
+Kill: 3 1 28: Lybra killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@52df636 killer=Player : 57 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@c7f55e2 id=null version=null>
+Kill: 3 2 28: Lybra killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@455d0ff7 killer=Player : 57 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@60c344b4 id=null version=null>
+Kill: 0 0 31: deagle5 killed deagle5 by UT_MOD_SPLODED
+******************** EEROORRRR
+<Kill@1d501268 killer=Player : 63 killed=Player : 63 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@73e878e0 id=null version=null>
+Kill: 2 0 14: *|ENERGY|*WarNauD killed deagle5 by UT_MOD_BERETTA
+******************** EEROORRRR
+<Kill@61062b18 killer=Player : 50 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5bf7666b id=null version=null>
+Kill: 2 3 14: *|ENERGY|*WarNauD killed Lybra by UT_MOD_BERETTA
+******************** EEROORRRR
+<Kill@5e04563a killer=Player : 50 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6eb92a0e id=null version=null>
+Kill: 0 2 18: deagle5 killed *|ENERGY|*WarNauD by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@f401c44 killer=Player : 63 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@39ffbc2e id=null version=null>
+Kill: 4 4 10: VOXX(PT) killed VOXX(PT) by MOD_CHANGE_TEAM
+******************** EEROORRRR
+<Kill@141d7417 killer=Player : 74 killed=Player : 74 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@19b09c52 id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7f1f846b killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6e2ece00 id=null version=null>
+Kill: 0 2 18: deagle5 killed *|ENERGY|*WarNauD by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@4d9a485f killer=Player : 63 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4c057cc6 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2826e5d8 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@11bbdc80 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@4cd1365 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@33b44e59 id=null version=null>
+Kill: 3 1 28: Lybra killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@377f1fcb killer=Player : 57 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7b0064e3 id=null version=null>
+Kill: 4 1 17: VOXX(PT) killed EagleEye by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@26b72884 killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@42c505f7 id=null version=null>
+Kill: 4 2 23: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_BLED
+******************** EEROORRRR
+<Kill@6815e601 killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@75af8109 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@45f143f1 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@62a3a716 id=null version=null>
+Kill: 2 4 28: *|ENERGY|*WarNauD killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@490b8a8c killer=Player : 50 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@14b512cb id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@5dc8ce14 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2a51b326 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@47fe766f killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@13119656 id=null version=null>
+Kill: 3 2 28: Lybra killed *|ENERGY|*WarNauD by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@24f2f2 killer=Player : 57 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@79c9edf0 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@42d2821b killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@a5bdce3 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@761b2f32 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@72b7b831 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@5887b2c8 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@34ea95e0 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@53aa5221 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@52f61f70 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@ba59e87 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@264ab70a id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@715669c7 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@603ac1f2 id=null version=null>
+Kill: 4 2 17: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@27b9d14c killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@185be8f4 id=null version=null>
+Kill: 1 4 15: EagleEye killed VOXX(PT) by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@74d53153 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@58997c11 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7248989f killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7c1c2956 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@4886b7bb killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4887b30 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@4c282f55 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@623b9c82 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1b4b07df killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5af1cf78 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@67e7b36d killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1cb4ee66 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7e48c33e killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5b0a5c37 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@66f3c66e killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@e689490 id=null version=null>
+Kill: 4 2 17: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@25ddfb6a killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@10a4ff92 id=null version=null>
+Kill: 4 1 17: VOXX(PT) killed EagleEye by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@4004198e killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4d29da77 id=null version=null>
+Kill: 2 3 28: *|ENERGY|*WarNauD killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@23b5c6b6 killer=Player : 50 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7308e90a id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@497adfb4 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@21f4c81c id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@264a1535 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@49b65e36 id=null version=null>
+Kill: 1 0 23: EagleEye killed deagle5 by UT_MOD_BLED
+******************** EEROORRRR
+<Kill@5a1b5e32 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@3ac552d5 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@64383ed6 killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@28a58701 id=null version=null>
+Kill: 4 2 17: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@4a3e7799 killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4b1e03e3 id=null version=null>
+Kill: 4 1 17: VOXX(PT) killed EagleEye by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@506e4e82 killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@79e4620e id=null version=null>
+Kill: 3 3 31: Lybra killed Lybra by UT_MOD_SPLODED
+******************** EEROORRRR
+<Kill@7a112202 killer=Player : 57 killed=Player : 57 weapon=Item : null friendlyfire=true dateCreated=null beforeInsert=Kill$_closure1@7acfefe9 id=null version=null>
+Kill: 2 0 23: *|ENERGY|*WarNauD killed deagle5 by UT_MOD_BLED
+******************** EEROORRRR
+<Kill@21d9bf04 killer=Player : 50 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5e8bb0f8 id=null version=null>
+Kill: 4 2 17: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@49660e34 killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4b2e9d91 id=null version=null>
+Kill: 1 3 28: EagleEye killed Lybra by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@6f6a719e killer=Player : 25 killed=Player : 57 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@35497537 id=null version=null>
+Kill: 4 2 17: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@6dd33544 killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@454e3bb0 id=null version=null>
+FFFFFFFFFFFUUUUUUUUUUUUUU
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@488c241a killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@68964c2b id=null version=null>
+Kill: 4 2 15: VOXX(PT) killed *|ENERGY|*WarNauD by UT_MOD_DEAGLE
+******************** EEROORRRR
+<Kill@3e470524 killer=Player : 74 killed=Player : 50 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@28a29e6d id=null version=null>
+FFFFFFFFFFFUUUUUUUUUUUUUU
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@3d191056 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@387f9d70 id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@16d51b41 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@f0541d id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@5771dc60 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@743b4f79 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@6fc6e58 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@26b056fd id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@11afcfd4 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2d75705e id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@410b69b killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@65447c32 id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@44157e43 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5f1483a0 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@155ec9f4 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@21cbd22 id=null version=null>
+Kill: 0 1 18: deagle5 killed EagleEye by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@742ab836 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@20a41ccf id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1fc1b26c killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@65a8e0bd id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@6cb8daa7 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5c1b41b4 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@43c804bf killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@afba5d id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@fb9ae95 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6774c043 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1367dca killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@207c5965 id=null version=null>
+Kill: 4 1 17: VOXX(PT) killed EagleEye by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@41dc79ab killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@71b7eb54 id=null version=null>
+Kill: 0 1 18: deagle5 killed EagleEye by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@201b97d8 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@738df65f id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@70964f92 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1c4233fd id=null version=null>
+Kill: 4 1 17: VOXX(PT) killed EagleEye by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@7718bb9c killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@78c53bd9 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@564d158c killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@5ec1c697 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@2784de18 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4110ded id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7aa93a16 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7c24b943 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1857306c killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@42c0ef0 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@67d374be killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6b959b32 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@10dc942b killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1839bb3 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@3a17f493 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@7ab9fcb0 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@28d101f3 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@31d70d74 id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1ac0bc3a killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6385918e id=null version=null>
+Kill: 4 1 17: VOXX(PT) killed EagleEye by UT_MOD_UMP45
+******************** EEROORRRR
+<Kill@71c03ae1 killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@359c41f id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@62a16977 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@53133637 id=null version=null>
+Kill: 1 0 28: EagleEye killed deagle5 by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@22a34435 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@cd30557 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@7722306c killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@65993f8e id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@1ae540a4 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@40f6dcc7 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@10aa5b2d killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2047efe7 id=null version=null>
+Kill: 1 4 28: EagleEye killed VOXX(PT) by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@a9292cb killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@1ce352d9 id=null version=null>
+Kill: 0 1 28: deagle5 killed EagleEye by UT_MOD_SR8
+******************** EEROORRRR
+<Kill@beae719 killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6aea206b id=null version=null>
+Kill: 1 4 12: EagleEye killed VOXX(PT) by UT_MOD_KNIFE
+******************** EEROORRRR
+<Kill@2336f0c9 killer=Player : 25 killed=Player : 74 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@6bfa2e2e id=null version=null>
+Kill: 0 1 18: deagle5 killed EagleEye by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@7056c23d killer=Player : 63 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@4fea6c69 id=null version=null>
+Kill: 1 0 23: EagleEye killed deagle5 by UT_MOD_BLED
+******************** EEROORRRR
+<Kill@1ba46497 killer=Player : 25 killed=Player : 63 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@45c803ae id=null version=null>
+Kill: 4 1 20: VOXX(PT) killed EagleEye by UT_MOD_G36
+******************** EEROORRRR
+<Kill@748ff9a7 killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@184f7eba id=null version=null>
+Kill: 4 1 18: VOXX(PT) killed EagleEye by UT_MOD_MP5K
+******************** EEROORRRR
+<Kill@1e19bba3 killer=Player : 74 killed=Player : 25 weapon=Item : null friendlyfire=false dateCreated=null beforeInsert=Kill$_closure1@2b6dd9c5 id=null version=null>
+FFFFFFFFFFFUUUUUUUUUUUUUU
+FFFFFFFFFFFUUUUUUUUUUUUUU
+FFFFFFFFFFFUUUUUUUUUUUUUU
 
