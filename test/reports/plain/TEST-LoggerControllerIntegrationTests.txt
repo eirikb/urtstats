@@ -1,10 +1,11 @@
 Testsuite: LoggerControllerIntegrationTests
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 98.389 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 4.011 sec
 ------------- Standard Output ---------------
 --Output from testSomething--
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1  Hello!
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 --Output from testSomething--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 98.287 sec
+Testcase: testSomething took 3.981 sec

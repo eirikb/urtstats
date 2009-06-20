@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="katze" id="0" name="LoggerControllerIntegrationTests" package="" tests="1" time="98.389" timestamp="2009-06-20T21:03:38">
+  <testsuite errors="0" failures="0" hostname="katze" id="0" name="LoggerControllerIntegrationTests" package="" tests="1" time="4.011" timestamp="2009-06-20T21:36:36">
       <properties />
 
-      <testcase classname="LoggerControllerIntegrationTests" name="testSomething" time="98.287" />
+      <testcase classname="LoggerControllerIntegrationTests" name="testSomething" time="3.98" />
 
       <system-out><![CDATA[--Output from testSomething--
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1  Hello!
 ]]></system-out>
 
       <system-err><![CDATA[--Output from testSomething--
