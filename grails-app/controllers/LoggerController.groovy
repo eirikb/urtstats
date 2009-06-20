@@ -4,7 +4,7 @@ class LoggerController implements ParseListener {
 
     def index = {
         if (parser == null) {
-            parser = new LogParser(new File("/home/eirikb/qconsole.log"), false, false)
+            parser = new LogParser(new File("/home/eirikb/qconsole2.log"), false, false)
             parser.addParseListener(this)
             parser.parse()
             //TODO THREAD!
@@ -75,14 +75,13 @@ class LoggerController implements ParseListener {
             log.error("Unable to persist: " + player.dump())
         }
         def playerLog = PlayerLog.findByPlayerAndEndTimeIsNull(player)
-        //def playerLog = null
         if (playerLog != null) {
             playerLog.setEndTime(new Date())
             if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
                 log.error("Unable to persist: " + player.dump())
             }
         } else {
-            println "FFFFFFFFFFFUUUUUUUUUUUUUU"
+            log.error("Unable to find playerlog for player " + player.dump())
         }
     }
 
@@ -113,7 +112,7 @@ class LoggerController implements ParseListener {
                     }
                 }
             } else {
-                log.error("Unknown type for death: " + type)
+                log.error("Unknown death for type: " + type)
             }
         }
     }
@@ -129,12 +128,17 @@ class LoggerController implements ParseListener {
     void hit(hitterID, victimID, hitpoint, weapon) {
         def hitter = Player.findByUrtID(hitterID)
         def victim = Player.findByUrtID(victimID)
-        if (hitter != null && victim != null) {
+        def item = Item.findByUrtID(weapon)
+        if (hitter != null && victim != null && item != null) {
             def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.team == victim.team), createTime:new Date(),
-                hitpoint:hitpoint, weapon:weapon)
+                hitpoint:hitpoint, item:item)
             if(hit.hasErrors() || !hit.save(flush:true)) {
                 log.error("Unable to persist: " + hit.dump())
             }
+        } else {
+            log.error("Could not create hit. One of the following are null: hitter: " + 
+                hitter + ". victim: " + victim + ". item: " + item +
+                ". Original(" + hitterID + ", " + victimID + ", " + weapon + ")")
         }
     }
 }

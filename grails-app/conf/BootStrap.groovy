@@ -1,9 +1,9 @@
 class BootStrap {
 
     def init = { servletContext ->
-        new Item(urtID:1, name:"Ka-Bar Knife").addToDeathCauses(
+        def knife = new Item(urtID:1, name:"Ka-Bar Knife", mode:0, binding:"B").addToDeathCauses(
             new DeathCause(urtID:12, name:"Slice")).addToDeathCauses(
-            new DeathCause(urtID:13, name:"Throw")).save(flush:true)
+            new DeathCause(urtID:13, name:"Throw")).save()
 
         new Item(urtID:2, name:"Beretta", binding:"F", mode:0).addToDeathCauses(
             new DeathCause(urtID:14)).save()
@@ -31,6 +31,8 @@ class BootStrap {
             new DeathCause(urtID:30)).save()
         new Item(urtID:16, name:"Negev", binding:"c", mode:0).addToDeathCauses(
             new DeathCause(urtID:35)).save()
+        new Item(urtID:19, name:"M4", binding:"c", mode:0).addToDeathCauses(
+            new DeathCause(urtID:38)).save()
 
         new Item(urtID:13, name:"Smoke Grenade", binding:"Q", mode:0).save()
         new Item(urtID:17, name:"Kevlar Vest", binding:"R", mode:0).save()

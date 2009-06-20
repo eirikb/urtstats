@@ -77,6 +77,7 @@ class LogParser {
                         break
 
                         case "KILL":
+
                         def killedID = getInt(st.nextToken())
                         def type = getInt(st.nextToken())
                         parseListeners.each() { it.kill(id, killedID, type)}
