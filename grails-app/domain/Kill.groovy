@@ -4,7 +4,7 @@ class Kill {
     Player killer
     Player killed
 
-    Integer weapon
+   // Item weapon
     boolean friendlyfire
     Date dateCreated
 

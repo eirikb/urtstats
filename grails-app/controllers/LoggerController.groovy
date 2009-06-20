@@ -4,9 +4,11 @@ class LoggerController implements ParseListener {
 
     def index = {
         if (parser == null) {
-            parser = new LogParser(new File("/home/eirikb/qconsole.log"), false, false)
-            parser.addParseListener(this)
-            parser.parse()
+            log.error("JADDA!")
+            log.info("sdf")
+          //  parser = new LogParser(new File("/home/eirikb/qconsole.log"), false, false)
+           // parser.addParseListener(this)
+            //parser.parse()
             //TODO THREAD!
             //   Thread.start() {
             //      parser.parse()
