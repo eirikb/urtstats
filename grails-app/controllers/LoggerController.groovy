@@ -4,8 +4,7 @@ class LoggerController implements ParseListener {
 
     def index = {
         if (parser == null) {
-            println "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1  " + grailsApplication.config.foo.bar.hello
-            parser = new LogParser(new File("/home/eirikb/qconsole.log"), false, false)
+            parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), false, false)
             parser.addParseListener(this)
             parser.parse()
             //TODO THREAD!
@@ -21,6 +20,7 @@ class LoggerController implements ParseListener {
         if (player == null) {
             player = new Player(challenge:challenge, ip:userInfo.ip, nick:userInfo.name, 
                 level:0, exp:0, nextlevel:10, urtID:id, kills:0, deaths:0, createTime:new Date())
+            rcon("rcon bigtext welcome")
         } else {
             player.setUrtID(id)
         }
@@ -141,5 +141,10 @@ class LoggerController implements ParseListener {
                 hitter + ". victim: " + victim + ". item: " + item +
                 ". Original(" + hitterID + ", " + victimID + ", " + weapon + ")")
         }
+    }
+
+    private void rcon(message) {
+        RCon.rcon(grailsApplication.config.urt.rcon.host, grailsApplication.config.urt.rcon.port,
+            grailsApplication.config.urt.rcon.password, message)
     }
 }

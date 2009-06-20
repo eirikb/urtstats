@@ -1,16 +1,7 @@
-// locations to search for config files that get merged into the main config
-// config files can either be Java properties files or ConfigSlurper scripts
-
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
-
-// if(System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
-
-foo.bar.hello = "Hello!"
+urt.qconsole.path = "/path/to/fileqconsole.log"
+urt.rcon.host = "localhost"
+urt.rcon.port = 27960
+urt.rcon.password = "password"
 
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
@@ -72,34 +63,8 @@ log4j {
             codehaus.groovy.grails.orm.hibernate= "info,stdout,logfile" // hibernate integration
             springframework="off,stdout,logfile"
             hibernate="off,stdout,logfile"
-           // org.codehaus.groovy.grails.plugins.acegi= "all,stdout,logfile"
         }
     }
 }
-
-// log4j configuration
-/**
-log4j = {
-// Example of changing the log pattern for the default console
-// appender:
-//
-//appenders {
-//    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-//}
-
-error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-'org.codehaus.groovy.grails.web.pages', //  GSP
-'org.codehaus.groovy.grails.web.sitemesh', //  layouts
-'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-'org.codehaus.groovy.grails.web.mapping', // URL mapping
-'org.codehaus.groovy.grails.commons', // core / classloading
-'org.codehaus.groovy.grails.plugins', // plugins
-'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
-'org.springframework',
-'org.hibernate'
-
-warn   'org.mortbay.log'
-}
- */
 
      

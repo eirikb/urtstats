@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="katze" name="LoggerControllerIntegrationTests" tests="1" time="4.011" timestamp="2009-06-20T21:36:36">
+<testsuite errors="0" failures="0" hostname="katze" name="LoggerControllerIntegrationTests" tests="1" time="4.282" timestamp="2009-06-20T21:50:50">
   <properties />
-  <testcase classname="LoggerControllerIntegrationTests" name="testSomething" time="3.98" />
+  <testcase classname="LoggerControllerIntegrationTests" name="testSomething" time="4.255" />
   <system-out><![CDATA[--Output from testSomething--
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1  Hello!
 ]]></system-out>
   <system-err><![CDATA[--Output from testSomething--
 ]]></system-err>

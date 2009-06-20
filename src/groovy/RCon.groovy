@@ -13,34 +13,22 @@
  */
 class RCon {
 
-    static final String HOST = ""
-    static final int PORT = 27960
-    static final String PASSWORD = ""
     static final int BUFFERSIZE = 65507
 
-    static void main(args) {
-        def s = "";
-        for (String a : args) {
-            s += " " + a;
-        }
-        s = s.trim()
-        println RCon.rcon(s)
-    }
-
-    static void rcon( message) {
-        message = "rcon\r" + PASSWORD + "\r\"" + message + "\"\0";
+    static void rcon(host, port, password, message) {
+        message = "rcon\r" + password + "\r\"" + message + "\"\0";
         DatagramSocket ds;
         DatagramPacket dp;
         InetAddress ia;
         ds = new DatagramSocket();
-        ia = InetAddress.getByName(HOST);
+        ia = InetAddress.getByName(host);
         String out = "xxxx" + message;
         byte[] buff = out.getBytes();
         buff[0] = (byte) 0xff;
         buff[1] = (byte) 0xff;
         buff[2] = (byte) 0xff;
         buff[3] = (byte) 0xff;
-        dp = new DatagramPacket(buff, buff.length, ia, PORT);
+        dp = new DatagramPacket(buff, buff.length, ia, port);
         ds.send(dp);
         //byte[] data = new byte[BUFFERSIZE];
         //dp = new DatagramPacket(data, data.length);
