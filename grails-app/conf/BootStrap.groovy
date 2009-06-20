@@ -25,8 +25,6 @@ class BootStrap {
         new Item(urtID:21, name:"Medkit", binding:"T", mode:0).save()
         new Item(urtID:22, name:"NVGs", binding:"S", mode:0).save()
         new Item(urtID:23, name:"Extra Ammo", binding:"X", mode:0).save()
-
-        log.error("OMFGLOL!")
     }
 
     def destroy = {

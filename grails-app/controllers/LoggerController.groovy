@@ -15,6 +15,9 @@ class LoggerController implements ParseListener {
     }
 
     void userInfo(id, userInfo) {
+        println userInfo.dump()
+
+
         def challenge = Integer.parseInt(userInfo.challenge)
         def player = Player.findByChallenge(challenge)
         if (player == null) {
@@ -23,7 +26,7 @@ class LoggerController implements ParseListener {
         } else {
             player.setUrtID(id)
         }
-        // player.addToPlayerLogs(new PlayerLog(player:player))
+        player.addToPlayerLogs(new PlayerLog(player:player))
         if(player.hasErrors() || !player.save(flush:true)) {
             log.error("Unable to persist: " + player.dump())
         } else {
