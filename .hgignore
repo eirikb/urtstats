@@ -1,5 +1,6 @@
 syntasx: glob
 grails-app/conf/DataSource.groovy
+grails-app/conf/Config.groovy
 \.orig\..*$
 \.orig$
 \.chg\..*$
