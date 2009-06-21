@@ -1,3 +1,5 @@
+import org.jsecurity.crypto.hash.Sha1Hash
+
 class BootStrap {
 
     def init = { servletContext ->
@@ -48,6 +50,21 @@ class BootStrap {
         new DeathCause(urtID:23, name:"bleed").save()
         new DeathCause(urtID:31, name:"Sploded").save()
         new DeathCause(urtID:10, name:"Change team").save()
+
+
+        def adminRole = new JsecRole(name: "Administrator").save()
+        def adminUser = new JsecUser(username: "admin", passwordHash:new Sha1Hash("admin").toHex()).save()
+
+        new JsecUserRoleRel(user: adminUser, role: adminRole).save()
+
+        // A normal user.
+        def userRole = new JsecRole(name: "User").save()
+        def normalUser = new JsecUser(username: "phil", passwordHash: new Sha1Hash("password").toHex()).save()
+        new JsecUserRoleRel(user: normalUser, role: userRole).save()
+
+        // Give another user the "User" role.
+        normalUser = new JsecUser(username: "alice", passwordHash: new Sha1Hash("changeit").toHex()).save()
+        new JsecUserRoleRel(user: normalUser, role: userRole).save()
     }
 
     def destroy = {
