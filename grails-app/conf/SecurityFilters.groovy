@@ -17,7 +17,8 @@ class SecurityFilters {
 
         auth(controller: "*", action: "*") {
             before = {
-                if (controllerName == null) {
+                if (controllerName == null ||
+                    controllerName == "team") {
                     return true
                 }
                 accessControl {

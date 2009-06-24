@@ -5,13 +5,18 @@ class LoggerController implements ParseListener {
     def index = {
         if (parser == null) {
             parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), false, false)
-            parser.addParseListener(this)
-            parser.parse()
-            //TODO THREAD!
-            //   Thread.start() {
-            //      parser.parse()
-            // }
         }
+        /*
+        if (parser == null) {
+        
+        parser.addParseListener(this)
+        parser.parse()
+        //TODO THREAD!
+        //   Thread.start() {
+        //      parser.parse()
+        // }
+        }
+         */
     }
 
     void userInfo(id, userInfo) {

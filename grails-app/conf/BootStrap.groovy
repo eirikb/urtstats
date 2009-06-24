@@ -65,6 +65,14 @@ class BootStrap {
         // Give another user the "User" role.
         normalUser = new JsecUser(username: "alice", passwordHash: new Sha1Hash("changeit").toHex()).save()
         new JsecUserRoleRel(user: normalUser, role: userRole).save()
+
+
+
+        def perm = new JsecPermission(type: 'org.jsecurity.grails.JsecBasicPermission', possibleActions: '*').save()
+        new JsecUserPermissionRel(user : normalUser,  permission: perm, target : 'user', actions : 'delete, edit').save()
+
+        //  def a = new JsecPermission(type:"Administration", possibleActions:"lol").save()
+        //  new JsecRolePermissionRel(role:adminRole, permission:a, actions:"omfglol").save()
     }
 
     def destroy = {

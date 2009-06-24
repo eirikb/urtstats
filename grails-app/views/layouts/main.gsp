@@ -12,12 +12,20 @@
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
         </div>
         <div id="container">
+            <jsec:isLoggedIn>
+                <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
+            </jsec:isLoggedIn>
             <img src="${resource(dir:'images',file:'ut.png')}" width="100px" height="100px" alt="Grails" />
             <ul class="tabs" id="tabnav">
+                <jsec:isNotLoggedIn>
+                    <li class="controller"><g:link controller="auth">Log in</g:link></li>
+                </jsec:isNotLoggedIn>
                 <li><a href="${resource(dir:'')}">Home</a></li>
-                <g:each var="c" in="${grailsApplication.controllerClasses}">
-                    <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                </g:each>
+                <li class="controller"><g:link controller="game">Game</g:link></li>
+
+                <jsec:hasPermission  permission="user">
+                    <li class="controller"><g:link controller="admin">Admin</g:link></li>
+                </jsec:hasPermission>
             </ul>
             <g:layoutBody />
         </div>
