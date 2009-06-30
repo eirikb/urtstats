@@ -7,8 +7,23 @@ class PlayerController {
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
+    def search= {
+        def players = Player.findAllByNickIlike("%${params.query}%")
+        render(contentType: "text/xml") {
+	    results() {
+	        players.each { player ->
+		    result(){
+		        name(player.nick)
+                        id(player.id)
+		    }
+		}
+            }
+        }
+    }
+
+
     def list = {
-        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        params.max = Math.min( params.max ? params.max.toInteger() : 20,  100)
         [ playerInstanceList: Player.list( params ), playerInstanceTotal: Player.count() ]
     }
 
