@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="katze" name="ItemTests" tests="1" time="0.196" timestamp="2009-06-29T17:25:55">
+  <properties />
+  <testcase classname="ItemTests" name="testSomething" time="0.194" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

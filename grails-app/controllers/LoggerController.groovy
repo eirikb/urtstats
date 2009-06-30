@@ -5,6 +5,9 @@ class LoggerController implements ParseListener {
     def index = {
         if (parser == null) {
             parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), false, false)
+            parser.addParseListener(this)
+            parser.parse()
+
         }
         /*
         if (parser == null) {
@@ -20,14 +23,15 @@ class LoggerController implements ParseListener {
     }
 
     void userInfo(id, userInfo) {
-        def challenge = Integer.parseInt(userInfo.challenge)
-        def player = Player.findByChallenge(challenge)
+        def guid = userInfo.cl_guid
+        def player = Player.findByGuid(guid)
         if (player == null) {
-            player = new Player(challenge:challenge, ip:userInfo.ip, nick:userInfo.name, 
-                level:0, exp:0, nextlevel:10, urtID:id, kills:0, deaths:0, createTime:new Date())
+            player = new Player(guid:guid, ip:userInfo.ip, nick:userInfo.name, urtID:id)
             rcon("rcon bigtext welcome")
         } else {
             player.setUrtID(id)
+            player.setIp(userInfo.ip)
+            player.setJoinGameTime(new Date())
         }
 
         player.addToPlayerLogs(new PlayerLog(startTime:new Date()))
@@ -66,28 +70,36 @@ class LoggerController implements ParseListener {
 
     void userInfoChange(id, userInfo) {
         def player = Player.findByUrtID(id)
-        def urtID = Integer.parseInt(userInfo.t)
-        def same = player.team.urtID == urtID
-        if (player.team.urtID != urtID) {
-            addPlayerToTeam(player, urtID)
+        if (player != null) {
+            def urtID = Integer.parseInt(userInfo.t)
+            def same = player.team.urtID == urtID
+            if (player.team.urtID != urtID) {
+                addPlayerToTeam(player, urtID)
+            }
+        } else {
+            log.error("Unkown player: " + id + ". " + userInfo.dump())
         }
     }
 
     void leave(id) {
         def player = Player.findByUrtID(id)
-        player.team = null;
-        player.urtID = -1;
-        if(player.hasErrors() || !player.save(flush:true)) {
-            log.error("Unable to persist: " + player.dump())
-        }
-        def playerLog = PlayerLog.findByPlayerAndEndTimeIsNull(player)
-        if (playerLog != null) {
-            playerLog.setEndTime(new Date())
-            if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
+        if (player != null) {
+            player.team = null;
+            player.urtID = -1;
+            if(player.hasErrors() || !player.save(flush:true)) {
                 log.error("Unable to persist: " + player.dump())
             }
+            def playerLog = PlayerLog.findByPlayerAndEndTimeIsNull(player)
+            if (playerLog != null) {
+                playerLog.setEndTime(new Date())
+                if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
+                    log.error("Unable to persist: " + player.dump())
+                }
+            } else {
+                log.error("Unable to find playerlog for player " + player.dump())
+            }
         } else {
-            log.error("Unable to find playerlog for player " + player.dump())
+            log.error("player not found: " + id)
         }
     }
 
@@ -98,7 +110,7 @@ class LoggerController implements ParseListener {
             def friendlyfire = killer.team == killed.team
             def death = DeathCause.findByUrtID(type)
             if (death != null) {
-                def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death, createTime:new Date())
+                def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 if(kill.hasErrors() || !kill.save(flush:true)) {
                     log.error("Unable to persist: " + kill.dump())
                 }
@@ -106,11 +118,15 @@ class LoggerController implements ParseListener {
                 if (!friendlyfire) {
                     def kills = Kill.countBykiller(killer)
                     def deaths = Kill.countByKilled(killed)
-                    def incExp = (int)((killer.level + 1) * ((kills + 1) / (deaths + 1)))
-                    killer.exp += incExp
+                    def gameKills = Kill.countByKillerAndCreateTimeGreaterThan(killer, killer.getJoinGameTime())
+                    def gameDeaths = Kill.countByKilledAndCreateTimeGreaterThan(killed, killer.getJoinGameTime())
+
+                    killer.exp += (killed.level - killer.level > 0 ? killed.level - killer.level : 1) *
+                    (((kills + 1) / (deaths + 1)) + ((gameKills + 1) / (gameDeaths + 1)) / 2)
+
                     if (killer.exp > killer.nextlevel) {
                         killer.level++;
-                        killer.nextlevel = killer.exp * killer.level
+                        killer.nextlevel = killer.exp * 1.2 + Math.sqrt(killer.exp)
                         //  RCon.rcon("rcon bigtext \"Congratulations " + killer.nick.trim() + " you are now level " + killer.level + '"')
                     }
                     if(killer.hasErrors() || !killer.save(flush:true)) {
@@ -125,7 +141,7 @@ class LoggerController implements ParseListener {
 
     void chat(id, teammessage, message) {
         def player = Player.findByUrtID(id)
-        def chat = new Chat(player:player, teamMessage:teammessage, message:message, createTime:new Date())
+        def chat = new Chat(player:player, teamMessage:teammessage, message:message)
         if(chat.hasErrors() || !chat.save(flush:true)) {
             log.error("Unable to persist: " + chat.dump())
         }
@@ -136,7 +152,7 @@ class LoggerController implements ParseListener {
         def victim = Player.findByUrtID(victimID)
         def item = Item.findByUrtID(weapon)
         if (hitter != null && victim != null && item != null) {
-            def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.team == victim.team), createTime:new Date(),
+            def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.team == victim.team),
                 hitpoint:hitpoint, item:item)
             if(hit.hasErrors() || !hit.save(flush:true)) {
                 log.error("Unable to persist: " + hit.dump())
@@ -151,5 +167,15 @@ class LoggerController implements ParseListener {
     private void rcon(message) {
         RCon.rcon(grailsApplication.config.urt.rcon.host, grailsApplication.config.urt.rcon.port,
             grailsApplication.config.urt.rcon.password, message)
+    }
+
+    void initRound(roundInfo) {
+        def players = Player.findAllByUrtIDGreaterThan(-1)
+        players.each() { it.setJoinGameTime(new Date()) }
+    }
+
+    void serverStart() {
+        def players = Player.findAllByUrtIDGreaterThan(-1)
+        players.each() { leave(it.getUrtID()) }
     }
 }

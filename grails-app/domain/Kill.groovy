@@ -6,7 +6,7 @@ class Kill {
 
     DeathCause deathCause
     boolean friendlyfire
-    Date createTime
+    Date createTime = new Date()
         
     static constraints = {
     }

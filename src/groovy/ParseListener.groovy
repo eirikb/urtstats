@@ -18,5 +18,7 @@ interface ParseListener {
     void kill(killerID, killedID, type)
     void chat(id, teammessage, message)
     void hit(hitterID, victimID, hitpoint, weapon)
+    void initRound(roundInfo)
+    void serverStart()
 }
 

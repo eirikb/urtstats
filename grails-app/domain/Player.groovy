@@ -9,14 +9,15 @@ class Player {
     String nick
     String login
     String email // TODO might remove
-    Integer challenge
+    String guid
     String ip
-    Integer level
-    Integer exp
-    Integer nextlevel
-    Integer kills
-    Integer deaths
-    Date createTime
+    Integer level = 0
+    Integer exp = 0
+    Integer nextlevel = 5
+    Integer kills = 0
+    Integer deaths = 0
+    Date createTime = new Date()
+    Date joinGameTime = new Date()
     
     static constraints = {
         nick(nullable:false)
@@ -24,10 +25,11 @@ class Player {
         level(nullable:false)
         exp(nullable:false)
         nextlevel(nullable:false)
-        challenge(unique:true)
+        guid(unique:true)
         team(nullable: true)
         login(nullable: true)
         email(email:true, nullable: true)
         items(nullable:true)
+        joinGameTime(nullable:true)
     }
 }

@@ -18,7 +18,8 @@ class SecurityFilters {
         auth(controller: "*", action: "*") {
             before = {
                 if (controllerName == null ||
-                    controllerName == "team") {
+                    controllerName == "team" ||
+                    controllerName == "game") {
                     return true
                 }
                 accessControl {
@@ -26,6 +27,7 @@ class SecurityFilters {
                 }
             }
         }
+
         playerEditing(controller: "player", action: "(create|edit|save|update|delete)") {
             before = {
                 accessControl {

@@ -67,6 +67,9 @@ class JsecDbRealm {
     }
 
     def isPermitted(principal, requiredPermission) {
+
+        println principal
+        println requiredPermission
         // Does the user have the given permission directly associated
         // with himself?
         //
