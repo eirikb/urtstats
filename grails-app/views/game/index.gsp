@@ -26,9 +26,9 @@
           <g:each in="${playerInstanceList}" status="i" var="playerInstance">
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-              <td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'nick')}</g:link></td>
+              <td><g:link controller="player" action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'nick')}</g:link></td>
 
-            <td>${fieldValue(bean:playerInstance, field:'level')}</td>
+            <td>${fieldValue(bean:playerInstance, field:'level')} - ${playerInstance}.</td>
 
             </tr>
           </g:each>

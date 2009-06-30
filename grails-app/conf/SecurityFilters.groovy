@@ -18,7 +18,6 @@ class SecurityFilters {
         auth(controller: "*", action: "*") {
             before = {
                 if (controllerName == null ||
-                    controllerName == "team" ||
                     controllerName == "game") {
                     return true
                 }
@@ -35,11 +34,11 @@ class SecurityFilters {
                 }
             }
         }
-        
+
         playerShow(controller: "player", action: "show") {
             before = {
                 accessControl {
-                    role("Administrator") || role("User")
+                    role("User")
                 }
             }
         }

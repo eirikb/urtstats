@@ -55,7 +55,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 .body {
-    float: left;
     margin: 0 15px 10px 15px;
 }
 
@@ -131,7 +130,7 @@ td.errors input {
 
 table {
     border: 1px solid #ccc;
-    width: 100%
+    width: 30%
 }
 tr {
     border: 0;
@@ -156,7 +155,7 @@ th a:link, th a:visited, th a:hover {
     display: block;
     font-size: 10px;
     text-decoration: none;
-    width: 100%;
+    width: 30%;
 }
 th.asc a, th.desc a {
     background-position: right;
@@ -191,6 +190,7 @@ th.desc a {
 /* PAGINATION */
 
 .paginateButtons {
+    width: 30%;
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
     border-top: 0;
