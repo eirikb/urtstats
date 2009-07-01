@@ -26,7 +26,7 @@
 
       <li class="controller"><g:link controller="player">Players</g:link></li>
 
-      <jsec:hasRole  name="Administrator">
+      <jsec:hasRole  name="ADMIN">
         <li class="controller"><g:link controller="admin">Admin</g:link></li>
       </jsec:hasRole>
     </ul>

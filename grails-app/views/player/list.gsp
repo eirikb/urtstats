@@ -28,12 +28,12 @@
       <table>
         <thead>
           <tr>
-        <jsec:hasRole  name="Administrator">
+        <jsec:hasRole  name="ADMIN">
           <g:sortableColumn property="id" title="Id" />
         </jsec:hasRole>
 
         <g:sortableColumn property="nick" title="Nick" />
-        <jsec:hasRole  name="Administrator">
+        <jsec:hasRole  name="ADMIN">
           <g:sortableColumn property="ip" title="Ip" />
         </jsec:hasRole>
 
@@ -49,13 +49,13 @@
         <g:each in="${playerInstanceList}" status="i" var="playerInstance">
           <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-          <jsec:hasRole  name="Administrator">
+          <jsec:hasRole  name="ADMIN">
             <td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'id')}</g:link></td>
           </jsec:hasRole>
 
           <td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'nick')}</g:link></td>
 
-          <jsec:hasRole  name="Administrator">
+          <jsec:hasRole  name="ADMIN">
             <td>${fieldValue(bean:playerInstance, field:'ip')}</td>
           </jsec:hasRole>
 

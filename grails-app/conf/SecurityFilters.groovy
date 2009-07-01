@@ -19,7 +19,7 @@ class SecurityFilters {
         playerEditing(controller: "player", action: "(create|edit)") {
             before = {
                 accessControl {
-                    role("Administrator")
+                    role("ADMIN")
                 }
             }
         }
