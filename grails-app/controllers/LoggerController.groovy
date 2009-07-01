@@ -10,7 +10,7 @@ class LoggerController implements ParseListener {
             Thread.start() {
                 parser.parse()
             }
-            rcon("rcon bigtext \"UrTStats logging just ^1terminated^1. You kills are now not recorded\"")
+            rcon("rcon bigtext \"UrTStats logging just ^1terminated^1. You kills are now not recorded.\"")
         }
     }
 
