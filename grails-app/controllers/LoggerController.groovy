@@ -6,7 +6,7 @@ class LoggerController implements ParseListener {
         if (parser == null) {
             parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), true, true)
             parser.addParseListener(this)
-            rcon("rcon bigtext \"UrTStats logging is now ^2runnin^7!\"")
+            rcon("rcon bigtext \"UrTStats logging is now ^2runnin^7! - www.urtstats.net\"")
             Thread.start() {
                 parser.parse()
             }
@@ -20,7 +20,7 @@ class LoggerController implements ParseListener {
         if (player == null) {
             player = new Player(guid:guid, ip:userInfo.ip, nick:userInfo.name, urtID:id)
             rcon("rcon tell \"" + player.getNick() + " Welcome to UrTStats server. Your PIN is " +
-            player.getPin() + ". Use it to actie your account on ^2http://urtstats.net\"")
+            player.getPin() + ". Use it to actie your account on ^2www.urtstats.net\"")
         } else {
             player.setUrtID(id)
             player.setIp(userInfo.ip)
