@@ -18,6 +18,7 @@ class Player {
     Integer deaths = 0
     Date createTime = new Date()
     Date joinGameTime = new Date()
+    Integer pin = 10000 + (int) (Math.random() * 10000)
     
     static constraints = {
         nick(nullable:false)

@@ -15,7 +15,7 @@
     <jsec:isLoggedIn>
       <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
     </jsec:isLoggedIn>
-    <h1>${grailsApplication.config.urtstats.name} - ${grailsApplication.config.urtstats.version}</h1>
+    <h1>${grailsApplication.metadata['app.name']} - ${grailsApplication.metadata['app.version']}</h1>
     <img src="${resource(dir:'images',file:'ut.png')}" width="100px" height="100px" alt="Grails" />
     <ul class="tabs" id="tabnav">
       <jsec:isNotLoggedIn>

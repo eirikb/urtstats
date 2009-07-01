@@ -3,7 +3,6 @@ import org.jsecurity.crypto.hash.Sha1Hash
 class BootStrap {
 
     def init = { servletContext ->
-     
         /*
         def knife = new Item(urtID:1, name:"Ka-Bar Knife", mode:0, binding:"B").addToDeathCauses(
         new DeathCause(urtID:12, name:"Slice")).addToDeathCauses(
@@ -55,13 +54,13 @@ class BootStrap {
 
 
         
-        def adminRole = new JsecRole(name: "Administrator").save()
+        def adminRole = new JsecRole(name: "ADMIN").save()
         def adminUser = new JsecUser(username: "admin", passwordHash:new Sha1Hash("admin").toHex()).save()
 
         new JsecUserRoleRel(user: adminUser, role: adminRole).save()
 
         // A normal user.
-        def userRole = new JsecRole(name: "User").save()
+        def userRole = new JsecRole(name: "USER").save()
         def normalUser = new JsecUser(username: "phil", passwordHash: new Sha1Hash("password").toHex()).save()
         new JsecUserRoleRel(user: normalUser, role: userRole).save()
 
