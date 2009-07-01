@@ -4,22 +4,14 @@ class LoggerController implements ParseListener {
 
     def index = {
         if (parser == null) {
-            parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), false, false)
+            parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), true, true)
             parser.addParseListener(this)
-            parser.parse()
-
+            rcon("rcon bigtext \"UrTStats logging is now ^2runnin^7!\"")
+            Thread.start() {
+                parser.parse()
+            }
+            rcon("rcon bigtext \"UrTStats logging just ^1terminated^1. You kills are now not recorded\"")
         }
-        /*
-        if (parser == null) {
-        
-        parser.addParseListener(this)
-        parser.parse()
-        //TODO THREAD!
-        //   Thread.start() {
-        //      parser.parse()
-        // }
-        }
-         */
     }
 
     void userInfo(id, userInfo) {
@@ -27,11 +19,13 @@ class LoggerController implements ParseListener {
         def player = Player.findByGuid(guid)
         if (player == null) {
             player = new Player(guid:guid, ip:userInfo.ip, nick:userInfo.name, urtID:id)
-            rcon("rcon bigtext welcome")
+            rcon("rcon tell \"" + player.getNick() + " Welcome to UrTStats server. Your PIN is " +
+            player.getPin() + ". Use it to actie your account on ^2http://urtstats.net\"")
         } else {
             player.setUrtID(id)
             player.setIp(userInfo.ip)
             player.setJoinGameTime(new Date())
+            rcon("rcon tell " + player.getNick() + "\"Welcome back ^2" + player.getNick() + "^1. Your level is ^2" + player.getLevel())
         }
 
         player.addToPlayerLogs(new PlayerLog(startTime:new Date()))
@@ -127,7 +121,7 @@ class LoggerController implements ParseListener {
                     if (killer.exp > killer.nextlevel) {
                         killer.level++;
                         killer.nextlevel = killer.exp * 1.2 + Math.sqrt(killer.exp)
-                        //  RCon.rcon("rcon bigtext \"Congratulations " + killer.nick.trim() + " you are now level " + killer.level + '"')
+                          RCon.rcon("rcon bigtext \"Congratulations ^2" + killer.nick.trim() + "^1 you are now level ^2" + killer.level + '"')
                     }
                     if(killer.hasErrors() || !killer.save(flush:true)) {
                         log.error("Unable to persist: " + killer.dump())
