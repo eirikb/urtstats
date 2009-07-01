@@ -15,19 +15,8 @@ class SecurityFilters {
 
     def filters = {
 
-        auth(controller: "*", action: "*") {
-            before = {
-                if (controllerName == null ||
-                    controllerName == "game") {
-                    return true
-                }
-                accessControl {
-                    true
-                }
-            }
-        }
 
-        playerEditing(controller: "player", action: "(create|edit|save|update|delete)") {
+        playerEditing(controller: "player", action: "(create|edit)") {
             before = {
                 accessControl {
                     role("Administrator")
@@ -35,12 +24,5 @@ class SecurityFilters {
             }
         }
 
-        playerShow(controller: "player", action: "show") {
-            before = {
-                accessControl {
-                    role("User")
-                }
-            }
-        }
     }
 }

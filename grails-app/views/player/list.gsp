@@ -7,12 +7,17 @@
   <title>Player List</title>
 </head>
 <body>
+      <div class="nav">
+      <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
+      <span class="menuButton"><g:link class="create" action="create">New Player</g:link></span>
+    </div>
   <div class="body">
     Search:
     <g:form>
       <richui:autoComplete 
         name="name"
         action="${createLinkTo('dir': 'player/search')}"
+        title="asdf"
         />
     </g:form>
     <h1>Player List</h1>

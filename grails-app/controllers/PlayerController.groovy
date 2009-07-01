@@ -21,7 +21,6 @@ class PlayerController {
         }
     }
 
-
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 20,  100)
         [ playerInstanceList: Player.list( params ), playerInstanceTotal: Player.count() ]
