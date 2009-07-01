@@ -4,7 +4,6 @@ class LoggerController implements ParseListener {
 
     def index = {
         if (parser == null) {
-            
             parser = new LogParser(new File(grailsApplication.config.urt.qconsole.path), true, true)
             parser.addParseListener(this)
             rcon("rcon bigtext \"UrTStats logging is now ^2runnin^7!\"")
