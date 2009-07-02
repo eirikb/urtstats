@@ -1,0 +1,711 @@
+2009-07-03 01:23:26,517	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:23:26,647	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,649	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:23:26,655	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,657	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,669	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:23:26,671	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,673	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,675	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,896	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,898	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,900	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,917	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,921	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,922	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:23:26,924	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,926	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,928	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,930	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,932	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,934	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:23:26,936	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:23:27,609	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:23:27,611	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:23:27,719	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:23:28,018	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:23:28,534	ERROR	org.springframework.web.context.ContextLoader:215	Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:9)
+	... 23 more
+2009-07-03 01:23:28,541	ERROR	org.mortbay.log:?	Failed startup of context org.mortbay.jetty.webapp.WebAppContext@4578986b{/UrTStats,/home/eirikb/NetBeansProjects/UrTStats/web-app}
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:9)
+	... 23 more
+2009-07-03 01:23:28,543	ERROR	org.mortbay.log:?	Nested in org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass:
+groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:9)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+2009-07-03 01:23:28,555	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:23:28,558	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:23:45,746	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:23:45,891	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,893	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,896	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,898	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,900	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,903	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,907	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:23:45,924	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:23:45,926	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,928	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,931	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,935	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,939	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,940	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,944	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,946	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:23:45,948	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,950	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,953	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,954	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:23:45,956	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:23:46,737	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:23:46,740	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:23:46,835	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:23:49,676	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:23:51,082	ERROR	org.springframework.web.context.ContextLoader:215	Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:9)
+	... 23 more
+2009-07-03 01:23:51,084	ERROR	org.mortbay.log:?	Failed startup of context org.mortbay.jetty.webapp.WebAppContext@2f56a6be{/UrTStats,/home/eirikb/NetBeansProjects/UrTStats/web-app}
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:9)
+	... 23 more
+2009-07-03 01:23:51,086	ERROR	org.mortbay.log:?	Nested in org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass:
+groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:9)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+2009-07-03 01:23:51,114	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:23:51,126	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:25:04,838	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:25:04,966	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,968	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:25:04,974	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,976	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,978	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,980	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:25:04,984	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,987	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,989	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,991	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:25:04,993	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,009	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,013	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,015	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,018	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,020	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:25:05,022	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,023	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,025	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,027	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:25:05,056	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:25:05,679	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:25:05,682	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:25:06,046	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:25:06,318	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:25:07,351	WARN	grails.util.GrailsUtil:218	[DEPRECATED] You're using deprecated 'def startDelay = ...; def timeout = ...' parameters in theLogJob, use 'static triggers = { simple startDelay: ..., repeatInterval: ...} instead.
+2009-07-03 01:25:08,224	INFO	grails.spring.BeanBuilder:?	[RuntimeConfiguration] Configuring data source for environment: development
+2009-07-03 01:25:08,692	INFO	org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport:?	Set db generation strategy to 'create-drop'
+2009-07-03 01:25:08,933	INFO	grails.spring.BeanBuilder:?	Registering realm: JsecDbRealm
+2009-07-03 01:25:09,022	INFO	org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext:411	Refreshing org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@10bbe282: display name [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@10bbe282]; startup date [Fri Jul 03 01:25:09 CEST 2009]; parent: org.springframework.web.context.support.XmlWebApplicationContext@4586787c
+2009-07-03 01:25:09,023	INFO	org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext:426	Bean factory for application context [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@10bbe282]: org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory@5dc21014
+2009-07-03 01:25:09,391	INFO	org.codehaus.groovy.grails.orm.hibernate.ConfigurableLocalSessionFactoryBean:730	Building new Hibernate SessionFactory
+2009-07-03 01:25:09,443	WARN	com.opensymphony.oscache.base.Config:181	OSCache: No properties file found in the classpath by filename /oscache.properties
+2009-07-03 01:25:09,444	INFO	com.opensymphony.oscache.general.GeneralCacheAdministrator:98	Constructed GeneralCacheAdministrator()
+2009-07-03 01:25:09,446	INFO	com.opensymphony.oscache.general.GeneralCacheAdministrator:301	Creating new cache
+2009-07-03 01:25:09,913	INFO	org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory:414	Pre-instantiating singletons in org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory@5dc21014: defining beans [grailsApplicationPostProcessor,ChatDomainClass,JsecPermissionPersistentClass,ChatValidator,calendarMonthViewRenderer,JsecUserPermissionRelDomainClass,JsecDbRealmInstance,Item,org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib,fontRenderer,xmlParsingParameterCreationListener,CarouselTagLib,flowExecutionSnapshotFactory,RichUIUtilTagLib,org.codehaus.groovy.grails.plugins.web.taglib.FormatTagLib,JsecDbRealmWrapper,dateChooserRenderer,SliderTagLib,PlayerLogValidator,Team,flowExecutor,accordionRenderer,grailsUrlMappingsHolderBean,tabViewRenderer,convertersConfigurationInitializer,autoCompleteRenderer,executionListenerLoader,transactionManagerPostProcessor,org.codehaus.groovy.grails.plugins.web.taglib.CountryTagLib,feedRenderer,CalendarWeekViewTagLib,classEditor,JsecRoleDomainClass,groovyPageResourceLoader,sliderRenderer,carouselItemRenderer,PlayerPersistentClass,exceptionHandler,PortletTagLib,timelineRenderer,JsecRole,TeamDomainClass,GoogleMapsTagLib,AccordionTagLib,LogJob,controllerToScaffoldedDomainClassMap,gspTagLibraryLookup,JsecPermissionDomainClass,JsecUserRoleRelValidator,microsoftVirtualEarthRenderer,DeathCauseValidator,KillDomainClass,TagCloudTagLib,flowBuilderServices,JsecPermission,tagCloudRenderer,urlMappingsTargetSource,eventTriggeringInterceptor,xmlErrorsMarshaller,JsecUserPermissionRel,jspViewResolver,JsecUserPersistentClass,TeamController,AutoCompleteTagLib,persistenceInterceptor,flowRegistry,classLoader,PlayerDomainClass,LoggerController,quartzJobFactory,TimelineTagLib,quartzScheduler,JsecRoleValidator,yahooMapsRenderer,transactionManager,JsecUserRoleRelDomainClass,KillValidator,CalendarDayViewTagLib,org.codehaus.groovy.grails.plugins.web.taglib.JavascriptTagLib,JsecUser,handlerMappingTargetSource,tabContentsRenderer,grailsUrlMappings,tabLabelRenderer,exceptionPrinterListener,PlayerLogPersistentClass,dataSource,scaffoldedActionMap,flowExecutionFactory,customEditors,PlayerValidator,JsecRolePermissionRel,Kill,jsecSecurityManager,JsecUserRoleRelController,tooltipRenderer,JsecRolePersistentClass,jsonParsingParameterCreationListener,viewFactoryCreator,TeamValidator,multipartResolver,flowExecutionRepository,richTextEditorRenderer,FlowTagLib,flowScopeRegistrar,org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib,MapTagLib,DeathCause,JsecDbRealmClass,JobManagerServiceServiceClass,Hit,handlerMapping,HitValidator,ratingRenderer,JsecUserRoleRelPersistentClass,PlayerLog,filterInterceptor,JsecRolePermissionRelDomainClass,jobManagerService,tabContentRenderer,mainFlowController,localeChangeInterceptor,mapRenderer,googleMapsRenderer,credentialMatcher,checkedTreeViewRenderer,TabViewTagLib,TreeViewTagLib,RichTextEditorTagLib,calendarDayViewRenderer,flowRenderer,sessionBinderListener,tabLabelsRenderer,AdminController,TooltipTagLib,jspTagLibraryResolver,HitDomainClass,Chat,grailsUrlMappingsHolder,localeResolver,JsecUserController,fontImageService,grailsUrlHandlerMapping,JsecRolePermissionRelPersistentClass,AuthController,JsecRolePermissionRelValidator,FontTagLib,JsecurityFilters,FontImageServiceServiceClass,hibernateProperties,JsecPermissionController,messageSource,Player,ItemPersistentClass,TeamPersistentClass,ItemDomainClass,FontImageController,CalendarMonthViewTagLib,ItemValidator,JsecUserValidator,portletRenderer,LogJobDetail,JsecUserDomainClass,ChatPersistentClass,RichUIResourceTagLib,ReflectionImageTagLib,reflectionImageRenderer,nativeJdbcExtractor,mainSimpleController,org.codehaus.groovy.grails.plugins.web.taglib.RenderTagLib,CheckedTreeViewTagLib,SecurityFiltersClass,errorsXmlMarshallerRegisterer,JsecTagLib,KillPersistentClass,progressBarRenderer,GameController,JsecRoleController,DeathCausePersistentClass,calendarWeekViewRenderer,DateChooserTagLib,openSessionInViewInterceptor,HitPersistentClass,treeViewRenderer,LogJobTrigger,org.codehaus.groovy.grails.plugins.web.taglib.FormTagLib,JsecurityFiltersClass,PlayerController,ProgressBarTagLib,RatingTagLib,sessionFactory,simpleControllerHandlerAdapter,org.codehaus.groovy.grails.plugins.web.taglib.PluginTagLib,DeathCauseDomainClass,groovyPagesTemplateEngine,portletViewRenderer,SecurityFilters,LogJobClass,accordionItemRenderer,jsonErrorsMarshaller,conversationManager,shutdownHook,scaffoldingTemplateGenerator,carouselRenderer,lobHandlerDetector,PlayerLogDomainClass,JsecPermissionValidator,JsecUserPermissionRelValidator,JsecUserPermissionRelPersistentClass,JsecUserRoleRel,hibernateConversationListener]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@d121b88
+2009-07-03 01:25:10,135	INFO	org.codehaus.groovy.grails.scaffolding.DefaultGrailsTemplateGenerator:?	Scaffolding template generator set to use resource loader org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@10bbe282: display name [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@10bbe282]; startup date [Fri Jul 03 01:25:09 CEST 2009]; parent: org.springframework.web.context.support.XmlWebApplicationContext@4586787c
+2009-07-03 01:25:10,566	INFO	org.quartz.core.SchedulerSignalerImpl:63	Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2009-07-03 01:25:10,567	INFO	org.quartz.core.QuartzScheduler:215	Quartz Scheduler v.null.null.null created.
+2009-07-03 01:25:10,570	INFO	org.quartz.simpl.RAMJobStore:141	RAMJobStore initialized.
+2009-07-03 01:25:10,571	INFO	org.quartz.impl.StdSchedulerFactory:1229	Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2009-07-03 01:25:10,572	INFO	org.quartz.impl.StdSchedulerFactory:1233	Quartz scheduler version: null.null.null
+2009-07-03 01:25:10,574	INFO	org.quartz.core.QuartzScheduler:2094	JobFactory set to: org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory@6bfa2e2e
+2009-07-03 01:25:10,617	WARN	org.codehaus.groovy.grails.web.servlet.mvc.GrailsUrlHandlerMapping:114	Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2009-07-03 01:25:10,676	INFO	org.jsecurity.web.DefaultWebSecurityManager:156	http mode - enabling ServletContainerSessionManager (Http Sessions)
+2009-07-03 01:25:12,412	INFO	org.codehaus.groovy.grails.plugins.web.filters.FiltersGrailsPlugin:?	reloadFilters
+2009-07-03 01:25:12,478	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Registering native realms: []
+2009-07-03 01:25:12,557	INFO	org.codehaus.groovy.grails.web.context.GrailsConfigUtils:112	[GrailsContextLoader] Grails application loaded.
+2009-07-03 01:25:12,631	INFO	org.quartz.core.QuartzScheduler:461	Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2009-07-03 01:25:12,730	INFO	/UrTStats:?	Initializing Spring FrameworkServlet 'grails'
+2009-07-03 01:25:12,731	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:277	FrameworkServlet 'grails': initialization started
+2009-07-03 01:25:12,779	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:94	Using MultipartResolver [org.codehaus.groovy.grails.web.multipart.ContentLengthAwareCommonsMultipartResolver@523f6ca4]
+2009-07-03 01:25:12,781	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:296	FrameworkServlet 'grails': initialization completed in 48 ms
+2009-07-03 01:25:12,819	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:25:12,823	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:25:13,229	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-03 01:25:13,397	INFO	/UrTStats:?	GSP servlet initialized
+2009-07-03 01:25:29,843	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:25:29,969	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,168	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:25:30,171	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,173	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,176	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,179	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,181	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,196	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:25:30,199	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,201	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,203	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,205	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,209	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,212	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,214	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,217	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,219	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:25:30,229	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,237	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,239	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:25:30,241	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:25:30,921	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:25:30,924	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:25:31,069	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:25:31,387	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:25:32,213	ERROR	org.springframework.web.context.ContextLoader:215	Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:8)
+	... 23 more
+2009-07-03 01:25:32,214	ERROR	org.mortbay.log:?	Failed startup of context org.mortbay.jetty.webapp.WebAppContext@3be74fe9{/UrTStats,/home/eirikb/NetBeansProjects/UrTStats/web-app}
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:8)
+	... 23 more
+2009-07-03 01:25:32,216	ERROR	org.mortbay.log:?	Nested in org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass:
+groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:8)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+2009-07-03 01:25:32,237	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:25:32,249	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:25:44,239	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:25:44,383	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:25:44,386	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,388	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,390	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,393	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,411	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,414	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:25:44,418	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,511	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,514	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,517	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,521	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,524	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,540	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,545	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,547	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:25:44,576	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,578	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,580	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,582	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:25:44,584	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:25:45,231	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:25:45,234	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:25:45,328	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:25:45,599	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:25:46,366	ERROR	org.springframework.web.context.ContextLoader:215	Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:8)
+	... 23 more
+2009-07-03 01:25:46,373	ERROR	org.mortbay.log:?	Failed startup of context org.mortbay.jetty.webapp.WebAppContext@7b681460{/UrTStats,/home/eirikb/NetBeansProjects/UrTStats/web-app}
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+Caused by: java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass
+	... 23 more
+Caused by: java.lang.reflect.InvocationTargetException
+	... 23 more
+Caused by: org.codehaus.groovy.grails.exceptions.NewInstanceCreationException: Could not create a new instance of class [LogJob]!
+	... 23 more
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:8)
+	... 23 more
+2009-07-03 01:25:46,375	ERROR	org.mortbay.log:?	Nested in org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'pluginManager' defined in ServletContext resource [/WEB-INF/applicationContext.xml]: Invocation of init method failed; nested exception is java.lang.RuntimeException: Unable to locate constructor with Class parameter for class org.codehaus.groovy.grails.plugins.quartz.DefaultGrailsTaskClass:
+groovy.lang.MissingPropertyException: No such property: log for class: LogJob
+	at LogJob.<init>(LogJob.groovy:8)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at grails.web.container.EmbeddableServer$start.call(Unknown Source)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy:145)
+	at _GrailsRun_groovy$_run_closure5_closure11.doCall(_GrailsRun_groovy)
+	at _GrailsSettings_groovy$_run_closure10.doCall(_GrailsSettings_groovy:274)
+	at _GrailsSettings_groovy$_run_closure10.call(_GrailsSettings_groovy)
+	at _GrailsRun_groovy$_run_closure5.doCall(_GrailsRun_groovy:137)
+	at _GrailsRun_groovy$_run_closure5.call(_GrailsRun_groovy)
+	at _GrailsRun_groovy.runInline(_GrailsRun_groovy:104)
+	at _GrailsRun_groovy.this$4$runInline(_GrailsRun_groovy)
+	at _GrailsRun_groovy$_run_closure1.doCall(_GrailsRun_groovy:58)
+	at RunApp$_run_closure1.doCall(RunApp.groovy:33)
+	at gant.Gant$_dispatch_closure4.doCall(Gant.groovy:324)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy:334)
+	at gant.Gant$_dispatch_closure6.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:344)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:334)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.processTargets(Gant.groovy:495)
+	at gant.Gant.processTargets(Gant.groovy:480)
+2009-07-03 01:25:46,387	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:25:46,391	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:29:50,341	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:29:50,464	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,466	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,468	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,470	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,473	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,475	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,682	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:29:50,698	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:29:50,701	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,702	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,704	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,708	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,710	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,714	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,717	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,721	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,723	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:29:50,725	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,727	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,729	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:29:50,730	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:29:51,291	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:29:51,294	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:29:51,388	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:29:51,702	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:29:52,601	WARN	grails.util.GrailsUtil:218	[DEPRECATED] You're using deprecated 'def startDelay = ...; def timeout = ...' parameters in theLogJob, use 'static triggers = { simple startDelay: ..., repeatInterval: ...} instead.
+2009-07-03 01:29:53,621	INFO	grails.spring.BeanBuilder:?	[RuntimeConfiguration] Configuring data source for environment: development
+2009-07-03 01:29:54,226	INFO	org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport:?	Set db generation strategy to 'create-drop'
+2009-07-03 01:29:54,471	INFO	grails.spring.BeanBuilder:?	Registering realm: JsecDbRealm
+2009-07-03 01:29:54,541	INFO	org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext:411	Refreshing org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2ccf0384: display name [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2ccf0384]; startup date [Fri Jul 03 01:29:54 CEST 2009]; parent: org.springframework.web.context.support.XmlWebApplicationContext@1766de66
+2009-07-03 01:29:54,543	INFO	org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext:426	Bean factory for application context [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2ccf0384]: org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory@7cb523dc
+2009-07-03 01:29:54,923	INFO	org.codehaus.groovy.grails.orm.hibernate.ConfigurableLocalSessionFactoryBean:730	Building new Hibernate SessionFactory
+2009-07-03 01:29:54,968	WARN	com.opensymphony.oscache.base.Config:181	OSCache: No properties file found in the classpath by filename /oscache.properties
+2009-07-03 01:29:54,970	INFO	com.opensymphony.oscache.general.GeneralCacheAdministrator:98	Constructed GeneralCacheAdministrator()
+2009-07-03 01:29:54,972	INFO	com.opensymphony.oscache.general.GeneralCacheAdministrator:301	Creating new cache
+2009-07-03 01:29:55,474	INFO	org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory:414	Pre-instantiating singletons in org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory@7cb523dc: defining beans [grailsApplicationPostProcessor,ChatDomainClass,JsecPermissionPersistentClass,ChatValidator,calendarMonthViewRenderer,JsecUserPermissionRelDomainClass,JsecDbRealmInstance,Item,org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib,fontRenderer,xmlParsingParameterCreationListener,CarouselTagLib,flowExecutionSnapshotFactory,RichUIUtilTagLib,org.codehaus.groovy.grails.plugins.web.taglib.FormatTagLib,JsecDbRealmWrapper,dateChooserRenderer,SliderTagLib,PlayerLogValidator,Team,flowExecutor,accordionRenderer,grailsUrlMappingsHolderBean,tabViewRenderer,convertersConfigurationInitializer,autoCompleteRenderer,executionListenerLoader,transactionManagerPostProcessor,org.codehaus.groovy.grails.plugins.web.taglib.CountryTagLib,feedRenderer,CalendarWeekViewTagLib,classEditor,JsecRoleDomainClass,groovyPageResourceLoader,sliderRenderer,carouselItemRenderer,PlayerPersistentClass,PortletTagLib,exceptionHandler,timelineRenderer,JsecRole,TeamDomainClass,AccordionTagLib,GoogleMapsTagLib,LogJob,controllerToScaffoldedDomainClassMap,gspTagLibraryLookup,JsecPermissionDomainClass,JsecUserRoleRelValidator,microsoftVirtualEarthRenderer,DeathCauseValidator,KillDomainClass,TagCloudTagLib,flowBuilderServices,JsecPermission,tagCloudRenderer,urlMappingsTargetSource,eventTriggeringInterceptor,xmlErrorsMarshaller,JsecUserPermissionRel,jspViewResolver,JsecUserPersistentClass,TeamController,AutoCompleteTagLib,persistenceInterceptor,flowRegistry,classLoader,PlayerDomainClass,LoggerController,quartzJobFactory,TimelineTagLib,quartzScheduler,JsecRoleValidator,yahooMapsRenderer,transactionManager,JsecUserRoleRelDomainClass,KillValidator,CalendarDayViewTagLib,org.codehaus.groovy.grails.plugins.web.taglib.JavascriptTagLib,JsecUser,handlerMappingTargetSource,tabContentsRenderer,grailsUrlMappings,tabLabelRenderer,exceptionPrinterListener,PlayerLogPersistentClass,dataSource,scaffoldedActionMap,flowExecutionFactory,customEditors,PlayerValidator,JsecRolePermissionRel,Kill,jsecSecurityManager,JsecUserRoleRelController,tooltipRenderer,JsecRolePersistentClass,jsonParsingParameterCreationListener,viewFactoryCreator,TeamValidator,multipartResolver,flowExecutionRepository,richTextEditorRenderer,FlowTagLib,flowScopeRegistrar,org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib,MapTagLib,DeathCause,JsecDbRealmClass,JobManagerServiceServiceClass,Hit,handlerMapping,HitValidator,ratingRenderer,JsecUserRoleRelPersistentClass,PlayerLog,filterInterceptor,JsecRolePermissionRelDomainClass,jobManagerService,tabContentRenderer,mainFlowController,localeChangeInterceptor,mapRenderer,googleMapsRenderer,credentialMatcher,checkedTreeViewRenderer,TabViewTagLib,TreeViewTagLib,RichTextEditorTagLib,calendarDayViewRenderer,flowRenderer,sessionBinderListener,tabLabelsRenderer,AdminController,jspTagLibraryResolver,TooltipTagLib,Chat,HitDomainClass,grailsUrlMappingsHolder,localeResolver,JsecUserController,fontImageService,grailsUrlHandlerMapping,JsecRolePermissionRelPersistentClass,AuthController,JsecRolePermissionRelValidator,FontTagLib,JsecurityFilters,FontImageServiceServiceClass,hibernateProperties,JsecPermissionController,messageSource,ItemPersistentClass,Player,TeamPersistentClass,ItemDomainClass,FontImageController,CalendarMonthViewTagLib,ItemValidator,JsecUserValidator,portletRenderer,LogJobDetail,JsecUserDomainClass,ChatPersistentClass,ReflectionImageTagLib,RichUIResourceTagLib,reflectionImageRenderer,nativeJdbcExtractor,mainSimpleController,org.codehaus.groovy.grails.plugins.web.taglib.RenderTagLib,CheckedTreeViewTagLib,SecurityFiltersClass,errorsXmlMarshallerRegisterer,JsecTagLib,KillPersistentClass,progressBarRenderer,GameController,JsecRoleController,DeathCausePersistentClass,calendarWeekViewRenderer,DateChooserTagLib,openSessionInViewInterceptor,HitPersistentClass,treeViewRenderer,LogJobTrigger,org.codehaus.groovy.grails.plugins.web.taglib.FormTagLib,JsecurityFiltersClass,PlayerController,ProgressBarTagLib,RatingTagLib,sessionFactory,simpleControllerHandlerAdapter,org.codehaus.groovy.grails.plugins.web.taglib.PluginTagLib,DeathCauseDomainClass,groovyPagesTemplateEngine,portletViewRenderer,SecurityFilters,LogJobClass,accordionItemRenderer,jsonErrorsMarshaller,conversationManager,shutdownHook,scaffoldingTemplateGenerator,carouselRenderer,lobHandlerDetector,PlayerLogDomainClass,JsecPermissionValidator,JsecUserPermissionRelValidator,JsecUserPermissionRelPersistentClass,JsecUserRoleRel,hibernateConversationListener]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@7dd66aa9
+2009-07-03 01:29:55,698	INFO	org.codehaus.groovy.grails.scaffolding.DefaultGrailsTemplateGenerator:?	Scaffolding template generator set to use resource loader org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2ccf0384: display name [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2ccf0384]; startup date [Fri Jul 03 01:29:54 CEST 2009]; parent: org.springframework.web.context.support.XmlWebApplicationContext@1766de66
+2009-07-03 01:29:56,095	INFO	org.quartz.core.SchedulerSignalerImpl:63	Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2009-07-03 01:29:56,096	INFO	org.quartz.core.QuartzScheduler:215	Quartz Scheduler v.null.null.null created.
+2009-07-03 01:29:56,098	INFO	org.quartz.simpl.RAMJobStore:141	RAMJobStore initialized.
+2009-07-03 01:29:56,100	INFO	org.quartz.impl.StdSchedulerFactory:1229	Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2009-07-03 01:29:56,101	INFO	org.quartz.impl.StdSchedulerFactory:1233	Quartz scheduler version: null.null.null
+2009-07-03 01:29:56,102	INFO	org.quartz.core.QuartzScheduler:2094	JobFactory set to: org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory@7133b288
+2009-07-03 01:29:56,160	WARN	org.codehaus.groovy.grails.web.servlet.mvc.GrailsUrlHandlerMapping:114	Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2009-07-03 01:29:56,222	INFO	org.jsecurity.web.DefaultWebSecurityManager:156	http mode - enabling ServletContainerSessionManager (Http Sessions)
+2009-07-03 01:29:57,928	INFO	org.codehaus.groovy.grails.plugins.web.filters.FiltersGrailsPlugin:?	reloadFilters
+2009-07-03 01:29:57,996	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Registering native realms: []
+2009-07-03 01:29:58,022	INFO	org.codehaus.groovy.grails.web.context.GrailsConfigUtils:112	[GrailsContextLoader] Grails application loaded.
+2009-07-03 01:29:58,057	INFO	org.quartz.core.QuartzScheduler:461	Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2009-07-03 01:29:58,066	DEBUG	grails.app.task.LogJob:?	test
+2009-07-03 01:29:58,136	INFO	/UrTStats:?	Initializing Spring FrameworkServlet 'grails'
+2009-07-03 01:29:58,137	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:277	FrameworkServlet 'grails': initialization started
+2009-07-03 01:29:58,156	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:94	Using MultipartResolver [org.codehaus.groovy.grails.web.multipart.ContentLengthAwareCommonsMultipartResolver@1247fdc3]
+2009-07-03 01:29:58,158	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:296	FrameworkServlet 'grails': initialization completed in 20 ms
+2009-07-03 01:29:58,170	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:29:58,173	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:29:58,479	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-03 01:29:58,568	INFO	/UrTStats:?	GSP servlet initialized
+2009-07-03 01:30:01,346	DEBUG	grails.app.task.LogJob:?	test
+2009-07-03 01:30:23,421	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:359	Attempting to load [0] user defined plugins
+2009-07-03 01:30:23,752	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [i18n] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,754	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [logging] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,758	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [filters] with version [0.1] loaded successfully
+2009-07-03 01:30:23,760	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [core] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,762	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [richui] with version [0.6] loaded successfully
+2009-07-03 01:30:23,764	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [urlMappings] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,766	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [dataSource] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,768	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [groovyPages] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,770	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [controllers] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,772	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [codecs] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,774	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [servlets] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,779	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [mimeTypes] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,797	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [domainClass] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,801	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [scaffolding] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,805	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [hibernate] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,807	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [quartz] with version [0.4.1] loaded successfully
+2009-07-03 01:30:23,809	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [converters] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,811	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [services] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,813	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [webFlow] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,851	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [validation] with version [1.1.1] loaded successfully
+2009-07-03 01:30:23,871	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:564	Grails plug-in [jsecurity] with version [0.3] loaded successfully
+2009-07-03 01:30:24,464	INFO	org.mortbay.log:?	Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2009-07-03 01:30:24,467	INFO	org.mortbay.log:?	jetty-6.1.14
+2009-07-03 01:30:24,606	INFO	org.mortbay.log:?	No Transaction manager found - if your webapp requires one, please configure one.
+2009-07-03 01:30:24,877	INFO	/UrTStats:?	Initializing Spring root WebApplicationContext
+2009-07-03 01:30:25,655	WARN	grails.util.GrailsUtil:218	[DEPRECATED] You're using deprecated 'def startDelay = ...; def timeout = ...' parameters in theLogJob, use 'static triggers = { simple startDelay: ..., repeatInterval: ...} instead.
+2009-07-03 01:30:27,121	INFO	grails.spring.BeanBuilder:?	[RuntimeConfiguration] Configuring data source for environment: development
+2009-07-03 01:30:27,580	INFO	org.codehaus.groovy.grails.plugins.orm.hibernate.HibernatePluginSupport:?	Set db generation strategy to 'create-drop'
+2009-07-03 01:30:27,836	INFO	grails.spring.BeanBuilder:?	Registering realm: JsecDbRealm
+2009-07-03 01:30:27,922	INFO	org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext:411	Refreshing org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2290fb5f: display name [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2290fb5f]; startup date [Fri Jul 03 01:30:27 CEST 2009]; parent: org.springframework.web.context.support.XmlWebApplicationContext@5d1e8050
+2009-07-03 01:30:27,933	INFO	org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext:426	Bean factory for application context [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2290fb5f]: org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory@4f531f73
+2009-07-03 01:30:28,224	INFO	org.codehaus.groovy.grails.orm.hibernate.ConfigurableLocalSessionFactoryBean:730	Building new Hibernate SessionFactory
+2009-07-03 01:30:28,334	WARN	com.opensymphony.oscache.base.Config:181	OSCache: No properties file found in the classpath by filename /oscache.properties
+2009-07-03 01:30:28,336	INFO	com.opensymphony.oscache.general.GeneralCacheAdministrator:98	Constructed GeneralCacheAdministrator()
+2009-07-03 01:30:28,337	INFO	com.opensymphony.oscache.general.GeneralCacheAdministrator:301	Creating new cache
+2009-07-03 01:30:28,824	INFO	org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory:414	Pre-instantiating singletons in org.codehaus.groovy.grails.commons.spring.ReloadAwareAutowireCapableBeanFactory@4f531f73: defining beans [grailsApplicationPostProcessor,ChatDomainClass,JsecPermissionPersistentClass,ChatValidator,calendarMonthViewRenderer,JsecUserPermissionRelDomainClass,JsecDbRealmInstance,Item,org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib,fontRenderer,xmlParsingParameterCreationListener,CarouselTagLib,flowExecutionSnapshotFactory,RichUIUtilTagLib,org.codehaus.groovy.grails.plugins.web.taglib.FormatTagLib,JsecDbRealmWrapper,dateChooserRenderer,SliderTagLib,PlayerLogValidator,Team,flowExecutor,accordionRenderer,tabViewRenderer,grailsUrlMappingsHolderBean,convertersConfigurationInitializer,autoCompleteRenderer,executionListenerLoader,transactionManagerPostProcessor,org.codehaus.groovy.grails.plugins.web.taglib.CountryTagLib,feedRenderer,CalendarWeekViewTagLib,classEditor,JsecRoleDomainClass,groovyPageResourceLoader,sliderRenderer,carouselItemRenderer,PlayerPersistentClass,exceptionHandler,PortletTagLib,timelineRenderer,JsecRole,TeamDomainClass,GoogleMapsTagLib,AccordionTagLib,LogJob,controllerToScaffoldedDomainClassMap,gspTagLibraryLookup,JsecPermissionDomainClass,JsecUserRoleRelValidator,microsoftVirtualEarthRenderer,DeathCauseValidator,KillDomainClass,flowBuilderServices,TagCloudTagLib,JsecPermission,tagCloudRenderer,urlMappingsTargetSource,eventTriggeringInterceptor,JsecUserPermissionRel,xmlErrorsMarshaller,jspViewResolver,JsecUserPersistentClass,TeamController,AutoCompleteTagLib,flowRegistry,persistenceInterceptor,classLoader,PlayerDomainClass,LoggerController,quartzJobFactory,TimelineTagLib,quartzScheduler,JsecRoleValidator,yahooMapsRenderer,transactionManager,JsecUserRoleRelDomainClass,KillValidator,CalendarDayViewTagLib,org.codehaus.groovy.grails.plugins.web.taglib.JavascriptTagLib,JsecUser,handlerMappingTargetSource,tabContentsRenderer,grailsUrlMappings,tabLabelRenderer,exceptionPrinterListener,PlayerLogPersistentClass,dataSource,scaffoldedActionMap,flowExecutionFactory,customEditors,PlayerValidator,JsecRolePermissionRel,Kill,jsecSecurityManager,JsecUserRoleRelController,tooltipRenderer,JsecRolePersistentClass,jsonParsingParameterCreationListener,viewFactoryCreator,TeamValidator,multipartResolver,flowExecutionRepository,richTextEditorRenderer,FlowTagLib,flowScopeRegistrar,org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib,MapTagLib,DeathCause,JsecDbRealmClass,Hit,JobManagerServiceServiceClass,handlerMapping,HitValidator,ratingRenderer,JsecUserRoleRelPersistentClass,PlayerLog,filterInterceptor,JsecRolePermissionRelDomainClass,jobManagerService,tabContentRenderer,mainFlowController,localeChangeInterceptor,mapRenderer,googleMapsRenderer,credentialMatcher,checkedTreeViewRenderer,TabViewTagLib,TreeViewTagLib,RichTextEditorTagLib,calendarDayViewRenderer,flowRenderer,sessionBinderListener,tabLabelsRenderer,AdminController,TooltipTagLib,jspTagLibraryResolver,HitDomainClass,Chat,grailsUrlMappingsHolder,localeResolver,JsecUserController,grailsUrlHandlerMapping,fontImageService,JsecRolePermissionRelPersistentClass,AuthController,JsecRolePermissionRelValidator,FontTagLib,JsecurityFilters,FontImageServiceServiceClass,hibernateProperties,JsecPermissionController,messageSource,Player,ItemPersistentClass,TeamPersistentClass,ItemDomainClass,FontImageController,CalendarMonthViewTagLib,ItemValidator,JsecUserValidator,portletRenderer,LogJobDetail,JsecUserDomainClass,ChatPersistentClass,ReflectionImageTagLib,RichUIResourceTagLib,reflectionImageRenderer,nativeJdbcExtractor,mainSimpleController,org.codehaus.groovy.grails.plugins.web.taglib.RenderTagLib,CheckedTreeViewTagLib,SecurityFiltersClass,errorsXmlMarshallerRegisterer,JsecTagLib,KillPersistentClass,progressBarRenderer,GameController,JsecRoleController,DeathCausePersistentClass,calendarWeekViewRenderer,DateChooserTagLib,openSessionInViewInterceptor,HitPersistentClass,treeViewRenderer,LogJobTrigger,org.codehaus.groovy.grails.plugins.web.taglib.FormTagLib,JsecurityFiltersClass,PlayerController,ProgressBarTagLib,RatingTagLib,sessionFactory,simpleControllerHandlerAdapter,org.codehaus.groovy.grails.plugins.web.taglib.PluginTagLib,DeathCauseDomainClass,groovyPagesTemplateEngine,portletViewRenderer,SecurityFilters,LogJobClass,accordionItemRenderer,jsonErrorsMarshaller,conversationManager,shutdownHook,scaffoldingTemplateGenerator,carouselRenderer,lobHandlerDetector,PlayerLogDomainClass,JsecPermissionValidator,JsecUserPermissionRelValidator,JsecUserPermissionRelPersistentClass,JsecUserRoleRel,hibernateConversationListener]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@112b1e53
+2009-07-03 01:30:29,055	INFO	org.codehaus.groovy.grails.scaffolding.DefaultGrailsTemplateGenerator:?	Scaffolding template generator set to use resource loader org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2290fb5f: display name [org.codehaus.groovy.grails.commons.spring.GrailsWebApplicationContext@2290fb5f]; startup date [Fri Jul 03 01:30:27 CEST 2009]; parent: org.springframework.web.context.support.XmlWebApplicationContext@5d1e8050
+2009-07-03 01:30:29,479	INFO	org.quartz.core.SchedulerSignalerImpl:63	Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2009-07-03 01:30:29,481	INFO	org.quartz.core.QuartzScheduler:215	Quartz Scheduler v.null.null.null created.
+2009-07-03 01:30:29,484	INFO	org.quartz.simpl.RAMJobStore:141	RAMJobStore initialized.
+2009-07-03 01:30:29,486	INFO	org.quartz.impl.StdSchedulerFactory:1229	Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2009-07-03 01:30:29,487	INFO	org.quartz.impl.StdSchedulerFactory:1233	Quartz scheduler version: null.null.null
+2009-07-03 01:30:29,488	INFO	org.quartz.core.QuartzScheduler:2094	JobFactory set to: org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory@45c803ae
+2009-07-03 01:30:29,547	WARN	org.codehaus.groovy.grails.web.servlet.mvc.GrailsUrlHandlerMapping:114	Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2009-07-03 01:30:29,609	INFO	org.jsecurity.web.DefaultWebSecurityManager:156	http mode - enabling ServletContainerSessionManager (Http Sessions)
+2009-07-03 01:30:30,849	INFO	org.codehaus.groovy.grails.plugins.web.filters.FiltersGrailsPlugin:?	reloadFilters
+2009-07-03 01:30:30,928	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Registering native realms: []
+2009-07-03 01:30:30,969	INFO	org.codehaus.groovy.grails.web.context.GrailsConfigUtils:112	[GrailsContextLoader] Grails application loaded.
+2009-07-03 01:30:31,477	INFO	org.quartz.core.QuartzScheduler:461	Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2009-07-03 01:30:31,510	DEBUG	grails.app.task.LogJob:?	test
+2009-07-03 01:30:31,520	INFO	org.quartz.core.JobRunShell:207	Job GRAILS_JOBS.LogJob threw a JobExecutionException: 
+org.quartz.JobExecutionException: No such property: log for class: Logger [See nested exception: groovy.lang.MissingPropertyException: No such property: log for class: Logger]
+	at org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory$GrailsTaskClassJob.execute(GrailsJobFactory.java:81)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:525)
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: Logger
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:49)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassGetPropertySite.getProperty(PogoMetaClassGetPropertySite.java:50)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGroovyObjectGetProperty(AbstractCallSite.java:241)
+	at Logger.execute(Logger.groovy:24)
+	at Logger$execute.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at LogJob.execute(LogJob.groovy:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:193)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:178)
+	at org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory$GrailsTaskClassJob.execute(GrailsJobFactory.java:77)
+	... 2 more
+2009-07-03 01:30:31,521	ERROR	org.codehaus.groovy.grails.plugins.quartz.listeners.ExceptionPrinterJobListener:41	Exception occured in job: GRAILS_JOBS.LogJob
+org.quartz.JobExecutionException: No such property: log for class: Logger [See nested exception: groovy.lang.MissingPropertyException: No such property: log for class: Logger]
+	at org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory$GrailsTaskClassJob.execute(GrailsJobFactory.java:81)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:525)
+Caused by: groovy.lang.MissingPropertyException: No such property: log for class: Logger
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:49)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassGetPropertySite.getProperty(PogoMetaClassGetPropertySite.java:50)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callGroovyObjectGetProperty(AbstractCallSite.java:241)
+	at Logger.execute(Logger.groovy:24)
+	at Logger$execute.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:117)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:121)
+	at LogJob.execute(LogJob.groovy:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:193)
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:178)
+	at org.codehaus.groovy.grails.plugins.quartz.GrailsJobFactory$GrailsTaskClassJob.execute(GrailsJobFactory.java:77)
+	... 2 more
+2009-07-03 01:30:31,565	INFO	/UrTStats:?	Initializing Spring FrameworkServlet 'grails'
+2009-07-03 01:30:31,567	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:277	FrameworkServlet 'grails': initialization started
+2009-07-03 01:30:31,595	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:94	Using MultipartResolver [org.codehaus.groovy.grails.web.multipart.ContentLengthAwareCommonsMultipartResolver@6ff0ccc2]
+2009-07-03 01:30:31,596	INFO	org.codehaus.groovy.grails.web.servlet.GrailsDispatcherServlet:296	FrameworkServlet 'grails': initialization completed in 28 ms
+2009-07-03 01:30:31,610	INFO	org.mortbay.log:?	Started SelectChannelConnector@0.0.0.0:8080
+2009-07-03 01:30:31,613	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPluginManager:183	Started to scan for plugin changes in every 5000ms.
+2009-07-03 01:30:31,990	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-03 01:30:32,117	INFO	/UrTStats:?	GSP servlet initialized
