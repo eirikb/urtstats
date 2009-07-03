@@ -74,11 +74,19 @@
 
 
         <tr class="prop">
-          <td valign="top" class="name">Create Time:</td>
-          <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'createTime')}</td>
+          <td valign="top" class="name">Joined:</td>
+
+          <td valign="top" class="value"><prettytime:display date="${playerInstance.getCreateTime()}" /></td>
         </tr>
 
-
+        <tr class="prop">
+          <td valign="top" class="name">Kills:</td>
+          <td valign="top" class="value">${Kill.countBykiller(playerInstance)}</td>
+        </tr>
+        <tr class="prop">
+          <td valign="top" class="name">Deaths:</td>
+          <td valign="top" class="value">${Kill.countBykilled(playerInstance)}</td>
+        </tr>
         <tr class="prop">
           <td valign="top" class="name">Ratio:</td>
           <td valign="top" class="value">${(Kill.countBykiller(playerInstance) + 1) / (Kill.countBykilled(playerInstance) + 1)}</td>

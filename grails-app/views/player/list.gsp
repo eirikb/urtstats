@@ -16,8 +16,8 @@
     <g:form>
       <richui:autoComplete 
         name="name"
-        action="${createLinkTo('dir': 'player/search')}"
-        title="asdf"
+        action="${resource('dir': 'player/search')}"
+        onItemSelect="document.location.href = \'${resource(dir: 'player/show')}/\' + id;"
         />
     </g:form>
     <h1>Player List</h1>

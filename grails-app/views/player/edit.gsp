@@ -76,15 +76,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="challenge">Challenge:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:playerInstance,field:'challenge','errors')}">
-                                    <input type="text" id="challenge" name="challenge" value="${fieldValue(bean:playerInstance,field:'challenge')}" />
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="team">Team:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:playerInstance,field:'team','errors')}">
