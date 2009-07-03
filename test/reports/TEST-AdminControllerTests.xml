@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="katze" name="AdminControllerTests" tests="1" time="0.303" timestamp="2009-06-29T17:25:55">
-  <properties />
-  <testcase classname="AdminControllerTests" name="testSomething" time="0.303" />
-  <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-  <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-</testsuite>

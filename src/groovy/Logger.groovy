@@ -18,7 +18,7 @@ class Logger implements ParseListener {
 
     public Logger() {
         config = ConfigurationHolder.config
-        parser = new LogParser(new File(config.urt.qconsole.path), true, true)
+        parser = new LogParser(new File(config.urt.qconsole.path), false, false)
         parser.addParseListener(this)
         config = ConfigurationHolder.config
         log = LogFactory.getLog("grails.app.task")

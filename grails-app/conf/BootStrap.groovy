@@ -3,7 +3,7 @@ import org.jsecurity.crypto.hash.Sha1Hash
 class BootStrap {
 
     def init = { servletContext ->
-        /*
+        /*z
         def knife = new Item(urtID:1, name:"Ka-Bar Knife", mode:0, binding:"B").addToDeathCauses(
         new DeathCause(urtID:12, name:"Slice")).addToDeathCauses(
         new DeathCause(urtID:13, name:"Throw")).save()
