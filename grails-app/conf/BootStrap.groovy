@@ -78,8 +78,11 @@ class BootStrap {
          */
 
 
-        def players = Player.list()
-        players.each() { it.urtID = -1}
+        def players = Player.findAllByUrtIDGreaterThanEquals(0)
+        players.each() {
+            it.urtID = -1;
+            it.save(flush:true)
+        }
     }
 
     def destroy = {
