@@ -21,7 +21,6 @@ class LogParser {
     long filePointer
 
     LogParser(File logFile, boolean tail, boolean gotoEOF) {
-        println "FUCK!"
         this.logFile = logFile
         this.tail = tail
         parseListeners = []
@@ -31,19 +30,15 @@ class LogParser {
     }
 
     void simpleParse() {
-        println "start " + logFile.length() + " " + filePointer
         if (logFile.length() > filePointer) {
-            print "Meir mat!"
             def raf = new RandomAccessFile(logFile, "r")
             raf.skipBytes((int) filePointer)
             def line
             while ((line = raf.readLine()) != null) {
-                println ": " + line
                 readLine(line)
                 filePointer = raf.getFilePointer()
             }
         }
-        println "done"
     }
 
     void parse() {

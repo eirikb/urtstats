@@ -11,11 +11,18 @@
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
+
+import org.codehaus.groovy.grails.commons.*
+
 class RCon {
 
     static final int BUFFERSIZE = 65507
 
-    static void rcon(host, port, password, message) {
+    static void rcon(message) {
+        def config = ConfigurationHolder.config
+        def host = config.urt.rcon.host
+        def port = config.urt.rcon.port
+        def password = config.urt.rcon.password
         message = "rcon\r" + password + "\r\"" + message + "\"\0";
         DatagramSocket ds;
         DatagramPacket dp;

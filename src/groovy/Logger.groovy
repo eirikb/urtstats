@@ -22,7 +22,7 @@ class Logger implements ParseListener {
         parser.addParseListener(this)
         config = ConfigurationHolder.config
         log = LogFactory.getLog("grails.app.task")
-
+        RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
     }
 
     void execute() {
@@ -82,7 +82,7 @@ class Logger implements ParseListener {
             if (player.team.urtID != urtID) {
                 addPlayerToTeam(player, urtID)
             }
-            rcon("rcon tell " + player.getUrtID() + "\"^7 Welcome to UrTStats server. Your PIN is ^1" +
+            RCon.rcon("rcon tell " + player.getUrtID() + "\"^7 Welcome to UrTStats server. Your PIN is ^1" +
                 player.getPin() + "^7. Use it to actie your account on ^2www.urtstats.net\"")
         } else {
             log.error("Unkown player: " + id + ". " + userInfo.dump())
@@ -170,11 +170,6 @@ class Logger implements ParseListener {
                 hitter + ". victim: " + victim + ". item: " + item +
                 ". Original(" + hitterID + ", " + victimID + ", " + weapon + ")")
         }
-    }
-
-    private void rcon(message) {
-        RCon.rcon(config.urt.rcon.host, config.urt.rcon.port,
-            config.urt.rcon.password, message)
     }
 
     void initRound(roundInfo) {

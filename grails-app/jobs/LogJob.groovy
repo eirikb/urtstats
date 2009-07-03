@@ -6,11 +6,7 @@ class LogJob  {
 
     public LogJob() {
         if (logger == null) {
-            println "CONSTRUCTOR!"
             logger = new Logger()
-
-        } else {
-            println "Logger exists"
         }
     }
 
