@@ -2,17 +2,19 @@
 class LogJob  {
     def timeout = 5000l // execute job once in 5 seconds
     boolean transactional = true
-    def logger
+    static logger
 
     public LogJob() {
-      
         if (logger == null) {
+            println "CONSTRUCTOR!"
             logger = new Logger()
+
+        } else {
+            println "Logger exists"
         }
     }
 
     def execute() {
-          log.debug "test"
         logger.execute()
     }
 }

@@ -9,19 +9,23 @@
  */
 
 import org.codehaus.groovy.grails.commons.*
+import org.apache.commons.logging.LogFactory
 
 class Logger implements ParseListener {
     def parser
     def config
+    def log
 
     public Logger() {
-        parser = new LogParser(new File("/home/eirikb/.q3a/q3ut4/qconsole.log"), true, true)
+        config = ConfigurationHolder.config
+        parser = new LogParser(new File(config.urt.qconsole.path), true, true)
         parser.addParseListener(this)
         config = ConfigurationHolder.config
+        log = LogFactory.getLog("grails.app.task")
+
     }
 
     void execute() {
-          log.debug "test"
         parser.simpleParse()
     }
 
@@ -30,13 +34,10 @@ class Logger implements ParseListener {
         def player = Player.findByGuid(guid)
         if (player == null) {
             player = new Player(guid:guid, ip:userInfo.ip, nick:userInfo.name, urtID:id)
-            rcon("rcon tell \"" + player.getNick() + " Welcome to UrTStats server. Your PIN is " +
-                player.getPin() + ". Use it to actie your account on ^2www.urtstats.net\"")
         } else {
             player.setUrtID(id)
             player.setIp(userInfo.ip)
             player.setJoinGameTime(new Date())
-            rcon("rcon tell " + player.getNick() + "\"Welcome back ^2" + player.getNick() + "^1. Your level is ^2" + player.getLevel())
         }
 
         player.addToPlayerLogs(new PlayerLog(startTime:new Date()))
@@ -81,6 +82,8 @@ class Logger implements ParseListener {
             if (player.team.urtID != urtID) {
                 addPlayerToTeam(player, urtID)
             }
+            rcon("rcon tell " + player.getUrtID() + "\"^7 Welcome to UrTStats server. Your PIN is ^1" +
+                player.getPin() + "^7. Use it to actie your account on ^2www.urtstats.net\"")
         } else {
             log.error("Unkown player: " + id + ". " + userInfo.dump())
         }
