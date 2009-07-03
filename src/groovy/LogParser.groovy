@@ -38,6 +38,7 @@ class LogParser {
                 readLine(line)
                 filePointer = raf.getFilePointer()
             }
+            raf.close()
         }
     }
 
