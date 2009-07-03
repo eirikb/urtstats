@@ -76,6 +76,10 @@ class BootStrap {
         //  def a = new JsecPermission(type:"Administration", possibleActions:"lol").save()
         //  new JsecRolePermissionRel(role:adminRole, permission:a, actions:"omfglol").save()
          */
+
+
+        def players = Player.list()
+        players.each() { it.urtID = -1}
     }
 
     def destroy = {

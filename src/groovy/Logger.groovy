@@ -178,7 +178,7 @@ class Logger implements ParseListener {
     }
 
     void serverStart() {
-        def players = Player.findAllByUrtIDGreaterThan(-1)
+        def players = Player.findAllByUrtIDGreaterThanEquals(0)
         players.each() { leave(it.getUrtID()) }
     }
 }

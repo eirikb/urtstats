@@ -30,10 +30,6 @@
     <table>
       <thead>
         <tr>
-      <jsec:hasRole  name="ADMIN">
-        <g:sortableColumn property="id" title="Id" />
-      </jsec:hasRole>
-
       <g:sortableColumn property="nick" title="Nick" />
       <jsec:hasRole  name="ADMIN">
         <g:sortableColumn property="ip" title="Ip" />
@@ -45,15 +41,15 @@
 
       <g:sortableColumn property="nextlevel" title="Nextlevel" />
 
+      <td>Kills</td>
+
+      <td>Headshots</td>
+
       </tr>
       </thead>
       <tbody>
       <g:each in="${playerInstanceList}" status="i" var="playerInstance">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-
-        <jsec:hasRole  name="ADMIN">
-          <td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'id')}</g:link></td>
-        </jsec:hasRole>
 
         <td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'nick')}</g:link></td>
 
@@ -66,6 +62,10 @@
         <td>${fieldValue(bean:playerInstance, field:'exp')}</td>
 
         <td>${fieldValue(bean:playerInstance, field:'nextlevel')}</td>
+
+        <td>${playerInstance.killers.size()}</td>
+
+        <td>${Hit.countByHitterAndHitpoint(playerInstance, 0)}</td>
 
         </tr>
       </g:each>
