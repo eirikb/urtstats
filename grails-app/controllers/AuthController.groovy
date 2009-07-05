@@ -78,4 +78,11 @@ class AuthController {
         }
         render (view:'create', model:[cmd:cmd])
     }
+
+    def checkUsername = {
+        def user = new JsecUser(username:params.value)
+        user.validate()
+        render(template:"checkUserTemplate", model:['user':user])
+    }
+
 }
