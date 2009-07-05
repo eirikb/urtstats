@@ -68,8 +68,13 @@ class AuthController {
     }
 
     def create = {
-        def playerInstance = new Player()
-        playerInstance.properties = params
-        return ['playerInstance':playerInstance]
+        def player = Player.findByNickAndPin(params.nick, params.pin)
+        if (player != null) {
+            println player.dump()
+        } else {
+            log.error "Some punk tried to find user + pin but no luck. " +
+            "username: " + params.username + ". nick: " + params.nick +
+            ". PIN: " + params.pin
+        }
     }
 }

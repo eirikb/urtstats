@@ -33,6 +33,6 @@
   </g:form>
 
 <h2>Don't have a user?</h2>
-<a href="${resource(dir:'auth/create')}">Create user</a>
+<a href="${resource(dir:'auth/create')}">[ Create user ]</a>
 </body>
 </html>
