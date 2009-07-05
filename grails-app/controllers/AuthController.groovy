@@ -67,14 +67,15 @@ class AuthController {
         render 'You do not have permission to access this page.'
     }
 
-    def create = {
-        def player = Player.findByNickAndPin(params.nick, params.pin)
-        if (player != null) {
-            println player.dump()
-        } else {
-            log.error "Some punk tried to find user + pin but no luck. " +
-            "username: " + params.username + ". nick: " + params.nick +
-            ". PIN: " + params.pin
+    def create = {}
+
+    def save = { RegisterUserCommand cmd ->
+        println cmd.dump()
+        if(!cmd.hasErrors()) {
+            println "ERROROMG!"
+        } else{
+            println "bra"
         }
+        render (view:'create', model:[cmd:cmd])
     }
 }

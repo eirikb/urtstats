@@ -2,35 +2,77 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="layout" content="main" />
-    <title>Login</title>
+    <title>Create user</title>
   </head>
   <body>
     <h1>Create user</h1>
   <g:if test="${flash.message}">
     <div class="message">${flash.message}</div>
   </g:if>
-  <g:form action="create">
-    <table>
-      <tbody>
-        <tr>
-          <td>Username:</td>
-          <td><input type="text" name="username" value="" /></td>
-        </tr>
-        <tr>
-          <td>Nick:</td>
-          <td><input type="text" name="nick" value="" /></td>
-        </tr>
-        <tr>
-          <td>PIN:</td>
-          <td><input type="text" name="pin" value="" /></td>
-        </tr>
-        <tr>
-          <td />
-          <td><input type="submit" value="Create user" /></td>
-        </tr>
-      </tbody>
-    </table>
+
+  <g:hasErrors bean="${cmd?.errors}">
+    <div class="errors">
+      <g:renderErrors bean="${cmd}"/>
+    </div>
+  </g:hasErrors>
+  <g:form action="save" >
+    <div class="dialog">
+      <table>
+        <tbody>
+
+          <tr class="prop">
+            <td valign="top" class="name">
+              <label for="username">Username:</label>
+            </td>
+            <td valign="top" class="value ${hasErrors(bean:cmd,field:'username','errors')}">
+              <input type="text" id="username" name="username" value="${fieldValue(bean:cmd,field:'username')}"/>
+            </td>
+          </tr>
+
+          <tr class="prop">
+            <td valign="top" class="name">
+              <label for="password" password="true">Password:</label>
+            </td>
+            <td valign="top" class="value ${hasErrors(bean:cmd,field:'password','errors')}">
+              <input type="password" id="password" name="password" value="${fieldValue(bean:cmd,field:'password')}"/>
+            </td>
+          </tr>
+
+          <tr class="prop">
+            <td valign="top" class="name">
+              <label for="password2" password="true">Password Again:</label>
+            </td>
+            <td valign="top" class="value ${hasErrors(bean:cmd,field:'password2','errors')}">
+              <input type="password" id="password2" name="password2" value="${fieldValue(bean:cmd,field:'password2')}"/>
+            </td>
+          </tr>
+
+          <tr class="prop">
+            <td valign="top" class="name">
+              <label for="nick">Nick:</label>
+            </td>
+            <td valign="top" class="value ${hasErrors(bean:cmd,field:'nick','errors')}">
+              <input type="text" id="nick" name="nick" value="${fieldValue(bean:cmd,field:'nick')}"/>
+              (From game)
+            </td>
+          </tr>
+
+          <tr class="prop">
+            <td valign="top" class="name">
+              <label for="pin">PIN:</label>
+            </td>
+            <td valign="top" class="value ${hasErrors(bean:cmd,field:'pin','errors')}">
+              <input type="text" id="pin" name="pin" value="${fieldValue(bean:cmd,field:'pin')}"/>
+              (From game)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <td><input type="submit" value="Create user" /></td>
+    </div>
   </g:form>
+
+
   <h2>Help / mini FAQ</h2>
   <b>What do I need to register?</b><br />
   You need to play on Graveyard Heaven in Urban Terror to get PIN.<br />
