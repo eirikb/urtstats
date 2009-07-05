@@ -24,7 +24,7 @@ class PlayerController {
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 20,  100)
         def players = Player.createCriteria().list(params){}
-        [ playerList: players, playerTotal: players.size() ]
+        [ playerList: players, playerTotal: Player.count() ]
     }
 
     def show = {
