@@ -48,24 +48,24 @@
       </tr>
       </thead>
       <tbody>
-      <g:each in="${playerInstanceList}" status="i" var="playerInstance">
+      <g:each in="${playerList}" status="i" var="player">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-        <td><g:link action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'nick')}</g:link></td>
+          <td><g:link action="show" id="${player.id}">${fieldValue(bean:player, field:'nick')}</g:link></td>
 
         <jsec:hasRole  name="ADMIN">
-          <td>${fieldValue(bean:playerInstance, field:'ip')}</td>
+          <td>${fieldValue(bean:player, field:'ip')}</td>
         </jsec:hasRole>
 
-        <td>${fieldValue(bean:playerInstance, field:'level')}</td>
+        <td>${fieldValue(bean:player, field:'level')}</td>
 
-        <td>${fieldValue(bean:playerInstance, field:'exp')}</td>
+        <td>${fieldValue(bean:player, field:'exp')}</td>
 
-        <td>${fieldValue(bean:playerInstance, field:'nextlevel')}</td>
+        <td>${fieldValue(bean:player, field:'nextlevel')}</td>
 
-        <td>${playerInstance.killers.size()}</td>
+        <td>${player.kills.size()}</td>
 
-        <td>${Hit.countByHitterAndHitpoint(playerInstance, 0)}</td>
+        <td>${Hit.countByHitterAndHitpoint(player, 0)}</td>
 
         </tr>
       </g:each>
@@ -73,7 +73,7 @@
     </table>
   </div>
   <div class="paginateButtons">
-    <g:paginate total="${playerInstanceTotal}" />
+    <g:paginate total="${playerTotal}" />
   </div>
 </div>
 </body>
