@@ -18,15 +18,14 @@ class Logger implements ParseListener {
 
     public Logger() {
         config = ConfigurationHolder.config
-        parser = new LogParser(new File(config.urt.qconsole.path), true, true)
+        parser = new LogParser(new File(config.urt.qconsole.path), false)
         parser.addParseListener(this)
-        config = ConfigurationHolder.config
         log = LogFactory.getLog("grails.app.task")
         RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
     }
 
     void execute() {
-        parser.simpleParse()
+        parser.parse()
     }
 
     void userInfo(id, userInfo) {
@@ -137,9 +136,9 @@ class Logger implements ParseListener {
                         killer.nextlevel = killer.exp * 1.2 + Math.sqrt(killer.exp)
                         RCon.rcon("rcon bigtext \"Congratulations ^2" + killer.nick.trim() + "^1 you are now level ^2" + killer.level + '"')
                     }
-                    if(killer.hasErrors() || !killer.save(flush:true)) {
-                        log.error("Unable to persist: " + killer.dump())
-                    }
+                }
+                if(killer.hasErrors() || !killer.save(flush:true)) {
+                    log.error("Unable to persist: " + killer.dump())
                 }
             } else {
                 log.error("Unknown death for type: " + type)

@@ -7,6 +7,7 @@ class Item {
     String binding
 
     static constraints = {
+        urtID(unique:true)
         binding(nullalble:true)
     }
 }

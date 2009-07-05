@@ -5,12 +5,14 @@ class LogJob  {
     static logger
 
     public LogJob() {
-        if (logger == null) {
-            logger = new Logger()
-        }
+
     }
 
     def execute() {
-        logger.execute()
+        if (logger == null) {
+            logger = new Logger()
+            logger.execute()
+        }
+
     }
 }

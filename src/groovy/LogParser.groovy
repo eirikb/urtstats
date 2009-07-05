@@ -17,19 +17,17 @@ import org.codehaus.groovy.grails.commons.*
 class LogParser {
     File logFile
     List parseListeners
-    boolean tail
     long filePointer
 
-    LogParser(File logFile, boolean tail, boolean gotoEOF) {
+    LogParser(File logFile, boolean gotoEOF) {
         this.logFile = logFile
-        this.tail = tail
         parseListeners = []
-        if (tail && gotoEOF) {
+        if (gotoEOF) {
             filePointer = logFile.length()
         }
     }
 
-    void simpleParse() {
+    void parse() {
         if (logFile.length() > filePointer) {
             def raf = new RandomAccessFile(logFile, "r")
             raf.skipBytes((int) filePointer)
@@ -40,24 +38,6 @@ class LogParser {
             }
             raf.close()
         }
-    }
-
-    void parse() {
-        while (filePointer == 0 || tail) {
-            if (logFile.length() > filePointer) {
-                def raf = new RandomAccessFile(logFile, "r")
-                raf.skipBytes((int) filePointer)
-                def line
-                while ((line = raf.readLine()) != null) {
-                    readLine(line)
-                    filePointer = raf.getFilePointer()
-                }
-            }
-            if (filePointer == 0 || tail) {
-                println "done! Sleep!"
-                Thread.sleep(1000);
-            }
-        } 
     }
 
     private void readLine(String line) {
