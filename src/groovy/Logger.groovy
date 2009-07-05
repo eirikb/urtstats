@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author eirikb
- */
-
 import org.codehaus.groovy.grails.commons.*
 import org.apache.commons.logging.LogFactory
 
@@ -18,7 +8,7 @@ class Logger implements ParseListener {
 
     public Logger() {
         config = ConfigurationHolder.config
-        parser = new LogParser(new File(config.urt.qconsole.path), false)
+        parser = new LogParser(new File(config.urt.qconsole.path), true)
         parser.addParseListener(this)
         log = LogFactory.getLog("grails.app.task")
         RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")

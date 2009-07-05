@@ -66,4 +66,10 @@ class AuthController {
     def unauthorized = {
         render 'You do not have permission to access this page.'
     }
+
+    def create = {
+        def playerInstance = new Player()
+        playerInstance.properties = params
+        return ['playerInstance':playerInstance]
+    }
 }

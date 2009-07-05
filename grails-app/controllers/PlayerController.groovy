@@ -24,7 +24,7 @@ class PlayerController {
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 20,  100)
         def players = Player.createCriteria().list(params){}
-        [ playerInstanceList: players, playerInstanceTotal: players.size() ]
+        [ playerList: players, playerTotal: players.size() ]
     }
 
     def show = {
@@ -93,12 +93,6 @@ class PlayerController {
             flash.message = "Player not found with id ${params.id}"
             redirect(action:list)
         }
-    }
-
-    def create = {
-        def playerInstance = new Player()
-        playerInstance.properties = params
-        return ['playerInstance':playerInstance]
     }
 
     def save = {
