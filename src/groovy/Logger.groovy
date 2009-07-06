@@ -18,11 +18,33 @@ class Logger implements ParseListener {
         parser.parse()
     }
 
+    String removeColorFromNick(colorNick) {
+        def nick = ""
+        colorNick.split("\\^").each {
+            if (it.length() > 0) {
+                def pos = 0;
+                def number = true
+                while (pos < it.length() && number) {
+                    try {
+                        Integer.parseInt("" + it.charAt(pos))
+                        pos++
+                    } catch (NumberFormatException e) {
+                        number = false
+                    }
+                }
+                nick += it.substring(pos)
+            }
+        }
+        return nick
+    }
+
     void userInfo(id, userInfo) {
         def guid = userInfo.cl_guid
         def player = Player.findByGuid(guid)
+        def nick = userInfo.name.trim()
         if (player == null) {
-            player = new Player(guid:guid, ip:userInfo.ip, nick:userInfo.name, urtID:id)
+            player = new Player(guid:guid, ip:userInfo.ip, colorNick:nick,
+                nick:removeColorFromNick(nick), urtID:id)
         } else {
             player.setUrtID(id)
             player.setIp(userInfo.ip)

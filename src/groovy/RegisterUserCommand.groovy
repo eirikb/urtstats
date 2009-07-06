@@ -13,7 +13,7 @@ public class RegisterUserCommand {
                 return ['registerusercommand.does.not.match.message','Cofirm Password ','Password']
             })
         nick(blank:false, nullable:false)
-        pin(blank:false, nullable:false, validator:{val,obj ->
+        pin(nullable:false, validator:{val,obj ->
                 if(Player.findByNickIlikeAndPin(obj.nick, obj.pin) == null)
                 return ['registerusercommand.nick.and.pin.not.match','nick','nick']
             })
