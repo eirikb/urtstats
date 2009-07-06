@@ -1,5 +1,5 @@
 class JsecUser {
-    static hasMany = [players:Player]
+    static hasMany = [players:Player, news:News]
     
     String username
     String passwordHash
