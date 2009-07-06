@@ -11,9 +11,18 @@
   <div class="message">${flash.message}</div>
 </g:if>
 
+<g:if test="${flash.error}">
+  <div class="errors">${flash.error}</div>
+</g:if>
+
 <g:hasErrors bean="${cmd?.errors}">
   <div class="errors">
     <g:renderErrors bean="${cmd}"/>
+  </div>
+</g:hasErrors>
+<g:hasErrors bean="${user?.errors}">
+  <div class="errors">
+    <g:renderErrors bean="${user}"/>
   </div>
 </g:hasErrors>
 <g:form action="save" >
@@ -25,13 +34,10 @@
           <td valign="top" class="name">
             <label for="username">Username:</label>
           </td>
-          <td valign="top" class="value ${hasErrors(bean:cmd,field:'username','errors')}">
-            <input type="text" id="username" name="username" value="${fieldValue(bean:cmd,field:'username')}"/>
-            <div id="message">
-              <g:render template="checkUserTemplate" model="[user:user]" />
-            </div>
-            <div id="error"></div>
-      <g:remoteField action="checkUsername" update="message" name="username" value=""/>
+          <td valign="top" class="value ${hasErrors(bean:user,field:'username','errors')}">
+      <g:remoteField action="checkUsername" id="username" update="error" name="username" value="${fieldValue(bean:user,field:'username')}"/>
+      <div id="error">
+      </div>
       </td>
       </tr>
 
@@ -59,7 +65,9 @@
         </td>
         <td valign="top" class="value ${hasErrors(bean:cmd,field:'nick','errors')}">
           <input type="text" id="nick" name="nick" value="${fieldValue(bean:cmd,field:'nick')}"/>
-          (From game)
+          (From game)<br />
+          Color codes such as ^1 must be included!<br />
+          Case insensitive.
         </td>
       </tr>
 
@@ -68,7 +76,7 @@
           <label for="pin">PIN:</label>
         </td>
         <td valign="top" class="value ${hasErrors(bean:cmd,field:'pin','errors')}">
-          <input type="text" id="pin" name="pin" value="${fieldValue(bean:cmd,field:'pin')}"/>
+          <input type="text" id="pin" name="pin" value="${cmd?.pin}"/>
           (From game)
         </td>
       </tr>
@@ -92,6 +100,10 @@ Every time you change team or gear you will be given the PIN.<br /><br />
 No. You must be a Urban Terror player (on Graveyard Heaven) to register<br /><br />
 <b>Must I redo this step for each different player I have?</b><br />
 No, you can add many players to one user.<br />
-But you must register this way the first time you register.
+But you must register this way the first time you register.<br /><br />
+<a name="IP"><b>I get a error message "Your IP does not match!"</b></a><br />
+This means that the IP address of you current machine is not the same<br />
+as when you were playing Urban Terror.<br />
+For security reasons you must have the same IP address.
 </body>
 </html>

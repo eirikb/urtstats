@@ -1,6 +1,7 @@
 import org.jsecurity.authc.AuthenticationException
 import org.jsecurity.authc.UsernamePasswordToken
 import org.jsecurity.SecurityUtils
+import org.jsecurity.crypto.hash.Sha1Hash
 
 class AuthController {
     def jsecSecurityManager
@@ -69,20 +70,45 @@ class AuthController {
 
     def create = {}
 
-    def save = { RegisterUserCommand cmd ->
-        println cmd.dump()
-        if(!cmd.hasErrors()) {
-            println "ERROROMG!"
-        } else{
-            println "bra"
+    def save = {RegisterUserCommand cmd ->
+        def user = new JsecUser(username:params.username, passwordHash:new Sha1Hash(params.password).toHex())
+        user.validate()
+        if (!user.hasErrors() && !cmd.hasErrors()) {
+            def ip = request.getRemoteAddr()
+            def player = Player.findByNickIlikeAndPin(params.nick, params.pin)
+            def playerIP = player.getIp()?.substring(0, player.getIp().indexOf(":"))
+            if (ip == playerIP) {
+                player.user = user
+                def userRole = JsecRole.findByName("USER")
+                if (!user.save(flush:true) || !player.save(flush:true)) {
+                    log.error "Could not create user. Params(" + params.dump() + ")"
+                } else {
+                    new JsecUserRoleRel(user:user, role:userRole).save()
+                    log.info "New user! " + user.dump()
+                }
+                redirect(action:"show")
+            } else {
+                flash.error = "Your IP does not match! <a href=#IP>[Info]</a>"
+            }
         }
-        render (view:'create', model:[cmd:cmd])
+        render (view:'create', model:[cmd:cmd, user:user])
     }
-
+    
     def checkUsername = {
         def user = new JsecUser(username:params.value)
         user.validate()
         render(template:"checkUserTemplate", model:['user':user])
+    }
+
+    def show = {
+        def subject = SecurityUtils.getSubject();
+        println subject.dump()
+        if (subject.authenticated) {
+            createdBy = JsecUser.findByUsername(subject.principal)
+            println "!!! " + subject.sump()
+            println "??? " + createdBy.dump()
+        }
+
     }
 
 }

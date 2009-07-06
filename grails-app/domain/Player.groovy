@@ -16,6 +16,7 @@ class Player {
     Date createTime = new Date()
     Date joinGameTime = new Date()
     Integer pin = 10000 + (int) (Math.random() * 10000)
+    String welcomeMessage
     
     static constraints = {
         nick(nullable:false)
@@ -28,5 +29,6 @@ class Player {
         team(nullable: true)
         items(nullable:true)
         joinGameTime(nullable:true)
+        welcomeMessage(nullable:true)
     }
 }

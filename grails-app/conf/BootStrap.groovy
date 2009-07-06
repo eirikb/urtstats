@@ -53,10 +53,12 @@ class BootStrap {
 
 
         
-        def adminRole = new JsecRole(name: "ADMIN").save()
-        def adminUser = new JsecUser(username: "admin", passwordHash:new Sha1Hash("admin").toHex()).save()
+        def adminRole = new JsecRole(name:"ADMIN").save()
+        def adminUser = new JsecUser(username:"admin", passwordHash:new Sha1Hash("admin").toHex()).save()
 
-        new JsecUserRoleRel(user: adminUser, role: adminRole).save()
+        new JsecUserRoleRel(user:adminUser, role:adminRole).save()
+
+        new JsecRole(name:"USER").save()
 
 
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
