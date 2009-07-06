@@ -48,16 +48,6 @@
           <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'nextlevel')}</td>
         </tr>
 
-        <tr class="prop">
-          <td valign="top" class="name">Login:</td>
-          <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'login')}</td>
-        </tr>
-
-        <tr class="prop">
-          <td valign="top" class="name">Email:</td>
-          <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'email')}</td>
-        </tr>
-
         <jsec:hasRole name="ADMIN">
           <tr class="prop">
             <td valign="top" class="name">Chats:</td>
