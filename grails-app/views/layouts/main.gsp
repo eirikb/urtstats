@@ -17,7 +17,7 @@
       <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
     </jsec:isLoggedIn>
     <h1>${grailsApplication.metadata['app.name']} - ${grailsApplication.metadata['app.version']}</h1>
-    <richui:reflectionImage src="${resource(dir: 'images', file: 'ut.png')}"  width="150px" height="120px" />
+    <richui:reflectionImage src="${resource(dir: 'images', file: 'ut.png')}"  width="125px" height="110px" />
     <ul class="tabs" id="tabnav">
       <jsec:isNotLoggedIn>
         <li class="controller"><g:link controller="auth">Log in</g:link></li>
