@@ -80,11 +80,27 @@
           (From game)
         </td>
       </tr>
+
+      <tr class="prop">
+        <td valign="top" class="captcha">
+          <label for="captcha">Captcha:</label>
+        </td>
+        <td valign="top">
+      <jcaptcha:jpeg name="imageCaptcha" height="Xpx" width="Xpx" /><br />
+      <g:if test="${flash.message?.captchaerror}">
+        <div class="errors">${flash.message.captchaerror}</div>
+      </g:if>
+      <input type="text" id="captcha" name="captcha"/>
+      </td>
+      </tr>
       </tbody>
     </table>
     <td><input type="submit" value="Create user" /></td>
+
   </div>
 </g:form>
+
+
 
 
 <h2>Help / mini FAQ</h2>
