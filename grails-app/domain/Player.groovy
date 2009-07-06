@@ -8,6 +8,7 @@ class Player {
 
     Integer urtID
     String nick
+    String colorNick
     String guid
     String ip
     Integer level = 0
@@ -20,6 +21,7 @@ class Player {
     
     static constraints = {
         nick(nullable:false)
+        colorNick(nullable:false)
         user(nullable:true)
         ip(nullable:false)
         level(nullable:false)
