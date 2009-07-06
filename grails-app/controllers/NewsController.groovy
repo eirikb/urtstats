@@ -89,6 +89,7 @@ class NewsController {
     }
 
     def save = {
+        println params.dump()
         def news = new News(params)
         def subject = SecurityUtils.getSubject();
         if(subject.authenticated){

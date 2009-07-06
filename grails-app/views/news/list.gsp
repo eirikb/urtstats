@@ -17,7 +17,7 @@
 ${fieldValue(bean:news.getAuthor(), field:'username')}
         (<prettytime:display date="${news.getCreateTime()}" />)
 ${fieldValue(bean:news, field:'head').decodeHTML()}
-        <hr>
+
 ${fieldValue(bean:news, field:'body').decodeHTML()}
       </g:each>
     </div>

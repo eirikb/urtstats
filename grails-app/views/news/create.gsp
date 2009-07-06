@@ -37,7 +37,7 @@
                 <label for="head">Head:</label>
               </td>
               <td valign="top" class="value ${hasErrors(bean:news,field:'head','errors')}">
-          <richui:richTextEditor name="head" value="${fieldValue(bean:news,field:'head')}" width="525" height="8" />
+          <richui:richTextEditor name="head" value="${fieldValue(bean:news,field:'head').decodeHTML()}" width="525" height="8" />
           </td>
           </tr>
 
@@ -46,7 +46,7 @@
               <label for="body">Body:</label>
             </td>
             <td valign="top" class="value ${hasErrors(bean:news,field:'body','errors')}">
-          <richui:richTextEditor name="body" value="${fieldValue(bean:news,field:'body')}" width="525" />
+          <richui:richTextEditor name="body" value="${fieldValue(bean:news,field:'body').decodeHTML()}" width="525" />
           </td>
           </tr>
 
