@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="${resource(dir:'css',file:'stylesheet.css')}" />
     <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
   <g:layoutHead />
+  <resource:reflectionImage />
   <g:javascript library="application" />
 </head>
 <body>
@@ -16,7 +17,7 @@
       <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
     </jsec:isLoggedIn>
     <h1>${grailsApplication.metadata['app.name']} - ${grailsApplication.metadata['app.version']}</h1>
-    <img src="${resource(dir:'images',file:'ut.png')}" width="100px" height="100px" alt="Grails" />
+    <richui:reflectionImage src="${resource(dir: 'images', file: 'ut.png')}"  width="150px" height="120px" />
     <ul class="tabs" id="tabnav">
       <jsec:isNotLoggedIn>
         <li class="controller"><g:link controller="auth">Log in</g:link></li>
