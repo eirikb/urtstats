@@ -23,13 +23,5 @@ class SecurityFilters {
                 }
             }
         }
-
-        editNews(controller:"news", action:"(create|edit|delete)") {
-            before = {
-                accessControl {
-                    role("ADMIN")
-                }
-            }
-        }
     }
 }

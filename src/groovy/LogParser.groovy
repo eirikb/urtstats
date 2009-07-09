@@ -82,13 +82,15 @@ class LogParser {
 
                     case "SAY":
                     def id = getId(st)
-                    def message = line.substring(line.indexOf(':') + 2)
+                    def message = line.substring(line.indexOf(':') + 1)
+                    message = message.substring(message.indexOf(':') + 2)
                     parseListeners.each() { it.chat(id, false, message) }
                     break
 
                     case "TEAMSAY":
                     def id = getId(st)
-                    def message = line.substring(line.indexOf(':') + 2)
+                    def message = line.substring(line.indexOf(':') + 1)
+                    message = message.substring(message.indexOf(':') + 2)
                     parseListeners.each() { it.chat(id, true, message) }
 
                     case "HIT":

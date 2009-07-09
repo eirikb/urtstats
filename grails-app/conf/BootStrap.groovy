@@ -1,7 +1,6 @@
 import org.jsecurity.crypto.hash.Sha1Hash
 
 class BootStrap {
-
     def init = { servletContext ->
         def knife = new Item(urtID:1, name:"Ka-Bar Knife", mode:0, binding:"B").addToDeathCauses(
             new DeathCause(urtID:12, name:"Slice")).addToDeathCauses(
@@ -60,6 +59,9 @@ class BootStrap {
 
         new JsecRole(name:"USER").save()
 
+        def wcPerm = new JsecPermission(type:"org.jsecurity.authz.permission.WildcardPermission", possibleActions:"*").save()
+
+        new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"news:*", target:"*").save()
 
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
         players.each() {

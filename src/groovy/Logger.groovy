@@ -1,5 +1,6 @@
 import org.codehaus.groovy.grails.commons.*
 import org.apache.commons.logging.LogFactory
+import org.jsecurity.authz.SimpleRole
 
 class Logger implements ParseListener {
     def parser
@@ -67,6 +68,7 @@ class Logger implements ParseListener {
         } else {
             addPlayerToTeam(player, 0)
         }
+        RCon.rcon("rcon say \"Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
     }
 
     private void addPlayerToTeam(player, teamID) {
@@ -93,8 +95,15 @@ class Logger implements ParseListener {
             if (player.team.urtID != urtID) {
                 addPlayerToTeam(player, urtID)
             }
-            RCon.rcon("rcon tell " + player.getUrtID() + "\"^7 Welcome to UrTStats server. Your PIN is ^1" +
-                player.getPin() + "^7. Use it to actie your account on ^2www.urtstats.net\"")
+            if (player.getUser() == null) {
+                RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Welcome to UrTStats server. Your PIN is ^1" +
+                    player.getPin() + "^7. Use it to activate your account on ^2www.urtstats.net" +
+                    "^7. Use !help for help.\"")
+            } else {
+                RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Welcome back " + player.getUser().getUsername() +
+                ". Use !help for help.")
+            }
+            RCon.rcon("rcon tell " + player.getUrtID() + " \"" + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
         } else {
             log.error("Unkown player: " + id + ". " + userInfo.dump())
         }
@@ -159,10 +168,49 @@ class Logger implements ParseListener {
     }
 
     void chat(id, teammessage, message) {
+        println "MESSAAAGE INCOMGING! " + message
         def player = Player.findByUrtID(id)
-        def chat = new Chat(player:player, teamMessage:teammessage, message:message)
-        if(chat.hasErrors() || !chat.save(flush:true)) {
-            log.error("Unable to persist: " + chat.dump())
+        if (player != null) {
+            def chat = new Chat(player:player, teamMessage:teammessage, message:message)
+            if(chat.hasErrors() || !chat.save(flush:true)) {
+                log.error("Unable to persist: " + chat.dump())
+            }
+            if (message.charAt(0) == '!') {
+                message = message.substring(0).trim()
+                int space = message.indexOf(' ')
+                def cmd = ""
+                if (space > 0) {
+                    cmd = message.substring(0, space)
+                    message = message.substring(space + 1)
+                } else {
+                    cmd = message
+                }
+                cmd = cmd.substring(1)
+                println "CMD: " + cmd + ". MESSAGE: " + message
+                switch (cmd) {
+                    case "level":
+                    case "status":
+                    case "stats":
+                    RCon.rcon("rcon tell ^7" + player.getUrtID() + " \"Level: " + player.getLevel() + "\"")
+                    break
+                    case "kick":
+                    def user = player.getUser()
+                    if (user != null) {
+                        def permission = new JsecDbRealm().isPermitted(user.getUsername(),
+                            new org.jsecurity.authz.permission.WildcardPermission("news:create"))
+                        if (permission) {
+                            println "KICK KICK KICK!"
+                        } else {
+                            println  "User without permission to !kick tried to kick"
+                        }
+                    } else {
+                        println "Got !kick-command from non-registered user"
+                    }
+                    break
+                }
+            }
+        } else {
+            println "Player is null!"
         }
     }
 
@@ -184,6 +232,7 @@ class Logger implements ParseListener {
     }
 
     void initRound(roundInfo) {
+        RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
         def players = Player.findAllByUrtIDGreaterThan(-1)
         players.each() { it.setJoinGameTime(new Date()) }
     }
