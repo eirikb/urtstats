@@ -23,5 +23,13 @@ class SecurityFilters {
                 }
             }
         }
+
+        accessController(controller:"access", action:"*") {
+            before = {
+                accessControl {
+                    role("ADMIN")
+                }
+            }
+        }
     }
 }
