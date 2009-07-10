@@ -42,8 +42,12 @@ class AccessController {
     def addRemoveRoleTouser = {
         def user = JsecUser.get(params.userID)
         def roles = params.findAll{ param -> param.key.startsWith("role") }
+        JsecUserRoleRel.findAllByUser(user).each {
+            it.delete()
+        }
         roles.each {
-            println "ROLE! " + it?.value
+            def role = JsecRole.get(it.value)
+            new JsecUserRoleRel(user:user, role:role).save()
         }
         render(view:'showUser',model:[user:user, roleList:JsecRole.list( params ), roleListTotal:JsecRole.count()])
     }

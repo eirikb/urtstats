@@ -1800,3 +1800,77 @@ Caused by: org.codehaus.groovy.runtime.metaclass.MissingPropertyExceptionNoStack
 2009-07-10 02:31:19,062	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
 2009-07-10 02:31:23,512	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
 2009-07-10 02:31:23,794	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
+2009-07-10 02:53:37,475	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 02:53:38,307	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
+2009-07-10 02:53:41,347	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:53:46,900	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:53:52,481	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:54:12,640	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 02:54:12,894	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
+2009-07-10 02:54:37,449	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:54:37,855	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 02:54:38,499	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
+2009-07-10 02:55:13,036	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 02:55:18,082	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 02:55:21,141	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:55:22,825	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:55:26,055	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:55:27,992	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:56:53,501	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 02:56:53,690	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
+2009-07-10 02:56:59,827	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:57:14,040	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:58:06,630	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:58:08,804	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AuthController.groovy]] changed, reloading changes..
+2009-07-10 02:58:09,817	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AuthController
+2009-07-10 02:58:11,487	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:58:19,062	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AuthController.groovy]] changed, reloading changes..
+2009-07-10 02:58:19,464	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AuthController
+2009-07-10 02:58:37,102	INFO	grails.app.controller.AuthController:?	New user! <JsecUser@ad33e4 username=eirikb passwordHash=4d4f3f2fa1f947ef43c82e751915e4e8c407e39d email=null id=11592 version=0 players=null news=null>
+2009-07-10 02:58:37,115	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:59:13,475	INFO	grails.app.realm.JsecDbRealm:?	Attempting to authenticate admin in DB realm...
+2009-07-10 02:59:13,498	INFO	grails.app.realm.JsecDbRealm:?	Found user 'admin' in DB
+2009-07-10 02:59:13,539	INFO	grails.app.controller.AuthController:?	Redirecting to '/'.
+2009-07-10 02:59:13,619	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:59:19,861	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 02:59:40,729	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:01:04,891	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/conf/SecurityFilters.groovy]] changed, reloading changes..
+2009-07-10 03:01:04,984	INFO	org.codehaus.groovy.grails.plugins.web.filters.FiltersGrailsPlugin:?	reloadFilters
+2009-07-10 03:01:07,508	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:01:12,280	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:01:15,860	ERROR	org.codehaus.groovy.grails.web.errors.GrailsExceptionResolver:60	org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: JsecUserRoleRel.role; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: JsecUserRoleRel.role
+org.codehaus.groovy.runtime.InvokerInvocationException: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: JsecUserRoleRel.role; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: JsecUserRoleRel.role
+	at org.jsecurity.web.servlet.JSecurityFilter.doFilterInternal(JSecurityFilter.java:382)
+	at org.jsecurity.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:180)
+Caused by: org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value: JsecUserRoleRel.role; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value: JsecUserRoleRel.role
+	at AccessController$_closure6_closure10.doCall(AccessController:50)
+	at AccessController$_closure6.doCall(AccessController:48)
+	at AccessController$_closure6.doCall(AccessController)
+	... 2 more
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value: JsecUserRoleRel.role
+	at $Proxy6.saveOrUpdate(Unknown Source)
+	... 5 more
+2009-07-10 03:01:15,865	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:01:35,056	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/controllers/AccessController.groovy]] changed, reloading changes..
+2009-07-10 03:01:35,425	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:?	Reconfiguring access control for AccessController
+2009-07-10 03:01:35,535	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:01:38,075	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:01:50,119	INFO	org.codehaus.groovy.grails.plugins.DefaultGrailsPlugin:621	Grails plug-in resource [file [/home/eirikb/NetBeansProjects/UrTStats/./grails-app/conf/SecurityFilters.groovy]] changed, reloading changes..
+2009-07-10 03:01:50,434	INFO	org.codehaus.groovy.grails.plugins.web.filters.FiltersGrailsPlugin:?	reloadFilters
+2009-07-10 03:02:00,932	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:02:02,819	INFO	grails.app.realm.JsecDbRealm:?	Attempting to authenticate admin in DB realm...
+2009-07-10 03:02:02,827	INFO	grails.app.realm.JsecDbRealm:?	Found user 'admin' in DB
+2009-07-10 03:02:02,831	INFO	grails.app.controller.AuthController:?	Redirecting to '/access/showUser/46'.
+2009-07-10 03:02:02,974	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:02:04,870	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:02:06,901	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:03:45,484	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:04:15,747	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:04:17,790	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:04:25,974	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:04:45,827	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:05:15,064	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:05:16,904	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:05:21,882	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:06:49,324	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
+2009-07-10 03:06:51,225	WARN	org.codehaus.groovy.grails.scaffolding.view.ScaffoldingViewResolver:69	View caching is SWITCHED OFF -- DEVELOPMENT SETTING ONLY: This can severely impair performance
