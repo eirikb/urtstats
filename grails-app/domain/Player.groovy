@@ -16,7 +16,7 @@ class Player {
     Integer nextlevel = 5
     Date createTime = new Date()
     Date joinGameTime = new Date()
-    Integer pin = 10000 + (int) (Math.random() * 10000)
+    Integer pin = 10000 + (int) (Math.random() * 1000)
     String welcomeMessage
     
     static constraints = {
