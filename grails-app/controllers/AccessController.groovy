@@ -9,8 +9,8 @@ class AccessController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ roleList: JsecRole.list( params ), roleListTotal: JsecRole.count(),
-            userList: JsecUser.list (params ), userListTotal: JsecUser.count() ]
+        [ roleList: JsecRole.list(params), roleListTotal: JsecRole.count(),
+            userList: JsecUser.list (params), userListTotal: JsecUser.count() ]
     }
 
     def showRole = {
@@ -20,13 +20,15 @@ class AccessController {
             flash.message = "JsecRole not found with id ${params.id}"
             redirect(action:list)
         } else { 
-            def rels = JsecUserRoleRel.findAllByRole(role)
+            def userRels = JsecUserRoleRel.findAllByRole(role)
             def users = []
-            rels.each {
+            userRels.each {
                 users.add(it.user)
             }
+            def permissions = JsecRolePermissionRel.findAllByRole(role)
             return [ role : role,
-                userList : users, userListTotal : users.size()] }
+                userList : users, userListTotal : users.size(),
+                permissionList: permissions, permissionListTotal: permissions.size()] }
     }
 
     def showUser = {
@@ -50,5 +52,35 @@ class AccessController {
             new JsecUserRoleRel(user:user, role:role).save()
         }
         render(view:'showUser',model:[user:user, roleList:JsecRole.list( params ), roleListTotal:JsecRole.count()])
+    }
+
+    def create = {
+        def role = new JsecRole()
+        role.properties = params
+        return ['role':role]
+    }
+
+    def delete = {
+        def role = JsecRole.get( params.id )
+        if(role) {
+            role.delete(flush:true)
+            flash.message = "Role ${params.id} deleted"
+            redirect(action:list)
+        }
+    }
+
+    def addPermission = {
+        def role = JsecRole.get( params.id )
+        def permission = JsecPermission.findByType("org.jsecurity.authz.permission.WildcardPermission")
+        new JsecRolePermissionRel(role:role, permission:permission, target:params.target,
+            actions:params.actions).save()
+        redirect(action:showRole)
+    }
+
+    def removePermission = {
+        def perm = JsecRolePermissionRel.get(params.id)
+        def role = perm.getRole()
+        perm.delete()
+        redirect(action:showRole)
     }
 }

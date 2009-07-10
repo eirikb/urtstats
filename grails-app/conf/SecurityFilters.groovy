@@ -16,7 +16,7 @@ class SecurityFilters {
     def filters = {
 
 
-        playerEditing(controller:"player", action:"(create|edit)") {
+        playerEditing(controller:"player", action:"(create|edit|update|save|delete)") {
             before = {
                 accessControl {
                     role("ADMIN")
