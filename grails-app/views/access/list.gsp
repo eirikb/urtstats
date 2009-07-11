@@ -14,6 +14,9 @@
       This is a _very_ simple tool for giving users access. <br />
       A better tool might be created - who knows. <br />
       To add a user to a role, select user.
+      <g:if test="${flash.message}">
+        <div class="message">${flash.message}</div>
+      </g:if>
       <g:render template="roleListTemplate"/>
       <g:render template="userListTemplate"/>
     </div>

@@ -83,11 +83,11 @@ class NewsController {
     }
 
     def create = {
-        def subj = SecurityUtils.subject
-        if (! subj.checkPermission('news:create')) {
-            // render error message, redirect, what ever...
-            return
-        }
+//        def subj = SecurityUtils.subject
+//        if (! subj.checkPermission('news:create')) {
+//            // render error message, redirect, what ever...
+//            return
+//        }
         def newsInstance = new News()
         newsInstance.properties = params
         return ['newsInstance':newsInstance]

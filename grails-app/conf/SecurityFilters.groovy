@@ -31,5 +31,13 @@ class SecurityFilters {
                 }
             }
         }
+
+        newsEdit(controller:"news", action:"(create|edit|update|save|delete)")  {
+            before = {
+                accessControl {
+                    permission(new org.jsecurity.authz.permission.WildcardPermission('news:*'))
+                }
+            }
+        }
     }
 }

@@ -54,10 +54,15 @@ class AccessController {
         render(view:'showUser',model:[user:user, roleList:JsecRole.list( params ), roleListTotal:JsecRole.count()])
     }
 
-    def create = {
-        def role = new JsecRole()
-        role.properties = params
-        return ['role':role]
+    def create = {}
+
+    def save = {
+        if (new JsecRole(params).save()) {
+            flash.message = "Role created"
+        } else {
+            flash.message = "Could not create role..."
+        }
+        redirect(action:list)
     }
 
     def delete = {

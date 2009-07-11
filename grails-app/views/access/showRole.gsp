@@ -10,6 +10,12 @@
     </div>
     <div class="body">
       <h1>Role: ${fieldValue(bean:role, field:'name')}</h1>
+      <div class="buttons">
+        <g:form>
+          <input type="hidden" name="id" value="${role?.id}" />
+          <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+        </g:form>
+      </div>
       <g:if test="${flash.message}">
         <div class="message">${flash.message}</div>
       </g:if>
@@ -17,22 +23,16 @@
       <div id="userlist">
         <g:render template="userListTemplate" />
       </div>
-      <div class="buttons">
-        <g:form>
-          <input type="hidden" name="id" value="${role?.id}" />
-          <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
-        </g:form>
-      </div>
       <g:render template="permissionListTemplate" />
       Add permission:<br />
-        <g:form action="addPermission">
-          <input type="hidden" name="id" value="${role?.id}" />
-          Target:
-          <input name="target" /><br />
-          Actions:
-          <input name="actions" /><br />
-          <span class="button"><g:submitButton name="add" value="Add permission" /></span>
-        </g:form>
+      <g:form action="addPermission">
+        <input type="hidden" name="id" value="${role?.id}" />
+        Target:
+        <input name="target" /><br />
+        Actions:
+        <input name="actions" /><br />
+        <span class="button"><g:submitButton name="add" value="Add permission" /></span>
+      </g:form>
     </div>
   </body>
 </html>
