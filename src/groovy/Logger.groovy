@@ -68,7 +68,7 @@ class Logger implements ParseListener {
         } else {
             addPlayerToTeam(player, 0)
         }
-        RCon.rcon("rcon say \"Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
+        RCon.rcon("rcon say \"Join: " + player.getNick() + ". Level: ^2" + player.getLevel() + "\"")
     }
 
     private void addPlayerToTeam(player, teamID) {
