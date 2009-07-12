@@ -6,6 +6,7 @@ class Logger implements ParseListener {
     def parser
     def config
     def log
+    def synced = false
 
     public Logger() {
         config = ConfigurationHolder.config
@@ -13,10 +14,13 @@ class Logger implements ParseListener {
         parser.addParseListener(this)
         log = LogFactory.getLog("grails.app.task")
         RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
+        sync()
     }
 
     void execute() {
-        parser.parse()
+        if (synced) {
+            parser.parse()
+        }
     }
 
     String removeColorFromNick(colorNick) {
@@ -68,7 +72,7 @@ class Logger implements ParseListener {
         } else {
             addPlayerToTeam(player, 0)
         }
-        RCon.rcon("rcon say \"Join: " + player.getNick() + ". Level: ^2" + player.getLevel() + "\"")
+        RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
     }
 
     private void addPlayerToTeam(player, teamID) {
@@ -240,6 +244,48 @@ class Logger implements ParseListener {
     void serverStart() {
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
         players.each() { leave(it.getUrtID()) }
+    }
+
+    void sync() {
+        println "Here we go..."
+        RCon.rcon("rcon say \"^7Server is syncing users...\"")
+        def status = RCon.rcon("rcon status")
+
+        def reader = new BufferedReader(new StringReader(status));
+        reader.readLine() // Remove print
+        reader.readLine() // Remove map
+        def line = reader.readLine()
+        reader.readLine() //remove dots
+        def map = [:]
+        while ((line = reader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(line, " ");
+            if (st.countTokens() == 8) {
+                map[st.nextToken()] = [
+                    score:st.nextToken(),
+                    ping:st.nextToken(),
+                    name:st.nextToken(),
+                    lastmsg:st.nextToken(),
+                    address:st.nextToken(),
+                    qport:st.nextToken(),
+                    rate:st.nextToken()]
+            }
+        }
+
+        println "Search for cl_guid three times:"
+        for(int i = 0; i < 3; i++) {
+            line = parser.parseReverse("cl_guid")
+            def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
+            def userInfoString = line.substring(line.indexOf('\\'))
+            def userInfo = parser.getUserInfo(userInfoString)
+            println id + " - " + userInfo
+            def user = map[id]
+            if (user != null) {
+                println user.address + " vs " + userInfo.ip
+                println user.name + " vs " + userInfo.name
+            } else {
+                println "Unknown ID: " + id
+            }
+        }
     }
 }
 

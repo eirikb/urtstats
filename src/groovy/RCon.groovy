@@ -16,34 +16,45 @@ import org.codehaus.groovy.grails.commons.*
 
 class RCon {
 
-    static final int BUFFERSIZE = 65507
+    final static int BUFFERSIZE = 65507
+    static long lastUsed
 
-    static void rcon(message) {
-        def config = ConfigurationHolder.config
-        def host = config.urt.rcon.host
-        def port = config.urt.rcon.port
-        def password = config.urt.rcon.password
-        message = "rcon\r" + password + "\r\"" + message + "\"\0";
-        DatagramSocket ds;
-        DatagramPacket dp;
-        InetAddress ia;
-        ds = new DatagramSocket();
-        ia = InetAddress.getByName(host);
-        String out = "xxxx" + message;
-        byte[] buff = out.getBytes();
-        buff[0] = (byte) 0xff;
-        buff[1] = (byte) 0xff;
-        buff[2] = (byte) 0xff;
-        buff[3] = (byte) 0xff;
-        dp = new DatagramPacket(buff, buff.length, ia, port);
-        ds.send(dp);
-        //byte[] data = new byte[BUFFERSIZE];
-        //dp = new DatagramPacket(data, data.length);
-        //ds.receive(dp);
-        //int length = dp.getLength();
-        //String s = new String(data, 4, length)
-        //ds.close()
-        //return s;
+    public synchronized static String rcon(message) {
+        if (System.currentTimeMillis() - lastUsed < 1000) {
+            Thread.sleep(1000)
+        }
+        try {
+            def config = ConfigurationHolder.config
+            def host = config.urt.rcon.host
+            def port = config.urt.rcon.port
+            def password = config.urt.rcon.password
+            message = "rcon\r" + password + "\r\"" + message + "\"\0";
+            DatagramSocket ds;
+            DatagramPacket dp;
+            InetAddress ia;
+            ds = new DatagramSocket();
+            ia = InetAddress.getByName(host);
+            String out = "xxxx" + message;
+            byte[] buff = out.getBytes();
+            buff[0] = (byte) 0xff;
+            buff[1] = (byte) 0xff;
+            buff[2] = (byte) 0xff;
+            buff[3] = (byte) 0xff;
+            dp = new DatagramPacket(buff, buff.length, ia, port);
+            ds.send(dp);
+            byte[] data = new byte[BUFFERSIZE];
+            dp = new DatagramPacket(data, data.length);
+            ds.receive(dp);
+            int length = dp.getLength();
+            String s = new String(data, 4, length)
+            ds.close()
+            return s
+        } catch (Exception e) {
+            println "Error!"
+        } finally {
+            lastUsed = System.currentTimeMillis()
+        }
+        return null
     }
 }
 

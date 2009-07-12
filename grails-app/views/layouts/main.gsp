@@ -23,7 +23,13 @@
       <jsec:isNotLoggedIn>
         <li class="controller"><g:link controller="auth">Log in</g:link></li>
       </jsec:isNotLoggedIn>
+
       <li><a href="${resource(dir:'')}">Home</a></li>
+
+      <li class="controller"><g:link controller="news" action="create">Create news</g:link></li>
+
+      <li class="controller"><g:link controller="forumGenre">Forum</g:link></li>
+
       <li class="controller"><g:link controller="game">Game</g:link></li>
 
       <li class="controller"><g:link controller="player">Players</g:link></li>

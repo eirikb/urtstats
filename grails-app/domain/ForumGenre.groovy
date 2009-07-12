@@ -1,4 +1,6 @@
 class ForumGenre {
+    static hasMany = [topics:ForumTopic]
+
     String name
 
     static constraints = {

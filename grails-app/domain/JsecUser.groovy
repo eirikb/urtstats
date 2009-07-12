@@ -4,6 +4,8 @@ class JsecUser {
     String username
     String passwordHash
     String email
+    Boolean hideEmail = true
+    Integer karma = 0
 
     static constraints = {
         username(nullable:false, blank:false, unique:true)

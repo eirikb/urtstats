@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="body">
-      <jsec:hasPermission permission="${new org.jsecurity.authz.permission.WildcardPermission('news:create')}">
+      <jsec:hasPermission type="news" actions="create">
         <g:link controller="news" action="create">Create news</g:link>
       </jsec:hasPermission>
       <h1>News List</h1>

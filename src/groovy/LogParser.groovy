@@ -18,12 +18,14 @@ class LogParser {
     File logFile
     List parseListeners
     long filePointer
+    long filePointerReverse
 
     LogParser(File logFile, boolean gotoEOF) {
         this.logFile = logFile
         parseListeners = []
         if (gotoEOF) {
             filePointer = logFile.length()
+            filePointerReverse = filePointer
         }
     }
 
@@ -38,6 +40,32 @@ class LogParser {
             }
             raf.close()
         }
+    }
+
+    String parseReverse(searchFor) {
+        def search = true
+        def line2
+        while (filePointerReverse > 0 && search) {
+            def raf = new RandomAccessFile(logFile, "r")
+            raf.seek(filePointerReverse)
+            def line
+            def tempPos = filePointerReverse
+            while (line == null || line.length() == 0 || filePointerReverse - (tempPos + line.length()) <= 2) {
+                line = raf.readLine()
+                tempPos--
+                raf.seek(tempPos)
+                if (line != null) {
+                    if (filePointerReverse - (tempPos + line.length()) <= 2) {
+                        line2 = line
+                    }
+                }
+            }
+            filePointerReverse = tempPos
+            if (line2.indexOf(searchFor) >= 0) {
+                search = false
+            }
+        }
+        return line2
     }
 
     private void readLine(String line) {
@@ -122,7 +150,7 @@ class LogParser {
         return -1;
     }
 
-    private Map getUserInfo(userInfoString) {
+    public Map getUserInfo(userInfoString) {
         if (userInfoString.charAt(0) == '\\') {
             userInfoString = userInfoString.substring(1)
         }

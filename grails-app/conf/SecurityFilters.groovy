@@ -32,10 +32,26 @@ class SecurityFilters {
             }
         }
 
-        newsEdit(controller:"news", action:"(create|edit|update|save|delete)")  {
+        createNews(controller:"news", action:"create")  {
             before = {
                 accessControl {
-                    permission(new org.jsecurity.authz.permission.WildcardPermission('news:*'))
+                    permission(type:"news", actions:"create")
+                }
+            }
+        }
+
+        saveNews(controller:"news", action:"save")  {
+            before = {
+                accessControl {
+                    permission(type:"news", actions:"save")
+                }
+            }
+        }
+
+        forumGenreEdit(controller:"forumGenre", action:"(create|edit|update|save|delete)") {
+            before = {
+                accessControl {
+                    permission(new org.jsecurity.authz.permission.WildcardPermission('penis:create'))
                 }
             }
         }

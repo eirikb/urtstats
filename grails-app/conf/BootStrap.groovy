@@ -61,9 +61,9 @@ class BootStrap {
 
         def modRole = new JsecRole(name:"MOD").save()
 
-        def wcPerm = new JsecPermission(type:"org.jsecurity.authz.permission.WildcardPermission", possibleActions:"*").save()
+        def wcPerm = new JsecPermission(type:"org.jsecurity.grails.JsecBasicPermission", possibleActions:"*").save()
 
-        new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"news:*", target:"*").save()
+        new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"*", target:"news").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"urt:kick", target:"*").save()
 
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
