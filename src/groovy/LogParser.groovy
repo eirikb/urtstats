@@ -42,7 +42,7 @@ class LogParser {
         }
     }
 
-    String parseReverse(searchFor) {
+    String parseReverse(searchFor, stopAt) {
         def search = true
         def line2
         while (filePointerReverse > 0 && search) {
@@ -50,7 +50,8 @@ class LogParser {
             raf.seek(filePointerReverse)
             def line
             def tempPos = filePointerReverse
-            while (line == null || line.length() == 0 || filePointerReverse - (tempPos + line.length()) <= 2) {
+            while (tempPos > 0 && (line == null || line.length() == 0 ||
+                    filePointerReverse - (tempPos + line.length()) <= 2)) {
                 line = raf.readLine()
                 tempPos--
                 raf.seek(tempPos)
@@ -60,10 +61,19 @@ class LogParser {
                     }
                 }
             }
+            raf.close()
             filePointerReverse = tempPos
             if (line2.indexOf(searchFor) >= 0) {
                 search = false
+            } else if (filePointerReverse == 0) {
+                log.error("While parseReverse: EOF")
+                line2 = null
+            } else if (line2.indexOf(stopAt) >= 0) {
+                log.error("While parseReverse: Found stopAt (" + stopAt + ")")
+                search = false
+                line2 = null
             }
+            println filePointerReverse
         }
         return line2
     }

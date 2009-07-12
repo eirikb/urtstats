@@ -18,39 +18,45 @@ class RCon {
 
     final static int BUFFERSIZE = 65507
     static long lastUsed
+    static String recmessage
 
     public synchronized static String rcon(message) {
         if (System.currentTimeMillis() - lastUsed < 1000) {
             Thread.sleep(1000)
         }
+        def socket
         try {
             def config = ConfigurationHolder.config
             def host = config.urt.rcon.host
             def port = config.urt.rcon.port
             def password = config.urt.rcon.password
             message = "rcon\r" + password + "\r\"" + message + "\"\0";
-            DatagramSocket ds;
-            DatagramPacket dp;
-            InetAddress ia;
-            ds = new DatagramSocket();
-            ia = InetAddress.getByName(host);
-            String out = "xxxx" + message;
-            byte[] buff = out.getBytes();
-            buff[0] = (byte) 0xff;
-            buff[1] = (byte) 0xff;
-            buff[2] = (byte) 0xff;
-            buff[3] = (byte) 0xff;
-            dp = new DatagramPacket(buff, buff.length, ia, port);
-            ds.send(dp);
-            byte[] data = new byte[BUFFERSIZE];
-            dp = new DatagramPacket(data, data.length);
-            ds.receive(dp);
-            int length = dp.getLength();
-            String s = new String(data, 4, length)
-            ds.close()
-            return s
-        } catch (Exception e) {
-            println "Error!"
+
+            socket = new DatagramSocket()
+            def buff = ("    " + message).getBytes()
+            buff[0] = (byte) 0xff
+            buff[1] = (byte) 0xff
+            buff[2] = (byte) 0xff
+            buff[3] = (byte) 0xff
+            def packet = new DatagramPacket(buff, buff.length,
+                InetAddress.getByName(host), port)
+            socket.send(packet)
+            new Thread() {
+                buff = new byte[BUFFERSIZE]
+                packet = new DatagramPacket(buff, buff.length)
+                socket.receive(packet)
+                recmessage = new String(packet.getData())
+                socket?.close()
+            }.start()
+            // Sleep for 5 seconds to wait for response
+            for (i in 0..4) {
+                if (recmessage != null) {
+                    return recmessage
+                }
+                Thread.sleep(1000)
+            }
+        } catch(IOException io){
+            println "ERRROR! IO - RCon"
         } finally {
             lastUsed = System.currentTimeMillis()
         }
