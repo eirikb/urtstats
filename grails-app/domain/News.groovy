@@ -5,7 +5,13 @@ class News {
     String title
     String head
     String body
+    Date lastModifiedTime = new Date()
     Date createTime = new Date()
+
+    static mapping = {
+        head type:'text'
+        body  type:'text'
+    }
 
     static constraints = {
         author(nullable:false)

@@ -14,44 +14,34 @@ class NewsController {
         [ newsList: News.list( params ), newsInstanceTotal: News.count() ]
     }
 
-    def show = {
-        def newsInstance = News.get( params.id )
-
-        if(!newsInstance) {
-            flash.message = "News not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else { return [ newsInstance : newsInstance ] }
-    }
-
     def delete = {
         def newsInstance = News.get( params.id )
         if(newsInstance) {
             try {
                 newsInstance.delete(flush:true)
                 flash.message = "News ${params.id} deleted"
-                redirect(action:list)
+                redirect(controller:"home")
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "News ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+                redirect(controller:"home")
             }
         }
         else {
             flash.message = "News not found with id ${params.id}"
-            redirect(action:list)
+            redirect(controller:"home")
         }
     }
 
     def edit = {
-        def newsInstance = News.get( params.id )
+        def news = News.get( params.id )
 
-        if(!newsInstance) {
+        if(!news) {
             flash.message = "News not found with id ${params.id}"
-            redirect(action:list)
+            redirect(controller:"home")
         }
         else {
-            return [ newsInstance : newsInstance ]
+            return [ news : news ]
         }
     }
 
@@ -70,7 +60,7 @@ class NewsController {
             newsInstance.properties = params
             if(!newsInstance.hasErrors() && newsInstance.save()) {
                 flash.message = "News ${params.id} updated"
-                redirect(action:show,id:newsInstance.id)
+                redirect(controller:"home")
             }
             else {
                 render(view:'edit',model:[newsInstance:newsInstance])
@@ -78,23 +68,17 @@ class NewsController {
         }
         else {
             flash.message = "News not found with id ${params.id}"
-            redirect(action:list)
+            redirect(controller:"home")
         }
     }
 
     def create = {
-//        def subj = SecurityUtils.subject
-//        if (! subj.checkPermission('news:create')) {
-//            // render error message, redirect, what ever...
-//            return
-//        }
         def newsInstance = new News()
         newsInstance.properties = params
         return ['newsInstance':newsInstance]
     }
 
     def save = {
-        println params.dump()
         def news = new News(params)
         def subject = SecurityUtils.getSubject();
         if(subject.authenticated){
@@ -102,12 +86,8 @@ class NewsController {
             news.setAuthor(author)
             if(!news.hasErrors() && news.save()) {
                 flash.message = "News ${news.id} created"
-                redirect(action:show,id:news.id)
-            } else {
-                render(view:'create',model:[news:news])
             }
-        } else {
-            render(view:'create',model:[news:news])
         }
+        redirect(controller:"home")
     }
 }
