@@ -56,6 +56,9 @@ class Logger implements ParseListener {
             player = new Player(guid:guid, ip:userInfo.ip, colorNick:nick,
                 nick:removeColorFromNick(nick), urtID:id)
         } else {
+            if (player.getUrtID() < 0) {
+                RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
+            }
             player.setUrtID(id)
             player.setIp(userInfo.ip)
             player.setJoinGameTime(new Date())
@@ -77,23 +80,6 @@ class Logger implements ParseListener {
         } else {
             addPlayerToTeam(player, 0)
         }
-        RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
-    }
-
-    private void addPlayerToTeam(player, teamID) {
-        def team = Team.findByUrtID(teamID)
-        if (team == null) {
-            team = new Team(urtID:teamID)
-            if(team.hasErrors() || !team.save(flush:true)) {
-                log.error("Unable to persist: " + team.dump())
-            }
-        }
-        if (player.team == null || player.team != team) {
-            player.setTeam(team)
-            if(team.hasErrors() || !team.save(flush:true)) {
-                log.error("Unable to persist: " + team.dump())
-            }
-        }
     }
 
     void userInfoChange(id, userInfo) {
@@ -112,7 +98,7 @@ class Logger implements ParseListener {
                 RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Welcome back " + player.getUser().getUsername() +
                 ". Use !help for help.")
             }
-            RCon.rcon("rcon tell " + player.getUrtID() + " \"" + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
+            RCon.rcon("rcon tell " + player.getUrtID() + " \"^7" + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
         } else {
             log.error("Unkown player: " + id + ". " + userInfo.dump())
         }
@@ -200,7 +186,7 @@ class Logger implements ParseListener {
                     case "level":
                     case "status":
                     case "stats":
-                    RCon.rcon("rcon tell ^7" + player.getUrtID() + " \"Level: " + player.getLevel() + "\"")
+                    RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Level: " + player.getLevel() + "\"")
                     break
                     case "kick":
                     def user = player.getUser()

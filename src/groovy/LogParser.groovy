@@ -19,6 +19,7 @@ class LogParser {
     List parseListeners
     long filePointer
     long filePointerReverse
+    boolean parsing
 
     LogParser(File logFile, boolean gotoEOF) {
         this.logFile = logFile
@@ -31,15 +32,21 @@ class LogParser {
 
     void parse() {
         println "PARSE!"
-        if (logFile.length() > filePointer) {
-            def raf = new RandomAccessFile(logFile, "r")
-            raf.seek((int) filePointer)
-            def line
-            while ((line = raf.readLine()) != null) {
-                readLine(line)
+        if (!parsing) {
+            parsing = true
+            if (logFile.length() > filePointer) {
+                def raf = new RandomAccessFile(logFile, "r")
+                raf.seek((int) filePointer)
+                def line
+                while ((line = raf.readLine()) != null) {
+                    readLine(line)
+                }
+                filePointer = raf.getFilePointer()
+                raf.close()
             }
-            filePointer = raf.getFilePointer()
-            raf.close()
+            parsing = false
+        } else {
+            println "Someone is already parsing ffs! DONT DO IT!"
         }
     }
 
