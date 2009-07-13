@@ -25,7 +25,7 @@ class LogParser {
         parseListeners = []
         if (gotoEOF) {
             filePointer = logFile.length()
-            filePointerReverse = filePointer
+            filePointerReverse = logFile.length()
         }
     }
 
@@ -37,8 +37,8 @@ class LogParser {
             def line
             while ((line = raf.readLine()) != null) {
                 readLine(line)
-                filePointer = raf.getFilePointer()
             }
+            filePointer = raf.getFilePointer()
             raf.close()
         }
     }
