@@ -217,6 +217,9 @@ class Logger implements ParseListener {
                         println "Got !kick-command from non-registered user"
                     }
                     break
+                    case "pin":
+                    RCon.rcon("rcon tell " + player.getUrtID() + " \"^PIN: " + player.getPin() + "\"")
+                    brak
                 }
             }
         } else {
