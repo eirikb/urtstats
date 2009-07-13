@@ -6,7 +6,7 @@ class Logger implements ParseListener {
     def parser
     def config
     def log
-    def synced = false
+    Boolean synced
 
     public Logger() {
         config = ConfigurationHolder.config
@@ -14,11 +14,13 @@ class Logger implements ParseListener {
         parser.addParseListener(this)
         log = LogFactory.getLog("grails.app.task")
         RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
-        sync()
     }
 
     void execute() {
-        if (synced) {
+        if (synced == null) {
+            synced = false
+            sync()
+        } else if (synced) {
             parser.parse()
         }
     }
@@ -44,6 +46,7 @@ class Logger implements ParseListener {
     }
 
     void userInfo(id, userInfo) {
+        println "USERINFO"
         def guid = userInfo.cl_guid
         def player = Player.findByGuid(guid)
         def nick = userInfo.name.trim()
@@ -248,8 +251,8 @@ class Logger implements ParseListener {
 
     void sync() {
         println "Here we go..."
-        RCon.rcon("rcon say \"^7Server is syncing users...\"")
-        def status = RCon.rcon("rcon status")
+        RCon.rcon("rcon say \"^7Server is syncing players...\"")
+        def status = RCon.rcon("rcon status", true)
 
         if (status != null) {
             def reader = new BufferedReader(new StringReader(status));
@@ -271,6 +274,7 @@ class Logger implements ParseListener {
                         rate:st.nextToken()]
                 }
             }
+            println "!!!MAP! " + map
             def max = map.size()
             def i = 0
             while (i < max) {
@@ -281,9 +285,10 @@ class Logger implements ParseListener {
                     def userInfo = parser.getUserInfo(userInfoString)
                     def user = map[id]
                     if (user != null) {
+                        user.name = user.name.substring(0, user.name.length() - 2)
                         if (user.address == userInfo.ip &&
                             user.name == userInfo.name) {
-                            userInfo(id, userInfo)
+                            this.userInfo(Integer.parseInt(id), userInfo)
                             i++
                         }
                     }
