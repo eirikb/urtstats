@@ -20,8 +20,10 @@ class Logger implements ParseListener {
         if (synced == null) {
             synced = false
             sync()
-        } else if (synced) {
-            parser.parse()
+        } else {
+            if (synced) {
+                parser.parse()
+            }
         }
     }
 
@@ -276,6 +278,7 @@ class Logger implements ParseListener {
                         rate:st.nextToken()]
                 }
             }
+            println "MAP: "
             def max = map.size()
             def i = 0
             while (i < max) {
@@ -289,12 +292,16 @@ class Logger implements ParseListener {
                     println "user: " + user
                     println "userInfo: " + userInfo
                     if (user != null) {
-                        user.name = user.name.substring(0, user.name.length() - 2)
+                        if (user.name.lastIndexOf("^7") == user.name.length() - 2) {
+                            user.name = user.name.substring(0, user.name.length() - 2)
+                        }
                         if (user.address == userInfo.ip &&
                             user.name == userInfo.name) {
-                            this.userInfo(Integer.parseInt(id), userInfo)
-                            i++
-                            ok = i == max
+                            if (Player.findByUrtID(Integer.parseInt(id)) == null) {
+                                this.userInfo(Integer.parseInt(id), userInfo)
+                                i++
+                                ok = i == max
+                            }
                         }
                     }
                 } else {
