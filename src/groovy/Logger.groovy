@@ -104,6 +104,23 @@ class Logger implements ParseListener {
         }
     }
 
+    private void addPlayerToTeam(player, teamID) {
+        def team = Team.findByUrtID(teamID)
+        if (team == null) {
+            team = new Team(urtID:teamID)
+            if(team.hasErrors() || !team.save(flush:true)) {
+                log.error("Unable to persist: " + team.dump())
+            }
+        }
+        if (player.team == null || player.team != team) {
+            player.setTeam(team)
+            if(team.hasErrors() || !team.save(flush:true)) {
+                log.error("Unable to persist: " + team.dump())
+            }
+        }
+    }
+
+
     void leave(id) {
         def player = Player.findByUrtID(id)
         if (player != null) {
