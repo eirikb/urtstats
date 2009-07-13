@@ -73,7 +73,6 @@ class LogParser {
                 search = false
                 line2 = null
             }
-            println filePointerReverse
         }
         return line2
     }
