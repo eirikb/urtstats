@@ -277,20 +277,25 @@ class Logger implements ParseListener {
                         rate:st.nextToken()]
                 }
             }
-
-            println "Search for cl_guid three times:"
-            for(int i = 0; i < 3; i++) {
-                line = parser.parseReverse("cl_guid")
-                def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
-                def userInfoString = line.substring(line.indexOf('\\'))
-                def userInfo = parser.getUserInfo(userInfoString)
-                println id + " - " + userInfo
-                def user = map[id]
-                if (user != null) {
-                    println user.address + " vs " + userInfo.ip
-                    println user.name + " vs " + userInfo.name
+            def max = map.size()
+            def i = 0
+            while (i < max) {
+                line = parser.parseReverse("cl_guid", "InitRound: ")
+                if (line != null) {
+                    def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
+                    def userInfoString = line.substring(line.indexOf('\\'))
+                    def userInfo = parser.getUserInfo(userInfoString)
+                    def user = map[id]
+                    if (user != null) {
+                        if (user.address == userInfo.ip &&
+                            user.name == userInfo.name) {
+                            userInfo(userInfo)
+                            i++
+                        }
+                    }
                 } else {
-                    println "Unknown ID: " + id
+                    log.error("All players was not found while syncing!")
+                    break;
                 }
             }
         } else {

@@ -66,10 +66,10 @@ class LogParser {
             if (line2.indexOf(searchFor) >= 0) {
                 search = false
             } else if (filePointerReverse == 0) {
-                log.error("While parseReverse: EOF")
+                println("While parseReverse: EOF")
                 line2 = null
             } else if (line2.indexOf(stopAt) >= 0) {
-                log.error("While parseReverse: Found stopAt (" + stopAt + ")")
+                println("While parseReverse: Found stopAt (" + stopAt + ")")
                 search = false
                 line2 = null
             }
