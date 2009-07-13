@@ -218,7 +218,8 @@ class Logger implements ParseListener {
                     }
                     break
                     case "pin":
-                    RCon.rcon("rcon tell " + player.getUrtID() + " \"^PIN: " + player.getPin() + "\"")
+                    RCon.rcon("rcon tell " + player.getUrtID() + " \"^7PIN: " + player.getPin() + "\"")
+                    break
                 }
             }
         } else {
