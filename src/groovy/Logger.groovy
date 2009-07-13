@@ -283,7 +283,7 @@ class Logger implements ParseListener {
                     if (user != null) {
                         if (user.address == userInfo.ip &&
                             user.name == userInfo.name) {
-                            userInfo(userInfo)
+                            userInfo(id, userInfo)
                             i++
                         }
                     }
@@ -295,6 +295,7 @@ class Logger implements ParseListener {
         } else {
             log.error("Got no response from RCon, setting synced to true, although it's not")
         }
+        RCon.rcon("rcon say \"^7Done syncing.\"")
         synced = true
     }
 }
