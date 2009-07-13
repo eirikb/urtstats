@@ -30,9 +30,10 @@ class LogParser {
     }
 
     void parse() {
+        println "PARSE!"
         if (logFile.length() > filePointer) {
             def raf = new RandomAccessFile(logFile, "r")
-            raf.skipBytes((int) filePointer)
+            raf.seek((int) filePointer)
             def line
             while ((line = raf.readLine()) != null) {
                 readLine(line)
@@ -78,6 +79,7 @@ class LogParser {
     }
 
     private void readLine(String line) {
+        println "Got line: " + line
         StringTokenizer st = new StringTokenizer(line, " ")
         if (st.hasMoreTokens()) {
             String cmdString = st.nextToken()

@@ -253,7 +253,8 @@ class Logger implements ParseListener {
         println "Here we go..."
         RCon.rcon("rcon say \"^7Server is syncing players...\"")
         def status = RCon.rcon("rcon status", true)
-
+        println "Status: " + status
+        
         def ok = false
         if (status != null) {
             def reader = new BufferedReader(new StringReader(status));
@@ -278,12 +279,15 @@ class Logger implements ParseListener {
             def max = map.size()
             def i = 0
             while (i < max) {
-                line = parser.parseReverse("cl_guid", "InitRound: ")
+                line = parser.parseReverse("cl_guid", "InitGame: ")
+                println "LINE: " + line
                 if (line != null) {
                     def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
                     def userInfoString = line.substring(line.indexOf('\\'))
                     def userInfo = parser.getUserInfo(userInfoString)
                     def user = map[id]
+                    println "user: " + user
+                    println "userInfo: " + userInfo
                     if (user != null) {
                         user.name = user.name.substring(0, user.name.length() - 2)
                         if (user.address == userInfo.ip &&
@@ -304,7 +308,7 @@ class Logger implements ParseListener {
         if (ok) {
             RCon.rcon("rcon say \"^7Done syncing.\"")
         } else {
-            RCon.rcon("rcon say \"Done syncing. Not all players were synced!\"")
+            RCon.rcon("rcon say \"^7Done syncing. Not all players were synced!\"")
         }
         synced = true
     }
