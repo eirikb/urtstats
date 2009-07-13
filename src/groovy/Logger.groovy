@@ -251,12 +251,6 @@ class Logger implements ParseListener {
         RCon.rcon("rcon say \"^7Server is syncing users...\"")
         def status = RCon.rcon("rcon status")
 
-
-        status = "print\nmap: ut4_riyadh\n" +
-            "num score ping name            lastmsg address               qport rate\n" +
-            "--- ----- ---- --------------- ------- --------------------- ----- -----\n" +
-            "0     0   64 Comedian^7              0 84.48.198.231:53396     227  8000\n"
-
         if (status != null) {
             def reader = new BufferedReader(new StringReader(status));
             reader.readLine() // Remove print
