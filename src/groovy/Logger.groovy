@@ -56,9 +56,6 @@ class Logger implements ParseListener {
             player = new Player(guid:guid, ip:userInfo.ip, colorNick:nick,
                 nick:removeColorFromNick(nick), urtID:id)
         } else {
-            if (player.getUrtID() < 0) {
-                RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
-            }
             player.setUrtID(id)
             player.setIp(userInfo.ip)
             player.setJoinGameTime(new Date())
@@ -74,6 +71,7 @@ class Logger implements ParseListener {
                 }
             }
         }
+        RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
 
         if(player.hasErrors() || !player.save(flush:true)) {
             log.error("Unable to persist: " + player.dump())
