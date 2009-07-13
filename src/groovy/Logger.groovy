@@ -274,9 +274,9 @@ class Logger implements ParseListener {
                         rate:st.nextToken()]
                 }
             }
-            println "!!!MAP! " + map
             def max = map.size()
             def i = 0
+            def ok = false
             while (i < max) {
                 line = parser.parseReverse("cl_guid", "InitRound: ")
                 if (line != null) {
@@ -290,6 +290,7 @@ class Logger implements ParseListener {
                             user.name == userInfo.name) {
                             this.userInfo(Integer.parseInt(id), userInfo)
                             i++
+                            ok = i == max
                         }
                     }
                 } else {
@@ -300,7 +301,11 @@ class Logger implements ParseListener {
         } else {
             log.error("Got no response from RCon, setting synced to true, although it's not")
         }
-        RCon.rcon("rcon say \"^7Done syncing.\"")
+        if (ok) {
+            RCon.rcon("rcon say \"^7Done syncing.\"")
+        } else {
+            RCon.rcon("rcon say \"Done syncing. Not all players were synced!\"")
+        }
         synced = true
     }
 }
