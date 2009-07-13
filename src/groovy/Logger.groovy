@@ -254,6 +254,7 @@ class Logger implements ParseListener {
         RCon.rcon("rcon say \"^7Server is syncing players...\"")
         def status = RCon.rcon("rcon status", true)
 
+        def ok = false
         if (status != null) {
             def reader = new BufferedReader(new StringReader(status));
             reader.readLine() // Remove print
@@ -276,7 +277,6 @@ class Logger implements ParseListener {
             }
             def max = map.size()
             def i = 0
-            def ok = false
             while (i < max) {
                 line = parser.parseReverse("cl_guid", "InitRound: ")
                 if (line != null) {
