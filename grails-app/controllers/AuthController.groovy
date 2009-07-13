@@ -110,11 +110,8 @@ class AuthController {
         def subject = SecurityUtils.getSubject();
         println subject.dump()
         if (subject.authenticated) {
-            createdBy = JsecUser.findByUsername(subject.principal)
-            println "!!! " + subject.sump()
-            println "??? " + createdBy.dump()
+            [user : JsecUser.findByUsername(subject.principal) ]
         }
-
     }
 
 }

@@ -1,33 +1,71 @@
+
+
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="layout" content="main" />
-    <title>Show user</title>
-  </head>
-  <body>
-    <div class="body">
-      <h1>Show user</h1>
-      <g:if test="${flash.message}">
-        <div class="message">${flash.message}</div>
-      </g:if>
+  <resource:richTextEditor />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="layout" content="main" />
+  <title>Profile</title>
+</head>
+<body>
+  <div class="body">
+    <h1>Profile</h1>
+    <g:if test="${flash.message}">
+      <div class="message">${flash.message}</div>
+    </g:if>
+    <g:hasErrors bean="${user}">
+      <div class="errors">
+        <g:renderErrors bean="${user}" as="list" />
+      </div>
+    </g:hasErrors>
+    <g:form method="post" >
+      <input type="hidden" name="id" value="${user?.id}" />
+      <input type="hidden" name="version" value="${user?.version}" />
       <div class="dialog">
         <table>
           <tbody>
+
             <tr class="prop">
-              <td valign="top" class="name">Id:</td>
-              <td valign="top" class="value">${fieldValue(bean:user, field:'id')}</td>
+              <td valign="top" class="name">
+                <label for="title">Username: ${fieldValue(bean:user, field:'username')}</label>
+              </td>
             </tr>
+
             <tr class="prop">
-              <td valign="top" class="name">Username:</td>
-              <td valign="top" class="value">${fieldValue(bean:user, field:'username')}</td>
+              <td valign="top" class="name">
+                <label for="title">Email:</label>
+              </td>
+              <td valign="top" class="value ${hasErrors(bean:user, field:'email','errors')}">
+                <input name="title" value="${fieldValue(bean:user, field:'email')}"/>
+              </td>
             </tr>
+
             <tr class="prop">
-              <td valign="top" class="name">Email:</td>
-              <td valign="top" class="value">${fieldValue(bean:user, field:'email')}</td>
+              <td valign="top" class="name">
+                <label for="title">First name:</label>
+              </td>
+              <td valign="top" class="value ${hasErrors(bean:user, field:'firstname','errors')}">
+                <input name="title" value="${fieldValue(bean:user, field:'firstname')}"/>
+              </td>
             </tr>
+
+            <tr class="prop">
+              <td valign="top" class="name">
+                <label for="title">Last name:</label>
+              </td>
+              <td valign="top" class="value ${hasErrors(bean:user, field:'lastname','errors')}">
+                <input name="title" value="${fieldValue(bean:user, field:'lastname')}"/>
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </div>
-    </div>
-  </body>
+      <div class="buttons">
+        <span class="button"><g:actionSubmit class="save" value="Update" /></span>
+        <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+      </div>
+    </g:form>
+  </div>
+</body>
 </html>
