@@ -336,8 +336,9 @@ class Logger implements ParseListener {
                     println "LINE: " + line
                     if (line != null) {
                         def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
-                        def id2 = change.substring(change.indexOf(":") + 1, change.indexOf('\\')).trim()
-                        if (id == id2) {
+                        def id2 = change.substring(change.indexOf(":") + 1, change.indexOf('\\'))
+                        id2 = id2.substring(0, id2.indexOf(' ')).trim()
+                        if (id.equals(id2)) {
                             def userInfoString = line.substring(line.indexOf('\\'))
                             def userInfo = parser.getUserInfo(userInfoString)
                             def user = map[id]
@@ -360,7 +361,7 @@ class Logger implements ParseListener {
                                 }
                             }
                         } else {
-                            log.error("Id from userinfo and userinfochange does not match: " + id + " " + id2 + " - " + line + " - " + change )
+                            log.error("Id from userinfo and userinfochange does not match: " + id + " - " + id2 + " - " + line + " - " + change )
                         }
                     }
                 } else {
