@@ -354,7 +354,7 @@ class Logger implements ParseListener {
                                         this.userInfo(Integer.parseInt(id), userInfo)
                                         i++
                                         ok = i == max
-                                        def userInfoChangeString = change.substring(change.indexOf('\\'))
+                                        def userInfoChangeString = change.substring(change.indexOf('\\') - 1)
                                         def userInfoChange = parser.getUserInfo(userInfoChangeString)
                                         this.userInfoChange(id, userInfoChange)
                                     }
