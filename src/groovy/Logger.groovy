@@ -232,7 +232,7 @@ class Logger implements ParseListener {
                             RCon.rcon("rcon bigtext \"" + message + '"')
                         }
                     } 
-                    brak
+                    break
                 }
             }
         } else {
