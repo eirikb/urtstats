@@ -159,7 +159,7 @@ class Logger implements ParseListener {
                     def gameKills = Kill.countByKillerAndCreateTimeGreaterThan(killer, killer.getJoinGameTime())
                     def gameDeaths = Kill.countByKilledAndCreateTimeGreaterThan(killed, killer.getJoinGameTime())
 
-                    switch (Kill.countByKillerAndCreateGreaterThan(killer, Kill.getByKilled(killer).getCreateTime())) {
+                    switch (Kill.countByKillerAndCreateTimeGreaterThan(killer, Kill.findByKilled(killer).getCreateTime())) {
                         case 5:
                         RCon.rcon("rcon bigtext \"" + player.getNick() + " is on a killing spree!\"")
                         break
