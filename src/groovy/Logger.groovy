@@ -330,26 +330,37 @@ class Logger implements ParseListener {
             def max = map.size()
             def i = 0
             while (i < max) {
-                line = parser.parseReverse("cl_guid", "InitGame: ")
-                println "LINE: " + line
-                if (line != null) {
-                    def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
-                    def userInfoString = line.substring(line.indexOf('\\'))
-                    def userInfo = parser.getUserInfo(userInfoString)
-                    def user = map[id]
-                    println "user: " + user
-                    println "userInfo: " + userInfo
-                    if (user != null) {
-                        if (user.name.lastIndexOf("^7") == user.name.length() - 2) {
-                            user.name = user.name.substring(0, user.name.length() - 2)
-                        }
-                        if (user.address == userInfo.ip &&
-                            user.name == userInfo.name) {
-                            if (Player.findByUrtID(Integer.parseInt(id)) == null) {
-                                this.userInfo(Integer.parseInt(id), userInfo)
-                                i++
-                                ok = i == max
+                def change = parser.parseReverse("ClientUserinfoChanged: ", "InitGame: ")
+                if (change != null) {
+                    line = parser.parseReverse("cl_guid", "InitGame: ")
+                    println "LINE: " + line
+                    if (line != null) {
+                        def id = line.substring(line.indexOf(":") + 1, line.indexOf('\\')).trim()
+                        def id2 = change.substring(change.indexOf(":") + 1, change.indexOf('\\')).trim()
+                        if (id == id2) {
+                            def userInfoString = line.substring(line.indexOf('\\'))
+                            def userInfo = parser.getUserInfo(userInfoString)
+                            def user = map[id]
+                            println "user: " + user
+                            println "userInfo: " + userInfo
+                            if (user != null) {
+                                if (user.name.lastIndexOf("^7") == user.name.length() - 2) {
+                                    user.name = user.name.substring(0, user.name.length() - 2)
+                                }
+                                if (user.address == userInfo.ip &&
+                                    user.name == userInfo.name) {
+                                    if (Player.findByUrtID(Integer.parseInt(id)) == null) {
+                                        this.userInfo(Integer.parseInt(id), userInfo)
+                                        i++
+                                        ok = i == max
+                                        def userInfoChangeString = change.substring(change.indexOf('\\'))
+                                        def userInfoChange = parser.getUserInfo(userInfoChangeString)
+                                        this.userInfoChange(id, userInfoChange)
+                                    }
+                                }
                             }
+                        } else {
+                            log.error("Id from userinfo and userinfochange does not match: " + id + " " + id2 + " - " + line + " - " + change )
                         }
                     }
                 } else {

@@ -32,7 +32,7 @@ class RCon {
         def password = config.urt.rcon.password
         def recmessage
         if (force) {
-            while ((recmessage = rconSend(host, port, password, message)).length() == 6);
+            while ((recmessage = rconSend(host, port, password, message))?.length() == 6);
         } else {
             recmessage = rconSend(host, port, password, message)
         }
