@@ -254,7 +254,7 @@ class Logger implements ParseListener {
                                         }
                                     }
                                     for (i in 1..times) {
-                                        RCon.rcon("slap " + victim.getUrtID())
+                                        RCon.rcon("rcon slap " + victim.getUrtID())
                                     }
                                 } else {
                                     RCon.rcon("rcon slap " + player.getUrtID())
