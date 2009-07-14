@@ -82,7 +82,7 @@ class AuthController {
             def ip = request.getRemoteAddr()
             def player = Player.findByNickIlikeAndPin(params.nick, params.pin)
             def playerIP = player.getIp()?.substring(0, player.getIp().indexOf(":"))
-            if (captcha && ip == playerIP) {
+            if (captcha) {
                 player.user = user
                 def userRole = JsecRole.findByName("USER")
                 if (!user.save(flush:true) || !player.save(flush:true)) {
@@ -95,6 +95,7 @@ class AuthController {
                 redirect(action:"login")
             } else {
                 flash.error = "Your IP does not match! <a href=#IP>[Info]</a>"
+                log.warning("IP does not match. Player: " + player + ". IP: " + ip + ". Player IP: " + player?.ip)
             }
         }
         render (view:'create', model:[cmd:cmd, user:user])
