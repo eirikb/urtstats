@@ -198,6 +198,9 @@ class Logger implements ParseListener {
                 cmd = cmd.substring(1)
                 println "CMD: " + cmd + ". MESSAGE: " + message
                 switch (cmd) {
+                    case "help":
+                    RCon.rcon("rcon tell " + player.getUrtID() + " \"^Commands: level, pin\"")
+                    break
                     case "level":
                     case "status":
                     case "stats":
@@ -207,7 +210,7 @@ class Logger implements ParseListener {
                     def user = player.getUser()
                     if (user != null) {
                         def permission = new JsecDbRealm().isPermitted(user.getUsername(),
-                            new org.jsecurity.authz.permission.WildcardPermission("news:create"))
+                            new org.jsecurity.grails.JsecBasicPermission('urt', 'kick'))
                         if (permission) {
                             println "KICK KICK KICK!"
                         } else {
@@ -220,6 +223,16 @@ class Logger implements ParseListener {
                     case "pin":
                     RCon.rcon("rcon tell " + player.getUrtID() + " \"^7PIN: " + player.getPin() + "\"")
                     break
+                    case "bigtext":
+                    def user = player.getUser()
+                    if (user != null) {
+                        def permission = new JsecDbRealm().isPermitted(user.getUsername(),
+                            new org.jsecurity.grails.JsecBasicPermission('urt', 'bigtext'))
+                        if (permission) {
+                            RCon.rcon("rcon bigtext \"" + message + '"')
+                        }
+                    } 
+                    brak
                 }
             }
         } else {

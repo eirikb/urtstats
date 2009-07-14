@@ -76,7 +76,7 @@ class AccessController {
 
     def addPermission = {
         def role = JsecRole.get( params.id )
-        def permission = JsecPermission.findByType("org.jsecurity.authz.permission.WildcardPermission")
+        def permission = JsecPermission.findByType("org.jsecurity.grails.JsecBasicPermission")
         new JsecRolePermissionRel(role:role, permission:permission, target:params.target,
             actions:params.actions).save()
         redirect(action:showRole)
