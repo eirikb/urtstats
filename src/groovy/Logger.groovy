@@ -233,6 +233,37 @@ class Logger implements ParseListener {
                         }
                     } 
                     break
+                    case "slap":
+                    def user = player.getUser()
+                    if (user != null) {
+                        def permission = new JsecDbRealm().isPermitted(user.getUsername(),
+                            new org.jsecurity.grails.JsecBasicPermission('urt', 'bigtext'))
+                        if (permission) {
+                            def msgs = message.split(" ")
+                            def victim = Player.findByNickIlike("%" + msgs[0] + "%")
+                            if (victim != null) {
+                                def admin = JsecUserRoleRel.findByUserAndRole(victim.getUser(),
+                                    JsecRole.findByName("ADMIN"))
+                                if (admin == null) {
+                                    def times = 1
+                                    if (msgs.length >= 2) {
+                                        try {
+                                            times = Integer.parseInt(msgs[1])
+                                        } catch (NumberFormatException e) {
+                                            times = 1
+                                        }
+                                    }
+                                    for (i in 1..times) {
+                                        RCon.rcon("slap " + victim.getUrtID())
+                                    }
+                                } else {
+                                    RCon.rcon("rcon slap " + player.getUrtID())
+                                    RCon.rcon("rcon say \"" + player.getNick() + " tried to slap a admin...\"")
+                                }
+                            }
+                        }
+                    }
+                    break
                 }
             }
         } else {
