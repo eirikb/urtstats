@@ -28,6 +28,8 @@ class LogParser {
             filePointer = logFile.length()
             filePointerReverse = logFile.length()
         }
+        def t = new no.eirikb.utils.tail.Tail(logFile, false)
+
     }
 
     void parse() {
