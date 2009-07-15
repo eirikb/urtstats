@@ -2,17 +2,29 @@ body
 {
     font-family: Verdana,Tahoma,Arial,sans-serif;
     font-size: 12px;
-    background: rgb(248,248,255);
 }
 #container
 {
     width: 80%;
     padding: 30px;
-    border: 1px solid #72CD77;
     background: #fff;
     margin-left: auto;
     margin-right: auto;
     margin-top:30px;
+    border-right-color: #01f614;
+    border-left-color: #01f614;
+    border-bottom-color: #01f614;
+    border-top-color: #01f614;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    text-align: left;
+    vertical-align: bottom;
 }
 
 #tabnav
