@@ -7,18 +7,12 @@
  * ============================================================================
  */
 
+package no.eirikb.urtstats.utils
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
-interface ParseListener {
-    void userInfo(id, userInfo)
-    void userInfoChange(id, userInfo)
-    void leave(id)
-    void kill(killerID, killedID, type)
-    void chat(id, teammessage, message)
-    void hit(hitterID, victimID, hitpoint, weapon)
-    void initRound(roundInfo)
-    void serverStart()
+class NickTool {
+	
 }
 

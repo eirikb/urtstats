@@ -7,12 +7,14 @@
  * ============================================================================
  */
 
+package no.eirikb.urtstats.utils
+
+import org.codehaus.groovy.grails.commons.*
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
-
-import org.codehaus.groovy.grails.commons.*
 
 class RCon {
 
