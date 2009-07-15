@@ -32,5 +32,17 @@ class PlayerTool {
         }
         return userInfo;
     }
+
+    public static Integer getId(line) {
+        line = line.substring(line.indexOf(':') + 1).trim()
+        def space = line.indexOf(' ')
+        if (space >= 0) {
+            line = line.substring(0, space)
+        }
+        try {
+            return Integer.parseInt(line.trim())
+        } catch (Exception e) {}
+        return null
+    }
 }
 

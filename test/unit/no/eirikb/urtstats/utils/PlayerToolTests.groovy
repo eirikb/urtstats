@@ -31,4 +31,15 @@ class PlayerToolTests extends GrailsUnitTestCase {
         map = PlayerTool.getUserInfo("\\name")
         assertEquals map.name, null
     }
+
+    void testGetId() {
+        def id = PlayerTool.getId("test: 1 easy")
+        assertEquals 1, id
+
+        id = PlayerTool.getId("test: 2")
+        assertEquals 2, id
+
+        id = PlayerTool.getId("test: 3 easy again")
+        assertEquals 3, id
+    }
 }
