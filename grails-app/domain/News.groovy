@@ -5,9 +5,10 @@ class News {
     String title
     String head
     String body
-    Date lastModifiedTime = new Date()
-    Date createTime = new Date()
 
+    Date dateCreated
+    Date lastUpdated
+    
     static mapping = {
         head type:'text'
         body  type:'text'

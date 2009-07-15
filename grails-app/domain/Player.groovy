@@ -14,11 +14,13 @@ class Player {
     Integer level = 0
     Integer exp = 0
     Integer nextlevel = 5
-    Date createTime = new Date()
     Date joinGameTime = new Date()
     Integer pin = 1000 + (int) (Math.random() * 1000)
     String welcomeMessage
-    
+
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
         nick(nullable:false)
         colorNick(nullable:false)

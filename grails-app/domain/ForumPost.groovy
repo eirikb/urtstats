@@ -7,6 +7,9 @@ class ForumPost {
     String subject
     String body
 
+    Date dateCreated
+    Date lastUpdated
+
     static mapping = {
         body type:'text'
     }

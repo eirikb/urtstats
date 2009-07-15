@@ -9,6 +9,9 @@ class JsecUser {
     String firstname
     String lastname
 
+    Date dateCreated
+    Date lastUpdated
+
     static constraints = {
         username(nullable:false, blank:false, unique:true)
         email(email:true, nullable:true)

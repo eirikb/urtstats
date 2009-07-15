@@ -5,7 +5,8 @@ class Chat {
 
     String message
     Boolean teamMessage
-    Date createTime = new Date()
+
+    Date dateCreated
 
     static constraints = {
     }

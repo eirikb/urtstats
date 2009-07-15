@@ -7,7 +7,8 @@ class Hit {
     Item item
     Integer hitpoint
     Boolean friendlyfire
-    Date createTime = new Date()
+
+    Date dateCreated
     
     static constraints = {
     }
