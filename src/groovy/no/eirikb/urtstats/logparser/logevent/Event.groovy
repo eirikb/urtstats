@@ -7,12 +7,19 @@
  * ============================================================================
  */
 
-package no.eirikb.urtstats.utils
+package no.eirikb.urtstats.logparser.logevent
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
-class NickTool {
-	
+class Event {
+    def line
+
+    public Event(line) {
+        this.line = line
+    }
+
+    void execute(){}
 }
 

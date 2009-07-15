@@ -13,6 +13,7 @@ import org.codehaus.groovy.grails.commons.*
 import org.apache.commons.logging.LogFactory
 import no.eirikb.utils.tail.Tail
 import no.eirikb.urtstats.utils.RCon
+import no.eirikb.urtstats.logparser.logevent.*
 
 /**
  *
@@ -22,6 +23,7 @@ class LogParser {
     def tail
     def config
     def log
+    def parsing
     Boolean synced
 
     public LogParser() {
@@ -32,7 +34,23 @@ class LogParser {
     }
 
     void execute() {
-        println "Execute!"
+        if (!parsing) {
+            parsing = true
+            def line
+            while ((line = tail.parse()) != null) {
+                readLine(line)
+            }
+            parsing = false
+        }
+    }
+
+    void readLine(line) {
+        def cmd = line.substring(0, line.indexOf(':'))
+        switch (cmd) {
+            case "CLIENTUSERINFO":
+            new UserInfoEvent(cmd, line).execute()
+            bteak
+        }
     }
 }
 
