@@ -41,24 +41,25 @@ class Tail {
     }
 
 
-    String parseReverse(searchFor, stopAt) {
+    String parseReverse() {
         def raf = new RandomAccessFile(logFile, "r")
-        raf.seek(filePointer)
         def line
-        def tempPos = filePointer
-        while (tempPos > 0 && (line == null || line.length() == 0 ||
-                filePointer - (tempPos + line.length()) <= 2)) {
+        while (filePointer > 0 && (line == null || line.length() == 0)) {
+            filePointer--
+            raf.seek((int) filePointer)
             line = raf.readLine()
-            tempPos--
-            raf.seek(tempPos)
-            if (line != null) {
-                if (filePointer - (tempPos + line.length()) <= 2) {
-                    line2 = line
-                }
+        }
+        def tempLine = line
+        while (filePointer > 0 && line.length() <= tempLine.length()) {
+            filePointer--
+            raf.seek((int) filePointer)
+            line = tempLine
+            tempLine = raf.readLine()
+            if (filePointer == 0) {
+                line = tempLine
             }
         }
         raf.close()
-        filePointer = tempPos
         return line
     }
 

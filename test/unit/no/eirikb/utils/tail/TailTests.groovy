@@ -12,24 +12,43 @@ class TailTests extends GrailsUnitTestCase {
 
     protected void tearDown() {
         super.tearDown()
-        logFile.delete()
+        logFile?.delete()
     }
 
     void testParse() {
         createTestFile(testData)
         def tail = new Tail(logFile, false)
         assertNotNull tail
-        assert tail.parse() == testData[0]
-        assert tail.parse() == testData[1]
-        assert tail.parse() == testData[2]
+
+        assertEquals tail.parse(), testData[0]
+        assertEquals tail.parse(), testData[1]
+        assertEquals tail.parse(), testData[2]
         tail.setFilePointer(testData[0].length() + 1)
-        assert tail.parse() == testData[1]
+        assertEquals tail.parse(), testData[1]
         tail.setFilePointer(0)
         for (i in 0..3 ) {
-            assert tail.parse() == testData[i]
+            assertEquals tail.parse(), testData[i]
         }
-        assert tail.parse() == null
-        assert tail.parse() == null
+        assertEquals tail.parse(), null
+        assertEquals tail.parse(), null
+    }
+
+    void testParseReverse() {
+        createTestFile(testData)
+        def tail = new Tail(logFile, false)
+        assertNotNull tail
+
+        assertEquals tail.parseReverse(), null
+
+        tail = new Tail(logFile, true)
+        assertNotNull tail
+
+        assertEquals tail.parseReverse(), testData[testData.size() - 1]
+
+        tail.setFilePointer(logFile.length())
+        for (i in 3..0) {
+            assertEquals tail.parseReverse(), testData[i]
+        }
     }
 
     void createTestFile(testData) {
