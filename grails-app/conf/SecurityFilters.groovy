@@ -32,6 +32,14 @@ class SecurityFilters {
             }
         }
 
+        accessController(controller:"admin", action:"*") {
+            before = {
+                accessControl {
+                    role("ADMIN")
+                }
+            }
+        }
+
         createNews(controller:"news", action:"create")  {
             before = {
                 accessControl {
