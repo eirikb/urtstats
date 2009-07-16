@@ -9,8 +9,14 @@
 
 package no.eirikb.urtstats.logparser.logevent
 
-import org.codehaus.groovy.grails.commons.*
 import no.eirikb.urtstats.utils.PlayerTool
+import domain.urt.Player
+import domain.urt.Team
+import domain.urt.PlayerLog
+import domain.urt.Item
+import no.eirikb.urtstats.utils.PlayerTool
+import no.eirikb.urtstats.utils.TeamTool
+import no.eirikb.urtstats.utils.RCon
 
 /**
  *
@@ -34,55 +40,62 @@ class UserInfoEvent extends Event{
                 player = createPlayer(userInfo)
                 log.info "Create player: " + player
             } else {
-                updatePlayer(userInfo)
+                player = updatePlayer(player, userInfo)
                 log.info "Update player: " + player
             }
-
             player.addToPlayerLogs(new PlayerLog(startTime:new Date()))
-
-            if (addGear(player)) {
+            if (addGear(player, userInfo)) {
                 log.info "Items added to player: " + player
             } else {
                 log.info "No items found for player: " + player + ". With userInfo: " + userInfo
             }
 
             if(player.hasErrors() || !player.save(flush:true)) {
-                log.error "Unable to persist: " + player.dump()
+                log.error "Unable to persist on UserInfoEvent: " + player?.dump()
             } else {
-                //addPlayerToTeam(player, 0)
+                TeamTool.addPlayerToTeam(player, 0)
             }
-
             RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
-
         } else {
             log.warn "Player has no cl_guid: " + userInfo
         }
     }
 
-    def addGear(userInfo) {
+    def addGear(player, userInfo) {
         def gear = userInfo.gear
         if (gear != null) {
+            def added = false
             for (i in 0..gear.length() - 1) {
-                def item = gear.charAt(i)
+                def item = Item.findByBinding(gear.charAt(i))
                 if (item != null) {
+                    added = true
                     player.addToItems(item)
                 }
+            }
+            if (!added) {
+                log.warn "Player " + player + " got his gear-string: " + gear + ". Although none was added (not found)"
+                return false
             }
             return true
         }
         return false
     }
 
-    def updatePlayer(userInfo) {
+    def updatePlayer(player, userInfo) {
         player.setUrtID(id)
         player.setIp(userInfo.ip)
         player.setNick(userInfo.name)
         player.setJoinGameDate(new Date())
+        return player
     }
 
     def createPlayer(userInfo) {
-        return new Player(guid:guid, ip:userInfo.ip, colorNick:nick,
-            nick:removeColorFromNick(nick), urtID:id)
+        def player = new Player(guid:userInfo.cl_guid,
+            ip:userInfo.ip,
+            colorNick:userInfo.name,
+            nick:PlayerTool.removeColorFromNick(userInfo.name),
+            urtID:id)
+        return player
     }
 
     def getUserInfo() {
@@ -94,7 +107,5 @@ class UserInfoEvent extends Event{
             return null
         }
     }
-
-
 }
 
