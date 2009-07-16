@@ -1,3 +1,5 @@
+package domain.urt
+
 class Server {
     Date startLogging
     Date lastRestart

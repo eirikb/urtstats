@@ -1,6 +1,8 @@
 import org.jsecurity.authc.AuthenticationException
 import org.jsecurity.authc.UsernamePasswordToken
 import org.jsecurity.SecurityUtils
+import domain.news.*
+import domain.security.*
 
 class NewsController {
     

@@ -2,6 +2,7 @@ import org.jsecurity.authc.AuthenticationException
 import org.jsecurity.authc.UsernamePasswordToken
 import org.jsecurity.SecurityUtils
 import org.jsecurity.crypto.hash.Sha1Hash
+import domain.security.*
 
 class AuthController {
     def jsecSecurityManager

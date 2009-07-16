@@ -1,3 +1,7 @@
+package domain.forum
+
+import domain.security.JsecUser
+
 class ForumPost {
     static belongsTo = [ForumTopic, JsecUser]
 

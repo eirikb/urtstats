@@ -1,3 +1,5 @@
+package domain.urt
+
 class PlayerLog {
     static belongsTo = [player:Player]
 

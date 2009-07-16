@@ -1,3 +1,5 @@
+package domain.urt
+
 class Item {
     static hasMany = [hits:Hit, kills:Kill, players:Player, deathCauses:DeathCause]
     

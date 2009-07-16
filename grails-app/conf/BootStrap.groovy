@@ -1,4 +1,6 @@
 import org.jsecurity.crypto.hash.Sha1Hash
+import domain.urt.*
+import domain.security.*
 
 class BootStrap {
     def init = { servletContext ->

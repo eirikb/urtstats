@@ -1,3 +1,7 @@
+package domain.urt
+
+import domain.security.JsecUser
+
 class Player {
     static hasMany = [chats:Chat, hitsOther:Hit, hitsSelf:Hit, kills:Kill, deaths:Kill, playerLogs:PlayerLog, items:Item, deathCauses:DeathCause]
     static mappedBy = [hitsOther:"hitter", hitsSelf:"victim", kills:"killer", deaths:"killed"]
@@ -14,7 +18,7 @@ class Player {
     Integer level = 0
     Integer exp = 0
     Integer nextlevel = 5
-    Date joinGameTime = new Date()
+    Date joinGameDate = new Date()
     Integer pin = 1000 + (int) (Math.random() * 1000)
     String welcomeMessage
 
@@ -32,7 +36,7 @@ class Player {
         guid(unique:true)
         team(nullable: true)
         items(nullable:true)
-        joinGameTime(nullable:true)
+        joinGameDate(nullable:true)
         welcomeMessage(nullable:true)
     }
 }

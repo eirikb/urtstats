@@ -1,3 +1,5 @@
+package domain.security
+
 class JsecRole {
     String name
 

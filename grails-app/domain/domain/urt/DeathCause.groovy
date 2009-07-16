@@ -1,3 +1,5 @@
+package domain.urt
+
 class DeathCause {
     static hasMany = [kills:Kill, players:Player]
 

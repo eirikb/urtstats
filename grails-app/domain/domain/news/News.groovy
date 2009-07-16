@@ -1,3 +1,7 @@
+package domain.news
+
+import domain.security.JsecUser
+
 class News {
     static belongsTo = [JsecUser]
     

@@ -1,3 +1,5 @@
+package domain.urt
+
 class Hit {
     static belongsTo = [Player]
 

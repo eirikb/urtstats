@@ -1,3 +1,5 @@
+package domain.urt
+
 class Kill {
     static belongsTo = [Player]
     

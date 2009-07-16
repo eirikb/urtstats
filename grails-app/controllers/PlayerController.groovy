@@ -1,4 +1,4 @@
-
+import domain.urt.Player
 
 class PlayerController {
     

@@ -1,3 +1,5 @@
+package domain.security
+
 class JsecPermission {
     String type
     String possibleActions

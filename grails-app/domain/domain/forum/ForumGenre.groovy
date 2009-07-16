@@ -1,3 +1,5 @@
+package domain.forum
+
 class ForumGenre {
     static hasMany = [topics:ForumTopic]
 

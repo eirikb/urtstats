@@ -1,3 +1,7 @@
+package domain.forum
+
+import domain.security.JsecUser
+
 class ForumTopic {
     static hasMany = [posts:ForumPost]
     static belongsTo = [ForumGenre, JsecUser]

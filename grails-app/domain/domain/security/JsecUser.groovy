@@ -1,3 +1,8 @@
+package domain.security
+
+import domain.urt.Player
+import domain.news.News
+
 class JsecUser {
     static hasMany = [players:Player, news:News]
     
