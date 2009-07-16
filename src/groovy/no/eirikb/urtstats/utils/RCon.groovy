@@ -10,6 +10,7 @@
 package no.eirikb.urtstats.utils
 
 import org.codehaus.groovy.grails.commons.*
+import grails.util.GrailsUtil
 
 /**
  *
@@ -28,15 +29,17 @@ class RCon {
     }
 
     public synchronized static String rcon(message, force) {
-        def config = ConfigurationHolder.config
-        def host = config.urt.rcon.host
-        def port = config.urt.rcon.port
-        def password = config.urt.rcon.password
         def recmessage
-        if (force) {
-            while ((recmessage = rconSend(host, port, password, message))?.length() == 6);
-        } else {
-            recmessage = rconSend(host, port, password, message)
+        if (GrailsUtil.environment != "test") {
+            def config = ConfigurationHolder.config
+            def host = config.urt.rcon.host
+            def port = config.urt.rcon.port
+            def password = config.urt.rcon.password
+            if (force) {
+                while ((recmessage = rconSend(host, port, password, message))?.length() == 6);
+            } else {
+                recmessage = rconSend(host, port, password, message)
+            }
         }
         return recmessage
     }

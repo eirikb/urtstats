@@ -47,9 +47,7 @@ class PlayerTool {
 
     public static String removeColorFromNick(colorNick) {
         def nick = ""
-        println "------------- " + colorNick
         colorNick.split("\\^\\d+").each {
-            println it
             nick += it
         }
         return nick
