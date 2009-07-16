@@ -9,15 +9,19 @@
 
 package no.eirikb.urtstats.logparser.logevent
 
+import org.apache.commons.logging.LogFactory
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
 class Event {
     def line
+    def log
 
     public Event(line) {
         this.line = line
+        log = LogFactory.getLog("grails.app.task")
     }
 
     void execute(){}
