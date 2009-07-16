@@ -42,4 +42,35 @@ class PlayerToolTests extends GrailsUnitTestCase {
         id = PlayerTool.getId("test: 3 easy again")
         assertEquals 3, id
     }
+
+    void testRemoveColorFromNick() {
+
+        def nick = PlayerTool.removeColorFromNick("eirikb")
+        assertEquals "eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("^2eirikb")
+        assertEquals "eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("e^4353irikb")
+        assertEquals "eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("eirikb^43")
+        assertEquals "eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("e^3ir^3ik^65b^1")
+        assertEquals "eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("^2e^4i^1ri^3kb")
+        assertEquals "eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("^eir^ikb^")
+        assertEquals "^eir^ikb^", nick
+
+        nick = PlayerTool.removeColorFromNick("^e^1irikb^3")
+        assertEquals "^eirikb", nick
+
+        nick = PlayerTool.removeColorFromNick("^3^eirikb^3^")
+        assertEquals "^eirikb^", nick
+
+    }
 }
