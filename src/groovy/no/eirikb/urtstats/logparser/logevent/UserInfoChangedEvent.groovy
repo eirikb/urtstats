@@ -9,6 +9,11 @@
 
 package no.eirikb.urtstats.logparser.logevent
 
+import domain.urt.Player
+import no.eirikb.urtstats.utils.RCon
+import no.eirikb.urtstats.utils.TeamTool
+import no.eirikb.urtstats.utils.PlayerTool
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
@@ -16,30 +21,29 @@ package no.eirikb.urtstats.logparser.logevent
 class UserInfoChangedEvent extends Event {
     public UserInfoChangedEvent(line) {
         super(line)
+        println line
     }
 
     void execute() {
-        /*
         def player = Player.findByUrtID(id)
         if (player != null) {
+            def userInfo = getUserInfo()
+            println userInfo
             def urtID = Integer.parseInt(userInfo.t)
-            def same = player.team.urtID == urtID
-            if (player.team.urtID != urtID) {
-                addPlayerToTeam(player, urtID)
+            if (player.getTeam()?.getUrtID() != urtID) {
+                TeamTool.addPlayerToTeam(player, urtID)
+            } else if (player.getTeam() == null) {
+                TeamTool.addPlayerToTeam(player, urtID)
             }
-            if (player.getUser() == null) {
-                RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Welcome to UrTStats server. Your PIN is ^1" +
-                    player.getPin() + "^7. Use it to activate your account on ^2www.urtstats.net" +
-                    "^7. Use !help for help.\"")
-            } else {
-                RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Welcome back " + player.getUser().getUsername() +
-                ". Use !help for help.")
-            }
-            RCon.rcon("rcon tell " + player.getUrtID() + " \"^7" + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
         } else {
-            log.error("Unkown player: " + id + ". " + userInfo.dump())
+            log.error "(UserInfoChanged) Unkown player: " + id + ". " + userInfo.dump()
         }
-        */
+    }
+
+    def getUserInfo() {
+        def line = getLine()
+        def userInfoString = line.substring(line.indexOf('\\') - 1)
+        return PlayerTool.getUserInfo(userInfoString)   
     }
 }
 
