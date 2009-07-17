@@ -26,15 +26,15 @@ class TeamTool {
         if (team == null) {
             team = new Team(urtID:teamID)
             if(team.hasErrors() || !team.save(flush:true)) {
-                log.error("Unable to create team (teamID: " + teamID +"). Team: " + team?.dump())
+                log.error "Unable to create team (teamID: " + teamID +"). Team: " + team?.dump()
             }
         }
         player.getTeam()?.removeFromPlayers(player)
         if (player.getTeam() == null || player.getTeam() != team) {
             team.addToPlayers(player)
             if(team.hasErrors() || !team.save(flush:true)) {
-                log.error("Unable to add player to team. Player: "  + player?.dump() +
-                    ". Team: " + team?.dump())
+                log.error "Unable to add player to team. Player: "  + player?.dump() +
+                    ". Team: " + team?.dump()
             }
         }
     }
@@ -46,11 +46,11 @@ class TeamTool {
         if (team != null) {
             team.removeFromPlayers(player)
             if(team.hasErrors() || !team.save(flush:true)) {
-                log.error("Unable to remove player from team. Player: "  + player?.dump() +
-                    ". Team: " + team?.dump())
+                log.error "Unable to remove player from team. Player: "  + player?.dump() +
+                    ". Team: " + team?.dump()
             }
         } else {
-            log.warn "RemovPlayerFromTeam: Could not remove, as player had no team. Player: " + player
+            log.warn "RemovePlayerFromTeam: Could not remove, as player had no team. Player: " + player
         }
     }
 }
