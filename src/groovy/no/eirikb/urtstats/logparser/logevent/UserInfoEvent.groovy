@@ -40,7 +40,7 @@ class UserInfoEvent extends Event{
                 player = updatePlayer(player, userInfo)
                 log.info "Update player: " + player
             }
-            player.addToPlayerLogs(new PlayerLog(startTime:new Date()))
+            player.addToPlayerLogs(new PlayerLog())
             if (addGear(player, userInfo)) {
                 log.info "Items added to player: " + player
             } else {

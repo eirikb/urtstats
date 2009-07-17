@@ -53,6 +53,9 @@ class LogParser {
             case "CLIENTUSERINFOCHANGED":
             new UserInfoChangedEvent(line).execute()
             break
+            case "CLIENTDISCONNECT":
+            new LeaveEvent(line).execute()
+            break
         }
     }
 }

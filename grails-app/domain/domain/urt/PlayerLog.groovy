@@ -3,10 +3,10 @@ package domain.urt
 class PlayerLog {
     static belongsTo = [player:Player]
 
-    Date startTime
-    Date endTime
+    Date createDate = new Date()
+    Date endDate
 
     static constraints = {
-        endTime(nullable:true)
+        endDate(nullable:true)
     }
 }

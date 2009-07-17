@@ -9,11 +9,44 @@
 
 package no.eirikb.urtstats.logparser.logevent
 
+import domain.urt.Player
+import no.eirikb.urtstats.utils.TeamTool
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
-class LeaveEvent {
-	
+class LeaveEvent extends Event {
+
+    public LeaveEvent(line) {
+        super(line)
+    }
+
+    void execute() {
+        def player = Player.findByUrtID(id)
+        if (player != null) {
+            player.urtID = -1;
+            if(player.hasErrors() || !player.save(flush:true)) {
+                log.error "Error while updating leave for player: " + player.dump()
+            } else {
+                TeamTool.removePlayerFromTeam(player)
+            }
+        } else {
+            log.error "LeaveEvent: Player not found: " + id
+        }
+    }
+
+    void updatePlayerLog() {
+        def playerLog = PlayerLog.findByPlayer(player)
+        if (playerLog != null) {
+            playerLog.setEndTime(new Date())
+            if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
+                log.error "LeaveEvent: Unable to update playerLog for player:" + player.dump() +
+                    ". PlyerLog: " + playerLog
+            }
+        } else {
+            log.error "LeaveEvent: Unable to find playerlog for player " + player.dump()
+        }
+    }
 }
 
