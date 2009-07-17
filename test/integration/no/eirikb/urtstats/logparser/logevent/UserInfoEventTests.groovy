@@ -5,6 +5,7 @@ import no.eirikb.urtstats.utils.PlayerTool
 import no.eirikb.urtstats.logparser.logevent.UserInfoEvent
 import domain.urt.Player
 import domain.urt.Team
+import domain.urt.PlayerLog
 
 class UserInfoEventTests extends GrailsUnitTestCase {
     protected void setUp() {
@@ -74,9 +75,15 @@ class UserInfoEventTests extends GrailsUnitTestCase {
         new UserInfoEvent("ClientUserinfo: 0 \\ip\\83.225.252.223:36714" +
             "\\name\\Hello^1337 W^o^42rld\\cl_guid\\1" +
         "\\gear\\GZAARWX").execute()
+        assertEquals 1, Player.count()
+        assertEquals 1, Team.count()
+        assertEquals 1, PlayerLog.count()
         def player = Player.findByGuid("1")
+        assertTrue PlayerLog.findByPlayer(player).getCreateDate().getTime() - new Date().getTime() < 1000
+        
         assertNotNull player
         assertEquals "83.225.252.223:36714", player.getIp()
+
 
         new UserInfoEvent("ClientUserinfo: 0 \\ip\\83.225.252.223:36714" +
             "\\name\\test\\cl_guid\\1" +
