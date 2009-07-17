@@ -9,11 +9,70 @@
 
 package no.eirikb.urtstats.logparser.logevent
 
+import domain.urt.Kill
+import domain.urt.Player
+import no.eirikb.urtstats.utils.RCon
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
-class KillEvent {
-	
+class KillEvent extends Event {
+    final double NEXTLEVELMAGIC = 1.2
+
+    public KillEvent(line) {
+        super(line)
+    }
+
+    void execute() {
+        def killer = Player.findByUrtID(killerID)
+        def killed = Player.findByUrtID(killedID)
+        if (killer != null && killed != null) {
+            def friendlyfire = killer.team == killed.team
+            def death = DeathCause.findByUrtID(type)
+            if (death != null) {
+                def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
+                if(kill.hasErrors() || !kill.save(flush:true)) {
+                    log.error "KillEvent: Could not persist kill: " + kill.dump()
+                }
+                if (!friendlyfire) {
+                    killer.exp += calculateExpGain(killer, killed)
+
+                    if (killer.exp > killer.nextlevel) {
+                        level(killer)
+                    }
+                    if(killer.hasErrors() || !killer.save(flush:true)) {
+                        log.error "KillEvnent: Unale to update player after gain, player: " + killer.dump()
+                    }
+                }
+            } else {
+                log.error "KillEvent: No DeathCause for type:" + type
+            }
+        } else {
+            log.error "KillEvent: One of the players were null. killer: " + killer + ". killed: " + killed +
+            ". killerID: " + killedID + ". killedID: " + killedID + ". PlayerList: " + Player.findAllByUrtIDGreaterThanLike(0)?.list()?.dump()
+        }
+    }
+    
+    Double getTotalRatio(player) {
+        return (Kill.countByKiller(player) + 1) / (Kill.countByKilled(player) + 1)
+    }
+    
+    Double getGameRatio(player) {
+        return (Kill.countByKillerAndCreateDateGreaterThan(killer, killer.getJoinGameDate()) + 1) /
+        (Kill.countByKilledAndCreateDateGreaterThan(killer, killer.getJoinGameDate() + 1))
+    }
+
+    Integer calculateExpGain(killer, killed) {
+        def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killed.getLevel() : 1
+        def ratio = ((getGameRatio(killer) + getTotalRatio(player))) / 2
+        return levelBoost * ratio
+    }
+
+    void level(player) {
+        killer.level++;
+        killer.nextlevel = killer.exp * NEXTLEVELMAGIC + Math.sqrt(killer.getExp())
+        RCon.rcon("rcon bigtext \"^7Congratulations ^2" + killer.nick.trim() + "^7you are now level ^2" + killer.level + '"')
+    }
 }
 
