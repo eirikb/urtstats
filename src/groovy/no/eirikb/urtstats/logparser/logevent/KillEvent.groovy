@@ -59,8 +59,8 @@ class KillEvent extends Event {
     }
     
     Double getGameRatio(player) {
-        return (Kill.countByKillerAndCreateDateGreaterThan(killer, killer.getJoinGameDate()) + 1) /
-        (Kill.countByKilledAndCreateDateGreaterThan(killer, killer.getJoinGameDate() + 1))
+        return (Kill.countByKillerAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1) /
+        (Kill.countByKilledAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1)
     }
 
     Integer calculateExpGain(killer, killed) {

@@ -36,4 +36,27 @@ class KillEventTests extends GrailsUnitTestCase {
         assertEquals 5/3, new KillEvent("").getTotalRatio(killer)
         assertEquals 0.6, new KillEvent("").getTotalRatio(killed)
     }
+
+    void testGetGameRatio() {
+        def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        assertEquals 1, new KillEvent("").getTotalRatio(killer)
+        new Kill(killer:killer, killed:killed, deathCause:DeathCause.findByUrtID(14), firendyfire:false).save(flush:true)
+        assertEquals 2, new KillEvent("").getTotalRatio(killer)
+        assertEquals 0.5, new KillEvent("").getTotalRatio(killed)
+        new Kill(killer:killed, killed:killer, deathCause:DeathCause.findByUrtID(14), firendyfire:false).save(flush:true)
+        assertEquals 1, new KillEvent("").getTotalRatio(killer)
+        assertEquals 1, new KillEvent("").getTotalRatio(killer)
+        killer.setJoinGameDate(new Date())
+        killer.save(flush:true)
+        killed.setJoinGameDate(new Date())
+        killed.save(flush:true)
+        assertEquals 1, new KillEvent("").getGameRatio(killer)
+        new Kill(killer:killer, killed:killed, deathCause:DeathCause.findByUrtID(14), firendyfire:false).save(flush:true)
+        assertEquals 2, new KillEvent("").getGameRatio(killer)
+        assertEquals 0.5, new KillEvent("").getGameRatio(killed)
+        new Kill(killer:killed, killed:killer, deathCause:DeathCause.findByUrtID(14), firendyfire:false).save(flush:true)
+        assertEquals 1, new KillEvent("").getGameRatio(killer)
+        assertEquals 1, new KillEvent("").getGameRatio(killer)
+    }
 }
