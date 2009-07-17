@@ -19,7 +19,7 @@ import org.apache.commons.logging.LogFactory
  */
 class TeamTool {
 
-    public static boolean addPlayerToTeam(player, teamID) {
+    public static void addPlayerToTeam(player, teamID) {
         def log = LogFactory.getLog("grails.app.task")
 
         def team = Team.findByUrtID(teamID)
@@ -36,6 +36,21 @@ class TeamTool {
                 log.error("Unable to add player to team. Player: "  + player?.dump() +
                     ". Team: " + team?.dump())
             }
+        }
+    }
+
+    public static void removePlayerFromTeam(player) {
+        def log = LogFactory.getLog("grails.app.task")
+
+        def team = player.getTeam()
+        if (team != null) {
+            team.removeFromPlayers(player)
+            if(team.hasErrors() || !team.save(flush:true)) {
+                log.error("Unable to remove player from team. Player: "  + player?.dump() +
+                    ". Team: " + team?.dump())
+            }
+        } else {
+            log.warn "RemovPlayerFromTeam: Could not remove, as player had no team. Player: " + player
         }
     }
 }
