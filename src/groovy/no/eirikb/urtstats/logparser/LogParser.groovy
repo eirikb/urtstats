@@ -48,8 +48,11 @@ class LogParser {
         def cmd = line.substring(0, line.indexOf(':'))
         switch (cmd) {
             case "CLIENTUSERINFO":
-            new UserInfoEvent(cmd, line).execute()
-            bteak
+            new UserInfoEvent(line).execute()
+            break
+            case "CLIENTUSERINFOCHANGED":
+            new UserInfoChangedEvent(line).execute()
+            break
         }
     }
 }

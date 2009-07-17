@@ -34,7 +34,6 @@ class PlayerTool {
     }
 
     public static Integer getId(line) {
-        println "********************** OMFGLOL"
         line = line.substring(line.indexOf(':') + 1).trim()
         def space = line.indexOf(' ')
         if (space >= 0) {

@@ -31,9 +31,7 @@ class UserInfoEvent extends Event{
 
     void execute() {
         def userInfo = getUserInfo()
-
         if (userInfo != null) {
-            println "lol"
             player = Player.findByGuid(userInfo.cl_guid)
             if (player == null) {
                 player = createPlayer(userInfo)
