@@ -10,6 +10,7 @@
 package no.eirikb.urtstats.logparser.logevent
 
 import domain.urt.Player
+import domain.urt.PlayerLog
 import no.eirikb.urtstats.utils.TeamTool
 
 /**
@@ -30,16 +31,17 @@ class LeaveEvent extends Event {
                 log.error "Error while updating leave for player: " + player.dump()
             } else {
                 TeamTool.removePlayerFromTeam(player)
+                updatePlayerLog(player)
             }
         } else {
             log.error "LeaveEvent: Player not found: " + id
         }
     }
 
-    void updatePlayerLog() {
+    void updatePlayerLog(player) {
         def playerLog = PlayerLog.findByPlayer(player)
         if (playerLog != null) {
-            playerLog.setEndTime(new Date())
+            playerLog.setEndDate(new Date())
             if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
                 log.error "LeaveEvent: Unable to update playerLog for player:" + player.dump() +
                     ". PlyerLog: " + playerLog
