@@ -10,6 +10,7 @@
 package no.eirikb.urtstats.logparser.logevent
 
 import org.apache.commons.logging.LogFactory
+import no.eirikb.urtstats.utils.PlayerTool
 
 /**
  *
@@ -18,6 +19,7 @@ import org.apache.commons.logging.LogFactory
 class Event {
     def line
     def log
+    def id
 
     public Event(line) {
         this.line = line
@@ -25,5 +27,9 @@ class Event {
     }
 
     void execute(){}
+
+    def getId() {
+        return id == null ?  id = PlayerTool.getId(line) : id
+    }
 }
 

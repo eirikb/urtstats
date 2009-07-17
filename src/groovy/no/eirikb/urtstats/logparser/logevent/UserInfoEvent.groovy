@@ -24,17 +24,16 @@ import no.eirikb.urtstats.utils.RCon
  */
 class UserInfoEvent extends Event{
     def player
-    def id
     
     public UserInfoEvent(line) {
         super(line)
-        id = PlayerTool.getId(line)
     }
 
     void execute() {
         def userInfo = getUserInfo()
 
         if (userInfo != null) {
+            println "lol"
             player = Player.findByGuid(userInfo.cl_guid)
             if (player == null) {
                 player = createPlayer(userInfo)
@@ -82,7 +81,7 @@ class UserInfoEvent extends Event{
     }
 
     def updatePlayer(player, userInfo) {
-        player.setUrtID(id)
+        player.setUrtID(getId())
         player.setIp(userInfo.ip)
         player.setNick(userInfo.name)
         player.setJoinGameDate(new Date())
@@ -94,7 +93,7 @@ class UserInfoEvent extends Event{
             ip:userInfo.ip,
             colorNick:userInfo.name,
             nick:PlayerTool.removeColorFromNick(userInfo.name),
-            urtID:id)
+            urtID:getId())
         return player
     }
 
