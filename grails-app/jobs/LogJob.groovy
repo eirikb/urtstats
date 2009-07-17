@@ -2,16 +2,18 @@
 import no.eirikb.urtstats.logparser.LogParser
 
 class LogJob  {
-    def timeout = 5000l // execute job once in 5 seconds
+    def startDelay = 30000
+    def timeout = 1000
     static logParser
 
     public LogJob() {
-        if (logParser == null) {
-            logParser = new LogParser()
-        }
+
     }
 
     def execute() {
+        if (logParser == null) {
+            logParser = new LogParser()
+        }
         logParser.execute()
     }
 }
