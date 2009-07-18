@@ -81,7 +81,7 @@ class ChatEvent extends Event {
             break
 
             case "kick":
-            def close = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
+            def clos = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
             rconCommand(player, cmd, message, clos)
             break
 
@@ -96,13 +96,13 @@ class ChatEvent extends Event {
             break
 
             case "slap":
-            def close = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
+            def clos = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
             rconCommand(player, cmd, message, clos)
             break
 
             case "forceteam":
             case "move":
-            def close = {
+            def clos = {
                 if (it.getTeam().getUrtID() == 1) {
                     RCon.rcon("rcon " + cmd + ' ' + it.getUrtID() + " blue")
                 } else {
