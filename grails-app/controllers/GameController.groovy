@@ -1,3 +1,5 @@
+import domain.urt.Player
+
 class GameController {
 
     def index = {

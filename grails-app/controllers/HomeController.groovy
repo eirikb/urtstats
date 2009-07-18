@@ -1,3 +1,5 @@
+import domain.news.News
+
 class HomeController {
 
     def index = {

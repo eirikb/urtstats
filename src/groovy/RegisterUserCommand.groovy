@@ -1,3 +1,5 @@
+import domain.urt.Player
+
 public class RegisterUserCommand {
 
     String password
