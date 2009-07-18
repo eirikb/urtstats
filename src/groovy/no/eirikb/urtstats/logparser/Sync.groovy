@@ -32,7 +32,7 @@ class Sync {
         RCon.rcon("rcon say \"^7Syncing players...\"")
         def status = RCon.rcon("rcon status", true)
         if (status != null) {
-            map = statusToMap(status)
+            def map = statusToMap(status)
             def max = map.size()
             def done = 0
             while (done >= 0 && done < max) {
