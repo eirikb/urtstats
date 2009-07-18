@@ -35,7 +35,7 @@ class UserInfoChangedEvent extends Event {
             } else if (player.getTeam() == null) {
                 TeamTool.addPlayerToTeam(player, urtID)
             }
-            log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam()
+            log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam().getUrtID()
         } else {
             log.error "[UserInfoChangedEvent] Unkown player: " + id + ". " + userInfo.dump()
         }

@@ -36,19 +36,25 @@ class UserInfoEvent extends Event{
             def first = true
             if (player == null) {
                 player = createPlayer(userInfo)
-                log.info "[UserInfoEvent] Create player: " + player
+                log.info "[UserInfoEvent] Create player: " + player.dump()
             } else  {
                 first = player.getUrtID() < 0
             }
             player = updatePlayer(player, userInfo)
-            log.info "[UserInfoEvent] Update player: " + player
+            log.info "[UserInfoEvent] Update player: " + player.dump()
             
             if (first) {
                 player.setJoinGameDate(new Date())
                 player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
                 RCon.rcon("rocn tell " + id + "\"^7Welcome ^2" + player.getColorNick() +
-        "^7. Your level: ^2" + player.getLevel() + "^7.\"")
+                    "^7. Your level: ^2" + player.getLevel() + "^7.\"")
+            }
+
+            if(player.hasErrors() || !player.save(flush:true)) {
+                log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player?.dump()
+            } else {
+                TeamTool.addPlayerToTeam(player, 0)
             }
             
             if (addGear(player, userInfo)) {
@@ -57,11 +63,6 @@ class UserInfoEvent extends Event{
                 log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
             }
 
-            if(player.hasErrors() || !player.save(flush:true)) {
-                log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player?.dump()
-            } else {
-                TeamTool.addPlayerToTeam(player, 0)
-            }
         } else {
             log.warn "[UserInfoEvent] Player has no cl_guid: " + userInfo
         }
@@ -79,7 +80,7 @@ class UserInfoEvent extends Event{
                 }
             }
             if (!added) {
-                log.warn "[UserInfoEvent] Player " + player + " got his gear-string: " + gear + ". Although none was added (not found)"
+                log.warn "[UserInfoEvent] Player " + player.dump() + " got his gear-string: " + gear + ". Although none was added (not found)"
                 return false
             }
             return true
