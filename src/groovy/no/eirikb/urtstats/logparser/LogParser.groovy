@@ -66,7 +66,14 @@ class LogParser {
             case "HIT":
             new HitEvent(line).execute()
             break
+            case "INITROUND":
+            new ServerEvent(cmd, line).execute()
+            break
+            case "SERVER":
+            new ServerEvent(cmd, line).execute()
+            break
         }
     }
+
 }
 
