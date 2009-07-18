@@ -13,6 +13,7 @@ import domain.urt.Chat
 import domain.urt.Player
 import domain.security.*
 import security.JsecDbRealm
+import no.eirikb.urtstats.utils.RCon
 import org.jsecurity.grails.JsecBasicPermission
 
 /**
