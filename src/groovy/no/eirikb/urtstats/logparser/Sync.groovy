@@ -38,7 +38,7 @@ class Sync {
             while (done >= 0 && done < max) {
                 def line = tail.readReverse()
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
-                    def line2 = tail.readReverse()
+                    def line2 = tail.parseReverse()
                     if (line2.indexOf("ClientUserinfo") == 0) {
                         new UserInfoEvent(line2).execute()
                         new UserInfoChangedEvent(line).execute()
