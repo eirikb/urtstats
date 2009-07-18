@@ -14,7 +14,7 @@
         <td><g:link action="showRole" id="${role.id}">${fieldValue(bean:role, field:'id')}</g:link></td>
       <td>${fieldValue(bean:role, field:'name')}</td>
       <td><g:checkBox name="role-${role.id}" value="${role.id}"
-                      checked="${JsecUserRoleRel.findByUserAndRole(user, role)}" /></td>
+                      checked="${domain.security.JsecUserRoleRel.findByUserAndRole(user, role)}" /></td>
       </tr>
     </g:each>
     </tbody>
