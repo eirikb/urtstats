@@ -63,6 +63,9 @@ class LogParser {
             case "SAYTEAM":
             new ChatEvent(line, cmd == "SAYTEAM").execute()
             break
+            case "HIT":
+            new HitEvent(line).execute()
+            break
         }
     }
 }

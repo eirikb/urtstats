@@ -31,5 +31,21 @@ class Event {
     def getId() {
         return id == null ?  id = PlayerTool.getId(line) : id
     }
+
+
+
+    def getIDs() {
+        def ids = []
+        def st = line.substring(line.indexOf(':') + 1).split(" ")
+        st.each {
+            def i = it.indexOf(':')
+            if (i < 0) {
+                ids.add(it)
+            } else {
+                ids.add(it.substring(0, i))
+            }
+        }
+        return ids
+    }
 }
 

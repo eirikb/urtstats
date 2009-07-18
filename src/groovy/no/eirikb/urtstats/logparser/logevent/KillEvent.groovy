@@ -27,11 +27,11 @@ class KillEvent extends Event {
 
     void execute() {
         def ids = getIDs()
-        def killer = Player.findByUrtID(ids.killer)
-        def killed = Player.findByUrtID(ids.killed)
+        def killer = Player.findByUrtID(ids[1])
+        def killed = Player.findByUrtID(ids[2])
         if (killer != null && killed != null) {
             def friendlyfire = killer.team == killed.team
-            def death = DeathCause.findByUrtID(ids.type)
+            def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 if(kill.hasErrors() || !kill.save(flush:true)) {
@@ -55,15 +55,6 @@ class KillEvent extends Event {
             log.error "KillEvent: One of the players were null. killer: " + killer + ". killed: " + killed +
             ". killerID: " + ids.killer + ". killedID: " + ids.killed + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)?.dump()
         }
-    }
-
-    def getIDs() {
-        def ids = [:]
-        def st = line.split(" ")
-        ids.killer = st[1]
-        ids.killed = st[2]
-        ids.type = st[3].substring(0, st[3].indexOf(':'))
-        return ids
     }
     
     Double getTotalRatio(player) {
