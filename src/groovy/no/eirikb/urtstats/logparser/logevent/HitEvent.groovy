@@ -35,14 +35,14 @@ class HitEvent extends Event {
             if(hit.hasErrors() || !hit.save(flush:true)) {
                 log.error "[HitEvent] Unable to persist hit: " + hit.dump()
             } else {
-                log.info "[HitEvent] Hitter:" + hitter + ". Victim: " + victim + ". Hitpoint: " + hitpoint + ". Weapon: " + weapon
+                log.info "[HitEvent] Hitter:" + hitter + ". Victim: " + victim + ". Hitpoint: " + hitpoint + ". Item: " + item
             }
         } else if (item == null) {
             log.error "[HitEvent] Could not create hit, unkown Item: " + item + " (" +  ids[3] + ")"
         } else {
             log.error "[HitEvent] Could not create hit. One of the following are null: hitter: " +
             hitter + ". victim: " + victim + ". item: " + item +
-                ". Original(" + hitterID + ", " + victimID + ", " + weapon + ")"
+                ". Original(" + ids[1] + ", " + ids[2] + ", " + ids[4] + ")"
         }
     }
 }
