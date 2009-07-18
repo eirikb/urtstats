@@ -1,4 +1,5 @@
 import domain.urt.Player
+import domain.urt.Hit
 
 class PlayerController {
     

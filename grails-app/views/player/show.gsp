@@ -66,7 +66,7 @@
         <tr class="prop">
           <td valign="top" class="name">Joined:</td>
 
-          <td valign="top" class="value"><prettytime:display date="${playerInstance.getCreateTime()}" /></td>
+          <td valign="top" class="value"><prettytime:display date="${playerInstance.getCreateDate()}" /></td>
         </tr>
 
         <tr class="prop">

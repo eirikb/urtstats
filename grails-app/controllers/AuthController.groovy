@@ -3,6 +3,7 @@ import org.jsecurity.authc.UsernamePasswordToken
 import org.jsecurity.SecurityUtils
 import org.jsecurity.crypto.hash.Sha1Hash
 import domain.security.*
+import domain.urt.Player
 
 class AuthController {
     def jsecSecurityManager
