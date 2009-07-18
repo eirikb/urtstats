@@ -64,7 +64,7 @@ class Sync {
         log.info "Syncing complete."
     }
 
-    def statusToMap(stats) {
+    def statusToMap(status) {
         def reader = new BufferedReader(new StringReader(status));
         reader.readLine() // Remove print
         reader.readLine() // Remove map
