@@ -12,6 +12,7 @@ package no.eirikb.urtstats.logparser
 import no.eirikb.urtstats.utils.RCon
 import no.eirikb.urtstats.logparser.logevent.*
 import org.apache.commons.logging.LogFactory
+import domain.urt.Player
 
 /**
  *
