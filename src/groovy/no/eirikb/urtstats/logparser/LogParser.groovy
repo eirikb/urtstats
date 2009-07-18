@@ -41,7 +41,6 @@ class LogParser {
             if (synced) {
                 def line
                 while ((line = tail.parse()) != null) {
-                    log.info "Line: " + line
                     readLine(line)
                 }
             } else {

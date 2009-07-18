@@ -33,12 +33,14 @@ class HitEvent extends Event {
             def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.getTeam() == victim.getTeam()),
                 hitpoint:hitpoint, item:item)
             if(hit.hasErrors() || !hit.save(flush:true)) {
-                log.error "HitEvent: Unable to persist hit: " + hit.dump()
+                log.error "[HitEvent] Unable to persist hit: " + hit.dump()
+            } else {
+                log.info "[HitEvent] Hitter:" + hitter + ". Victim: " + victim + ". Hitpoint: " + hitpoint + ". Weapon: " + weapon
             }
         } else if (item == null) {
-            log.error "HitEvent: Could not create hit, unkown Item: " + item + " (" +  ids[3] + ")"
+            log.error "[HitEvent] Could not create hit, unkown Item: " + item + " (" +  ids[3] + ")"
         } else {
-            log.error "HitEvent: Could not create hit. One of the following are null: hitter: " +
+            log.error "[HitEvent] Could not create hit. One of the following are null: hitter: " +
             hitter + ". victim: " + victim + ". item: " + item +
                 ". Original(" + hitterID + ", " + victimID + ", " + weapon + ")"
         }

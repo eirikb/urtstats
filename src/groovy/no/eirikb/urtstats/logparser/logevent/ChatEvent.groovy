@@ -36,8 +36,9 @@ class ChatEvent extends Event {
             message = message.substring(message.indexOf(':') + 2)
             def chat = new Chat(player:player, teamMessage:teammessage, message:message)
             if(chat.hasErrors() || !chat.save(flush:true)) {
-                log.error "ChatEvent: Unable to persist. Chat: " + chat.dump()
+                log.error "[ChatEvent] Unable to persist. Chat: " + chat.dump()
             }
+            log.info "[ChatEvent] Player: " + player + ". Message: " + message
             if (message.charAt(0) == '!') {
                 int space = message.indexOf(' ')
                 def cmd = ""
@@ -50,12 +51,12 @@ class ChatEvent extends Event {
                 command(player, cmd, message)
             }
         } else {
-            log.warn "ChatEvent: Player not found by UrtID. UrtID: " + id
+            log.warn "[ChatEvent] Player not found by UrtID. UrtID: " + id
         }
     }
 
     void command(player, cmd, message) {
-        log.info "ChatEvent: Command. Player: " + player + ". cmd: " + cmd + ". message: " + message
+        log.info "[ChatEvent] Command. Player: " + player + ". cmd: " + cmd + ". message: " + message
 
         switch (cmd) {
             case "help":

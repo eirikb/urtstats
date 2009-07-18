@@ -35,24 +35,26 @@ class KillEvent extends Event {
             if (death != null) {
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 if(kill.hasErrors() || !kill.save(flush:true)) {
-                    log.error "KillEvent: Could not persist kill: " + kill.dump()
+                    log.error "[KillEvent] Could not persist kill: " + kill.dump()
                 }
                 if (!friendlyfire) {
                     killer.exp += calculateExpGain(killer, killed,
-                    getGameRatio(killer), getTotalRatio(player))
+                        getGameRatio(killer), getTotalRatio(player))
 
                     if (killer.exp > killer.nextlevel) {
                         level(killer)
                     }
                     if(killer.hasErrors() || !killer.save(flush:true)) {
-                        log.error "KillEvnent: Unale to update player after gain, player: " + killer.dump()
+                        log.error "[KillEvnent] Unale to update player after gain, player: " + killer.dump()
                     }
                 }
+                log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
+                ". Killer level: " + killer.getLevel() + ". Killer exp: " + killer.getExp()
             } else {
-                log.error "KillEvent: No DeathCause for type:" + type
+                log.error "[KillEvent] No DeathCause for type:" + type
             }
         } else {
-            log.error "KillEvent: One of the players were null. killer: " + killer + ". killed: " + killed +
+            log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
             ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)?.dump()
         }
     }

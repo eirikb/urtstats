@@ -27,12 +27,14 @@ class ServerEvent extends Event {
     void execute() {
         switch (cmd) {
             case "INITROUND":
+            log.info "[ServerEvent] INITROUND"
             RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
             def players = Player.findAllByUrtIDGreaterThanEquals(0)
             players.each() { it.setJoinGameDate(new Date()) }
             break
 
             case "SERVER":
+            log.info "[ServerEvent] SERVER"
             Player.findAllByUrtIDGreaterThanEquals(0).each {
                 new LeaveEvent("ClientDisconnect: " + it.getUrtID()).execute()
             }

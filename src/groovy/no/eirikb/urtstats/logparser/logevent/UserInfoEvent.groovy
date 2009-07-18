@@ -36,12 +36,12 @@ class UserInfoEvent extends Event{
             def loggedin = true
             if (player == null) {
                 player = createPlayer(userInfo)
-                log.info "Create player: " + player
+                log.info "[UserInfoEvent] Create player: " + player
             } else  {
                 loggedin = player.getUrtID() < 0
             }
             player = updatePlayer(player, userInfo)
-            log.info "Update player: " + player
+            log.info "[UserInfoEvent] Update player: " + player
             
             if (loggedin) {
                 player.setJoinGameDate(new Date())
@@ -50,18 +50,18 @@ class UserInfoEvent extends Event{
             }
             
             if (addGear(player, userInfo)) {
-                log.info "Items added to player: " + player
+                log.info "[UserInfoEvent] Items added to player: " + player
             } else {
-                log.info "No items found for player: " + player + ". With userInfo: " + userInfo
+                log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
             }
 
             if(player.hasErrors() || !player.save(flush:true)) {
-                log.error "Unable to persist on UserInfoEvent: " + player?.dump()
+                log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player?.dump()
             } else {
                 TeamTool.addPlayerToTeam(player, 0)
             }
         } else {
-            log.warn "Player has no cl_guid: " + userInfo
+            log.warn "[UserInfoEvent] Player has no cl_guid: " + userInfo
         }
     }
 
@@ -77,7 +77,7 @@ class UserInfoEvent extends Event{
                 }
             }
             if (!added) {
-                log.warn "Player " + player + " got his gear-string: " + gear + ". Although none was added (not found)"
+                log.warn "[UserInfoEvent] Player " + player + " got his gear-string: " + gear + ". Although none was added (not found)"
                 return false
             }
             return true
