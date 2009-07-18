@@ -154,7 +154,7 @@ class ChatEvent extends Event {
             Player.findAllByNickIlike('%' + message + '%').each {
                 found = true
                 if (!isAdmin(it)) {
-                    clos()
+                    clos(it)
                 } else {
                     RCon.rcon("rcon slap " + player.getUrtID())
                     RCon.rcon("rcon say \"^2" + player.getColorNick() + " ^7 tried to " + cmd + " and admin!\"")
