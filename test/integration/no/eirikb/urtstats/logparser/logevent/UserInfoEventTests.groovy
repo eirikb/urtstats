@@ -80,6 +80,8 @@ class UserInfoEventTests extends GrailsUnitTestCase {
         assertEquals 1, PlayerLog.count()
         def player = Player.findByGuid("1")
         assertTrue PlayerLog.findByPlayer(player).getCreateDate().getTime() - new Date().getTime() < 1000
+        def playerLogDate = PlayerLog.findByPlayer(player)
+        def joinGameDate = player.getJoinGameDate()
         
         assertNotNull player
         assertEquals "83.225.252.223:36714", player.getIp()
@@ -88,6 +90,9 @@ class UserInfoEventTests extends GrailsUnitTestCase {
         new UserInfoEvent("ClientUserinfo: 0 \\ip\\83.225.252.223:36714" +
             "\\name\\test\\cl_guid\\1" +
         "\\gear\\GZAARWX").execute()
+
+        assertEquals playerLogDate, PlayerLog.findByPlayer(player)
+        assertEquals joinGameDate, player.getJoinGameDate()
 
         assertEquals "test", player.getNick()
         assertEquals 0, player.getUrtID()
