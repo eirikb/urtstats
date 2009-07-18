@@ -66,7 +66,12 @@ class BootStrap {
         def wcPerm = new JsecPermission(type:"org.jsecurity.grails.JsecBasicPermission", possibleActions:"*").save()
 
         new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"*", target:"news").save()
-        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"urt:kick", target:"*").save()
+        new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"*", target:"urt").save()
+        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"kick", target:"urt").save()
+        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"bigtext", target:"urt").save()
+        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"slap", target:"urt").save()
+        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"forceteam", target:"urt").save()
+        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"fixteams", target:"urt").save()
 
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
         players.each() {
