@@ -61,6 +61,7 @@ class Sync {
             log.error "Sync: status return from RCon was null"
         }
         tail.setFilePointer(filePointer)
+        log.info "Syncing complete."
     }
 
     def statusToMap(stats) {

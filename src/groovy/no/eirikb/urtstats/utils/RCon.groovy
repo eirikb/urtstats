@@ -11,6 +11,7 @@ package no.eirikb.urtstats.utils
 
 import org.codehaus.groovy.grails.commons.*
 import grails.util.GrailsUtil
+import org.apache.commons.logging.LogFactory
 
 /**
  *
@@ -22,13 +23,14 @@ class RCon {
     final static int BUFFERSIZE = 65000
     final static int SLEEPTIME = 1000
     static long lastUsed
-    static String recmessage
 
     public synchronized static String rcon(message) {
         return rcon(message, false)
     }
 
     public synchronized static String rcon(message, force) {
+        def log = LogFactory.getLog("grails.app.task")
+        log.info "RCon: Message: " + message + ". Force: " + force
         def recmessage
         if (GrailsUtil.environment != "test") {
             def config = ConfigurationHolder.config
@@ -50,6 +52,7 @@ class RCon {
         }
         def socket
         try {
+            def recmessage
             message = "rcon\r" + password + "\r\"" + message + "\"\0";
 
             socket = new DatagramSocket()

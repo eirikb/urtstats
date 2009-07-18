@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory
 import no.eirikb.utils.tail.Tail
 import no.eirikb.urtstats.utils.RCon
 import no.eirikb.urtstats.logparser.logevent.*
+import domain.urt.Player
 
 /**
  *
@@ -24,58 +25,77 @@ class LogParser {
     def config
     def log
     def parsing
-    Boolean synced
+    def synced
 
     public LogParser() {
         config = ConfigurationHolder.config
         tail = new Tail(new File(config.urt.qconsole.path), true)
         log = LogFactory.getLog("grails.app.task")
-        RCon.rcon("rcon bigtext \"Test\"")
-        parsing = true
-        new Sync(tail).sync()
+        synced = false
         parsing = false
     }
 
     void execute() {
         if (!parsing) {
             parsing = true
-            def line
-            while ((line = tail.parse()) != null) {
-                readLine(line)
+            if (synced) {
+                def line
+                while ((line = tail.parse()) != null) {
+                    log.info "Line: " + line
+                    readLine(line)
+                }
+            } else {
+                synced = true
+                RCon.rcon("rcon bigtext \"^7Test\"")
+                new Sync(tail).sync()
             }
             parsing = false
         }
     }
 
     void readLine(line) {
-        def cmd = line.substring(0, line.indexOf(':'))
-        switch (cmd) {
-            case "CLIENTUSERINFO":
-            new UserInfoEvent(line).execute()
-            break
-            case "CLIENTUSERINFOCHANGED":
-            new UserInfoChangedEvent(line).execute()
-            break
-            case "CLIENTDISCONNECT":
-            new LeaveEvent(line).execute()
-            break
-            case "KILL":
-            new KillEvent(line).execute()
-            break
-            case "SAY":
-            case "SAYTEAM":
-            new ChatEvent(line, cmd == "SAYTEAM").execute()
-            break
-            case "HIT":
-            new HitEvent(line).execute()
-            break
-            case "INITROUND":
-            new ServerEvent(cmd, line).execute()
-            break
-            case "SERVER":
-            new ServerEvent(cmd, line).execute()
-            break
+        def pos = line.indexOf(':')
+        if (pos >= 0) {
+            def cmd = line.substring(0, pos)
+            switch (cmd) {
+                case "CLIENTUSERINFO":
+                new UserInfoEvent(line).execute()
+                break
+                case "CLIENTUSERINFOCHANGED":
+                new UserInfoChangedEvent(line).execute()
+                break
+                case "CLIENTBEGIN":
+                welcome(line)
+                break
+                case "CLIENTDISCONNECT":
+                new LeaveEvent(line).execute()
+                break
+                case "KILL":
+                new KillEvent(line).execute()
+                break
+                case "SAY":
+                case "SAYTEAM":
+                new ChatEvent(line, cmd == "SAYTEAM").execute()
+                break
+                case "HIT":
+                new HitEvent(line).execute()
+                break
+                case "INITROUND":
+                new ServerEvent(cmd, line).execute()
+                break
+                case "SERVER":
+                new ServerEvent(cmd, line).execute()
+                break
+
+            }
         }
+    }
+
+    void welcome(line) {
+        def id = line.substring(line.indexOf(' '), line.length()).trim()
+        def player = Player.findByUrtID(id)
+        RCon.rcon("rocn tell " + id + "\"^7Welcome ^2" + player.getColorNick() +
+        "^7. Your level: ^2" + player.getLevel() + "^7.\"")
     }
 }
 
