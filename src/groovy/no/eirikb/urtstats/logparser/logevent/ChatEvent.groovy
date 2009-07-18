@@ -49,6 +49,7 @@ class ChatEvent extends Event {
                     message = message.substring(space + 1)
                 } else {
                     cmd = message
+                    message = null
                 }
                 command(player, cmd, message)
             }
@@ -70,7 +71,7 @@ class ChatEvent extends Event {
             case "stats":
             def p = player
             if (message != null) {
-                p = Player.findByNickIlike(message)
+                p = Player.findByNickIlike('%' + message + '%')
             }
             if (p != null) {
                 RCon.rcon("rcon say \"^2" + p.getColorNick() + " ^7Level: " + player.getLevel() + "\"")
@@ -150,7 +151,7 @@ class ChatEvent extends Event {
     def rconCommand(player, cmd, message, clos) {
         if (isPermitted(player, cmd)) {
             def found = false
-            Player.findAllByNickIlike(message).each {
+            Player.findAllByNickIlike('%' + message + '%').each {
                 found = true
                 if (!isAdmin(it)) {
                     clos()
