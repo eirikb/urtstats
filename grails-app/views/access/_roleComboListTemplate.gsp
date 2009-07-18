@@ -1,3 +1,5 @@
+<%@ page import="security.*" %>
+
 <h1>Roles:</h1>
 <div class="list">
   <table>
