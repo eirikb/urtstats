@@ -11,6 +11,7 @@ package no.eirikb.urtstats.logparser.logevent
 
 import domain.urt.Kill
 import domain.urt.Player
+import domain.urt.DeathCause
 import no.eirikb.urtstats.utils.RCon
 
 /**
@@ -25,18 +26,20 @@ class KillEvent extends Event {
     }
 
     void execute() {
-        def killer = Player.findByUrtID(killerID)
-        def killed = Player.findByUrtID(killedID)
+        def ids = getIDs()
+        def killer = Player.findByUrtID(ids.killer)
+        def killed = Player.findByUrtID(ids.killed)
         if (killer != null && killed != null) {
             def friendlyfire = killer.team == killed.team
-            def death = DeathCause.findByUrtID(type)
+            def death = DeathCause.findByUrtID(ids.type)
             if (death != null) {
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 if(kill.hasErrors() || !kill.save(flush:true)) {
                     log.error "KillEvent: Could not persist kill: " + kill.dump()
                 }
                 if (!friendlyfire) {
-                    killer.exp += calculateExpGain(killer, killed)
+                    killer.exp += calculateExpGain(killer, killed,
+                    getGameRatio(killer), getTotalRatio(player))
 
                     if (killer.exp > killer.nextlevel) {
                         level(killer)
@@ -50,8 +53,17 @@ class KillEvent extends Event {
             }
         } else {
             log.error "KillEvent: One of the players were null. killer: " + killer + ". killed: " + killed +
-            ". killerID: " + killedID + ". killedID: " + killedID + ". PlayerList: " + Player.findAllByUrtIDGreaterThanLike(0)?.list()?.dump()
+            ". killerID: " + ids.killer + ". killedID: " + ids.killed + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)?.dump()
         }
+    }
+
+    def getIDs() {
+        def ids = [:]
+        def st = line.split(" ")
+        ids.killer = st[1]
+        ids.killed = st[2]
+        ids.type = st[3].substring(0, st[3].indexOf(':'))
+        return ids
     }
     
     Double getTotalRatio(player) {
@@ -63,9 +75,9 @@ class KillEvent extends Event {
         (Kill.countByKilledAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1)
     }
 
-    Integer calculateExpGain(killer, killed) {
-        def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killed.getLevel() : 1
-        def ratio = ((getGameRatio(killer) + getTotalRatio(player))) / 2
+    Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
+        def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killer.getLevel() : 1
+        def ratio = ((gameRatio + totalRatio)) / 2
         return levelBoost * ratio
     }
 

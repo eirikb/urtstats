@@ -56,6 +56,9 @@ class LogParser {
             case "CLIENTDISCONNECT":
             new LeaveEvent(line).execute()
             break
+            case "KILL":
+            new KillEvent(line).execute()
+            break
         }
     }
 }
