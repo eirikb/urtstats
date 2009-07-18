@@ -31,6 +31,9 @@ class LogParser {
         tail = new Tail(new File(config.urt.qconsole.path), true)
         log = LogFactory.getLog("grails.app.task")
         RCon.rcon("rcon bigtext \"Test\"")
+        parsing = true
+        new Sync(tail).sync()
+        parsing = false
     }
 
     void execute() {
@@ -74,6 +77,5 @@ class LogParser {
             break
         }
     }
-
 }
 
