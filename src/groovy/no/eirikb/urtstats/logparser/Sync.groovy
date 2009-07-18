@@ -36,7 +36,7 @@ class Sync {
             def max = map.size()
             def done = 0
             while (done >= 0 && done < max) {
-                def line = tail.readReverse()
+                def line = tail.parseReverse()
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
                     def line2 = tail.parseReverse()
                     if (line2.indexOf("ClientUserinfo") == 0) {
