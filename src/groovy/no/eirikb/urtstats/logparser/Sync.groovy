@@ -40,9 +40,12 @@ class Sync {
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
                     def line2 = tail.parseReverse()
                     if (line2.indexOf("ClientUserinfo") == 0) {
+                        def online = Player.countByUrtIDGreaterThanEquals(0)
                         new UserInfoEvent(line2).execute()
                         new UserInfoChangedEvent(line).execute()
-                        done++
+                        if (online < Player.countByUrtIDGreaterThanEquals(0))  {
+                            done++
+                        }
                     } else if (line2.indexOf("InitGame") == 0) {
                         done = -1
                     } else {
