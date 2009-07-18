@@ -1,6 +1,7 @@
 import org.jsecurity.crypto.hash.Sha1Hash
 import domain.urt.*
 import domain.security.*
+import no.eirikb.urtstats.utils.RCon
 
 class BootStrap {
     def init = { servletContext ->
@@ -90,5 +91,6 @@ class BootStrap {
     }
 
     def destroy = {
+        RCon.rcon("rcon bigtext \"^7Stats are temporarily going down...\"")
     }
 } 
