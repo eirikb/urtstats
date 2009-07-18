@@ -33,29 +33,28 @@ class UserInfoEvent extends Event{
         def userInfo = getUserInfo()
         if (userInfo != null) {
             player = Player.findByGuid(userInfo.cl_guid)
-            if (player.getUrtID() < 0) {
-                if (player == null) {
-                    player = createPlayer(userInfo)
-                    log.info "Create player: " + player
-                } else {
-                    player = updatePlayer(player, userInfo)
-                    log.info "Update player: " + player
-                }
-                player.addToPlayerLogs(new PlayerLog())
-                if (addGear(player, userInfo)) {
-                    log.info "Items added to player: " + player
-                } else {
-                    log.info "No items found for player: " + player + ". With userInfo: " + userInfo
-                }
-                RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
-            } else {
-                if (addGear(player, userInfo)) {
-                    log.info "Items added to player: " + player
-                } else {
-                    log.info "No items found for player: " + player + ". With userInfo: " + userInfo
-                }
-                log.info "UserInfoEvent: Player already logged in: " + player
+            def loggedin = true
+            if (player == null) {
+                player = createPlayer(userInfo)
+                log.info "Create player: " + player
+            } else  {
+                loggedin = player.getUrtID() < 0
             }
+            player = updatePlayer(player, userInfo)
+            log.info "Update player: " + player
+            
+            if (loggedin) {
+                player.setJoinGameDate(new Date())
+                player.addToPlayerLogs(new PlayerLog())
+                RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
+            }
+            
+            if (addGear(player, userInfo)) {
+                log.info "Items added to player: " + player
+            } else {
+                log.info "No items found for player: " + player + ". With userInfo: " + userInfo
+            }
+
             if(player.hasErrors() || !player.save(flush:true)) {
                 log.error "Unable to persist on UserInfoEvent: " + player?.dump()
             } else {
@@ -90,7 +89,6 @@ class UserInfoEvent extends Event{
         player.setUrtID(getId())
         player.setIp(userInfo.ip)
         player.setNick(userInfo.name)
-        player.setJoinGameDate(new Date())
         return player
     }
 
