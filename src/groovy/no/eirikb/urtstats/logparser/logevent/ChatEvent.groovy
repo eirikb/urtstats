@@ -40,6 +40,7 @@ class ChatEvent extends Event {
             }
             log.info "[ChatEvent] Player: " + player + ". Message: " + message
             if (message.charAt(0) == '!') {
+                message = message.substring(1)
                 int space = message.indexOf(' ')
                 def cmd = ""
                 if (space > 0) {
