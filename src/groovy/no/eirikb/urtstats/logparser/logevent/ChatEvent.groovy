@@ -173,7 +173,7 @@ class ChatEvent extends Event {
             return new JsecDbRealm().isPermitted(user.getUsername(),
                 new JsecBasicPermission('urt', permission))
         } else {
-            RCon.rcon("rcon tell " + player.getUrtID() + "\"^7You are not permitted to " + cmd + '"')
+            RCon.rcon("rcon tell " + player.getUrtID() + "\"^7You are not permitted to " + permission + '"')
         }
         return false
     }
