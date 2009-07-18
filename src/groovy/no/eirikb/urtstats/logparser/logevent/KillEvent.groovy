@@ -75,9 +75,9 @@ class KillEvent extends Event {
     }
 
     void level(player) {
-        killer.level++;
-        killer.nextlevel = killer.exp * NEXTLEVELMAGIC + Math.sqrt(killer.getExp())
-        RCon.rcon("rcon bigtext \"^7Congratulations ^2" + killer.nick.trim() + "^7you are now level ^2" + killer.level + '"')
+        player.level++;
+        player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
+        RCon.rcon("rcon bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7you are now level ^2" + player.level + '"')
     }
 }
 
