@@ -74,7 +74,7 @@ class ChatEvent extends Event {
                 p = Player.findByNickIlike('%' + message + '%')
             }
             if (p != null) {
-                RCon.rcon("rcon say \"^2" + p.getColorNick() + " ^7Level: " + p.getLevel() + "\"")
+                RCon.rcon("rcon say \"^2" + p.getColorNick() + " ^7Level: ^1" + p.getLevel() + "\"")
             } else{
                 RCon.rcon("rcon tell " + player.getUrtID() + "\"^7Player not found.\"")
             }
