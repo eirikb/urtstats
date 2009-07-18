@@ -51,17 +51,18 @@ class UserInfoEvent extends Event{
                     "^7. Your level: ^2" + player.getLevel() + "^7.\"")
             }
 
+            if (addGear(player, userInfo)) {
+                log.info "[UserInfoEvent] Items added to player: " + player
+            } else {
+                log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
+            }
+
             if(player.hasErrors() || !player.save(flush:true)) {
                 log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player?.dump()
             } else {
                 TeamTool.addPlayerToTeam(player, 0)
             }
             
-            if (addGear(player, userInfo)) {
-                log.info "[UserInfoEvent] Items added to player: " + player
-            } else {
-                log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
-            }
 
         } else {
             log.warn "[UserInfoEvent] Player has no cl_guid: " + userInfo
