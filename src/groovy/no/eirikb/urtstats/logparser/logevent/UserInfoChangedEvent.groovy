@@ -19,9 +19,9 @@ import no.eirikb.urtstats.utils.PlayerTool
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
 class UserInfoChangedEvent extends Event {
+    
     public UserInfoChangedEvent(line) {
         super(line)
-        println line
     }
 
     void execute() {
