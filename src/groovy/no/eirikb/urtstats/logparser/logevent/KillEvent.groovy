@@ -53,7 +53,7 @@ class KillEvent extends Event {
             }
         } else {
             log.error "KillEvent: One of the players were null. killer: " + killer + ". killed: " + killed +
-            ". killerID: " + ids.killer + ". killedID: " + ids.killed + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)?.dump()
+            ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)?.dump()
         }
     }
     
