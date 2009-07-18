@@ -39,7 +39,7 @@ class KillEvent extends Event {
                 }
                 if (!friendlyfire) {
                     killer.exp += calculateExpGain(killer, killed,
-                        getGameRatio(killer), getTotalRatio(player))
+                        getGameRatio(killer), getTotalRatio(killer))
 
                     if (killer.exp > killer.nextlevel) {
                         level(killer)
