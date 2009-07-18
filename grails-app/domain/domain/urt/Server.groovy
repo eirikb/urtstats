@@ -1,13 +1,14 @@
 package domain.urt
 
 class Server {
-    Date startLogging
-    Date lastRestart
+    int ident
+    Date startLoggingDate = new Date()
+    Date lastRestartDate = new Date()
     String welcomeMessage
 
     static constraints = {
-        startLogging(nullable:true)
-        lastRestart(nullable:true)
+        startLoggingDate(nullable:true)
+        lastRestartDate(nullable:true)
         welcomeMessage(nullable:true)
     }
 }

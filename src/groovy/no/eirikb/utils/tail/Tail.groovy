@@ -70,10 +70,4 @@ class Tail {
     void setFilePointer(filePointer) {
         this.filePointer = filePointer
     }
-
-    void readLine(line) {
-        tailListeners.each {
-            it.readLine(line)
-        }
-    }
 }

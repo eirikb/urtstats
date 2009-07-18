@@ -73,6 +73,15 @@ class BootStrap {
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"forceteam", target:"urt").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"fixteams", target:"urt").save()
 
+        def server = Server.findByIdent(1)
+        if (server == null) {
+            new Server(ident:1, welcomeMessage:"Welcome! ^2www.urtstats.net").save(flush:true)
+        } else {
+            server.setLastRestartDate(new Date())
+            server.save(flush:true)
+        }
+        
+
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
         players.each() {
             it.urtID = -1;

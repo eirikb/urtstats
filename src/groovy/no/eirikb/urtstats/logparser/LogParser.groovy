@@ -15,6 +15,7 @@ import no.eirikb.utils.tail.Tail
 import no.eirikb.urtstats.utils.RCon
 import no.eirikb.urtstats.logparser.logevent.*
 import domain.urt.Player
+import domain.urt.Server
 
 /**
  *
@@ -44,9 +45,9 @@ class LogParser {
                     readLine(line)
                 }
             } else {
-                synced = true
-                RCon.rcon("rcon bigtext \"^7Test\"")
+                RCon.rcon("rcon bigtext \"^7" + Server.findByIdent(1)?.getWelcomeMessage() + '"')
                 new Sync(tail).sync()
+                synced = true
             }
             parsing = false
         }
@@ -56,15 +57,12 @@ class LogParser {
         def pos = line.indexOf(':')
         if (pos >= 0) {
             def cmd = line.substring(0, pos)
-            switch (cmd) {
+            switch (cmd.toUpperCase()) {
                 case "CLIENTUSERINFO":
                 new UserInfoEvent(line).execute()
                 break
                 case "CLIENTUSERINFOCHANGED":
                 new UserInfoChangedEvent(line).execute()
-                break
-                case "CLIENTBEGIN":
-                welcome(line)
                 break
                 case "CLIENTDISCONNECT":
                 new LeaveEvent(line).execute()
@@ -88,13 +86,6 @@ class LogParser {
 
             }
         }
-    }
-
-    void welcome(line) {
-        def id = line.substring(line.indexOf(' '), line.length()).trim()
-        def player = Player.findByUrtID(id)
-        RCon.rcon("rocn tell " + id + "\"^7Welcome ^2" + player.getColorNick() +
-        "^7. Your level: ^2" + player.getLevel() + "^7.\"")
     }
 }
 

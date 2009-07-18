@@ -33,20 +33,22 @@ class UserInfoEvent extends Event{
         def userInfo = getUserInfo()
         if (userInfo != null) {
             player = Player.findByGuid(userInfo.cl_guid)
-            def loggedin = true
+            def first = true
             if (player == null) {
                 player = createPlayer(userInfo)
                 log.info "[UserInfoEvent] Create player: " + player
             } else  {
-                loggedin = player.getUrtID() < 0
+                first = player.getUrtID() < 0
             }
             player = updatePlayer(player, userInfo)
             log.info "[UserInfoEvent] Update player: " + player
             
-            if (loggedin) {
+            if (first) {
                 player.setJoinGameDate(new Date())
                 player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("rcon say \"^7Join: " + player.getColorNick() + ". Level: ^2" + player.getLevel() + "\"")
+                RCon.rcon("rocn tell " + id + "\"^7Welcome ^2" + player.getColorNick() +
+        "^7. Your level: ^2" + player.getLevel() + "^7.\"")
             }
             
             if (addGear(player, userInfo)) {
