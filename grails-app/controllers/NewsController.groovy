@@ -48,7 +48,7 @@ class NewsController {
     }
 
     def update = {
-        params.lastModifiedTime = new Date()
+        params.lastUpdated = new Date()
         def newsInstance = News.get( params.id )
         if(newsInstance) {
             if(params.version) {
