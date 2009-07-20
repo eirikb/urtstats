@@ -99,12 +99,14 @@ class ChatEvent extends Event {
             break
 
             case "slap":
+            cmd = "slap"
             def clos = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
             rconCommand(player, cmd, message, clos)
             break
 
             case "forceteam":
             case "move":
+            cmd = "forceteam"
             def clos = {
                 if (it.getTeam().getUrtID() == 1) {
                     RCon.rcon("rcon " + cmd + ' ' + it.getUrtID() + " blue")
@@ -117,6 +119,7 @@ class ChatEvent extends Event {
 
             case "fixteams":
             case "fix":
+            cmd = "fixteams"
             if (isPermitted(player, "fixteams")) {
                 def players = Player.findAllByUrtIDGreaterThanEquals(0)
                 def red = 0

@@ -53,7 +53,7 @@ class RCon {
         def socket
         try {
             def recmessage
-            message = "rcon\r" + password + "\r\"" + message + "\"\0";
+            message = "rcon " + password + " " + message + "\0"
 
             socket = new DatagramSocket()
             def buff = ("    " + message).getBytes()
