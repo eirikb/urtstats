@@ -148,8 +148,7 @@ class Sync {
             def userInfo = uie.getUserInfo()
             def m = map["" + uie.getId()]
             if (m != null) {
-                return (m.name == userInfo.name &&
-                    m.address == userInfo.ip)
+                return true
             } else {
                 log.warn "[Sync] Got player by UrtID, but did not match map! m: " + m +
                                 ". userInfo: " + userInfo
