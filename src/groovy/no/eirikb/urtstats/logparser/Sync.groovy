@@ -57,15 +57,18 @@ class Sync {
                         def player = Player.findByUrtID(uie.getId())
                         if (player == null) {
                             def userInfo = uie.getUserInfo()
+                            println "ID: " + uie.getId()
                             def m = map[uie.getId()]
                             log.info "Map : " + m + ". userInfo: " + userInfo
-                            if (m.name.indexOf(userInfo.name) == 0 &&
-                                m.ip == userInfo.ip) {
-                                uie.execute()
-                                new UserInfoChangedEvent(line).execute()
-                            } else {
-                                log.warn "[Sync] Got player by UrtID, but did not match map! m: " + m +
+                            if (m != null) {
+                                if (m.name.indexOf(userInfo.name) == 0 &&
+                                    m.ip == userInfo.ip) {
+                                    uie.execute()
+                                    new UserInfoChangedEvent(line).execute()
+                                } else {
+                                    log.warn "[Sync] Got player by UrtID, but did not match map! m: " + m +
                                 ". userInfo: " + userInfo
+                                }
                             }
                         } else {
                             log.info "[Sync] Player with UrtID already in databse. player: " + player +
