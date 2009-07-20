@@ -51,7 +51,7 @@ class KillEvent extends Event {
                 log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
                 ". Killer level: " + killer.getLevel() + ". Killer exp: " + killer.getExp()
             } else {
-                log.error "[KillEvent] No DeathCause for type:" + type
+                log.error "[KillEvent] No DeathCause for type:" + ids[3]
             }
         } else {
             log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
