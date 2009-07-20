@@ -38,12 +38,12 @@ class Sync {
             it.save(flush:true)
             log.info "[Sync] Player UrtID set to -1. player: " + it.dump()
         }
-        log.info "[Sync] All UrtID set to -1. Proof: " 
-        + Player.countByUrtIDGreaterThanEquals(0) + " - " + Player.count()
+        log.info "[Sync] All UrtID set to -1. Proof: "  + Player.countByUrtIDGreaterThanEquals(0) + " - " + Player.count()
         def status = RCon.rcon("rcon status", true)
         log.info "[Sync] Got status: " + status
         if (status != null) {
             def map = statusToMap(status)
+            log.info "[Sync] Map: " + map.dump()
             def max = map.size()
             def done = 0
             while (done >= 0 && done < max) {
@@ -66,7 +66,7 @@ class Sync {
                     } else if (line2.indexOf("InitGame") == 0) {
                         done = -1
                     } else {
-                        log.error "Sync: ClientUserInfo did not come before ClientUserInfoChanged!"
+                        log.error "[Sync] ClientUserInfo did not come before ClientUserInfoChanged!"
                     }
                 } else if (line.indexOf("InitGame") == 0) {
                     done = -1
@@ -78,10 +78,14 @@ class Sync {
                 RCon.rcon("rcon say \"^7Not all players were synced! Check logs.\"")
             }
         } else {
-            log.error "Sync: status return from RCon was null"
+            log.error "[Sync] Status return from RCon was null"
         }
         tail.setFilePointer(filePointer)
-        log.info "Syncing complete."
+        log.info "[Sync] Syncing complete."
+        log.info "[Sync] Players in database now:"
+        Player.findByUrtIDGreaterThanEquals(0).each {
+            log.info "[Sync] Guid: " + it.getGuid() + ". UrtID: " + it.getUrtID() + ". Nick: " + it.getNick() + ". IP: " + it.getIp()
+        }
     }
 
     def statusToMap(status) {
