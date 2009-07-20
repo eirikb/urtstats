@@ -22,6 +22,10 @@ class Sync {
     def log
     def tail
 
+    public Sync() {
+        log = LogFactory.getLog("grails.app.task")
+    }
+
     public Sync(tail) {
         log = LogFactory.getLog("grails.app.task")
         this.tail = tail
@@ -31,21 +35,10 @@ class Sync {
         log.info "[Sync] Start syncing..."
         def filePointer = tail.getFilePointer()
         RCon.rcon("rcon say \"^7Syncing players...\"")
-        log.info "[Sync] Setting all UrtID to -1"
-        Player.findAllByUrtIDGreaterThanEquals(0).each {
-            it.setUrtID(-1)
-            it.save(flush:true)
-            log.info "[Sync] Player UrtID set to -1. player: " + it.dump()
-        }
-        log.info "[Sync] All UrtID set to -1. Proof: "  + Player.countByUrtIDLessThan(0) + " - " + Player.count()
         def status = RCon.rcon("rcon status", true)
         log.info "[Sync] Got status: " + status
         if (status != null) {
             def map = statusToMap(status)
-            log.info "[Sync] Map: " + map.dump()
-            map.each {
-
-            }
             def max = map.size()
             def done = 0
             while (done >= 0 && done < max) {
@@ -53,25 +46,10 @@ class Sync {
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
                     def line2 = tail.parseReverse()
                     if (line2.indexOf("ClientUserinfo") == 0) {
-                        def uie = new UserInfoEvent(line2)
-                        def player = Player.findByUrtID(uie.getId())
-                        if (player == null) {
-                            def userInfo = uie.getUserInfo()
-                            def m = map["" + uie.getId()]
-                            log.info "Map : " + m + ". userInfo: " + userInfo
-                            if (m != null) {
-                                if (m.name.indexOf(userInfo.name) == 0 &&
-                                    m.ip == userInfo.ip) {
-                                    uie.execute()
-                                    new UserInfoChangedEvent(line).execute()
-                                } else {
-                                    log.warn "[Sync] Got player by UrtID, but did not match map! m: " + m +
-                                ". userInfo: " + userInfo
-                                }
-                            }
-                        } else {
-                            log.info "[Sync] Player with UrtID already in databse. player: " + player +
-                            ". line2: " + line2 + ". line: " + line
+                        if (addPlayer(map, line2)) {
+                            new UserInfoEvent(line2).execute()
+                            new UserInfoChangedEvent(line).execute()
+                            done++
                         }
                     } else if (line2.indexOf("InitGame") == 0) {
                         done = -1
@@ -106,19 +84,72 @@ class Sync {
         reader.readLine() //remove dots
         def map = [:]
         while ((line = reader.readLine()) != null) {
-            StringTokenizer st = new StringTokenizer(line, " ");
-            if (st.countTokens() == 8) {
-                map[st.nextToken()] = [
-                    score:st.nextToken(),
-                    ping:st.nextToken(),
-                    name:st.nextToken(),
-                    lastmsg:st.nextToken(),
-                    address:st.nextToken(),
-                    qport:st.nextToken(),
-                    rate:st.nextToken()]
+            def pos = -1
+            def space = line.indexOf(' ')
+            def part = line.substring(0, space)
+            line = line.substring(space + 1)
+            def mp = [:]
+            map[part] = mp
+            while ((space = line.indexOf(' ')) >= 0) {
+                part = line.substring(0, space)
+                line = line.substring(space + 1)
+                if (part.length() > 0) {
+                    pos++
+                    switch (pos) {
+                        case 0:
+                        mp.score = part
+                        break
+                        case 1:
+                        mp.ping = part
+                        break
+                        case 2:
+                        def nickEnd = part.indexOf("^7")
+                        if (nickEnd >= 0) {
+                            mp.name = part.substring(0, nickEnd)
+                        } else {
+                            nickEnd = line.indexOf("^7")
+                            mp.name = part +  ' ' + line.substring(0, nickEnd)
+                            line = line.substring(nickEnd + 2)
+                        }
+                        break
+                        case 3:
+                        mp.lastmsg = part
+                        break
+                        case 4:
+                        mp.address = part
+                        break
+                        case 5:
+                        mp.qport = part
+                        break
+                    }
+                }
             }
         }
         return map
+    }
+
+    def resetPlayers() {
+        Player.findAllByUrtIDGreaterThanEquals(0).each {
+            it.setUrtID(-1)
+            it.save(flush:true)
+        }
+    }
+
+    def addPlayer(map, userInfoLine) {
+        def uie = new UserInfoEvent(userInfoLine)
+        def player = Player.findByUrtID(uie.getId())
+        if (player == null) {
+            def userInfo = uie.getUserInfo()
+            def m = map["" + uie.getId()]
+            if (m != null) {
+                return (m.name == userInfo.name &&
+                    m.address == userInfo.ip)
+            } else {
+                log.warn "[Sync] Got player by UrtID, but did not match map! m: " + m +
+                                ". userInfo: " + userInfo
+            }
+        }
+        return false
     }
 }
 
