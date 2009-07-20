@@ -86,41 +86,43 @@ class Sync {
         while ((line = reader.readLine()) != null) {
             def pos = -1
             def space = line.indexOf(' ')
-            def part = line.substring(0, space)
-            line = line.substring(space + 1)
-            def mp = [:]
-            map[part] = mp
-            while ((space = line.indexOf(' ')) >= 0) {
-                part = line.substring(0, space)
+            if (space >= 0) {
+                def part = line.substring(0, space)
                 line = line.substring(space + 1)
-                if (part.length() > 0) {
-                    pos++
-                    switch (pos) {
-                        case 0:
-                        mp.score = part
-                        break
-                        case 1:
-                        mp.ping = part
-                        break
-                        case 2:
-                        def nickEnd = part.indexOf("^7")
-                        if (nickEnd >= 0) {
-                            mp.name = part.substring(0, nickEnd)
-                        } else {
-                            nickEnd = line.indexOf("^7")
-                            mp.name = part +  ' ' + line.substring(0, nickEnd)
-                            line = line.substring(nickEnd + 2)
+                def mp = [:]
+                map[part] = mp
+                while ((space = line.indexOf(' ')) >= 0) {
+                    part = line.substring(0, space)
+                    line = line.substring(space + 1)
+                    if (part.length() > 0) {
+                        pos++
+                        switch (pos) {
+                            case 0:
+                            mp.score = part
+                            break
+                            case 1:
+                            mp.ping = part
+                            break
+                            case 2:
+                            def nickEnd = part.indexOf("^7")
+                            if (nickEnd >= 0) {
+                                mp.name = part.substring(0, nickEnd)
+                            } else {
+                                nickEnd = line.indexOf("^7")
+                                mp.name = part +  ' ' + line.substring(0, nickEnd)
+                                line = line.substring(nickEnd + 2)
+                            }
+                            break
+                            case 3:
+                            mp.lastmsg = part
+                            break
+                            case 4:
+                            mp.address = part
+                            break
+                            case 5:
+                            mp.qport = part
+                            break
                         }
-                        break
-                        case 3:
-                        mp.lastmsg = part
-                        break
-                        case 4:
-                        mp.address = part
-                        break
-                        case 5:
-                        mp.qport = part
-                        break
                     }
                 }
             }
