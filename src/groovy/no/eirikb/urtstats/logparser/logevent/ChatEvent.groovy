@@ -77,9 +77,9 @@ class ChatEvent extends Event {
                 }
             }
             if (p != null) {
-                RCon.rcon("rcon say \"^2" + p.getColorNick() + " ^7Level: ^1" + p.getLevel() + "\"")
+                RCon.rcon("say \"^2" + p.getColorNick() + " ^7Level: ^1" + p.getLevel() + "\"")
             } else{
-                RCon.rcon("rcon tell " + player.getUrtID() + "\"^7Player not found.\"")
+                RCon.rcon("tell " + player.getUrtID() + " \"^7Player not found.\"")
             }
             break
 
@@ -89,7 +89,7 @@ class ChatEvent extends Event {
             break
 
             case "pin":
-            RCon.rcon("rcon tell " + player.getUrtID() + " \"^7Your PIN is: " + player.getPin() + "\"")
+            RCon.rcon("tell " + player.getUrtID() + " \"^7Your PIN is: " + player.getPin() + "\"")
             break
 
             case "bigtext":
@@ -100,7 +100,7 @@ class ChatEvent extends Event {
 
             case "slap":
             cmd = "slap"
-            def clos = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
+            def clos = {RCon.rcon(cmd + ' ' + it.getUrtID())}
             rconCommand(player, cmd, message, clos)
             break
 
