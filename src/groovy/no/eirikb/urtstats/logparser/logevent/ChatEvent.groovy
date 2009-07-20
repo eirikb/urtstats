@@ -146,8 +146,6 @@ class ChatEvent extends Event {
                 }
             }
             break
-
-
         }
     }
 
