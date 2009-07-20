@@ -41,6 +41,9 @@ class PlayerToolTests extends GrailsUnitTestCase {
 
         id = PlayerTool.getId("test: 3 easy again")
         assertEquals 3, id
+
+        id = PlayerTool.getId("ClientUserinfo: 1 \\ip\\62.16.239.31:27961\\name\\EagleEye\\racered\\2")
+        assertEquals 1, id
     }
 
     void testRemoveColorFromNick() {
