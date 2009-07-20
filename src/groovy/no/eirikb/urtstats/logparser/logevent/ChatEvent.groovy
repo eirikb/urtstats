@@ -84,7 +84,7 @@ class ChatEvent extends Event {
             break
 
             case "kick":
-            def clos = {RCon.rcon("rcon " + cmd + ' ' + it.getUrtID())}
+            def clos = {RCon.rcon("rcon clientkick " + it.getUrtID())}
             rconCommand(player, cmd, message, clos)
             break
 
