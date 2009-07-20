@@ -87,8 +87,12 @@ class Sync {
             def pos = -1
             def space = line.indexOf(' ')
             if (space >= 0) {
-                def part = line.substring(0, space)
-                line = line.substring(space + 1)
+                def part = ""
+                while (part.length() == 0) {
+                    space = line.indexOf(' ')
+                    part = line.substring(0, space)
+                    line = line.substring(space + 1)
+                }
                 def mp = [:]
                 map[part] = mp
                 while ((space = line.indexOf(' ')) >= 0) {
