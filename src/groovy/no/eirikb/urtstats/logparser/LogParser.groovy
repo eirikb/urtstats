@@ -45,7 +45,7 @@ class LogParser {
                     readLine(line)
                 }
             } else {
-                RCon.rcon("rcon bigtext \"^7" + Server.findByIdent(1)?.getWelcomeMessage() + '"')
+                RCon.rcon("bigtext \"^7" + Server.findByIdent(1)?.getWelcomeMessage() + '"')
                 new Sync(tail).sync()
                 synced = true
             }

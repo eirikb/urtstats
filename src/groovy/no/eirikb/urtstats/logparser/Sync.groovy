@@ -34,8 +34,8 @@ class Sync {
     def sync() {
         log.info "[Sync] Start syncing..."
         def filePointer = tail.getFilePointer()
-        RCon.rcon("rcon say \"^7Syncing players...\"")
-        def status = RCon.rcon("rcon status", true)
+        RCon.rcon("say \"^7Syncing players...\"")
+        def status = RCon.rcon("tatus", true)
         log.info "[Sync] Got status: " + status
         if (status != null) {
             def map = statusToMap(status)
@@ -61,9 +61,9 @@ class Sync {
                 }
             }
             if (done == max) {
-                RCon.rcon("rcon say \"^7All users were synced.\"")
+                RCon.rcon("say \"^7All users were synced.\"")
             } else {
-                RCon.rcon("rcon say \"^7Not all players were synced! Check logs.\"")
+                RCon.rcon("say \"^7Not all players were synced! Check logs.\"")
             }
         } else {
             log.error "[Sync] Status return from RCon was null"

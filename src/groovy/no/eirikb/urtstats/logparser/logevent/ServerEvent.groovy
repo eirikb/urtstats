@@ -28,7 +28,7 @@ class ServerEvent extends Event {
         switch (cmd) {
             case "INITROUND":
             log.info "[ServerEvent] INITROUND"
-            RCon.rcon("rcon bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
+            RCon.rcon("bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
             def players = Player.findAllByUrtIDGreaterThanEquals(0)
             players.each() { it.setJoinGameDate(new Date()) }
             break

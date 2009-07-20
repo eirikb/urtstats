@@ -91,6 +91,6 @@ class BootStrap {
     }
 
     def destroy = {
-        RCon.rcon("rcon bigtext \"^7Stats are temporarily going down...\"")
+        RCon.rcon("bigtext \"^7Stats are temporarily going down...\"")
     }
 } 

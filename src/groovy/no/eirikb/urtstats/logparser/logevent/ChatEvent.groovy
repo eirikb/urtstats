@@ -63,7 +63,7 @@ class ChatEvent extends Event {
 
         switch (cmd) {
             case "help":
-            RCon.rcon("rcon tell " + player.getUrtID() + " \"^Commands: level, pin\"")
+            RCon.rcon("tell " + player.getUrtID() + " \"^Commands: level, pin\"")
             break
 
             case "level":
@@ -84,7 +84,7 @@ class ChatEvent extends Event {
             break
 
             case "kick":
-            def clos = {RCon.rcon("rcon clientkick " + it.getUrtID())}
+            def clos = {RCon.rcon("clientkick " + it.getUrtID())}
             rconCommand(player, cmd, message, clos)
             break
 
@@ -94,7 +94,7 @@ class ChatEvent extends Event {
 
             case "bigtext":
             if (isPermitted(player, "bigtext")) {
-                RCon.rcon("rcon bigtext \"" + message + '"')
+                RCon.rcon("bigtext \"" + message + '"')
             }
             break
 
@@ -109,9 +109,9 @@ class ChatEvent extends Event {
             cmd = "forceteam"
             def clos = {
                 if (it.getTeam().getUrtID() == 1) {
-                    RCon.rcon("rcon " + cmd + ' ' + it.getUrtID() + " blue")
+                    RCon.rcon(cmd + ' ' + it.getUrtID() + " blue")
                 } else {
-                    RCon.rcon("rcon " + cmd + ' ' + it.getUrtID() + " red")
+                    RCon.rcon(cmd + ' ' + it.getUrtID() + " red")
                 }
             }
             rconCommand(player, "forceteam", message, clos)
@@ -144,7 +144,7 @@ class ChatEvent extends Event {
                         if (it.getTeam().getUrtID() == 2) {
                             color = blue
                         }
-                        RCon.rcon("rcon forceteam " + it.getUrtID() + ' ' + color)
+                        RCon.rcon("forceteam " + it.getUrtID() + ' ' + color)
                     }
                 }
             }
@@ -160,12 +160,12 @@ class ChatEvent extends Event {
                 if (!isAdmin(it)) {
                     clos(it)
                 } else {
-                    RCon.rcon("rcon slap " + player.getUrtID())
-                    RCon.rcon("rcon say \"^2" + player.getColorNick() + " ^7 tried to " + cmd + " an admin!\"")
+                    RCon.rcon("slap " + player.getUrtID())
+                    RCon.rcon("say \"^2" + player.getColorNick() + " ^7 tried to " + cmd + " an admin!\"")
                 }
             }
             if (!found) {
-                RCon.rcon("rcon tell " + player.getUrtID() + "\"^7No players found\"")
+                RCon.rcon("tell " + player.getUrtID() + "\"^7No players found\"")
             }
 
         } 
@@ -177,7 +177,7 @@ class ChatEvent extends Event {
             return new JsecDbRealm().isPermitted(user.getUsername(),
                 new JsecBasicPermission('urt', permission))
         } else {
-            RCon.rcon("rcon tell " + player.getUrtID() + "\"^7You are not permitted to " + permission + '"')
+            RCon.rcon("tell " + player.getUrtID() + "\"^7You are not permitted to " + permission + '"')
         }
         return false
     }
