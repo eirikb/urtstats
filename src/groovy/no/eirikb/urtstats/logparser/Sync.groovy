@@ -57,10 +57,7 @@ class Sync {
                         def player = Player.findByUrtID(uie.getId())
                         if (player == null) {
                             def userInfo = uie.getUserInfo()
-                            log.info "ID: " + uie.getId()
-                            log.info "ID: " + uie.getId()
-                            log.info "ID: " + uie.getId()
-                            def m = map[uie.getId()]
+                            def m = map["" + uie.getId()]
                             log.info "Map : " + m + ". userInfo: " + userInfo
                             if (m != null) {
                                 if (m.name.indexOf(userInfo.name) == 0 &&
