@@ -71,7 +71,10 @@ class ChatEvent extends Event {
             case "stats":
             def p = player
             if (message != null) {
-                p = Player.findByNickIlike('%' + message + '%')
+                p = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
+                if (p == null) {
+                    p = Player.findByNickIlike('%' + message + '%')
+                }
             }
             if (p != null) {
                 RCon.rcon("rcon say \"^2" + p.getColorNick() + " ^7Level: ^1" + p.getLevel() + "\"")

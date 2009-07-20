@@ -10,7 +10,6 @@
 package no.eirikb.urtstats.logparser
 
 import no.eirikb.urtstats.utils.RCon
-import no.eirikb.urtstats.utils.PlayerTool
 import no.eirikb.urtstats.logparser.logevent.*
 import org.apache.commons.logging.LogFactory
 import domain.urt.Player
@@ -38,12 +37,15 @@ class Sync {
             it.save(flush:true)
             log.info "[Sync] Player UrtID set to -1. player: " + it.dump()
         }
-        log.info "[Sync] All UrtID set to -1. Proof: "  + Player.countByUrtIDGreaterThanEquals(0) + " - " + Player.count()
+        log.info "[Sync] All UrtID set to -1. Proof: "  + Player.countByUrtIDLessThan(0) + " - " + Player.count()
         def status = RCon.rcon("rcon status", true)
         log.info "[Sync] Got status: " + status
         if (status != null) {
             def map = statusToMap(status)
             log.info "[Sync] Map: " + map.dump()
+            map.each {
+
+            }
             def max = map.size()
             def done = 0
             while (done >= 0 && done < max) {
@@ -51,17 +53,23 @@ class Sync {
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
                     def line2 = tail.parseReverse()
                     if (line2.indexOf("ClientUserinfo") == 0) {
-                        def online = Player.countByUrtIDGreaterThanEquals(0)
-                        def player = Player.findByUrtID(PlayerTool.getId(line2))
+                        def uie = new UserInfoEvent(line)
+                        def player = Player.findByUrtID(uie.getId())
                         if (player == null) {
-                            new UserInfoEvent(line2).execute()
-                            new UserInfoChangedEvent(line).execute()
+                            def userInfo = uie.getUserInfo()
+                            def m = map[uie.getId()]
+                            log.info "Map : " + m + ". userInfo: " + userInfo
+                            if (m.name.indexOf(userInfo.name) == 0 &&
+                                m.ip == userInfo.ip) {
+                                uie.execute()
+                                new UserInfoChangedEvent(line).execute()
+                            } else {
+                                log.warn "[Sync] Got player by UrtID, but did not match map! m: " + m +
+                                ". userInfo: " + userInfo
+                            }
                         } else {
                             log.info "[Sync] Player with UrtID already in databse. player: " + player +
                             ". line2: " + line2 + ". line: " + line
-                        }
-                        if (online < Player.countByUrtIDGreaterThanEquals(0))  {
-                            done++
                         }
                     } else if (line2.indexOf("InitGame") == 0) {
                         done = -1

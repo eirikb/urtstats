@@ -27,6 +27,7 @@ class UserInfoEvent extends Event{
     
     public UserInfoEvent(line) {
         super(line)
+        info.log "[UserInfoEvent] Init. Line: " + line
     }
 
     void execute() {
