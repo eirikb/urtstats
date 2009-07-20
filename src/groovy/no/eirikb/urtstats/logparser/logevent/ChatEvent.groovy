@@ -151,7 +151,7 @@ class ChatEvent extends Event {
     def rconCommand(player, cmd, message, clos) {
         if (isPermitted(player, cmd)) {
             def found = false
-            Player.findAllByNickIlike('%' + message + '%').each {
+            Player.findAllByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0).each {
                 found = true
                 if (!isAdmin(it)) {
                     clos(it)
