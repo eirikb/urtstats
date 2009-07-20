@@ -53,7 +53,7 @@ class Sync {
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
                     def line2 = tail.parseReverse()
                     if (line2.indexOf("ClientUserinfo") == 0) {
-                        def uie = new UserInfoEvent(line)
+                        def uie = new UserInfoEvent(line2)
                         def player = Player.findByUrtID(uie.getId())
                         if (player == null) {
                             def userInfo = uie.getUserInfo()
