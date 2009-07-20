@@ -106,5 +106,33 @@ class UserInfoEventTests extends GrailsUnitTestCase {
         assertEquals 2, Player.count()
 
         assertEquals 2, Team.findByUrtID(0).getPlayers().size()
+
+
+        new UserInfoEvent("ClientUserinfo: 3 \\ip\\3" +
+            "\\name\\test\\cl_guid\\3").execute()
+        player = Player.findByGuid("3")
+        assertEquals 3, player.getUrtID()
+        assertEquals "3", player.getIp()
+        new UserInfoEvent("ClientUserinfo: 2 \\ip\\2" +
+            "\\name\\test\\cl_guid\\3").execute()
+        player = Player.findByGuid("3")
+        assertEquals 2, player.getUrtID()
+        assertEquals "2", player.getIp()
+        new UserInfoEvent("ClientUserinfo: 2 \\ip\\2" +
+            "\\name\\test\\cl_guid\\2").execute()
+        player = Player.findByGuid("3")
+        assertEquals 2, player.getUrtID()
+        assertEquals "2", player.getIp()
+        player = Player.findByGuid("2")
+        assertEquals 2, player.getUrtID()
+        assertEquals "2", player.getIp()
+        new UserInfoEvent("ClientUserinfo: 2 \\ip\\4" +
+            "\\name\\test\\cl_guid\\4").execute()
+        player = Player.findByGuid("3")
+        assertEquals 2, player.getUrtID()
+        assertEquals "2", player.getIp()
+        player = Player.findByGuid("4")
+        assertEquals 2, player.getUrtID()
+        assertEquals "4", player.getIp()
     }
 }

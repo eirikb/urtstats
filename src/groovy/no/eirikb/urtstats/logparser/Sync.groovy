@@ -32,6 +32,7 @@ class Sync {
         def filePointer = tail.getFilePointer()
         RCon.rcon("rcon say \"^7Syncing players...\"")
         def status = RCon.rcon("rcon status", true)
+        log.info "[Sync] Got status: " + status
         if (status != null) {
             def map = statusToMap(status)
             def max = map.size()
