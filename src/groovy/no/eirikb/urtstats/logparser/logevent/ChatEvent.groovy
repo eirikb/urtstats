@@ -66,6 +66,7 @@ class ChatEvent extends Event {
             RCon.rcon("tell " + player.getUrtID() + " \"^Commands: level, pin\"")
             break
 
+            case "lvl":
             case "level":
             case "status":
             case "stats":
@@ -151,7 +152,7 @@ class ChatEvent extends Event {
             break
 
             case "say":
-            RCon.rcon("say " + player.getColorNick() + ": " + message)
+            RCon.rcon("say \"^7" + player.getColorNick() + ": " + message + '"')
             break
         }
     }
