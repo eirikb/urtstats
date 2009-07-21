@@ -149,6 +149,14 @@ class ChatEvent extends Event {
                 }
             }
             break
+
+            case "say":
+            if (player.getTeam()?.getUrtID() == 0) {
+                RCon.rcon("say " + player.getColorNick() + ": " + message)
+            } else {
+                log.info "[ChatEvent] Say: Player is not in team 0. player: " + player + ". team " + player.getTeam()
+            }
+            break
         }
     }
 
