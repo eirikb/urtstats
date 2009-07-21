@@ -35,7 +35,7 @@ class Sync {
         log.info "[Sync] Start syncing..."
         def filePointer = tail.getFilePointer()
         RCon.rcon("say \"^7Syncing players...\"")
-        def status = RCon.rcon("tatus", true)
+        def status = RCon.rcon("status", true)
         log.info "[Sync] Got status: " + status
         if (status != null) {
             def map = statusToMap(status)
