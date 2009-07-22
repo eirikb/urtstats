@@ -28,13 +28,15 @@ class PlayerController {
         def sort = params.sort ? "p." + params.sort : "p.nick"
         if (params.sort == "headshots") {
             sort = "COUNT(h)"
+        } else if (params.sort == "kills") {
+            sort = "COUNT(k)"
         }
         def order = params.order ? params.order : "asc"
         def players = Player.executeQuery("SELECT new map(p.id as id, p.nick as nick, \
-            p.level as level, p.exp as exp, p.nextlevel as nextlevel, p.kills.size as kills, \
+            p.level as level, p.exp as exp, p.nextlevel as nextlevel, COUNT(k) as kills, \
             COUNT(h) as headshots) \
             FROM Player p LEFT JOIN p.hitsOther h WITH h.hitpoint = 0 \
-            GROUP BY p.id, p.nick, p.level, p.exp, p.nextlevel ORDER BY " + sort + " " + order,
+            LEFT JOIN p.kills k GROUP BY p.id, p.nick, p.level, p.exp, p.nextlevel ORDER BY " + sort + " " + order,
             [max:params.max.toInteger(), offset:params.offset.toInteger()])
         [ playerList: players, playerTotal: Player.count() ]
     }

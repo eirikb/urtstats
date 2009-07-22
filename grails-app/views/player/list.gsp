@@ -40,7 +40,7 @@
 
       <g:sortableColumn property="nextlevel" title="Nextlevel" />
 
-      <g:sortableColumn property="kills.size" title="Kills" />
+      <g:sortableColumn property="kills" title="Kills" />
 
       <g:sortableColumn property="headshots" title="Headshots" />
 
