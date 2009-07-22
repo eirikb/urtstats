@@ -1,4 +1,4 @@
-<g:each in="${newsList}" status="i" var="news">
+<g:each in="${newsList}" var="news">
   <h1>${fieldValue(bean:news, field:'title')}</h1>
   <jsec:hasPermission permission="${new org.jsecurity.grails.JsecBasicPermission('news', 'edit')}">
     <g:link controller="news" action="edit" id="${news.id}">[edit]</g:link>
