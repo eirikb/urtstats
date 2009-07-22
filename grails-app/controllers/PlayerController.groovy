@@ -24,7 +24,16 @@ class PlayerController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 20,  100)
-        def players = Player.createCriteria().list(params){}
+        def sort = params.sort ? "p." + params.sort : "p.nick"
+        if (params.sort == "headshots") {
+            sort = "COUNT(h)"
+        }
+        def order = params.order ? params.order : "asc"
+        def players = Player.executeQuery("SELECT new map(p.id as id, p.nick as nick, \
+            p.level as level, p.exp as exp, p.nextlevel as nextlevel, p.kills.size as kills, \
+            COUNT(h) as headshots) \
+            FROM Player p LEFT JOIN p.hitsOther h WITH h.hitpoint = 0 \
+            GROUP BY p.id, p.nick, p.level, p.exp, p.nextlevel ORDER BY " + sort + " " + order)
         [ playerList: players, playerTotal: Player.count() ]
     }
 

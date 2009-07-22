@@ -1,4 +1,5 @@
 
+<%@page import="domain.urt.Hit"%>
 <html>
   <head>
   <resource:autoComplete skin="default" />
@@ -41,9 +42,9 @@
 
       <g:sortableColumn property="nextlevel" title="Nextlevel" />
 
-      <td>Kills</td>
+      <g:sortableColumn property="kills.size" title="Kills" />
 
-      <td>Headshots</td>
+      <g:sortableColumn property="headshots" title="Headshots" />
 
       </tr>
       </thead>
@@ -51,22 +52,21 @@
       <g:each in="${playerList}" status="i" var="player">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-          <td><g:link action="show" id="${player.id}">${fieldValue(bean:player, field:'nick')}</g:link></td>
+          <td><g:link action="show" id="${player.id}">${player.nick}</g:link></td>
 
         <jsec:hasRole  name="ADMIN">
-          <td>${fieldValue(bean:player, field:'ip')}</td>
+          <td>${player.ip}</td>
         </jsec:hasRole>
 
-        <td>${fieldValue(bean:player, field:'level')}</td>
+        <td>${player.level}</td>
 
-        <td>${fieldValue(bean:player, field:'exp')}</td>
+        <td>${player.exp}</td>
 
-        <td>${fieldValue(bean:player, field:'nextlevel')}</td>
+        <td>${player.nextlevel}</td>
 
-        <td>${player.kills.size()}</td>
+        <td>${player.kills}</td>
 
-        <td>${Hit.countByHitterAndHitpoint(player, 0)}</td>
-
+        <td>${player.headshots}</td>
         </tr>
       </g:each>
       </tbody>
