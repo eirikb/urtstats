@@ -66,8 +66,6 @@
         <td valign="top" class="value ${hasErrors(bean:cmd,field:'nick','errors')}">
           <input type="text" id="nick" name="nick" value="${fieldValue(bean:cmd,field:'nick')}"/>
           (From game)<br />
-          Color codes such as ^1 must be included!<br />
-          Case insensitive.
         </td>
       </tr>
 
@@ -79,19 +77,6 @@
           <input type="text" id="pin" name="pin" value="${cmd?.pin}"/>
           (From game)
         </td>
-      </tr>
-
-      <tr class="prop">
-        <td valign="top" class="captcha">
-          <label for="captcha">Captcha:</label>
-        </td>
-        <td valign="top">
-      <jcaptcha:jpeg name="imageCaptcha" height="Xpx" width="Xpx" /><br />
-      <g:if test="${flash.message?.captchaerror}">
-        <div class="errors">${flash.message.captchaerror}</div>
-      </g:if>
-      <input type="text" id="captcha" name="captcha"/>
-      </td>
       </tr>
       </tbody>
     </table>

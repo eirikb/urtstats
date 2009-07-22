@@ -7,7 +7,6 @@ import domain.urt.Player
 
 class AuthController {
     def jsecSecurityManager
-    def jcaptchaService
 
     def index = { redirect(action: 'login', params: params) }
 
@@ -74,31 +73,22 @@ class AuthController {
     def create = {}
 
     def save = {RegisterUserCommand cmd ->
-        def captcha = jcaptchaService.validateResponse("imageCaptcha", session.id, params.captcha)
-        if (!captcha) {
-            flash.message = [captchaerror:"You did not enter correct captcha"]
-        }
         def user = new JsecUser(username:params.username, passwordHash:new Sha1Hash(params.password).toHex())
         user.validate()
         if (!user.hasErrors() && !cmd.hasErrors()) {
             def ip = request.getRemoteAddr()
             def player = Player.findByNickIlikeAndPin(params.nick, params.pin)
             def playerIP = player.getIp()?.substring(0, player.getIp().indexOf(":"))
-            if (captcha) {
-                player.user = user
-                def userRole = JsecRole.findByName("USER")
-                if (!user.save(flush:true) || !player.save(flush:true)) {
-                    log.error "Could not create user. Params(" + params.dump() + ")"
-                } else {
-                    new JsecUserRoleRel(user:user, role:userRole).save()
-                    log.info "New user! " + user.dump()
-                }
-                flash.message = "Congratulations " + user.username + ". You can now log in."
-                redirect(action:"login")
+            player.user = user
+            def userRole = JsecRole.findByName("USER")
+            if (!user.save(flush:true) || !player.save(flush:true)) {
+                log.error "Could not create user. Params(" + params.dump() + ")"
             } else {
-                flash.error = "Your IP does not match! <a href=#IP>[Info]</a>"
-                log.warning("IP does not match. Player: " + player + ". IP: " + ip + ". Player IP: " + player?.ip)
+                new JsecUserRoleRel(user:user, role:userRole).save()
+                log.info "New user! " + user.dump()
             }
+            flash.message = "Congratulations " + user.username + ". You can now log in."
+            redirect(action:"login")
         }
         render (view:'create', model:[cmd:cmd, user:user])
     }
