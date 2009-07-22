@@ -76,7 +76,7 @@ class AuthController {
         def user = new JsecUser(username:params.username, passwordHash:new Sha1Hash(params.password).toHex())
         user.validate()
         if (!user.hasErrors() && !cmd.hasErrors()) {
-            def ip = subject.getInetAddress().getHostAddress()
+            def ip = SecurityUtils.getSubject().getInetAddress().getHostAddress()
             def player = Player.findByNickIlikeAndPin(params.nick, params.pin)
             def playerIP = player.getIp()?.substring(0, player.getIp().indexOf(":"))
             if (playerIP == ip) {
