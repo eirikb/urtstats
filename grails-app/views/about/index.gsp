@@ -9,7 +9,7 @@
     <p><a href="${resource(base:'http://eirikb.no/redmine/projects/show/urtstats')}" target="_blank">Project page</a></p>
     <br />
     <h3>What is UrTStats?</h3>
-    <p>UrTStats is a stats-page for <a href="${resource(base:'http://urbanterror.net')}" target="_blank">Urban Terror</a>.</p>
+    <p>UrTStats is a OPEN SOURCE ALL IN ONE stats-page for <a href="${resource(base:'http://urbanterror.net')}" target="_blank">Urban Terror</a>.</p>
     <p>The point of this project is not to create yet another stats page, but for me to learn
       <a href="${resource(base:'http://grails.org')}" target="_blank">Grails</a>.</p>
     <p>Note! Everything is written by hand, I'm _not_ using any bots or software such as B3 or XLR,</p>
