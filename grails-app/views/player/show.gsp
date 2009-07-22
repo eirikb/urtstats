@@ -71,15 +71,15 @@
 
         <tr class="prop">
           <td valign="top" class="name">Kills:</td>
-          <td valign="top" class="value">${Kill.countBykiller(playerInstance)}</td>
+          <td valign="top" class="value"></td>
         </tr>
         <tr class="prop">
           <td valign="top" class="name">Deaths:</td>
-          <td valign="top" class="value">${Kill.countBykilled(playerInstance)}</td>
+          <td valign="top" class="value"></td>
         </tr>
         <tr class="prop">
           <td valign="top" class="name">Ratio:</td>
-          <td valign="top" class="value">${(Kill.countBykiller(playerInstance) + 1) / (Kill.countBykilled(playerInstance) + 1)}</td>
+          <td valign="top" class="value"></td>
         </tr>
 
         </tbody>
