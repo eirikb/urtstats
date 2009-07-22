@@ -42,8 +42,6 @@
 
       <g:sortableColumn property="kills" title="Kills" />
 
-      <g:sortableColumn property="headshots" title="Headshots" />
-
       </tr>
       </thead>
       <tbody>
@@ -63,8 +61,6 @@
         <td>${player.nextlevel}</td>
 
         <td>${player.kills}</td>
-
-        <td>${player.headshots}</td>
         </tr>
       </g:each>
       </tbody>
