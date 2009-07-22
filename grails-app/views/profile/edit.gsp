@@ -27,34 +27,34 @@
 
             <tr class="prop">
               <td valign="top" class="name">
-                <label for="title">Username: ${fieldValue(bean:user, field:'username')}</label>
+                <label for="username">Username: ${fieldValue(bean:user, field:'username')}</label>
               </td>
             </tr>
 
             <tr class="prop">
               <td valign="top" class="name">
-                <label for="title">Email:</label>
+                <label for="email">Email:</label>
               </td>
               <td valign="top" class="value ${hasErrors(bean:user, field:'email','errors')}">
-                <input name="title" value="${fieldValue(bean:user, field:'email')}"/>
+                <input name="email" value="${fieldValue(bean:user, field:'email')}"/>
               </td>
             </tr>
 
             <tr class="prop">
               <td valign="top" class="name">
-                <label for="title">First name:</label>
+                <label for="firstname">First name:</label>
               </td>
               <td valign="top" class="value ${hasErrors(bean:user, field:'firstname','errors')}">
-                <input name="title" value="${fieldValue(bean:user, field:'firstname')}"/>
+                <input name="firstname" value="${fieldValue(bean:user, field:'firstname')}"/>
               </td>
             </tr>
 
             <tr class="prop">
               <td valign="top" class="name">
-                <label for="title">Last name:</label>
+                <label for="lastname">Last name:</label>
               </td>
               <td valign="top" class="value ${hasErrors(bean:user, field:'lastname','errors')}">
-                <input name="title" value="${fieldValue(bean:user, field:'lastname')}"/>
+                <input name="lastname" value="${fieldValue(bean:user, field:'lastname')}"/>
               </td>
             </tr>
 

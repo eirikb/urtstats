@@ -98,13 +98,4 @@ class AuthController {
         user.validate()
         render(template:"checkUserTemplate", model:['user':user])
     }
-
-    def show = {
-        def subject = SecurityUtils.getSubject();
-        println subject.dump()
-        if (subject.authenticated) {
-            [user : JsecUser.findByUsername(subject.principal) ]
-        }
-    }
-
 }

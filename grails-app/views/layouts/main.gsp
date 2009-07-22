@@ -24,6 +24,10 @@
         <li class="controller"><g:link controller="auth">Log in</g:link></li>
       </jsec:isNotLoggedIn>
 
+      <jsec:isLoggedIn>
+        <li class="controller"><g:link controller="profile">Profile</g:link></li>
+      </jsec:isLoggedIn>
+
       <li><a href="${resource(dir:'/')}">Home</a></li>
 
       <li class="controller"><g:link controller="forumGenre">Forum</g:link></li>
