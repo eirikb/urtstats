@@ -24,7 +24,7 @@
         <li class="controller"><g:link controller="auth">Log in</g:link></li>
       </jsec:isNotLoggedIn>
 
-      <li><a href="${resource(dir:'')}">Home</a></li>
+      <li><a href="${resource(dir:'/')}">Home</a></li>
 
       <li class="controller"><g:link controller="forumGenre">Forum</g:link></li>
 
