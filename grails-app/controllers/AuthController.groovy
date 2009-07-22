@@ -91,7 +91,7 @@ class AuthController {
                 flash.message = "Congratulations " + user.username + ". You can now log in."
                 redirect(action:"login")
             } else {
-                flas.error = "IP address does not match! Your IP: " + ip
+                flash.error = "IP address does not match! Your IP: " + ip
             }
         }
         render (view:'create', model:[cmd:cmd, user:user])
