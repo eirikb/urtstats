@@ -23,7 +23,8 @@ class PlayerController {
     }
 
     def list = {
-        params.max = Math.min( params.max ? params.max.toInteger() : 20,  100)
+        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
+        params.offset = params.offset ? params.offset : 0
         def sort = params.sort ? "p." + params.sort : "p.nick"
         if (params.sort == "headshots") {
             sort = "COUNT(h)"
@@ -33,7 +34,8 @@ class PlayerController {
             p.level as level, p.exp as exp, p.nextlevel as nextlevel, p.kills.size as kills, \
             COUNT(h) as headshots) \
             FROM Player p LEFT JOIN p.hitsOther h WITH h.hitpoint = 0 \
-            GROUP BY p.id, p.nick, p.level, p.exp, p.nextlevel ORDER BY " + sort + " " + order)
+            GROUP BY p.id, p.nick, p.level, p.exp, p.nextlevel ORDER BY " + sort + " " + order,
+            [max:params.max.toInteger(), offset:params.offset.toInteger()])
         [ playerList: players, playerTotal: Player.count() ]
     }
 

@@ -1,5 +1,3 @@
-
-<%@page import="domain.urt.Hit"%>
 <html>
   <head>
   <resource:autoComplete skin="default" />
