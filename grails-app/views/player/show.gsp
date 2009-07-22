@@ -24,62 +24,47 @@
         <tbody>
           <tr class="prop">
             <td valign="top" class="name">Nick:</td>
-            <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'nick')}</td>
+            <td valign="top" class="value">${fieldValue(bean:player, field:'nick')}</td>
           </tr>
         <jsec:hasRole name="ADMIN">
           <tr class="prop">
             <td valign="top" class="name">Ip:</td>
-            <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'ip')}</td>
+            <td valign="top" class="value">${fieldValue(bean:player, field:'ip')}</td>
           </tr>
         </jsec:hasRole>
 
         <tr class="prop">
           <td valign="top" class="name">Level:</td>
-          <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'level')}</td>
+          <td valign="top" class="value">${fieldValue(bean:player, field:'level')}</td>
         </tr>
 
         <tr class="prop">
           <td valign="top" class="name">Exp:</td>
-          <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'exp')}</td>
+          <td valign="top" class="value">${fieldValue(bean:player, field:'exp')}</td>
         </tr>
 
         <tr class="prop">
           <td valign="top" class="name">Nextlevel:</td>
-          <td valign="top" class="value">${fieldValue(bean:playerInstance, field:'nextlevel')}</td>
+          <td valign="top" class="value">${fieldValue(bean:player, field:'nextlevel')}</td>
         </tr>
-
-        <jsec:hasRole name="ADMIN">
-          <tr class="prop">
-            <td valign="top" class="name">Chats:</td>
-
-            <td  valign="top" style="text-align:left;" class="value">
-              <ul>
-                <g:each var="c" in="${playerInstance.chats}">
-                  <li>${c?.message}</li>
-                </g:each>
-              </ul>
-            </td>
-          </tr>
-        </jsec:hasRole>
-
 
         <tr class="prop">
           <td valign="top" class="name">Joined:</td>
 
-          <td valign="top" class="value"><prettytime:display date="${playerInstance.getDateCreated()}" /></td>
+          <td valign="top" class="value"><prettytime:display date="${player.getDateCreated()}" /></td>
         </tr>
 
         <tr class="prop">
           <td valign="top" class="name">Kills:</td>
-          <td valign="top" class="value"></td>
+          <td valign="top" class="value">${player.getKills().size()}</td>
         </tr>
         <tr class="prop">
           <td valign="top" class="name">Deaths:</td>
-          <td valign="top" class="value"></td>
+          <td valign="top" class="value">${player.getDeaths().size()}</td>
         </tr>
         <tr class="prop">
           <td valign="top" class="name">Ratio:</td>
-          <td valign="top" class="value"></td>
+          <td valign="top" class="value">${player.getKills().size() / player.getDeaths().size()}</td>
         </tr>
 
         </tbody>
