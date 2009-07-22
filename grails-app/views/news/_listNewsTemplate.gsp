@@ -5,7 +5,7 @@
   </jsec:hasPermission>
   <b>Author:</b>${fieldValue(bean:news.getAuthor(), field:'firstname')} ${fieldValue(bean:news.getAuthor(), field:'lastname')}
 (${fieldValue(bean:news.getAuthor(), field:'username')})
-   - <b>Created:</b> <prettytime:display date="${news.getCreateDate()()}" />
+   - <b>Created:</b> <prettytime:display date="${news.dateCreated()()}" />
    - <b>Last modified:</b> <prettytime:display date="${news.getLastUpdated()}" />
 ${fieldValue(bean:news, field:'head').decodeHTML()}
 
