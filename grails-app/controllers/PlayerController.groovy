@@ -40,13 +40,13 @@ class PlayerController {
     }
 
     def show = {
-        def playerInstance = Player.get( params.id )
-
-        if(!playerInstance) {
+        def player = Player.get( params.id )
+        println player.dump()
+        if(!player) {
             flash.message = "Player not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ playerInstance : playerInstance ] }
+        else { return [ player:player ] }
     }
 
     def delete = {
