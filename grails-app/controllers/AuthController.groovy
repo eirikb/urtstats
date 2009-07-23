@@ -76,9 +76,10 @@ class AuthController {
         def user = new JsecUser(username:params.username, passwordHash:new Sha1Hash(params.password).toHex())
         user.validate()
         if (!user.hasErrors() && !cmd.hasErrors()) {
-            def ip = SecurityUtils.getSubject().getInetAddress().getHostAddress()
+            def ip = request.getRemoteAddr()
             def player = Player.findByNickIlikeAndPin(params.nick, params.pin)
             def playerIP = player.getIp()?.substring(0, player.getIp().indexOf(":"))
+            if (ip == playerIP) {
             player.user = user
             def userRole = JsecRole.findByName("USER")
             if (!user.save(flush:true) || !player.save(flush:true)) {
@@ -89,6 +90,9 @@ class AuthController {
             }
             flash.message = "Congratulations " + user.username + ". You can now log in."
             redirect(action:"login")
+            } else {
+                flash.error = "IP does not match! Take a look <a href=#IP>here</a>. Your IP: " + ip
+            }
         }
         render (view:'create', model:[cmd:cmd, user:user])
     }
