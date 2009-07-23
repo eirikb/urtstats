@@ -1,4 +1,6 @@
 import domain.forum.*
+import domain.security.*
+import org.jsecurity.SecurityUtils
 
 class ForumTopicController {
     
@@ -8,18 +10,19 @@ class ForumTopicController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
+        println params.id
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ forumTopicInstanceList: ForumTopic.list( params ), forumTopicInstanceTotal: ForumTopic.count() ]
+        [ forumTopicList: ForumTopic.list( params ), forumTopicTotal: ForumTopic.count(), genreID:params.id ]
     }
 
     def show = {
-        def forumTopicInstance = ForumTopic.get( params.id )
+        def forumTopic = ForumTopic.get( params.id )
 
-        if(!forumTopicInstance) {
+        if(!forumTopic) {
             flash.message = "ForumTopic not found with id ${params.id}"
             redirect(action:list)
         }
-        else { return [ forumTopicInstance : forumTopicInstance ] }
+        else { return [ forumTopic : forumTopic ] }
     }
 
     def delete = {
@@ -81,19 +84,27 @@ class ForumTopicController {
     }
 
     def create = {
-        def forumTopicInstance = new ForumTopic()
-        forumTopicInstance.properties = params
-        return ['forumTopicInstance':forumTopicInstance]
+        def forumTopic = new ForumTopic()
+        def forumPost = new ForumPost()
+        return [forumTopic:forumTopic, forumPost:forumPost, genreID:params.id]
     }
 
     def save = {
-        def forumTopicInstance = new ForumTopic(params)
-        if(!forumTopicInstance.hasErrors() && forumTopicInstance.save()) {
-            flash.message = "ForumTopic ${forumTopicInstance.id} created"
-            redirect(action:show,id:forumTopicInstance.id)
-        }
-        else {
-            render(view:'create',model:[forumTopicInstance:forumTopicInstance])
+        def user = JsecUser.findByUsername(SecurityUtils.getSubject()?.getPrincipal())
+        def forumTopic = new ForumTopic(name:params.name)
+        forumTopic.setGenre(ForumGenre.get(params.genreID))
+        forumTopic.setUser(user)
+        def forumPost = new ForumPost(subject:params.name, body:params.body)
+        forumPost.setTopic(forumTopic)
+        forumPost.setUser(user)
+        println "forumTopic: " + forumTopic.dump()
+        println "forumPost: " + forumPost.dump()
+        if((!forumTopic.hasErrors() && forumTopic.save()) ||
+            (!forumPost.hasErrors() && forumPost.save())) {
+            flash.message = "ForumTopic ${forumTopic.id} created"
+            redirect(action:show,id:forumTopic.id)
+        } else {
+            render(view:'create',model:[forumTopic:forumTopic, forumPost:forumPost])
         }
     }
 }

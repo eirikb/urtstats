@@ -7,7 +7,7 @@
     <title>ForumGenre List</title>
   </head>
   <body>
-  <jsec:hasPermission permission="${new org.jsecurity.authz.permission.WildcardPermission('forum:genre:create')}">
+  <jsec:hasPermission permission="${new org.jsecurity.grails.JsecBasicPermission('forum', 'genre:create')}">
     <div class="nav">
       <span class="menuButton"><g:link class="create" action="create">New ForumGenre</g:link></span>
     </div>
@@ -22,14 +22,12 @@
         <thead>
           <tr>
         <g:sortableColumn property="name" title="Name" />
-        <td>Topic count</td>
         </tr>
         </thead>
         <tbody>
         <g:each in="${forumGenreList}" status="i" var="forumGenre">
           <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-          <g:link action="show" id="${forumGenre.id}">${fieldValue(bean:forumGenre, field:'name')}</g:link>
-          forumGenre?.topics?.size()
+            <td><g:link controller="forumTopic" action="list" id="${forumGenre.id}">${fieldValue(bean:forumGenre, field:'name')}</g:link></td>
           </tr>
         </g:each>
         </tbody>
