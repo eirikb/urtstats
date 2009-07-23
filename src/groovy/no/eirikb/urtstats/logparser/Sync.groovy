@@ -61,7 +61,7 @@ class Sync {
                 }
             }
             if (done == max) {
-                RCon.rcon("say \"^7All users were synced.\"")
+                RCon.rcon("say \"^7All players were synced.\"")
             } else {
                 RCon.rcon("say \"^7Not all players were synced! Check logs.\"")
             }
