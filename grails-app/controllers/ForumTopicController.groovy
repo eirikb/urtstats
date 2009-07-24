@@ -22,8 +22,8 @@ class ForumTopicController {
             redirect(action:list)
         } else {
             def forumGenre = forumTopic.getGenre()
-            def forumPostList = forumTopic.getPosts()
-            println "LOL: " + forumPostList
+            def forumPostList = ForumPost.findAllByTopic(forumTopic, [sort:"lastUpdated", order:"asc"])
+
             return [ forumTopic : forumTopic, forumGenre:forumGenre, forumPostList:forumPostList ]
         }
     }

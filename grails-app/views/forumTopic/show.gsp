@@ -26,6 +26,7 @@ ${fieldValue(bean:forumPost.getUser(), field:'firstname')} ${fieldValue(bean:for
         (<b>${fieldValue(bean:forumPost.getUser(), field:'username')}</b>) wrote:
 
 ${fieldValue(bean:forumPost, field:'body').decodeHTML()}
+        <br />
 
       </g:each>
 

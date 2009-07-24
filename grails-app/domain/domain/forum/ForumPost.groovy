@@ -8,7 +8,6 @@ class ForumPost {
     ForumTopic topic
     JsecUser user
 
-    String subject
     String body
 
     Date dateCreated
@@ -19,7 +18,6 @@ class ForumPost {
     }
 
     static constraints = {
-        subject(nullable:false, blank:false)
         body(nullable:false, blank:false)
     }
 }

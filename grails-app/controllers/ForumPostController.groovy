@@ -81,13 +81,14 @@ class ForumPostController {
         def forumPost = new ForumPost(body:params.body)
         forumPost.setUser(user)
         def forumTopic = ForumTopic.get(params.topicID)
+        def forumGenre = forumTopic.getGenre()
+        forumTopic.addToPosts(forumPost)
         if(!forumPost.hasErrors() && forumPost.save()) {
-            forumTopic.addToPosts(forumPost)
-            forumTopic.save()
             flash.message = "ForumPost ${forumPost.id} created"
-            redirect(controller:'forumTopic',action:show,id:forumTopic.id)
+            redirect(controller:"forumTopic",action:"show",id:forumTopic.getId())
         } else {
-            render(view:'create',model:[forumPost:forumPost, forumTopic:forumTopic])
+            render(view:'create',model:[forumPost:forumPost, forumTopic:forumTopic,
+                    forumGenre:forumGenre])
         }
     }
 }
