@@ -45,22 +45,22 @@
       </tr>
       </thead>
       <tbody>
-      <g:each in="${playerList}" status="i" var="player">
+      <g:each in="${players}" status="i" var="player">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
-          <td><g:link action="show" id="${player.id}">${player.nick}</g:link></td>
+          <td><g:link action="show" id="${player.getId()}">${player.getNick()}</g:link></td>
 
         <jsec:hasRole  name="ADMIN">
-          <td>${player.ip}</td>
+          <td>${player.getIp()}</td>
         </jsec:hasRole>
 
-        <td>${player.level}</td>
+        <td>${player.getLevel()}</td>
 
-        <td>${player.exp}</td>
+        <td>${player.getExp()}</td>
 
-        <td>${player.nextlevel}</td>
+        <td>${player.getNextlevel()}</td>
 
-        <td>${player.kills}</td>
+        <td>${infoMap.(player.getId()).kills}</td>
         </tr>
       </g:each>
       </tbody>

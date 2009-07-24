@@ -7,8 +7,8 @@
 </head>
 <body>
   <div class="nav">
-    <span class="menuButton"><g:link controller="forumGenre">ForumGenres</g:link></span>
-    <span class="menuButton"><g:link controller="forumTopic">ForumTopic</g:link></span>
+    <span class="menuButton"><g:link class="list" controller="forumGenre" action="list">ForumGenre List</g:link></span>
+    <span class="menuButton"><g:link class="list" controller="forumGenre" action="show" id="${forumGenre.getId()}">ForumGenre ${forumGenre.getName()}</g:link></span>
   </div>
   <div class="body">
     <h1>Create ForumTopic</h1>

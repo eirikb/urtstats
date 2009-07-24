@@ -8,9 +8,9 @@
   </head>
   <body>
     <div class="nav">
-      <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-      <span class="menuButton"><g:link class="list" action="list">ForumTopic List</g:link></span>
-      <span class="menuButton"><g:link class="create" action="create">New ForumTopic</g:link></span>
+      <span class="menuButton"><g:link class="list" controller="forumGenre" action="list">ForumGenre List</g:link></span>
+      <span class="menuButton"><g:link class="list" controller="forumGenre" action="show" id="${forumGenre.getId()}">ForumGenre ${forumGenre.getName()} List</g:link></span>
+      <span class="menuButton"><g:link controller="forumPost" action="create" id="${forumTopic.getId()}">Reply</g:link></span>
     </div>
     <div class="body">
       <h1>${fieldValue(bean:forumTopicInstance, field:'name')}</h1>
@@ -18,14 +18,17 @@
         <div class="message">${flash.message}</div>
       </g:if>
 
+      <h1>${forumTopic.getName()}</h1>
+
+      <g:each in="${forumPostList}" var="forumPost">
+        <prettytime:display date="${forumPost.getLastUpdated()}" />
+${fieldValue(bean:forumPost.getUser(), field:'firstname')} ${fieldValue(bean:forumPost.getUser(), field:'lastname')}
+        (<b>${fieldValue(bean:forumPost.getUser(), field:'username')}</b>) wrote:
+
+${fieldValue(bean:forumPost, field:'body').decodeHTML()}
+
+      </g:each>
+
     </div>
-    <div class="buttons">
-      <g:form>
-        <input type="hidden" name="id" value="${forumTopicInstance?.id}" />
-        <span class="button"><g:actionSubmit class="edit" value="Edit" /></span>
-        <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
-      </g:form>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

@@ -27,7 +27,7 @@
         <tbody>
         <g:each in="${forumGenreList}" status="i" var="forumGenre">
           <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-            <td><g:link controller="forumTopic" action="list" id="${forumGenre.id}">${fieldValue(bean:forumGenre, field:'name')}</g:link></td>
+            <td><g:link action="show" id="${forumGenre.id}">${fieldValue(bean:forumGenre, field:'name')}</g:link></td>
           </tr>
         </g:each>
         </tbody>

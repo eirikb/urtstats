@@ -80,16 +80,16 @@ class AuthController {
             def player = Player.findByNickIlikeAndPin(params.nick, params.pin)
             def playerIP = player.getIp()?.substring(0, player.getIp().indexOf(":"))
             if (ip == playerIP) {
-            player.user = user
-            def userRole = JsecRole.findByName("USER")
-            if (!user.save(flush:true) || !player.save(flush:true)) {
-                log.error "Could not create user. Params(" + params.dump() + ")"
-            } else {
-                new JsecUserRoleRel(user:user, role:userRole).save()
-                log.info "New user! " + user.dump()
-            }
-            flash.message = "Congratulations " + user.username + ". You can now log in."
-            redirect(action:"login")
+                player.user = user
+                def userRole = JsecRole.findByName("USER")
+                if (!user.save(flush:true) || !player.save(flush:true)) {
+                    log.error "Could not create user. Params(" + params.dump() + ")"
+                } else {
+                    new JsecUserRoleRel(user:user, role:userRole).save()
+                    log.info "New user! " + user.dump()
+                }
+                flash.message = "Congratulations " + user.username + ". You can now log in."
+                redirect(action:"login")
             } else {
                 flash.error = "IP does not match! Take a look <a href=#IP>here</a>. Your IP: " + ip
             }

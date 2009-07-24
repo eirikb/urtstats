@@ -11,6 +11,19 @@ class ForumGenreController {
         [forumGenreList: ForumGenre.list(), forumGenreTotal:ForumGenre.count()]
     }
 
+    def show = {
+        def forumGenre = ForumGenre.get( params.id )
+
+        if(!forumGenre) {
+            flash.message = "ForumGenre not found with id ${params.id}"
+            redirect(action:list)
+        } else {
+            def forumTopicList = forumGenre.getTopics()
+            return [ forumGenre : forumGenre, forumTopicList:forumTopicList,
+            forumTopicTotal:forumTopicList.size() ]
+        }
+    }
+
     def delete = {
         def forumGenreInstance = ForumGenre.get( params.id )
         if(forumGenreInstance) {

@@ -1,26 +1,14 @@
 import domain.forum.*
+import domain.security.JsecUser
+import org.jsecurity.SecurityUtils
 
 class ForumPostController {
     
-    def index = { redirect(action:list,params:params) }
+    def index = { redirect(action:list,controller:forumGenre) }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
-    def list = {
-        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ forumPostInstanceList: ForumPost.list( params ), forumPostInstanceTotal: ForumPost.count() ]
-    }
-
-    def show = {
-        def forumPostInstance = ForumPost.get( params.id )
-
-        if(!forumPostInstance) {
-            flash.message = "ForumPost not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else { return [ forumPostInstance : forumPostInstance ] }
-    }
 
     def delete = {
         def forumPostInstance = ForumPost.get( params.id )
@@ -81,19 +69,25 @@ class ForumPostController {
     }
 
     def create = {
-        def forumPostInstance = new ForumPost()
-        forumPostInstance.properties = params
-        return ['forumPostInstance':forumPostInstance]
+        def forumPost = new ForumPost()
+        forumPost.properties = params
+        def forumTopic = ForumTopic.get(params.id)
+        def forumGenre = forumTopic.getGenre()
+        return [forumPost:forumPost, forumTopic:forumTopic, forumGenre:forumGenre]
     }
 
     def save = {
-        def forumPostInstance = new ForumPost(params)
-        if(!forumPostInstance.hasErrors() && forumPostInstance.save()) {
-            flash.message = "ForumPost ${forumPostInstance.id} created"
-            redirect(action:show,id:forumPostInstance.id)
-        }
-        else {
-            render(view:'create',model:[forumPostInstance:forumPostInstance])
+        def user = JsecUser.findByUsername(SecurityUtils.getSubject()?.getPrincipal())
+        def forumPost = new ForumPost(body:params.body)
+        forumPost.setUser(user)
+        def forumTopic = ForumTopic.get(params.topicID)
+        if(!forumPost.hasErrors() && forumPost.save()) {
+            forumTopic.addToPosts(forumPost)
+            forumTopic.save()
+            flash.message = "ForumPost ${forumPost.id} created"
+            redirect(controller:'forumTopic',action:show,id:forumTopic.id)
+        } else {
+            render(view:'create',model:[forumPost:forumPost, forumTopic:forumTopic])
         }
     }
 }

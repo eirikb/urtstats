@@ -1,5 +1,6 @@
 import domain.urt.Player
 import domain.urt.Hit
+import domain.urt.Kill
 
 class PlayerController {
     
@@ -24,20 +25,14 @@ class PlayerController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        params.offset = params.offset ? params.offset : 0
-        def sort = params.sort ? "p." + params.sort : "p.nick"
-        if (params.sort == "headshots") {
-            sort = "COUNT(h)"
-        } else if (params.sort == "kills") {
-            sort = "COUNT(k)"
+        def players = Player.list ( params )
+        def infoMap = [:]
+        players.each {
+            infoMap.(it.getId()) = [:]
+            infoMap.(it.getId()).kills = Kill.countByKiller(it)
         }
-        def order = params.order ? params.order : "asc"
-        def players = Player.executeQuery("SELECT new map(p.id as id, p.nick as nick, \
-            p.level as level, p.exp as exp, p.nextlevel as nextlevel, COUNT(k) as kills) \
-            FROM Player p LEFT JOIN p.kills k GROUP BY p.id, p.nick, p.level, p.exp, p.nextlevel ORDER BY " + sort + " " + order,
-            [max:params.max.toInteger(), offset:params.offset.toInteger()])
-        println players
-        [ playerList: players, playerTotal: Player.count() ]
+        println "OMGLOL " + infoMap['1168']
+        [ players: players, infoMap:infoMap, playerTotal: Player.count() ]
     }
 
     def show = {

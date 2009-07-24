@@ -17,12 +17,15 @@ class ForumTopicController {
 
     def show = {
         def forumTopic = ForumTopic.get( params.id )
-
         if(!forumTopic) {
             flash.message = "ForumTopic not found with id ${params.id}"
             redirect(action:list)
+        } else {
+            def forumGenre = forumTopic.getGenre()
+            def forumPostList = forumTopic.getPosts()
+            println "LOL: " + forumPostList
+            return [ forumTopic : forumTopic, forumGenre:forumGenre, forumPostList:forumPostList ]
         }
-        else { return [ forumTopic : forumTopic ] }
     }
 
     def delete = {
@@ -86,7 +89,8 @@ class ForumTopicController {
     def create = {
         def forumTopic = new ForumTopic()
         def forumPost = new ForumPost()
-        return [forumTopic:forumTopic, forumPost:forumPost, genreID:params.id]
+        def forumGenre = ForumGenre.get(params.id)
+        return [forumTopic:forumTopic, forumPost:forumPost, forumGenre:forumGenre]
     }
 
     def save = {
@@ -94,13 +98,12 @@ class ForumTopicController {
         def forumTopic = new ForumTopic(name:params.name)
         forumTopic.setGenre(ForumGenre.get(params.genreID))
         forumTopic.setUser(user)
-        def forumPost = new ForumPost(subject:params.name, body:params.body)
-        forumPost.setTopic(forumTopic)
+        def forumPost = new ForumPost(body:params.body)
+        forumTopic.addToPosts(forumPost)
         forumPost.setUser(user)
         println "forumTopic: " + forumTopic.dump()
         println "forumPost: " + forumPost.dump()
-        if((!forumTopic.hasErrors() && forumTopic.save()) ||
-            (!forumPost.hasErrors() && forumPost.save())) {
+        if(!forumTopic.hasErrors() && forumTopic.save()) {
             flash.message = "ForumTopic ${forumTopic.id} created"
             redirect(action:show,id:forumTopic.id)
         } else {
