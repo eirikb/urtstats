@@ -23,7 +23,6 @@ class ForumTopicController {
         } else {
             def forumGenre = forumTopic.getGenre()
             def forumPostList = ForumPost.findAllByTopic(forumTopic, [sort:"lastUpdated", order:"asc"])
-
             return [ forumTopic : forumTopic, forumGenre:forumGenre, forumPostList:forumPostList ]
         }
     }
@@ -90,7 +89,7 @@ class ForumTopicController {
         def forumTopic = new ForumTopic()
         def forumPost = new ForumPost()
         def forumGenre = ForumGenre.get(params.id)
-        return [forumTopic:forumTopic, forumPost:forumPost, forumGenre:forumGenre]
+        return [forumTopic:forumTopic, forumPost:forumPost, forumGenre:forumGenre, genreID:params.id]
     }
 
     def save = {
@@ -107,6 +106,9 @@ class ForumTopicController {
             flash.message = "ForumTopic ${forumTopic.id} created"
             redirect(action:show,id:forumTopic.id)
         } else {
+            println "HHHHHHHHHHAHAHAHAHAHA " + params
+            flash.error ="ForumTopic could not be created!"
+            redirect(action:create,id:params.genreID)
             render(view:'create',model:[forumTopic:forumTopic, forumPost:forumPost])
         }
     }
