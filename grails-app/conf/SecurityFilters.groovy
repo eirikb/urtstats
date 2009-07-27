@@ -59,7 +59,23 @@ class SecurityFilters {
         forumGenreEdit(controller:"forumGenre", action:"(create|edit|update|save|delete)") {
             before = {
                 accessControl {
-                    permission(new org.jsecurity.authz.permission.WildcardPermission('penis:create'))
+                    permission(new org.jsecurity.grails.JsecBasicPermission('forum', 'genre:create'))
+                }
+            }
+        }
+
+        forumTopicEdit(controller:"forumTopic", action:"(create|edit|update|save|delete)") {
+            before = {
+                accessControl {
+                    role("USER")
+                }
+            }
+        }
+
+        forumPostEdit(controller:"forumPost", action:"(create|edit|update|save|delete)") {
+            before = {
+                accessControl {
+                    role("USER")
                 }
             }
         }

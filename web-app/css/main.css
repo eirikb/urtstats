@@ -91,6 +91,11 @@ input:focus, select:focus, textarea:focus {
     color: #333;
     padding-left: 25px;
 }
+.menuButton a.reply {
+    background: url(../images/skin/arrow_left.png) center left no-repeat;
+    color: #333;
+    padding-left: 25px;
+}
 
 /* MESSAGES AND ERRORS */
 

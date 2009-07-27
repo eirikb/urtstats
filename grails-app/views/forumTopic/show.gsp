@@ -10,7 +10,9 @@
     <div class="nav">
       <span class="menuButton"><g:link class="list" controller="forumGenre" action="list">ForumGenre List</g:link></span>
       <span class="menuButton"><g:link class="list" controller="forumGenre" action="show" id="${forumGenre.getId()}">ForumGenre ${forumGenre.getName()} List</g:link></span>
-      <span class="menuButton"><g:link controller="forumPost" action="create" id="${forumTopic.getId()}">Reply</g:link></span>
+      <jsec:isLoggedIn>
+        <span class="menuButton"><g:link class="reply" controller="forumPost" action="create" id="${forumTopic.getId()}">Reply</g:link></span>
+      </jsec:isLoggedIn>
     </div>
     <div class="body">
       <h1>${fieldValue(bean:forumTopicInstance, field:'name')}</h1>
