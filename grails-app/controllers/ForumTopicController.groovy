@@ -100,13 +100,10 @@ class ForumTopicController {
         def forumPost = new ForumPost(body:params.body)
         forumTopic.addToPosts(forumPost)
         forumPost.setUser(user)
-        println "forumTopic: " + forumTopic.dump()
-        println "forumPost: " + forumPost.dump()
         if(!forumTopic.hasErrors() && forumTopic.save()) {
             flash.message = "ForumTopic ${forumTopic.id} created"
             redirect(action:show,id:forumTopic.id)
         } else {
-            println "HHHHHHHHHHAHAHAHAHAHA " + params
             flash.error ="ForumTopic could not be created!"
             redirect(action:create,id:params.genreID)
             render(view:'create',model:[forumTopic:forumTopic, forumPost:forumPost])
