@@ -28,7 +28,7 @@
 
               <td><g:link controller="player" action="show" id="${playerInstance.id}">${fieldValue(bean:playerInstance, field:'nick')}</g:link></td>
 
-            <td>${fieldValue(bean:playerInstance, field:'level')} - ${playerInstance}.</td>
+            <td>${fieldValue(bean:playerInstance, field:'level')}</td>
 
             </tr>
           </g:each>
