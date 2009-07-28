@@ -28,17 +28,19 @@ class UserInfoChangedEvent extends Event {
         def player = Player.findByUrtID(id)
         if (player != null) {
             def userInfo = getUserInfo()
-            def urtID = Integer.parseInt(userInfo.t)
-            if (player.getTeam()?.getUrtID() != urtID) {
-                TeamTool.addPlayerToTeam(player, urtID)
-            } else if (player.getTeam() == null) {
-                TeamTool.addPlayerToTeam(player, urtID)
-            }
-            if (player.getUser() == null) {
-                RCon.rcon("tell " + getId() + "\"^7Remember to register at ^2www.urtstats.net^7 with your PIN: ^1" + player.getPin() +
+            if (userInfo != null) {
+                def urtID = Integer.parseInt(userInfo.t)
+                if (player.getTeam()?.getUrtID() != urtID) {
+                    TeamTool.addPlayerToTeam(player, urtID)
+                } else if (player.getTeam() == null) {
+                    TeamTool.addPlayerToTeam(player, urtID)
+                }
+                if (player.getUser() == null) {
+                    RCon.rcon("tell " + getId() + "\"^7Remember to register at ^2www.urtstats.net^7 with your PIN: ^1" + player.getPin() +
                 "^7. Your level is ^1" + player.getLevel() + "^7.")
+                }
+                log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam().getUrtID()
             }
-            log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam().getUrtID()
         } else {
             log.error "[UserInfoChangedEvent] Unkown player: " + id + ". " + userInfo.dump()
         }
@@ -46,8 +48,14 @@ class UserInfoChangedEvent extends Event {
 
     def getUserInfo() {
         def line = getLine()
-        def userInfoString = line.substring(line.indexOf('\\') - 1)
-        return PlayerTool.getUserInfo(userInfoString)   
+        def dashPos = line.indexOf('\\')
+        if (dashPos >= 0) {
+            def userInfoString = line.substring(dashPos - 1)
+            return PlayerTool.getUserInfo(userInfoString)
+        } else {
+            log.error "[UserInfoChanged] dashPos less than 0. Line: " + line
+            return null
+        }
     }
 }
 
