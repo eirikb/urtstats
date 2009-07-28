@@ -33,7 +33,7 @@ class HitEvent extends Event {
             def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.getTeam() == victim.getTeam()),
                 hitpoint:hitpoint, item:item)
             if(hit.hasErrors() || !hit.save(flush:true)) {
-                log.error "[HitEvent] Unable to persist hit: " + hit.dump()
+                log.error "[HitEvent] Unable to persist hit: " + hit
             } else {
                 log.info "[HitEvent] Hitter:" + hitter + ". Victim: " + victim + ". Hitpoint: " + hitpoint + ". Item: " + item
             }

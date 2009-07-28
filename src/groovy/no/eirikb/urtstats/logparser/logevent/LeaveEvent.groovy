@@ -28,7 +28,7 @@ class LeaveEvent extends Event {
         if (player != null) {
             player.urtID = -1;
             if(player.hasErrors() || !player.save(flush:true)) {
-                log.error "[LeaveEvent] Error while updating leave for player: " + player.dump()
+                log.error "[LeaveEvent] Error while updating leave for player: " + player
             } else {
                 TeamTool.removePlayerFromTeam(player)
                 updatePlayerLog(player)
@@ -44,11 +44,11 @@ class LeaveEvent extends Event {
         if (playerLog != null) {
             playerLog.setEndDate(new Date())
             if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
-                log.error "[LeaveEvent] Unable to update playerLog for player:" + player.dump() +
+                log.error "[LeaveEvent] Unable to update playerLog for player:" + player +
                     ". PlyerLog: " + playerLog
             }
         } else {
-            log.error "[LeaveEvent] Unable to find playerlog for player " + player.dump()
+            log.error "[LeaveEvent] Unable to find playerlog for player " + player
         }
     }
 }

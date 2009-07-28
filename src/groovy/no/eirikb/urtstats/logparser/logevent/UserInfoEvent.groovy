@@ -37,11 +37,11 @@ class UserInfoEvent extends Event{
             def first = true
             if (player == null) {
                 player = createPlayer(userInfo)
-                log.info "[UserInfoEvent] Create player: " + player.dump()
+                log.info "[UserInfoEvent] Create player: " + player
             } else  {
                 updatePlayer(player, userInfo)
                 first = player.getUrtID() < 0
-                log.info "[UserInfoEvent] Update player: " + player.dump()
+                log.info "[UserInfoEvent] Update player: " + player
             }
 
             if (urtIDPlayer != null) {
@@ -67,7 +67,7 @@ class UserInfoEvent extends Event{
             }
 
             if(player.hasErrors() || !player.save(flush:true)) {
-                log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player?.dump()
+                log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player
             } else {
                 TeamTool.addPlayerToTeam(player, 0)
             }
@@ -90,7 +90,7 @@ class UserInfoEvent extends Event{
                 }
             }
             if (!added) {
-                log.warn "[UserInfoEvent] Player " + player.dump() + " got his gear-string: " + gear + ". Although none was added (not found)"
+                log.warn "[UserInfoEvent] Player " + player + " got his gear-string: " + gear + ". Although none was added (not found)"
                 return false
             }
             return true

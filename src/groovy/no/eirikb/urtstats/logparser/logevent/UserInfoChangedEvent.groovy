@@ -42,7 +42,7 @@ class UserInfoChangedEvent extends Event {
                 log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam().getUrtID()
             }
         } else {
-            log.error "[UserInfoChangedEvent] Unkown player: " + id + ". " + userInfo.dump()
+            log.error "[UserInfoChangedEvent] Unkown player: " + id + ". " + userInfo
         }
     }
 

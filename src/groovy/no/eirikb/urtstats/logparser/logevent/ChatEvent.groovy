@@ -37,7 +37,7 @@ class ChatEvent extends Event {
             message = message.substring(message.indexOf(':') + 2)
             def chat = new Chat(player:player, teamMessage:teammessage, message:message)
             if(chat.hasErrors() || !chat.save(flush:true)) {
-                log.error "[ChatEvent] Unable to persist. Chat: " + chat.dump()
+                log.error "[ChatEvent] Unable to persist. Chat: " + chat
             }
             log.info "[ChatEvent] Player: " + player + ". Message: " + message
             if (message.charAt(0) == '!') {

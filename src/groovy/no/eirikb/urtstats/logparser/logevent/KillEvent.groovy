@@ -35,7 +35,7 @@ class KillEvent extends Event {
             if (death != null) {
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 if(kill.hasErrors() || !kill.save(flush:true)) {
-                    log.error "[KillEvent] Could not persist kill: " + kill.dump()
+                    log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
                     killer.exp += calculateExpGain(killer, killed,
@@ -45,7 +45,7 @@ class KillEvent extends Event {
                         level(killer)
                     }
                     if (killer.hasErrors() || !killer.save(flush:true)) {
-                        log.error "[KillEvnent] Unale to update player after gain, player: " + killer.dump()
+                        log.error "[KillEvnent] Unale to update player after gain, player: " + killer
                     }
                 }
                 log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
@@ -55,7 +55,7 @@ class KillEvent extends Event {
             }
         } else {
             log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
-            ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)?.dump()
+            ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
         }
     }
     
