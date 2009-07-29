@@ -72,18 +72,11 @@ class RCon {
                     def part = new String(packet.getData(), 4, packet.getLength() - 4)
                     def splitPos = part.indexOf('\n')
                     if (splitPos >= 0) {
-                        part = part.substring(part.indexOf('\n') + 1)
+                        part = part.substring(splitPos + 1)
                         recmessage += part
                         socket.receive(packet)
                     }
                 }
-                socket?.close()
-            }.start()
-            new Thread() {
-                buff = new byte[BUFFERSIZE]
-                packet = new DatagramPacket(buff, buff.length)
-                socket.receive(packet)
-                recmessage = new String(packet.getData(), 4, packet.getLength() - 4)
                 socket?.close()
             }.start()
             // Sleep for 5 seconds to wait for response
