@@ -101,7 +101,8 @@ class UserInfoEvent extends Event{
     def updatePlayer(player, userInfo) {
         player.setUrtID(getId())
         player.setIp(userInfo.ip)
-        player.setNick(userInfo.name)
+        player.setColorNick(userInfo.name)
+        player.setNick(PlayerTool.removeColorFromNick(userInfo.name))
         return player
     }
 
