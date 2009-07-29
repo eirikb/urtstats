@@ -4,7 +4,7 @@ import grails.test.*
 import domain.urt.Player
 
 class SyncTests extends GrailsUnitTestCase {
-    final def STATUS = "print\nmap: ut4_riyadh\n" +
+    final def STATUS = "map: ut4_riyadh\n" +
             "num score ping name            lastmsg address               qport rate\n" +
             "--- ----- ---- --------------- ------- --------------------- ----- -----\n" +
             " 1    12   91 1^7                  0 1:27960    35711  8000\n" +
@@ -15,8 +15,7 @@ class SyncTests extends GrailsUnitTestCase {
             " 6     0   67 ^5deagle 5      ^7        0 6:27960     244  8000\n" +
             " 7     1   94 A|crusy|BoD^7           0 7:27960   54065  8000\n\n"
 
-    final def STATUS2 = "print\n" +
-            "map: ut4_riyadh\n" +
+    final def STATUS2 = "map: ut4_riyadh\n" +
             "num score ping name            lastmsg address               qport rate\n" +
             "--- ----- ---- --------------- ------- --------------------- ----- -----\n" +
             " 0    15   58 EagleEye^7              0 0:27960   763  8000\n" +
@@ -92,7 +91,7 @@ class SyncTests extends GrailsUnitTestCase {
         assertTrue new Sync().addPlayer(map, userInfoLine)
         userInfoLine = "ClientUserinfo: 6 \\ip\\6:27960\\name\\^5deagle 5      \\cl_guid\1"
         assertTrue new Sync().addPlayer(map, userInfoLine)
-        userInfoLine = "ClientUserinfo: 5 \\ip\\6:27960\\name\\^5deagle 5      \\cl_guid\1"
+        userInfoLine = "ClientUserinfo: 10 \\ip\\6:27960\\name\\^5deagle 5      \\cl_guid\1"
         assertFalse new Sync().addPlayer(map, userInfoLine)
     }
 }

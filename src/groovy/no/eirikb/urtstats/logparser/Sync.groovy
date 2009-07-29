@@ -78,7 +78,6 @@ class Sync {
 
     def statusToMap(status) {
         def reader = new BufferedReader(new StringReader(status));
-        reader.readLine() // Remove print
         reader.readLine() // Remove map
         def line = reader.readLine()
         reader.readLine() //remove dots

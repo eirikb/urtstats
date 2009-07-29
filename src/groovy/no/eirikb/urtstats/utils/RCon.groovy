@@ -52,7 +52,6 @@ class RCon {
         }
         def socket
         try {
-            def recmessage
             message = "rcon " + password + " " + message
 
             socket = new DatagramSocket()
@@ -64,6 +63,22 @@ class RCon {
             def packet = new DatagramPacket(buff, buff.length,
                 InetAddress.getByName(host), port)
             socket.send(packet)
+            def recmessage = ""
+            new Thread() {
+                buff = new byte[BUFFERSIZE]
+                packet = new DatagramPacket(buff, buff.length)
+                socket.receive(packet)
+                while (packet.getLength() > 0) {
+                    def part = new String(packet.getData(), 4, packet.getLength() - 4)
+                    def splitPos = part.indexOf('\n')
+                    if (splitPos >= 0) {
+                        part = part.substring(part.indexOf('\n') + 1)
+                        recmessage += part
+                        socket.receive(packet)
+                    }
+                }
+                socket?.close()
+            }.start()
             new Thread() {
                 buff = new byte[BUFFERSIZE]
                 packet = new DatagramPacket(buff, buff.length)
