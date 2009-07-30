@@ -36,12 +36,15 @@ class Tail {
             def line
             if (logFile.length() > filePointer) {
                 def raf = new RandomAccessFile(logFile, "r")
-                raf.seek((int) filePointer)
-                line = raf.readLine()
-                filePointer = raf.getFilePointer()
-                raf.close()
+                try {
+                    raf.seek((int) filePointer)
+                    line = raf.readLine()
+                    filePointer = raf.getFilePointer()
+                } finally {
+                    tailing = false
+                    raf.close()
+                }
             }
-            tailing = false
             return line
         }
     }
