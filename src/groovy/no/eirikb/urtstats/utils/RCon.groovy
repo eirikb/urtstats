@@ -46,7 +46,7 @@ class RCon {
         return recmessage
     }
     
-    private static String rconSend(host, port, password, message) {
+    public static String rconSend(host, port, password, message) {
         while (System.currentTimeMillis() - lastUsed < SLEEPTIME) {
             Thread.sleep(SLEEPTIME)
         }

@@ -20,24 +20,30 @@ package no.eirikb.utils.tail
 class Tail {
     File logFile
     long filePointer
+    boolean tailing
 
     Tail(File logFile, boolean gotoEOF) {
         this.logFile = logFile
         if (gotoEOF) {
             filePointer = logFile.length()
         }
+        tailing = false
     }
 
-    String parse() {
-        def line
-        if (logFile.length() > filePointer) {
-            def raf = new RandomAccessFile(logFile, "r")
-            raf.seek((int) filePointer)
-            line = raf.readLine()
-            filePointer = raf.getFilePointer()
-            raf.close()
+    synchronized String parse() {
+        if (!tailing) {
+            tailing = true
+            def line
+            if (logFile.length() > filePointer) {
+                def raf = new RandomAccessFile(logFile, "r")
+                raf.seek((int) filePointer)
+                line = raf.readLine()
+                filePointer = raf.getFilePointer()
+                raf.close()
+            }
+            tailing = false
+            return line
         }
-        return line
     }
 
 
