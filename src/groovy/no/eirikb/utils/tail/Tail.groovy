@@ -30,7 +30,7 @@ class Tail {
         tailing = false
     }
 
-    synchronized String parse() {
+    String parse() {
         if (!tailing) {
             tailing = true
             def line
