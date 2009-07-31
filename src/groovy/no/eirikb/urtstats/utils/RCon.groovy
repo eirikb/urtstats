@@ -38,7 +38,7 @@ class RCon {
             def port = config.urt.rcon.port
             def password = config.urt.rcon.password
             if (force) {
-                while ((recmessage = rconSend(host, port, password, message))?.length() == 6);
+                while ((recmessage = rconSend(host, port, password, message))?.length() == 0);
             } else {
                 recmessage = rconSend(host, port, password, message)
             }
@@ -63,7 +63,7 @@ class RCon {
             def packet = new DatagramPacket(buff, buff.length,
                 InetAddress.getByName(host), port)
             socket.send(packet)
-            def recmessage = ""
+            def recmessage
             new Thread() {
                 buff = new byte[BUFFERSIZE]
                 packet = new DatagramPacket(buff, buff.length)
@@ -73,7 +73,11 @@ class RCon {
                     def splitPos = part.indexOf('\n')
                     if (splitPos >= 0) {
                         part = part.substring(splitPos + 1)
-                        recmessage += part
+                        if (recmessage == null) {
+                            recmessage = part
+                        } else {
+                            recmessage += part
+                        }
                         socket.receive(packet)
                     }
                 }
