@@ -9,6 +9,9 @@
 
 package no.eirikb.urtstats.utils
 
+import domain.urt.Kill
+import domain.urt.Player
+
 /**
  *
  * @author Eirik Brandtzæg eirikdb@gmail.com
@@ -55,6 +58,26 @@ class PlayerTool {
             return ""
         }
         return nick
+    }
+
+
+    static int countKillStreak(player) {
+        def lastDeathList = Kill.findAllByKilled(player, [max:1, sort:'createDate', order:'desc'])
+        def lastDeath = lastDeathList.size() > 0 ? lastDeathList.get(0) : null
+        if (lastDeath != null) {
+            return Kill.countByKillerAndCreateDateGreaterThan(player, lastDeath.getCreateDate())
+        } else {
+            return Kill.countByKiller(player)
+        }
+    }
+
+    static Double getTotalRatio(player) {
+        return (Kill.countByKiller(player) + 1) / (Kill.countByKilled(player) + 1)
+    }
+
+    static Double getGameRatio(player) {
+        return (Kill.countByKillerAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1) /
+        (Kill.countByKilledAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1)
     }
 }
 

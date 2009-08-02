@@ -25,8 +25,8 @@ class HitEvent extends Event {
 
     void execute() {
         def ids = getIDs()
-        def hitter = Player.findByUrtID(ids[1])
-        def victim = Player.findByUrtID(ids[2])
+        def hitter = Player.findByUrtID(ids[2])
+        def victim = Player.findByUrtID(ids[1])
         def hitpoint = ids[3]
         def item = Item.findByUrtID(ids[4])
         if (hitter != null && victim != null && item != null) {

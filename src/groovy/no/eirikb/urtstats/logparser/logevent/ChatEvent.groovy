@@ -85,8 +85,22 @@ class ChatEvent extends Event {
 
             case "status":
             case "stats":
-            RCon.rcon("say \"^2" + player.getColorNick() + " ^7Level: ^1" + player.getLevel() + " ^7kills: "  + Kill.countByKiller(player) +
-            " ^7Ratio: "  + (Kill.countByKiller(player) + 1) / (Kill.countByKilled(player) + 1))
+            def p = player
+            if (message != null) {
+                p = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
+                if (p == null) {
+                    p = Player.findByNickIlike('%' + message + '%')
+                }
+            }
+            if (p != null) {
+                RCon.rcon("say \"^2" + player.getColorNick() +
+                    " ^7Level: ^1" + player.getLevel() +
+                    " ^7kills: ^1"  + Kill.countByKiller(player) +
+                    " ^7Ratio: ^1"  + PlayerTool.getTotalRatio(p) +
+                    '"')
+            } else{
+                RCon.rcon("tell " + player.getUrtID() + " \"^7Player not found.\"")
+            }
             break
 
             case "lol":
@@ -184,7 +198,7 @@ class ChatEvent extends Event {
                 RCon.rcon("tell " + player.getUrtID() + "\"^7No players found\"")
             }
 
-        } 
+        }
     }
 
     boolean isPermitted(player, permission) {

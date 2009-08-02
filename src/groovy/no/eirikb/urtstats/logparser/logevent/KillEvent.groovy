@@ -13,6 +13,7 @@ import domain.urt.Kill
 import domain.urt.Player
 import domain.urt.DeathCause
 import no.eirikb.urtstats.utils.RCon
+import no.eirikb.urtstats.utils.PlayerTool
 
 /**
  *
@@ -38,7 +39,7 @@ class KillEvent extends Event {
                     log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
-                    switch (countKillStreak(killer)) {
+                    switch (PlayerTool.countKillStreak(killer)) {
                         case 5:
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^1killing spree! ^7(5 in a row)\"")
                         break
@@ -48,8 +49,8 @@ class KillEvent extends Event {
                     }
 
 
-                    killer.exp += calculateExpGain(killer, killed,
-                        getGameRatio(killer), getTotalRatio(killer))
+                    killer.exp +=  PlayerTool.calculateExpGain(killer, killed,
+                        PlayerTool.getGameRatio(killer), PlayerTool.getTotalRatio(killer))
 
                     if (killer.exp > killer.nextlevel) {
                         level(killer)
@@ -67,25 +68,6 @@ class KillEvent extends Event {
             log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
             ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
         }
-    }
-
-    int countKillStreak(player) {
-        def lastDeathList = Kill.findAllByKilled(player, [max:1, sort:'createDate', order:'desc'])
-        def lastDeath = lastDeathList.size() > 0 ? lastDeathList.get(0) : null
-        if (lastDeath != null) {
-            return Kill.countByKillerAndCreateDateGreaterThan(player, lastDeath.getCreateDate())
-        } else {
-            return Kill.countByKiller(player)
-        }
-    }
-
-    Double getTotalRatio(player) {
-        return (Kill.countByKiller(player) + 1) / (Kill.countByKilled(player) + 1)
-    }
-    
-    Double getGameRatio(player) {
-        return (Kill.countByKillerAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1) /
-        (Kill.countByKilledAndCreateDateGreaterThan(player, player.getJoinGameDate()) + 1)
     }
 
     Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
