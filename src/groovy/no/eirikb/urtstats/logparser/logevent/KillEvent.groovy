@@ -40,7 +40,7 @@ class KillEvent extends Event {
                 if (!friendlyfire) {
                     switch (Kill.findAllByPlayerAndCreateDateGreaterThan(Kill.findByKilled(killer).getCreateDate()).size()) {
                         case 5:
-                        RCon.rcon("bigtext \"^2" + player.getColorNick() + " ^7is on a ^1killing spree!\"")
+                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^1killing spree!\"")
                     }
 
 
