@@ -68,8 +68,6 @@ class ChatEvent extends Event {
 
             case "lvl":
             case "level":
-            case "status":
-            case "stats":
             def p = player
             if (message != null) {
                 p = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
@@ -81,6 +79,17 @@ class ChatEvent extends Event {
                 RCon.rcon("say \"^2" + p.getColorNick() + " ^7Level: ^1" + p.getLevel() + "\"")
             } else{
                 RCon.rcon("tell " + player.getUrtID() + " \"^7Player not found.\"")
+            }
+            break
+
+            case "status":
+            case "stats":
+            RCon.rcon("say \"^2" + player.getColorNick() + " ^7Level: ^1" + player.getLevel() + " ^7kills: "  + Kill.countByKiller(player) + '"')
+            break
+
+            case "lol":
+            if (isAdmin(player)) {
+                RCon.rcon("bigtext \"^2HAHAHA HAAAA HAHA HA THAT IS SOOO FUNNEH!\"")
             }
             break
 
