@@ -11,6 +11,7 @@ package no.eirikb.urtstats.logparser.logevent
 
 import domain.urt.Chat
 import domain.urt.Player
+import domain.urt.Kill
 import domain.security.*
 import security.JsecDbRealm
 import no.eirikb.urtstats.utils.RCon
@@ -82,11 +83,15 @@ class ChatEvent extends Event {
             }
             break
 
-
+            case "status":
+            case "stats":
+            RCon.rcon("say \"^2" + player.getColorNick() + " ^7Level: ^1" + player.getLevel() + " ^7kills: "  + Kill.countByKiller(player) +
+            " ^7Ratio: "  + (Kill.countByKiller(player) + 1) / (Kill.countByKilled(player) + 1))
+            break
 
             case "lol":
             if (isAdmin(player)) {
-                RCon.rcon("bigtext \"^2HAHAHA HAAAA HAHA HA THAT IS SOOO FUNNEH!\"")
+                RCon.rcon("bigtext \"^2HAHAHA ^3HAAAA ^4HAHA HA ^6THAT IS ^5SOOO ^2FUNNEH!\"")
             }
             break
 
