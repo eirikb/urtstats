@@ -38,7 +38,7 @@ class KillEvent extends Event {
                     log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
-                    switch (Kill.findAllByPlayerAndCreateDateGreaterThan(Kill.findByKilled(killer).getCreateDate()).size()) {
+                    switch (Kill.findAllByKillerAndCreateDateGreaterThan(Kill.findByKilled(killer).getCreateDate()).size()) {
                         case 5:
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^1killing spree!\"")
                     }
