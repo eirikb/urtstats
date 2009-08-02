@@ -38,7 +38,7 @@ class KillEvent extends Event {
                     log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
-                    switch (Kill.countByKillerAndCreateDateGreaterThan(killer, Kill.findByKilled(killer)?.getCreateDate())) {
+                    switch (countKillStreak(killer)) {
                         case 5:
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^1killing spree! (5 in a row)\"")
                     }
@@ -64,7 +64,17 @@ class KillEvent extends Event {
             ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
         }
     }
-    
+
+    int countKillStreak(player) {
+        def lastDeathList = Kill.findAllByKilled(player, [max:1, sort:'createDate', order:'desc'])
+        def lastDeath = lastDeathList.size() > 0 ? lastDeathList.get(0) : null
+        if (lastDeath != null) {
+            return Kill.countByKillerAndCreateDateGreaterThan(player, lastDeath.getCreateDate())
+        } else {
+            return Kill.countByKiller(player)
+        }
+    }
+
     Double getTotalRatio(player) {
         return (Kill.countByKiller(player) + 1) / (Kill.countByKilled(player) + 1)
     }

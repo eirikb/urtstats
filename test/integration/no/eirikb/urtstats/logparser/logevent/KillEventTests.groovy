@@ -97,4 +97,19 @@ class KillEventTests extends GrailsUnitTestCase {
         new KillEvent("Kill: 42 0 10: Test").execute()
         new KillEvent("Kill: 42 42 10: Test").execute()
     }
+
+    void testKillingSpree() {
+        def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        assertEquals 1, new KillEvent().countKillStreak(killer)
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        assertEquals 2, new KillEvent().countKillStreak(killer)
+        new KillEvent("Kill: 1 0 10: Test").execute()
+        assertEquals 0, new KillEvent().countKillStreak(killer)
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        assertEquals 1, new KillEvent().countKillStreak(killer)
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        assertEquals 2, new KillEvent().countKillStreak(killer)
+    }
 }
