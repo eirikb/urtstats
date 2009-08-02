@@ -20,34 +20,60 @@ package no.eirikb.utils.tail
 class Tail {
     File logFile
     long filePointer
-    boolean tailing
 
     Tail(File logFile, boolean gotoEOF) {
         this.logFile = logFile
         if (gotoEOF) {
             filePointer = logFile.length()
         }
-        tailing = false
     }
 
-    String parse() {
-        if (!tailing) {
-            tailing = true
-            def line
-            if (logFile.length() > filePointer) {
-                def raf = new RandomAccessFile(logFile, "r")
-                try {
-                    raf.seek((int) filePointer)
-                    line = raf.readLine()
-                    filePointer = raf.getFilePointer()
-                } finally {
-                    tailing = false
-                    raf.close()
+    synchronized String parse() {
+        if (logFile.length() > filePointer) {
+            def raf = new RandomAccessFile(logFile, "r")
+            def rafString = ""
+            try {
+                raf.seek((int) filePointer)
+                def bufferLength = logFile.length() - raf.getFilePointer()
+
+                def c = { buffer ->
+                    raf.readFully(buffer)
+                    def newLinePos = getNewLinePos(buffer)
+                    if (newLinePos >= 0) {
+                        filePointer += newLinePos + 1
+                        def s = new String(buffer, 0, newLinePos)
+                        rafString += s
+                        return true
+                    } else {
+                        rafString += new String(buffer)
+                    }
+                    return false
                 }
+                while (bufferLength > MAXBUFFER) {
+                    if (c(new byte[MAXBUFFER])) {
+                        return rafString
+                    }
+                    bufferLength = bufferLength - MAXBUFFER
+                }
+                if (c(new byte[bufferLength])) {
+                    return rafString
+                }
+            } finally {
+                raf.close()
             }
-            return line
         }
+        return null
     }
+
+    int getNewLinePos(buffer) {
+        for (i in 0..buffer.length - 1) {
+            if (buffer[i] == 10 || buffer[i] == 13) {
+                return i
+            }
+        }
+        return -1
+    }
+
 
 
     String parseReverse() {
