@@ -82,10 +82,7 @@ class ChatEvent extends Event {
             }
             break
 
-            case "status":
-            case "stats":
-            RCon.rcon("say \"^2" + player.getColorNick() + " ^7Level: ^1" + player.getLevel() + " ^7kills: "  + Kill.countByKiller(player) + '"')
-            break
+
 
             case "lol":
             if (isAdmin(player)) {

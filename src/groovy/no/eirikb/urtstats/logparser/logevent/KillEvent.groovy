@@ -42,7 +42,7 @@ class KillEvent extends Event {
                         case 5:
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^1killing spree! ^7(5 in a row)\"")
                         case 10:
-                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^MADNESS spree! ^7(10 in a row)\"")
+                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^3MADNESS spree! ^7(10 in a row)\"")
                     }
 
 
