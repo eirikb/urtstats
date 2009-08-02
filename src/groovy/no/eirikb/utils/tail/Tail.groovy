@@ -20,6 +20,7 @@ package no.eirikb.utils.tail
 class Tail {
     File logFile
     long filePointer
+    final long MAXBUFFER = 65000
 
     Tail(File logFile, boolean gotoEOF) {
         this.logFile = logFile
