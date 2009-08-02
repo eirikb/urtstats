@@ -52,7 +52,7 @@ class PlayerTool {
                 nick += it
             }
         } else {
-            return colorNick
+            return ""
         }
         return nick
     }
