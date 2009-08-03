@@ -49,7 +49,7 @@ class KillEvent extends Event {
                     }
 
 
-                    killer.exp +=  PlayerTool.calculateExpGain(killer, killed,
+                    killer.exp +=  calculateExpGain(killer, killed,
                         PlayerTool.getGameRatio(killer), PlayerTool.getTotalRatio(killer))
 
                     if (killer.exp > killer.nextlevel) {
