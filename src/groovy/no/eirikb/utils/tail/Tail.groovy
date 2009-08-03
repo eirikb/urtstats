@@ -21,6 +21,7 @@ class Tail {
     File logFile
     long filePointer
     final long MAXBUFFER = 65000
+    boolean tailing
 
     Tail(File logFile, boolean gotoEOF) {
         this.logFile = logFile
@@ -30,41 +31,48 @@ class Tail {
     }
 
     synchronized String parse() {
-        if (logFile.length() > filePointer) {
-            def raf = new RandomAccessFile(logFile, "r")
-            def rafString = ""
-            raf.seek((int) filePointer)
-            def bufferLength = logFile.length() - raf.getFilePointer()
+        if (!tailing) {
+            tailing = true
+            if (logFile.length() > filePointer) {
+                def raf = new RandomAccessFile(logFile, "r")
+                def rafString = ""
+                raf.seek((int) filePointer)
+                def bufferLength = logFile.length() - raf.getFilePointer()
 
-            def c = { buffer ->
-                raf.readFully(buffer)
-                def newLinePos = getNewLinePos(buffer)
-                if (newLinePos >= 0) {
-                    filePointer += newLinePos + 1
-                    def s = new String(buffer, 0, newLinePos)
-                    rafString += s
-                    return true
-                } else {
-                    rafString += new String(buffer)
+                def c = { buffer ->
+                    raf.readFully(buffer)
+                    def newLinePos = getNewLinePos(buffer)
+                    if (newLinePos >= 0) {
+                        filePointer += newLinePos + 1
+                        def s = new String(buffer, 0, newLinePos)
+                        rafString += s
+                        return true
+                    } else {
+                        rafString += new String(buffer)
+                    }
+                    return false
                 }
-                return false
-            }
 
-            while (bufferLength > MAXBUFFER) {
-                if (c(new byte[MAXBUFFER])) {
+                while (bufferLength > MAXBUFFER) {
+                    if (c(new byte[MAXBUFFER])) {
+                        tailing = false
+                        raf.close()
+                        return rafString
+                    }
+                    bufferLength = bufferLength - MAXBUFFER
+                }
+                if (c(new byte[bufferLength])) {
+                    tailing = false
                     raf.close()
                     return rafString
                 }
-                bufferLength = bufferLength - MAXBUFFER
-            }
-            if (c(new byte[bufferLength])) {
+                tailing = false
                 raf.close()
                 return rafString
             }
-            raf.close()
-            return rafString
-            raf.close()
+            tailing = false
         }
+        tailing = false
         return null
     }
 
