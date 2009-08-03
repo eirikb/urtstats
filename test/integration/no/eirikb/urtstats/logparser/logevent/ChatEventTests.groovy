@@ -87,4 +87,15 @@ class ChatEventTests extends GrailsUnitTestCase {
         assertEquals true, new ChatEvent("", true).isAdmin(adminPlayer)
 
     }
+
+    void testSend() {
+        new Player(urtID:0, guid:"0", ip:"0", nick:"test0", colorNick:"test0").save(flush:true)
+        new Player(urtID:1, guid:"1", ip:"1", nick:"test1", colorNick:"test1").save(flush:true)
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        new KillEvent("Kill: 0 1 10: Test").execute()
+        new KillEvent("Kill: 1 0 10: Test").execute()
+        new KillEvent("Kill: 1 0 10: Test").execute()
+        new ChatEvent("say: 0 test: !stats", false).execute()
+    }
 }

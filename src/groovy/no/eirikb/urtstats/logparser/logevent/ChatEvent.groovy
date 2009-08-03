@@ -12,9 +12,12 @@ package no.eirikb.urtstats.logparser.logevent
 import domain.urt.Chat
 import domain.urt.Player
 import domain.urt.Kill
+import domain.urt.Hit
 import domain.security.*
 import security.JsecDbRealm
 import no.eirikb.urtstats.utils.RCon
+import no.eirikb.urtstats.utils.PlayerTool
+import java.text.DecimalFormat
 import org.jsecurity.grails.JsecBasicPermission
 
 /**
@@ -93,11 +96,13 @@ class ChatEvent extends Event {
                 }
             }
             if (p != null) {
-                RCon.rcon("say \"^2" + player.getColorNick() +
+                def text = "say \"^2" + player.getColorNick() +
                     " ^7Level: ^1" + player.getLevel() +
                     " ^7kills: ^1"  + Kill.countByKiller(player) +
-                    " ^7Ratio: ^1"  + PlayerTool.getTotalRatio(p) +
-                    '"')
+                    " ^7Ratio: ^1"  + new DecimalFormat("#,###.##").format(PlayerTool.getTotalRatio(p)) +
+                    " ^7Headshots: ^1" + Hit.countByHitterAndHitpoint(p, 0) +
+                    '"'
+                RCon.rcon(text)
             } else{
                 RCon.rcon("tell " + player.getUrtID() + " \"^7Player not found.\"")
             }
