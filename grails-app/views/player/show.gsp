@@ -64,7 +64,7 @@
         </tr>
         <tr class="prop">
           <td valign="top" class="name">Ratio:</td>
-          <td valign="top" class="value">${player.getKills().size() / player.getDeaths().size()}</td>
+          <td valign="top" class="value">${(player.getKills().size() + 1) / (player.getDeaths().size() + 1)}</td>
         </tr>
 
         </tbody>
