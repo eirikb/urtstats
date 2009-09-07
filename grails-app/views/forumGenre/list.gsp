@@ -22,12 +22,14 @@
         <thead>
           <tr>
         <g:sortableColumn property="name" title="Name" />
+        <th>Amount of topics</th>
         </tr>
         </thead>
         <tbody>
         <g:each in="${forumGenreList}" status="i" var="forumGenre">
           <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-            <td><g:link action="show" id="${forumGenre.id}">${fieldValue(bean:forumGenre, field:'name')}</g:link></td>
+            <td><g:link action="show" id="${forumGenre[0]}">${forumGenre[1]}</g:link></td>
+          <td>${forumGenre[2]}</td>
           </tr>
         </g:each>
         </tbody>

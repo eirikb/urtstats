@@ -8,7 +8,10 @@ class ForumGenreController {
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
     def list = {
-        [forumGenreList: ForumGenre.list(), forumGenreTotal:ForumGenre.count()]
+        def list = domain.forum.ForumGenre.executeQuery("select forumGenre.id, forumGenre.name, \
+             count(topics) from ForumGenre forumGenre \
+            join forumGenre.topics topics group by forumGenre.name, forumGenre.id")
+        [forumGenreList: list, forumGenreTotal:list.count()]
     }
 
     def show = {
@@ -20,7 +23,7 @@ class ForumGenreController {
         } else {
             def forumTopicList = forumGenre.getTopics()
             return [ forumGenre : forumGenre, forumTopicList:forumTopicList,
-            forumTopicTotal:forumTopicList.size() ]
+                forumTopicTotal:forumTopicList.size() ]
         }
     }
 
