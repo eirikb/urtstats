@@ -31,7 +31,6 @@ class PlayerController {
             infoMap.(it.getId()) = [:]
             infoMap.(it.getId()).kills = Kill.countByKiller(it)
         }
-        println "OMGLOL " + infoMap['1168']
         [ players: players, infoMap:infoMap, playerTotal: Player.count() ]
     }
 
