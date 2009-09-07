@@ -25,13 +25,15 @@
             <tr>
           <g:sortableColumn property="name" title="Name" />
           <g:sortableColumn property="user" title="Author" />
+          <th>Amount of posts</th>
           </tr>
           </thead>
           <tbody>
           <g:each in="${forumTopicList}" status="i" var="forumTopic">
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-              <td><g:link controller="forumTopic" action="show" id="${forumTopic.id}">${fieldValue(bean:forumTopic, field:'name')}</g:link></td>
-            <td>${forumTopic.getUser()?.getUsername()}</td>
+              <td><g:link controller="forumTopic" action="show" id="${forumTopic[0]}">${forumTopic[1]}</g:link></td>
+            <td>${forumTopic[2]}</td>
+            <td>${forumTopic[3]}</td>
             </tr>
           </g:each>
           </tbody>
