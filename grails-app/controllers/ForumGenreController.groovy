@@ -21,11 +21,10 @@ class ForumGenreController {
             flash.message = "ForumGenre not found with id ${params.id}"
             redirect(action:list)
         } else {
-            // def forumTopicList = forumGenre.getTopics()
             def forumTopicList = ForumTopic.executeQuery("select forumTopic.id, forumTopic.name, forumTopic.user.username, count(posts) \
             from ForumTopic forumTopic \
             join forumTopic.posts posts where forumTopic.genre = ? \
-            group by forumTopic.id, forumTopic.name, forumTopic.user.username", forumGenre)
+            group by forumTopic.id, forumTopic.name, forumTopic.user.username", [forumGenre])
             return [ forumGenre : forumGenre, forumTopicList:forumTopicList,
                 forumTopicTotal:forumTopicList.size() ]
         }
