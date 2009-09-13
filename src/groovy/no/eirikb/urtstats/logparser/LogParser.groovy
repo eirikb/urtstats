@@ -36,6 +36,15 @@ class LogParser {
         parsing = false
     }
 
+    void start() {
+        println "Start() @ LogParser"
+        while (true) {
+            println "Thread run2. " + this
+            execute()
+            Thread.sleep(1000)
+        }
+    }
+
     void execute() {
         if (!parsing) {
             parsing = true
