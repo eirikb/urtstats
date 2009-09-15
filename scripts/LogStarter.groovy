@@ -10,8 +10,8 @@
 def logParser = new no.eirikb.urtstats.logparser.LogParser()
 
 while (true) {
-    println "Execute start"
+    println "Execute start " + new Date()
     logParser.execute()
-    Thread.sleep(1000)
     println "Execute done"
+    Thread.sleep(1000)
 }
