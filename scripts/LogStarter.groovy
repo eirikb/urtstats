@@ -9,9 +9,32 @@
 
 def logParser = new no.eirikb.urtstats.logparser.LogParser()
 
+def players = domain.urt.Player.findAllByUrtIDGreaterThanEquals(0)
+players.each() {
+    it.urtID = -1;
+    it.save(flush:true)
+}
+
+Thread.start() {
+    System.in.eachLine() { line ->
+        switch (line) {
+            case "quit":
+            case "exit":
+            no.eirikb.urtstats.utils.RCon.rcon("bigtext \"^7Stats are going down...\"")
+            System.exit(0)
+            break
+            case "status":
+            case "w":
+            println no.eirikb.urtstats.utils.RCon.rcon("status")
+            break
+            default:
+            println "Not a command: " + line
+        }
+    }
+}
+
 while (true) {
-    println "Execute start " + new Date()
     logParser.execute()
-    println "Execute done"
     Thread.sleep(1000)
 }
+
