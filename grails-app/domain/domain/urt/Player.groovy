@@ -3,7 +3,7 @@ package domain.urt
 import domain.security.JsecUser
 
 class Player {
-    static hasMany = [chats:Chat, hitsOther:Hit, hitsSelf:Hit, kills:Kill, deaths:Kill, playerLogs:PlayerLog, items:Item, deathCauses:DeathCause]
+    static hasMany = [chats:Chat, hitsOther:Hit, hitsSelf:Hit, kills:Kill, deaths:Kill, playerLogs:PlayerLog, items:Item, deathCauses:DeathCause, guids:GUID]
     static mappedBy = [hitsOther:"hitter", hitsSelf:"victim", kills:"killer", deaths:"killed"]
     static belongsTo = [Item, DeathCause, JsecUser]
     
