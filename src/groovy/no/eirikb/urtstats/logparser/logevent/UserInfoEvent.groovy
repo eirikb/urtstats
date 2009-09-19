@@ -45,7 +45,7 @@ class UserInfoEvent extends Event{
             }
 
             if (urtIDPlayer != null) {
-                if (player.getGuid() != urtIDPlayer.getGuid() ||
+                if (Player.findByGuid(urtIDPlayer.getGuid()) != player ||
                     player.getIp() != urtIDPlayer.getIp()) {
                     log.error "[UserInfoEvent] urtIDPlayer not like player! urtIDPlayer: " + urtIDPlayer +
                 ". player: " + player
@@ -112,6 +112,7 @@ class UserInfoEvent extends Event{
             colorNick:userInfo.name,
             nick:PlayerTool.removeColorFromNick(userInfo.name),
             urtID:getId())
+        player.addGuid()
         return player
     }
 

@@ -35,9 +35,12 @@ class SyncTests extends GrailsUnitTestCase {
     }
 
     void testResetPlayers() {
-        new Player(urtID:0, guid:"0", ip:"0", nick:"0", colorNick:"0").save(flush:true)
-        new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
-        new Player(urtID:-1, guid:"2", ip:"2", nick:"2", colorNick:"2").save(flush:true)
+        def p1 = new Player(urtID:0, guid:"0", ip:"0", nick:"0", colorNick:"0").save(flush:true)
+        p1.addGuid()
+        def p2 = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        p2.addGuid()
+        def p3 = new Player(urtID:-1, guid:"2", ip:"2", nick:"2", colorNick:"2").save(flush:true)
+        p3.addGuid()
         assertEquals 3, Player.count()
         assertEquals 2, Player.countByUrtIDGreaterThanEquals(0)
         new Sync().resetPlayers()

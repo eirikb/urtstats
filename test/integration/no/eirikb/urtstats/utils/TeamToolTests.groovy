@@ -58,6 +58,7 @@ class TeamToolTests extends GrailsUnitTestCase {
 
     void testRemovePlayerFromTeam() {
         def player = new Player(guid:"1", ip:"1", nick:"1", colorNick:"1", urtID:0).save(flush:true)
+        player.addGuid()
         TeamTool.addPlayerToTeam(player, 0)
         assertEquals 1, Team.count()
         assertEquals Team.findByUrtID(0), player.getTeam()

@@ -17,7 +17,9 @@ class HitEventTests extends GrailsUnitTestCase {
 
     void testExecute() {
         def hitter = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        hitter.addGuid()
         def victim = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        victim.addGuid()
         assertEquals 2, Player.count()
 
         new HitEvent("Hit: 1 0 4 9: Test...").execute()

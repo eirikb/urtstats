@@ -19,6 +19,7 @@ class ChatEventTests extends GrailsUnitTestCase {
 
     void testExecute() {
         def player = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        player.addGuid()
         assertEquals 0, Chat.count()
         new ChatEvent("sayteam: 0 test: This is a test message", true).execute()
         assertEquals 1, Chat.count()
@@ -31,16 +32,20 @@ class ChatEventTests extends GrailsUnitTestCase {
     }
 
     void testIsPermitted() {
-
+    println "Here we go"
+    println Player.findByGuid("0")
         def modPlayer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        modPlayer.addGuid()
         def modUser = new JsecUser(username:"mod", passwordHash:"pass").addToPlayers(modPlayer).save(flush:true)
         new JsecUserRoleRel(user:modUser, role:JsecRole.findByName("MOD")).save(flush:true)
 
         def userPlayer = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        userPlayer.addGuid()
         def user = new JsecUser(username:"user", passwordHash:"pass").addToPlayers(userPlayer).save(flush:true)
         new JsecUserRoleRel(user:user, role:JsecRole.findByName("USER")).save(flush:true)
 
         def adminPlayer = new Player(urtID:2, guid:"2", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        adminPlayer.addGuid()
         JsecUser.findByUsername("admin").addToPlayers(adminPlayer).save(flush:true)
 
         assertEquals modUser, modPlayer.getUser()
@@ -72,14 +77,17 @@ class ChatEventTests extends GrailsUnitTestCase {
 
     void testIsAdmin() {
         def modPlayer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        modPlayer.addGuid()
         def modUser = new JsecUser(username:"mod", passwordHash:"pass").addToPlayers(modPlayer).save(flush:true)
         new JsecUserRoleRel(user:modUser, role:JsecRole.findByName("MOD")).save(flush:true)
 
         def userPlayer = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        userPlayer.addGuid()
         def user = new JsecUser(username:"user", passwordHash:"pass").addToPlayers(userPlayer).save(flush:true)
         new JsecUserRoleRel(user:user, role:JsecRole.findByName("USER")).save(flush:true)
 
         def adminPlayer = new Player(urtID:2, guid:"2", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        adminPlayer.addGuid()
         JsecUser.findByUsername("admin").addToPlayers(adminPlayer).save(flush:true)
 
         assertEquals false, new ChatEvent("", true).isAdmin(userPlayer)
@@ -89,8 +97,10 @@ class ChatEventTests extends GrailsUnitTestCase {
     }
 
     void testSend() {
-        new Player(urtID:0, guid:"0", ip:"0", nick:"test0", colorNick:"test0").save(flush:true)
-        new Player(urtID:1, guid:"1", ip:"1", nick:"test1", colorNick:"test1").save(flush:true)
+        def p1 = new Player(urtID:0, guid:"0", ip:"0", nick:"test0", colorNick:"test0").save(flush:true)
+        p1.addGuid()
+        def p2 = new Player(urtID:1, guid:"1", ip:"1", nick:"test1", colorNick:"test1").save(flush:true)
+        p2.addGuid()
         new KillEvent("Kill: 0 1 10: Test").execute()
         new KillEvent("Kill: 0 1 10: Test").execute()
         new KillEvent("Kill: 0 1 10: Test").execute()

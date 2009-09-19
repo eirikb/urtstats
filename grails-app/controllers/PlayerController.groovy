@@ -104,6 +104,7 @@ class PlayerController {
 
     def save = {
         def playerInstance = new Player(params)
+        playerInstance.addGuid()
         if(!playerInstance.hasErrors() && playerInstance.save()) {
             flash.message = "Player ${playerInstance.id} created"
             redirect(action:show,id:playerInstance.id)

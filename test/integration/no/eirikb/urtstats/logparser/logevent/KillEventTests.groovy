@@ -18,7 +18,9 @@ class KillEventTests extends GrailsUnitTestCase {
 
     void testGetTotalRatio() {
         def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killer.addGuid()
         def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killed.addGuid()
         assertEquals 1, PlayerTool.getTotalRatio(killer)
         new Kill(killer:killer, killed:killed, deathCause:DeathCause.findByUrtID(14), firendyfire:false).save(flush:true)
         assertEquals 2, PlayerTool.getTotalRatio(killer)
@@ -40,7 +42,9 @@ class KillEventTests extends GrailsUnitTestCase {
 
     void testGetGameRatio() {
         def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killer.addGuid()
         def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killed.addGuid()
         assertEquals 1, PlayerTool.getTotalRatio(killer)
         new Kill(killer:killer, killed:killed, deathCause:DeathCause.findByUrtID(14), firendyfire:false).save(flush:true)
         assertEquals 2, PlayerTool.getTotalRatio(killer)
@@ -63,7 +67,9 @@ class KillEventTests extends GrailsUnitTestCase {
 
     void testCalculateExpGain() {
         def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killer.addGuid()
         def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killed.addGuid()
         assertEquals 1, new KillEvent("").calculateExpGain(killer, killed, 1, 1)
         assertEquals 6, new KillEvent("").calculateExpGain(killer, killed, 10, 2)
         killed.setLevel(10)
@@ -74,7 +80,9 @@ class KillEventTests extends GrailsUnitTestCase {
 
     void testExecute() {
         def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killer.addGuid()
         def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killed.addGuid()
         assertEquals 1, PlayerTool.getTotalRatio(killer)
         new KillEvent("Kill: 0 1 10: Test").execute()
         assertEquals 2, PlayerTool.getTotalRatio(killer)
@@ -101,7 +109,9 @@ class KillEventTests extends GrailsUnitTestCase {
 
     void testKillingSpree() {
         def killer = new Player(urtID:0, guid:"0", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killer.addGuid()
         def killed = new Player(urtID:1, guid:"1", ip:"1", nick:"1", colorNick:"1").save(flush:true)
+        killed.addGuid()
         new KillEvent("Kill: 0 1 10: Test").execute()
         assertEquals 1, PlayerTool.countKillStreak(killer)
         new KillEvent("Kill: 0 1 10: Test").execute()

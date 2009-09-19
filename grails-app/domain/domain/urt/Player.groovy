@@ -25,6 +25,21 @@ class Player {
     Date dateCreated
     Date lastUpdated
 
+    static Player findByGuid(String guid) {
+        return GUID.findByGuid(guid)?.getPlayer()
+    }
+
+    void addGuid() {
+        println "addGuid()"
+        addGuid(guid)
+    }
+
+    void addGuid(guid) {
+        println "addGuid(guid) - " + guid
+        println "  player: " + this
+        this.addToGuids(new GUID(guid:guid)).save(flush:true)
+    }
+
     static constraints = {
         nick(nullable:false)
         colorNick(nullable:false)

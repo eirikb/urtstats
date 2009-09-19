@@ -72,7 +72,7 @@ class Sync {
         log.info "[Sync] Syncing complete."
         log.info "[Sync] Players in database now:"
         Player.findByUrtIDGreaterThanEquals(0).each {
-            log.info "[Sync] Guid: " + it.getGuid() + ". UrtID: " + it.getUrtID() + ". Nick: " + it.getNick() + ". IP: " + it.getIp()
+            log.info "[Sync] Guid: " + it.getGuids() + ". UrtID: " + it.getUrtID() + ". Nick: " + it.getNick() + ". IP: " + it.getIp()
         }
     }
 
