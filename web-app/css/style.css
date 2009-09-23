@@ -1,9 +1,115 @@
-html * {
+/* @override
+	http://urtstats.net/css/main.css
+	http://urtstats.net/css/stylesheet.css
+*/
+
+* {
     margin: 0;
-    /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
+    padding: 0;
+    border: 0;
+}
+
+* {
+    outline: none;
+}
+
+html {
+    overflow: scroll;
 }
 
 /* GENERAL */
+
+body {
+    font: 82.5% "Lucida Grande", Lucida, Verdana, sans-serif;
+    background: #E5E6E9;
+}
+
+#container {
+    width: 80%;
+    padding: 30px;
+    background: #fff;
+    margin: 40px auto;
+    text-align: left;
+    vertical-align: bottom;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: 1px solid #D3D5DA;
+    box-shadow: 0px 0px 10px #B6B7BC;
+    -webkit-box-shadow: 0px 0px 10px #B6B7BC;
+    -moz-box-shadow: 0px 0px 10px #B6B7BC;
+}
+
+.rheight50 {
+    float: right;
+    position: relative;
+    top: -50px;
+}
+
+#container div.body {
+    padding: 10px 0;
+}
+
+#container div.body form {
+    margin: 0;
+}
+
+#container div.body h1 {
+    margin: 10px 0 5px 0;
+}
+
+#container form {
+    margin: 20px 0 10px 0;
+}
+
+#tabnav {
+    height: 20px;
+    margin-left: auto;
+    margin-right: 200px;
+    padding-left: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+#tabnav li {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    list-style-type: none;
+}
+
+#tabnav a:link, #tabnav a:visited {
+    float: left;
+    background: #f3f3f3;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 14px;
+    padding: 2px 10px;
+    margin-right: 4px;
+    border: 1px solid #ccc;
+    border-bottom: 1px solid #f3f3f3;
+    text-decoration: none;
+    color: #000;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+}
+
+#tabnav a:link.active, #tabnav a:visited.active {
+    border-bottom: 1px solid #fff;
+    background: #fff;
+    color: rgb(72,118,255);
+}
+
+#tabnav a:link.blue, #tabnav a:visited.blue {
+    border-bottom: 1px solid #f3f3f3;
+    color: rgb(72,118,255);
+}
+
+#tabnav a:hover {
+    background: #fff;
+}
 
 .spinner {
     padding: 5px;
@@ -11,27 +117,26 @@ html * {
     right: 0;
 }
 
-body {
-    background: #e1e1e1;
-    color: #333;
-    font: 11px verdana, arial, helvetica, sans-serif;
-}
-
 a:link, a:visited, a:hover {
     color: #666;
     font-weight: bold;
     text-decoration: none;
-} 
+}
 
 h1 {
     color: #006dba;
     font-weight: normal;
-    font-size: 16px;
-    margin: .8em 0 .3em 0;
+    font-size: 18px;
+    margin: 25px 0 3px 0;
+}
+
+#container > h1:first-child {
+    margin: 0 0 10px 0;
+    font-size: 30px;
 }
 
 ul {
-    padding-left: 15px;	
+    padding-left: 15px;
 }
 
 input, select, textarea {
@@ -41,13 +146,15 @@ input, select, textarea {
     margin: 2px 0;
     padding: 2px 4px;
 }
+
 select {
-   padding: 2px 2px 2px 0;
+    padding: 2px 2px 2px 0;
 }
+
 textarea {
-	width: 250px;
-	height: 150px;
-	vertical-align: top;
+    width: 250px;
+    height: 150px;
+    vertical-align: top;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -63,34 +170,40 @@ input:focus, select:focus, textarea:focus {
 .nav {
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
-    border-style: solid none solid none;	
-    margin-top: 5px;
+    border-style: solid none solid none;
+    margin-top: -1px;
     padding: 7px 12px;
+    margin-right: 200px;
 }
 
 .menuButton {
     font-size: 10px;
     padding: 0 5px;
 }
+
 .menuButton a {
     color: #333;
     padding: 4px 6px;
 }
+
 .menuButton a.home {
     background: url(../images/skin/house.png) center left no-repeat;
     color: #333;
     padding-left: 25px;
 }
+
 .menuButton a.list {
     background: url(../images/skin/database_table.png) center left no-repeat;
     color: #333;
     padding-left: 25px;
 }
+
 .menuButton a.create {
     background: url(../images/skin/database_add.png) center left no-repeat;
     color: #333;
     padding-left: 25px;
 }
+
 .menuButton a.reply {
     background: url(../images/skin/arrow_left.png) center left no-repeat;
     color: #333;
@@ -114,12 +227,14 @@ div.errors {
     margin: 10px 0 5px 0;
     padding: 5px 0 5px 0;
 }
+
 div.errors ul {
     list-style: none;
-    padding: 0;	
+    padding: 0;
 }
+
 div.errors li {
-	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+    background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
     line-height: 16px;
     padding-left: 30px;
 }
@@ -127,6 +242,7 @@ div.errors li {
 td.errors select {
     border: 1px solid red;
 }
+
 td.errors input {
     border: 1px solid red;
 }
@@ -137,16 +253,19 @@ table {
     border: 1px solid #ccc;
     width: 30%
 }
+
 tr {
     border: 0;
 }
-td, th { 
+
+td, th {
     font: 11px verdana, arial, helvetica, sans-serif;
     line-height: 12px;
     padding: 5px 6px;
     text-align: left;
     vertical-align: top;
 }
+
 th {
     background: #fff url(../images/skin/shadow.jpg);
     color: #666;
@@ -155,6 +274,7 @@ th {
     line-height: 17px;
     padding: 2px 6px;
 }
+
 th a:link, th a:visited, th a:hover {
     color: #333;
     display: block;
@@ -162,13 +282,16 @@ th a:link, th a:visited, th a:hover {
     text-decoration: none;
     width: 30%;
 }
+
 th.asc a, th.desc a {
     background-position: right;
     background-repeat: no-repeat;
 }
+
 th.asc a {
     background-image: url(../images/skin/sorted_asc.gif);
 }
+
 th.desc a {
     background-image: url(../images/skin/sorted_desc.gif);
 }
@@ -176,6 +299,7 @@ th.desc a {
 .odd {
     background: #f7f7f7;
 }
+
 .even {
     background: #fff;
 }
@@ -185,9 +309,11 @@ th.desc a {
 .list table {
     border-collapse: collapse;
 }
+
 .list th, .list td {
     border-left: 1px solid #ddd;
 }
+
 .list th:hover, .list tr:hover {
     background: #b2d1ff;
 }
@@ -195,15 +321,15 @@ th.desc a {
 /* PAGINATION */
 
 .paginateButtons {
-    width: 30%;
     background: #fff url(../images/skin/shadow.jpg) bottom repeat-x;
     border: 1px solid #ccc;
-    border-top: 0;
     color: #666;
     font-size: 10px;
     overflow: hidden;
     padding: 10px 3px;
+    margin: 10px 0 0 0;
 }
+
 .paginateButtons a {
     background: #fff;
     border: 1px solid #ccc;
@@ -212,6 +338,7 @@ th.desc a {
     margin: 0 3px;
     padding: 2px 6px;
 }
+
 .paginateButtons span {
     padding: 2px 3px;
 }
@@ -225,11 +352,13 @@ th.desc a {
 .prop {
     padding: 5px;
 }
+
 .prop .name {
     text-align: left;
     width: 15%;
     white-space: nowrap;
 }
+
 .prop .value {
     text-align: left;
     width: 85%;
@@ -258,14 +387,17 @@ th.desc a {
     overflow: visible;
     padding: 2px 6px;
 }
+
 .buttons input.delete {
     background: transparent url(../images/skin/database_delete.png) 5px 50% no-repeat;
     padding-left: 28px;
 }
+
 .buttons input.edit {
     background: transparent url(../images/skin/database_edit.png) 5px 50% no-repeat;
     padding-left: 28px;
 }
+
 .buttons input.save {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
