@@ -12,6 +12,18 @@
     <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
   </div>
   <div id="container">
+
+    <script type="text/javascript"><!--
+  google_ad_client = "pub-1103417098772225";
+  /* 234x60, created 9/26/09 */
+  google_ad_slot = "5616484798";
+  google_ad_width = 234;
+  google_ad_height = 60;
+  //-->
+    </script>
+    <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
     <jsec:isLoggedIn>
       <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
     </jsec:isLoggedIn>
