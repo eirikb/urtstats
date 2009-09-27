@@ -28,6 +28,7 @@
       <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
     </jsec:isLoggedIn>
     <h1>${grailsApplication.metadata['app.name']} - ${grailsApplication.metadata['app.version']}</h1>
+    Stats for <g:link target="_blank" base="http://www.urbanterror.net">Urban Terror</g:link>
     <richui:reflectionImage src="${resource(dir: 'images', file: 'ut.png')}"  width="125px" height="110px" />
 
     <ul class="tabs" id="tabnav">
