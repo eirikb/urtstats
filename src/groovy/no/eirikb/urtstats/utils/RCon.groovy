@@ -43,6 +43,8 @@ class RCon {
             } else {
                 recmessage = rconSend(host, port, password, message, force)
             }
+        } else if (!active) {
+            log.info "RCon: Message not sent - NOT ACTIVE!"
         }
         return recmessage
     }

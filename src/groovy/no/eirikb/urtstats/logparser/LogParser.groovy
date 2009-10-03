@@ -44,6 +44,9 @@ class LogParser {
                 while ((line = tail.parse()) != null) {
                     readLine(line)
                 }
+                if (!RCon.isActive()) {
+                    RCon.setActive(true)
+                }
             } else {
                 RCon.rcon("bigtext \"^7" + Server.findByIdent(1)?.getWelcomeMessage() + '"')
                 new Sync(tail).sync()
