@@ -70,7 +70,7 @@ class Sync {
         } else {
             log.error "[Sync] Status return from RCon was null"
         }
-        tail.setFilePointer(filePointer)
+        tail.setFilePointer(tail.getFileLength())
         log.info "[Sync] Syncing complete."
         log.info "[Sync] Players in database now:"
         Player.findByUrtIDGreaterThanEquals(0).each {

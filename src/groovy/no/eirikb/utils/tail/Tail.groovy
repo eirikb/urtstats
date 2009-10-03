@@ -116,4 +116,8 @@ class Tail {
     void setFilePointer(filePointer) {
         this.filePointer = filePointer
     }
+
+    void getFileLength() {
+        return logFile.length()
+    }
 }
