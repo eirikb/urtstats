@@ -41,6 +41,7 @@ class Sync {
             def map = statusToMap(status)
             def max = map.size()
             def done = 0
+            RCon.setActive(false)
             while (done >= 0 && done < max) {
                 def line = tail.parseReverse()
                 if (line.indexOf("ClientUserinfoChanged") == 0) {
@@ -60,6 +61,7 @@ class Sync {
                     done = -1
                 }
             }
+            RCon.setActive(true)
             if (done == max) {
                 RCon.rcon("say \"^7All players were synced.\"")
             } else {

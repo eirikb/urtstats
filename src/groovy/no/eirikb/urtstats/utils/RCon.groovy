@@ -23,6 +23,7 @@ class RCon {
     final static int BUFFERSIZE = 65000
     final static int SLEEPTIME = 100
     static long lastUsed
+    static boolean active = true
 
     public synchronized static String rcon(message) {
         return rcon(message, false)
@@ -32,7 +33,7 @@ class RCon {
         def log = LogFactory.getLog("grails.app.task")
         log.info "RCon: Message: " + message + ". Force: " + force
         def recmessage
-        if (GrailsUtil.environment != "test") {
+        if (GrailsUtil.environment != "test" && active) {
             def config = ConfigurationHolder.config
             def host = config.urt.rcon.host
             def port = config.urt.rcon.port
