@@ -21,7 +21,7 @@ import org.apache.commons.logging.LogFactory
 class RCon {
 
     final static int BUFFERSIZE = 65000
-    final static int SLEEPTIME = 100
+    final static int SLEEPTIME = 200
     static long lastUsed
 
     public synchronized static String rcon(message) {
