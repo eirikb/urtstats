@@ -49,7 +49,7 @@ class RCon {
     
     public static String rconSend(host, port, password, message, force) {
         while (System.currentTimeMillis() - lastUsed < SLEEPTIME) {
-            Thread.sleep(SLEEPTIME / 4)
+            Thread.sleep((int)(SLEEPTIME / 4))
         }
         def socket
         try {
