@@ -25,7 +25,7 @@ Thread.start() {
             break
             case "status":
             case "w":
-            println no.eirikb.urtstats.utils.RCon.rcon("status")
+            println no.eirikb.urtstats.utils.RCon.rcon("status", true)
             break
             default:
             println "Not a command: " + line
