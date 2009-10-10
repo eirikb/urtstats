@@ -21,8 +21,6 @@ import org.apache.commons.logging.LogFactory
 class RCon {
 
     final static int BUFFERSIZE = 65000
-    final static int SLEEPTIME = 100
-    static long lastUsed
     static boolean active = true
 
     public synchronized static String rcon(message) {
@@ -38,11 +36,7 @@ class RCon {
             def host = config.urt.rcon.host
             def port = config.urt.rcon.port
             def password = config.urt.rcon.password
-            if (force) {
-                while ((recmessage = rconSend(host, port, password, message, force))?.length() == 0);
-            } else {
-                recmessage = rconSend(host, port, password, message, force)
-            }
+            recmessage = rconSend(host, port, password, message, force)
         } else if (!active) {
             log.info "RCon: Message not sent - NOT ACTIVE!"
         }
@@ -50,9 +44,6 @@ class RCon {
     }
     
     public static String rconSend(host, port, password, message, force) {
-        while (System.currentTimeMillis() - lastUsed < SLEEPTIME) {
-            Thread.sleep((int)(SLEEPTIME / 4))
-        }
         def socket
         try {
             message = "rcon " + password + " " + message
@@ -97,8 +88,6 @@ class RCon {
             }
         } catch(IOException io){
             println "ERRROR! IO - RCon"
-        } finally {
-            lastUsed = System.currentTimeMillis()
         }
         return null
     }
