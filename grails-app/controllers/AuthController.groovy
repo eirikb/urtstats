@@ -82,7 +82,7 @@ class AuthController {
             if (ip == playerIP) {
                 player.user = user
                 def userRole = JsecRole.findByName("USER")
-                if (!user.save(flush:true) || !player.save(flush:true)) {
+                if (!user.save() || !player.save()) {
                     log.error "Could not create user. Params(" + params.dump() + ")"
                 } else {
                     new JsecUserRoleRel(user:user, role:userRole).save()

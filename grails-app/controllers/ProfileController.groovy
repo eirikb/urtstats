@@ -28,7 +28,7 @@ class ProfileController {
                 }
             }
             user.properties = params
-            if(!user.hasErrors() && user.save(flush:true)) {
+            if(!user.hasErrors() && user.save()) {
                 flash.message = "Profile ${user.username} updated"
                 redirect(action:edit)
             }
