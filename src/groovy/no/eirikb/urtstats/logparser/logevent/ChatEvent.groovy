@@ -131,8 +131,16 @@ class ChatEvent extends Event {
 
             case "slap":
             cmd = "slap"
+            def space = message.indexOf(' ')
+            def times = 1
+            if (space > 0) {
+                times = Integer.parseInt(message.substring(space + 1))
+                message = message.substring(0, space)
+            }
             def clos = {RCon.rcon(cmd + ' ' + it.getUrtID())}
-            rconCommand(player, cmd, message, clos)
+            for (i in 1..times) {
+                rconCommand(player, cmd, message, clos)
+            }
             break
 
             case "forceteam":
