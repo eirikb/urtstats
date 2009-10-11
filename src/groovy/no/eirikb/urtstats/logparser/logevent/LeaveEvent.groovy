@@ -27,7 +27,7 @@ class LeaveEvent extends Event {
         def player = Player.findByUrtID(id)
         if (player != null) {
             player.urtID = -1;
-            if(player.hasErrors() || !player.save(flush:true)) {
+            if(player.hasErrors() || !player.save()) {
                 log.error "[LeaveEvent] Error while updating leave for player: " + player
             } else {
                 TeamTool.removePlayerFromTeam(player)
@@ -43,7 +43,7 @@ class LeaveEvent extends Event {
         def playerLog = PlayerLog.findByPlayer(player)
         if (playerLog != null) {
             playerLog.setEndDate(new Date())
-            if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
+            if(playerLog.hasErrors() || !playerLog.save()) {
                 log.error "[LeaveEvent] Unable to update playerLog for player:" + player +
                     ". PlyerLog: " + playerLog
             }

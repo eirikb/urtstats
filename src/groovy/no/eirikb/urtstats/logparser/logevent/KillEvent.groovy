@@ -35,7 +35,7 @@ class KillEvent extends Event {
             def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
-                if(kill.hasErrors() || !kill.save(flush:true)) {
+                if(kill.hasErrors() || !kill.save()) {
                     log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
@@ -55,7 +55,7 @@ class KillEvent extends Event {
                     if (killer.exp > killer.nextlevel) {
                         level(killer)
                     }
-                    if (killer.hasErrors() || !killer.save(flush:true)) {
+                    if (killer.hasErrors() || !killer.save()) {
                         log.error "[KillEvnent] Unale to update player after gain, player: " + killer
                     }
                 }

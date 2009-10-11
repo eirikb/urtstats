@@ -138,7 +138,7 @@ class Sync {
     def resetPlayers() {
         Player.findAllByUrtIDGreaterThanEquals(0).each {
             it.setUrtID(-1)
-            it.save(flush:true)
+            it.save()
         }
     }
 

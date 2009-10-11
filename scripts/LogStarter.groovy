@@ -12,7 +12,7 @@ def logParser = new no.eirikb.urtstats.logparser.LogParser()
 def players = domain.urt.Player.findAllByUrtIDGreaterThanEquals(0)
 players.each() {
     it.urtID = -1;
-    it.save(flush:true)
+    it.save()
 }
 
 Thread.start() {

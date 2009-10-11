@@ -75,17 +75,17 @@ class BootStrap {
 
         def server = Server.findByIdent(1)
         if (server == null) {
-            new Server(ident:1, welcomeMessage:"Welcome! ^2www.urtstats.net").save(flush:true)
+            new Server(ident:1, welcomeMessage:"Welcome! ^2www.urtstats.net").save()
         } else {
             server.setLastRestartDate(new Date())
-            server.save(flush:true)
+            server.save()
         }
         
 
         def players = Player.findAllByUrtIDGreaterThanEquals(0)
         players.each() {
             it.urtID = -1;
-            it.save(flush:true)
+            it.save()
         }
     }
 
