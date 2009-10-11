@@ -66,7 +66,7 @@ class UserInfoEvent extends Event{
                 log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
             }
 
-            if(player.hasErrors() || !player.save()) {
+            if(player.hasErrors() || !player.save(flush:true)) {
                 log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player
             } else {
                 TeamTool.addPlayerToTeam(player, 0)
