@@ -27,12 +27,19 @@ class LeaveEvent extends Event {
         def player = Player.findByUrtID(id)
         if (player != null) {
             player.urtID = -1;
-            if(player.hasErrors() || !player.save()) {
-                log.error "[LeaveEvent] Error while updating leave for player: " + player
-            } else {
-                TeamTool.removePlayerFromTeam(player)
-                updatePlayerLog(player)
-                log.info "[LeaveEvent] Player: " + player
+            def done = false
+            while (!done) {
+                try {
+                    if(player.hasErrors() || !player.save(flush:true)) {
+                        log.error "[LeaveEvent] Error while updating leave for player: " + player
+                    } else {
+                        TeamTool.removePlayerFromTeam(player)
+                        updatePlayerLog(player)
+                        log.info "[LeaveEvent] Player: " + player
+                    }
+                    done = true
+                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                }
             }
         } else {
             log.error "[LeaveEvent] Player not found: " + id
@@ -43,9 +50,16 @@ class LeaveEvent extends Event {
         def playerLog = PlayerLog.findByPlayer(player)
         if (playerLog != null) {
             playerLog.setEndDate(new Date())
-            if(playerLog.hasErrors() || !playerLog.save()) {
-                log.error "[LeaveEvent] Unable to update playerLog for player:" + player +
+            def done = false
+            while (!done) {
+                try {
+                    if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
+                        log.error "[LeaveEvent] Unable to update playerLog for player:" + player +
                     ". PlyerLog: " + playerLog
+                    }
+                    done = true
+                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                }
             }
         } else {
             log.error "[LeaveEvent] Unable to find playerlog for player " + player

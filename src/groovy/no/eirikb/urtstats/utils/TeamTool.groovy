@@ -23,20 +23,34 @@ class TeamTool {
         def log = LogFactory.getLog("grails.app.task")
 
         def team = Team.findByUrtID(teamID)
-        if (team == null) {
-            team = new Team(urtID:teamID)
-            if(team.hasErrors() || !team.save()) {
-                log.error "Unable to create team (teamID: " + teamID +"). Team: " + team
+        def done = false
+        while (!done) {
+            try {
+                if (team == null) {
+                    team = new Team(urtID:teamID)
+                    if(team.hasErrors() || !team.save(flush:true)) {
+                        log.error "Unable to create team (teamID: " + teamID +"). Team: " + team
+                    }
+                }
+                done = true
+            } catch(org.springframework.dao.OptimisticLockingFailureException e) {
             }
         }
         player.getTeam()?.removeFromPlayers(player)
         if (player.getTeam() == null || player.getTeam() != team) {
             team.addToPlayers(player)
-            if(team.hasErrors() || !team.save()) {
-                log.error "Unable to add player to team. Player: "  + player+
+            while (!done) {
+                try {
+                    if(team.hasErrors() || !team.save(flush:true)) {
+                        log.error "Unable to add player to team. Player: "  + player+
                     ". Team: " + team
+                    }
+                    done = true
+                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                }
             }
         }
+
     }
 
     public static void removePlayerFromTeam(player) {
@@ -45,9 +59,16 @@ class TeamTool {
         def team = player.getTeam()
         if (team != null) {
             team.removeFromPlayers(player)
-            if(team.hasErrors() || !team.save()) {
-                log.error "Unable to remove player from team. Player: "  + player +
+            def done = false
+            while (!done) {
+                try {
+                    if(team.hasErrors() || !team.save(flush:true)) {
+                        log.error "Unable to remove player from team. Player: "  + player +
                     ". Team: " + team
+                    }
+                    done = true
+                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                }
             }
         } else {
             log.warn "RemovePlayerFromTeam: Could not remove, as player had no team. Player: " + player

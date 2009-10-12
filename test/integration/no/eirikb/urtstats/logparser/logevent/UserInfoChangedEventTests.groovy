@@ -15,7 +15,7 @@ class UserInfoChangedEventTests extends GrailsUnitTestCase {
     }
 
     void testExecute() {
-        def player = new Player(guid:"1", ip:"1", nick:"1", colorNick:"1", urtID:0).save()
+        def player = new Player(guid:"1", ip:"1", nick:"1", colorNick:"1", urtID:0).save(flush:true)
         player.addGuid()
         assertEquals 1, Player.count()
         assertEquals Team.findByUrtID(0), Player.findByGuid("1").getTeam()

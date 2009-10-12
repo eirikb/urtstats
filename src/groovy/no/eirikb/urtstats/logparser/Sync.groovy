@@ -137,8 +137,15 @@ class Sync {
 
     def resetPlayers() {
         Player.findAllByUrtIDGreaterThanEquals(0).each {
-            it.setUrtID(-1)
-            it.save()
+            def done = false
+            while (!done) {
+                try {
+                    it.setUrtID(-1)
+                    it.save(flush:true)
+                    done = true
+                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                }
+            }
         }
     }
 

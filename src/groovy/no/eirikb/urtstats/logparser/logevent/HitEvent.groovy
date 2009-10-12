@@ -32,10 +32,17 @@ class HitEvent extends Event {
         if (hitter != null && victim != null && item != null) {
             def hit = new Hit(hitter:hitter, victim:victim, friendlyfire:(hitter.getTeam() == victim.getTeam()),
                 hitpoint:hitpoint, item:item)
-            if(hit.hasErrors() || !hit.save()) {
-                log.error "[HitEvent] Unable to persist hit: " + hit
-            } else {
-                log.info "[HitEvent] Hitter:" + hitter + ". Victim: " + victim + ". Hitpoint: " + hitpoint + ". Item: " + item
+            def done = false
+            while (!done) {
+                try {
+                    if(hit.hasErrors() || !hit.save(flush:true)) {
+                        log.error "[HitEvent] Unable to persist hit: " + hit
+                    } else {
+                        log.info "[HitEvent] Hitter:" + hitter + ". Victim: " + victim + ". Hitpoint: " + hitpoint + ". Item: " + item
+                    }
+                    done = true
+                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                }
             }
         } else if (item == null) {
             log.error "[HitEvent] Could not create hit, unkown Item: " + item + " (" +  ids[3] + ")"

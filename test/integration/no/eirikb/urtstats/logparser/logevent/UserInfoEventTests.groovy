@@ -63,7 +63,7 @@ class UserInfoEventTests extends GrailsUnitTestCase {
         def player = uie.createPlayer(map)
         
         assertFalse player.hasErrors()
-        assertNotNull player.save()
+        assertNotNull player.save(flush:true)
 
         assertTrue uie.addGear(player, map)
 

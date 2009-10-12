@@ -37,7 +37,7 @@ class Player {
     void addGuid(guid) {
         println "addGuid(guid) - " + guid
         println "  player: " + this
-        this.addToGuids(new GUID(guid:guid)).save()
+        this.addToGuids(new GUID(guid:guid)).save(flush:true)
     }
 
     static constraints = {
