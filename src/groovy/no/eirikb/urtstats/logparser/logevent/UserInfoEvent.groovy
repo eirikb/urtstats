@@ -66,20 +66,15 @@ class UserInfoEvent extends Event{
                 log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
             }
 
-            def done = false // force
-            while (!done) {
-                try {
-                    if(player.hasErrors() || !player.save(flush:true)) {
-                        log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player
-                    } else {
-                        TeamTool.addPlayerToTeam(player, 0)
-                    }
-                    done = true
-                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+            try {
+                if(player.hasErrors() || !player.save(flush:true)) {
+                    log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player
+                } else {
+                    TeamTool.addPlayerToTeam(player, 0)
                 }
+            } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                log.error "[UserInfoEvent] Unable to persist player - " + e.dump()
             }
-            
-
         } else {
             log.warn "[UserInfoEvent] Player has no cl_guid: " + userInfo
         }

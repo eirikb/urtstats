@@ -40,15 +40,9 @@ class ChatEvent extends Event {
             message = message.substring(message.indexOf(':') + 1)
             message = message.substring(message.indexOf(':') + 2)
             def chat = new Chat(player:player, teamMessage:teammessage, message:message)
-            def done = false
-            while (!done) {
-                try {
-                    if(chat.hasErrors() || !chat.save(flush:true)) {
-                        log.error "[ChatEvent] Unable to persist. Chat: " + chat
-                    }
-                    done = true
-                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
-                }
+            // Saving of chat messages does not need to be flushed
+            if(chat.hasErrors() || !chat.save()) {
+                log.error "[ChatEvent] Unable to persist. Chat: " + chat
             }
             log.info "[ChatEvent] Player: " + player + ". Message: " + message
             if (message.charAt(0) == '!') {

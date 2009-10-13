@@ -27,19 +27,14 @@ class LeaveEvent extends Event {
         def player = Player.findByUrtID(id)
         if (player != null) {
             player.urtID = -1;
-            def done = false
-            while (!done) {
-                try {
-                    if(player.hasErrors() || !player.save(flush:true)) {
-                        log.error "[LeaveEvent] Error while updating leave for player: " + player
-                    } else {
-                        TeamTool.removePlayerFromTeam(player)
-                        updatePlayerLog(player)
-                        log.info "[LeaveEvent] Player: " + player
-                    }
-                    done = true
-                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
-                }
+            // Setting player to 'offline' is not that important
+            // When a player with same URTID joins, the new player "takes over" the URTID
+            if(player.hasErrors() || !player.save()) {
+                log.error "[LeaveEvent] Error while updating leave for player: " + player
+            } else {
+                TeamTool.removePlayerFromTeam(player)
+                updatePlayerLog(player)
+                log.info "[LeaveEvent] Player: " + player
             }
         } else {
             log.error "[LeaveEvent] Player not found: " + id
@@ -50,16 +45,13 @@ class LeaveEvent extends Event {
         def playerLog = PlayerLog.findByPlayer(player)
         if (playerLog != null) {
             playerLog.setEndDate(new Date())
-            def done = false
-            while (!done) {
-                try {
-                    if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
-                        log.error "[LeaveEvent] Unable to update playerLog for player:" + player +
+            try {
+                if(playerLog.hasErrors() || !playerLog.save(flush:true)) {
+                    log.error "[LeaveEvent] Unable to update playerLog for player:" + player +
                     ". PlyerLog: " + playerLog
-                    }
-                    done = true
-                } catch(org.springframework.dao.OptimisticLockingFailureException e) {
                 }
+            } catch(org.springframework.dao.OptimisticLockingFailureException e) {
+                log.error "[LeaveEvent] Unable to persist updatePlayerLog() - " + e.dump()
             }
         } else {
             log.error "[LeaveEvent] Unable to find playerlog for player " + player

@@ -35,15 +35,9 @@ class KillEvent extends Event {
             def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
-                def done = false
-                while (!done) {
-                    try {
-                        if(kill.hasErrors() || !kill.save(flush:true)) {
-                            log.error "[KillEvent] Could not persist kill: " + kill
-                        }
-                        done = true
-                    } catch(org.springframework.dao.OptimisticLockingFailureException e) {
-                    }
+                // No need to catch here no error can emerge
+                if(kill.hasErrors() || !kill.save(flush:true)) {
+                    log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
                     switch (PlayerTool.countKillStreak(killer)) {
@@ -62,16 +56,11 @@ class KillEvent extends Event {
                     if (killer.exp > killer.nextlevel) {
                         level(killer)
                     }
-                    done = false
-                    while (!done) {
-                        try {
-                            if (killer.hasErrors() || !killer.save(flush:true)) {
-                                log.error "[KillEvnent] Unale to update player after gain, player: " + killer
-                            }
-                            done = true
-                        } catch(org.springframework.dao.OptimisticLockingFailureException e) {
-                        }
+                    // No need to flush here - or it could be, but probably not
+                    if (killer.hasErrors() || !killer.save()) {
+                        log.error "[KillEvnent] Unale to update player after gain, player: " + killer
                     }
+
                 }
                 log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
                 ". Killer level: " + killer.getLevel() + ". Killer exp: " + killer.getExp()
