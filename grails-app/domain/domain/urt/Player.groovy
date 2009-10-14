@@ -30,13 +30,10 @@ class Player {
     }
 
     void addGuid() {
-        println "addGuid()"
         addGuid(guid)
     }
 
     void addGuid(guid) {
-        println "addGuid(guid) - " + guid
-        println "  player: " + this
         this.addToGuids(new GUID(guid:guid)).save(flush:true)
     }
 
@@ -53,5 +50,9 @@ class Player {
         items(nullable:true)
         joinGameDate(nullable:true)
         welcomeMessage(nullable:true)
+    }
+
+    public String toString() {
+        return nick + " (" + id + ")"
     }
 }
