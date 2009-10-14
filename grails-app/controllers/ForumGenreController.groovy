@@ -113,4 +113,17 @@ class ForumGenreController {
             render(view:'create',model:[forumGenreInstance:forumGenreInstance])
         }
     }
+
+    def clear = {
+        if (SecurityUtils.getSubject() != null && SecurityUtils.getSubject().getPrincipal() != null) {
+            def user = JsecUser.findByUsername(SecurityUtils.getSubject().getPrincipal())
+            ForumPost.findAll("from ForumPost as fp where fp.id not in \
+            (select rp.post.id from ReadPost rp where rp.user=:user)", [user:user]).each() {
+                new ReadPost(user: user, post: it).save(flush:true)
+            }
+
+            flash.message = "All unread posts are now \"read\""
+            redirect(action:list)
+        }
+    }
 }

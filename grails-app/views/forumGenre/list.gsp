@@ -40,6 +40,9 @@
     </div>
 
     <g:haveUnreadPosts>
+      <g:form>
+        <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Clear" /></span>
+      </g:form>
       <div class="list">
         <table>
           <thead>
