@@ -135,7 +135,11 @@ class ChatEvent extends Event {
             def space = message.indexOf(' ')
             def times = 1
             if (space > 0) {
-                times = Integer.parseInt(message.substring(space + 1))
+                try {
+                    times = Integer.parseInt(message.substring(space + 1))
+                } catch (NumberFormatException e) {
+                    times = 1
+                }
                 message = message.substring(0, space)
             }
             def clos = {RCon.rcon(cmd + ' ' + it.getUrtID())}
