@@ -38,6 +38,27 @@
     <div class="paginateButtons">
       <g:paginate total="${forumGenreTotal}" />
     </div>
+
+    <g:haveUnreadPosts>
+      <div class="list">
+        <table>
+          <thead>
+            <tr>
+              <th>Author</th>
+              <th>Topic</th>
+            </tr>
+          </thead>
+          <tbody>
+          <g:each in="${forumPostList}" status="i" var="forumPost">
+            <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+              <td><g:link action="show" controller="forumTopic" id="${forumPost.topic.id}">${forumPost.user}</g:link></td>
+            <td><g:link action="show" controller="forumTopic" id="${forumPost.topic.id}">${fieldValue(bean:forumPost.topic, field:'name')}</g:link></td>
+            </tr>
+          </g:each>
+          </tbody>
+        </table>
+      </div>
+    </g:haveUnreadPosts>
   </div>
 </body>
 </html>

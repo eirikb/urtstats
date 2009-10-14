@@ -33,11 +33,16 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
     var pageTracker = _gat._getTracker("UA-5799985-2");
     pageTracker._trackPageview();
     } catch(err) {}</script>
-    <jsec:isLoggedIn>
-      <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
-    </jsec:isLoggedIn>
+
     <h1>${grailsApplication.metadata['app.name']} - ${grailsApplication.metadata['app.version']}</h1>
     Stats for <g:link target="_blank" base="http://www.urbanterror.net">Urban Terror</g:link>
+    <jsec:isLoggedIn>
+      <br />
+      <div>Logged in as: <jsec:principal/> (<g:link controller="auth" action="signOut">sign out</g:link>)</div>
+      <div><g:haveUnreadPosts><img src="${resource(dir:'images/skin',file:'forum_newmessage.png')}"/>
+          <g:link controller="forumGenre">You have unread posts!</g:link>
+        </g:haveUnreadPosts></div>
+    </jsec:isLoggedIn>
     <richui:reflectionImage src="${resource(dir: 'images', file: 'ut.png')}"  width="125px" height="110px" />
 
     <ul class="tabs" id="tabnav">

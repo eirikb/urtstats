@@ -1,4 +1,6 @@
 import domain.forum.*
+import org.jsecurity.SecurityUtils
+import domain.security.JsecUser
 
 class ForumGenreController {
     
@@ -11,7 +13,14 @@ class ForumGenreController {
         def list = ForumGenre.executeQuery("select forumGenre.id, forumGenre.name, \
              count(topics) from ForumGenre forumGenre \
             join forumGenre.topics topics group by forumGenre.name, forumGenre.id")
-        [forumGenreList: list, forumGenreTotal:list.count()]
+        def forumPostList
+        if (SecurityUtils.getSubject() != null && SecurityUtils.getSubject().getPrincipal() != null) {
+            def user = JsecUser.findByUsername(SecurityUtils.getSubject().getPrincipal())
+            forumPostList = ForumPost.findAll("from ForumPost as fp where fp.id not in \
+            (select rp.post.id from ReadPost rp where rp.user=:user)", [user:user])
+        }
+        [forumGenreList: list, forumGenreTotal:list.count(),
+            forumPostList: forumPostList]
     }
 
     def show = {
