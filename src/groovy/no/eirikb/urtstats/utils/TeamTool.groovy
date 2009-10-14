@@ -41,7 +41,7 @@ class TeamTool {
             } catch(org.springframework.dao.OptimisticLockingFailureException e) {
                 log.error "[TeamTool] Unable to persist team when adding players - " + e.dump()
             } catch (org.springframework.dao.DataIntegrityViolationException ex) {
-                
+
             }
         }
 
