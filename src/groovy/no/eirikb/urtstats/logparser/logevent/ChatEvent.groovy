@@ -101,7 +101,7 @@ class ChatEvent extends Event {
                     " ^7Level: ^1" + player.getLevel() +
                     " ^7kills: ^1"  + Kill.countByKiller(player) +
                     " ^7Ratio: ^1"  + new DecimalFormat("#,###.##").format(PlayerTool.getTotalRatio(p)) +
-                    " ^7Headshots: ^1" + Hit.countByHitterAndHitpoint(p, 0) +
+                    " ^NextLevel in: ^1" + player.getNextlevel() - player.getLevel() + 
                     '"'
                 RCon.rcon(text)
             } else{
