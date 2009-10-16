@@ -1,0 +1,4 @@
+class ChatController {
+
+    def index = { }
+}

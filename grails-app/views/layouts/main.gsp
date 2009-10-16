@@ -62,6 +62,8 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 
       <li class="controller"><g:link controller="player">Players</g:link></li>
 
+      <li class="controller"><g:link controller="chat">Chat</g:link></li>
+
       <li class="controller"><g:link controller="about">About</g:link></li>
 
       <jsec:hasRole  name="ADMIN">
