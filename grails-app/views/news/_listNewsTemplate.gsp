@@ -11,3 +11,6 @@ ${fieldValue(bean:news, field:'head').decodeHTML()}
 
 ${fieldValue(bean:news, field:'body').decodeHTML()}
 </g:each>
+<div class="paginateButtons">
+  <g:paginate total="${newsInstanceTotal}" />
+</div>

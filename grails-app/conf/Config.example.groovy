@@ -3,6 +3,8 @@ urt.rcon.host = "localhost"
 urt.rcon.port = 27960
 urt.rcon.password = "password"
 
+demo.files.dir = "/path/to/videos/"
+
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
 grails.mime.types = [ html: ['text/html','application/xhtml+xml'],

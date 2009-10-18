@@ -79,5 +79,13 @@ class SecurityFilters {
                 }
             }
         }
+
+        demoCreate(controller:"demo", action:"create") {
+            before = {
+                accessControl {
+                    permission(new org.jsecurity.grails.JsecBasicPermission('demo', 'create'))
+                }
+            }
+        }
     }
 }

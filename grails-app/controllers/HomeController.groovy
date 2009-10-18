@@ -4,7 +4,6 @@ import domain.urt.Player
 class HomeController {
 
     def index = {
-        println request.getRemoteAddr()
-        [ newsList:News.list( sort:"lastUpdated", order:"desc" ), newsInstanceTotal: News.count() ]
+        [ newsList:News.list( sort:"lastUpdated", order:"desc" ), newsInstanceTotal: 1000 ]
     }
 }

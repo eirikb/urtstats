@@ -67,11 +67,13 @@ class BootStrap {
 
         new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"*", target:"news").save()
         new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"*", target:"urt").save()
+        new JsecRolePermissionRel(role:adminRole, permission:wcPerm, actions:"*", target:"demo").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"kick", target:"urt").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"bigtext", target:"urt").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"slap", target:"urt").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"forceteam", target:"urt").save()
         new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"fixteams", target:"urt").save()
+        new JsecRolePermissionRel(role:modRole, permission:wcPerm, actions:"create", target:"demo").save()
 
         def server = Server.findByIdent(1)
         if (server == null) {
