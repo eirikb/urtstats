@@ -4,9 +4,10 @@ import domain.urt.Player
 import domain.news.News
 import domain.forum.ForumPost
 import domain.forum.ReadPost
+import domain.demo.Demo
 
 class JsecUser {
-    static hasMany = [players:Player, news:News, forumPosts:ForumPost, readPost:ReadPost]
+    static hasMany = [players:Player, news:News, forumPosts:ForumPost, readPost:ReadPost, demos:Demo]
     
     String username
     String passwordHash
