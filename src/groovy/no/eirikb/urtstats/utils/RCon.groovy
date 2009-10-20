@@ -57,31 +57,33 @@ class RCon {
             def packet = new DatagramPacket(buff, buff.length,
                 InetAddress.getByName(host), port)
             socket.send(packet)
-            buff = new byte[BUFFERSIZE]
-            packet = new DatagramPacket(buff, buff.length)
-            socket.receive(packet)
-            def recmessage
-            while (packet.getLength() > 0) {
-                def part = new String(packet.getData(), 4, packet.getLength() - 4)
-                def splitPos = part.indexOf('\n')
-                if (splitPos >= 0) {
-                    part = part.substring(splitPos + 1)
-                    if (recmessage == null) {
-                        recmessage = part
-                    } else {
-                        recmessage += part
-                    }
-                    socket.receive(packet)
-                }
-            }
-            socket?.close()
-            // Sleep for 5 seconds to wait for response
             if (force) {
-                for (i in 0..40) {
-                    if (recmessage != null) {
-                        return recmessage
+                def recmessage
+                buff = new byte[BUFFERSIZE]
+                packet = new DatagramPacket(buff, buff.length)
+                socket.receive(packet)
+                while (packet.getLength() > 0) {
+                    def part = new String(packet.getData(), 4, packet.getLength() - 4)
+                    def splitPos = part.indexOf('\n')
+                    if (splitPos >= 0) {
+                        part = part.substring(splitPos + 1)
+                        if (recmessage == null) {
+                            recmessage = part
+                        } else {
+                            recmessage += part
+                        }
+                        socket.receive(packet)
                     }
-                    Thread.sleep(100)
+                }
+                socket?.close()
+                // Sleep for 5 seconds to wait for response
+                if (force) {
+                    for (i in 0..40) {
+                        if (recmessage != null) {
+                            return recmessage
+                        }
+                        Thread.sleep(100)
+                    }
                 }
             }
         } catch(IOException io){
