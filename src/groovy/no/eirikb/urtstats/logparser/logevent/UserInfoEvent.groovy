@@ -67,6 +67,9 @@ class UserInfoEvent extends Event{
             }
 
             try {
+                if (player.getColorNick() == null) {
+                    player.setColorNick("")
+                }
                 if(player.hasErrors() || !player.save(flush:true)) {
                     log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player
                 } else {
