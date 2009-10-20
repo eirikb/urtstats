@@ -27,7 +27,7 @@ domain.urt.Player.list().each {
     if (g != null) {
         println "GUID already exist for " + it + " (" + g.getPlayer() + ")"
     } else {
-        new domain.urt.GUID(player:it, guid:it.getGuid()).save(flush:true)
+        new domain.urt.GUID(player:it, guid:it.getGuid()).save()
     }
 
     i++

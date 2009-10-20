@@ -31,24 +31,26 @@
         <tr>
       <g:sortableColumn property="nick" title="Nick" />
       <jsec:hasRole  name="ADMIN">
-        <g:sortableColumn property="ip" title="Ip" />
+        <td>IP</td>
       </jsec:hasRole>
 
-      <g:sortableColumn property="level" title="Level" />
+      <g:sortableColumn defaultOrder="desc" property="level" title="Level" />
 
-      <g:sortableColumn property="exp" title="Exp" />
+      <g:sortableColumn defaultOrder="desc" property="exp" title="Exp" />
 
-      <g:sortableColumn property="nextlevel" title="Nextlevel" />
+      <g:sortableColumn defaultOrder="desc" property="nextlevel" title="Nextlevel" />
 
-      <g:sortableColumn property="kills" title="Kills" />
+      <g:sortableColumn defaultOrder="desc" property="kills" title="Kills" />
 
       </tr>
       </thead>
       <tbody>
       <g:each in="${players}" status="i" var="player">
         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-
-          <td><g:link action="show" id="${player.getId()}">${player.getNick()}</g:link></td>
+        <g:if test="${!(player instanceof domain.urt.Player)}">
+${player = new domain.urt.Player(id:player[0], nick:player[1], level:player[2], exp:player[3], nextlevel:player[4]) }
+        </g:if>
+        <td><g:link action="show" id="${player.getId()}">${player.getNick()}</g:link></td>
 
         <jsec:hasRole  name="ADMIN">
           <td>${player.getIp()}</td>
@@ -60,7 +62,7 @@
 
         <td>${player.getNextlevel()}</td>
 
-        <td>${infoMap.(player.getId()).kills}</td>
+        <td>${infoMap.(player?.getId())?.kills}</td>
         </tr>
       </g:each>
       </tbody>

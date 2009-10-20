@@ -25,11 +25,17 @@ class PlayerController {
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        def players = Player.list ( params )
+        def players
         def infoMap = [:]
-        players.each {
-            infoMap.(it.getId()) = [:]
-            infoMap.(it.getId()).kills = Kill.countByKiller(it)
+        if (params.sort != "kills") {
+            players = Player.list ( params )
+            players.each {
+                infoMap.(it.getId()) = [:]
+                infoMap.(it.getId()).kills = Kill.countByKiller(it)
+            }
+        } else {
+            def order = params.order != null ? params.order : "desc";
+            players = Player.executeQuery("select p.id, p.nick, p.ip, p.level, p.nextlevel from Player as p left join p.kills as k group by p.id, p.nick, p.ip, p.level, p.nextlevel order by count(k) " + order)
         }
         [ players: players, infoMap:infoMap, playerTotal: Player.count() ]
     }

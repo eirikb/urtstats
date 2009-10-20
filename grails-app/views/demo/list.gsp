@@ -23,7 +23,7 @@
     <g:each in="${demoInstanceList}" status="i" var="demoInstance">
       <script>
   flowplayer("${demoInstance.id}", "${resource(dir:'flash',file:'flowplayer-3.1.4.swf')}", {
-  clip: {autoPlay: false, autoBuffering: false}});
+  clip: {autoPlay: false, autoBuffering: false, provider:'pseudo'}});
       </script>
       <div class="dialog">
         <h1>${fieldValue(bean:demoInstance, field:'name')}</h1>
