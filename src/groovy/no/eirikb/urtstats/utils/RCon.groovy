@@ -59,23 +59,25 @@ class RCon {
             socket.send(packet)
             if (force) {
                 def recmessage
-                buff = new byte[BUFFERSIZE]
-                packet = new DatagramPacket(buff, buff.length)
-                socket.receive(packet)
-                while (packet.getLength() > 0) {
-                    def part = new String(packet.getData(), 4, packet.getLength() - 4)
-                    def splitPos = part.indexOf('\n')
-                    if (splitPos >= 0) {
-                        part = part.substring(splitPos + 1)
-                        if (recmessage == null) {
-                            recmessage = part
-                        } else {
-                            recmessage += part
+                new Thread() {
+                    buff = new byte[BUFFERSIZE]
+                    packet = new DatagramPacket(buff, buff.length)
+                    socket.receive(packet)
+                    while (packet.getLength() > 0) {
+                        def part = new String(packet.getData(), 4, packet.getLength() - 4)
+                        def splitPos = part.indexOf('\n')
+                        if (splitPos >= 0) {
+                            part = part.substring(splitPos + 1)
+                            if (recmessage == null) {
+                                recmessage = part
+                            } else {
+                                recmessage += part
+                            }
+                            socket.receive(packet)
                         }
-                        socket.receive(packet)
                     }
-                }
-                socket?.close()
+                    socket?.close()
+                }.start()
                 // Sleep for 5 seconds to wait for response
                 if (force) {
                     for (i in 0..40) {
