@@ -38,14 +38,14 @@ class IrcBot extends PircBot {
             def ids = event.getIDs()
             def killer = Player.findByUrtID(ids[1])
             def killed = Player.findByUrtID(ids[2])
-            sendMessage(channel, "$killer?.nick killed $killed?.nick")
+            sendMessage(channel, killer?.nick?.trim() + " killed " + killed?.nick?.trim())
         } else if (event instanceof ChatEvent) {
             def id = event.getId()
             def player = Player.findByUrtID(id)
             def message = event.line
             message = message.substring(message.indexOf(':') + 1)
             message = message.substring(message.indexOf(':') + 2)
-            sendMessage(channel, "$player?.nick: $message")
+            sendMessage(channel, player?.nick?.trim() + ": " + message)
         }
     }
 
