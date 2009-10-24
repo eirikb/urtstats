@@ -77,9 +77,10 @@ class LogParser {
                 case "SAYTEAM":
                 new ChatEvent(line, cmd == "SAYTEAM").execute()
                 break
-                case "HIT":
-                new HitEvent(line).execute()
-                break
+                // SPEED IT UP!
+               // case "HIT":
+               // new HitEvent(line).execute()
+               // break
                 case "INITROUND":
                 new ServerEvent(cmd, line).execute()
                 break
