@@ -9,9 +9,7 @@
 
 def logParser = new no.eirikb.urtstats.logparser.LogParser()
 def ircbot = new no.eirikb.urtstats.ircbot.IrcBot()
-ircbot.setName("urtbot")
-ircbot.connect("irc.freenode.net")
-ircbot.join()
+ircbot.start()
 
 def players = domain.urt.Player.findAllByUrtIDGreaterThanEquals(0)
 players.each() {

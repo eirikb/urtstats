@@ -19,13 +19,17 @@ import no.eirikb.urtstats.utils.RCon
  * @author Eirik Brandtzæg eirikdb@gmail.com
  */
 class IrcBot extends PircBot {
+    def name = "urtbot"
+    def host = "irc.freenode.net"
     def channel = "#urtstats"
 
     IrcBot() {
         Event.eventListeners = [this]
     }
 
-    def join() {
+    def start() {
+        setName(name)
+        connect(host)
         joinChannel(channel)
     }
 
@@ -34,14 +38,14 @@ class IrcBot extends PircBot {
             def ids = event.getIDs()
             def killer = Player.findByUrtID(ids[1])
             def killed = Player.findByUrtID(ids[2])
-            sendMessage(channel, "$killer.nick killed $killed.nick")
+            sendMessage(channel, "$killer?.nick killed $killed?.nick")
         } else if (event instanceof ChatEvent) {
             def id = event.getId()
             def player = Player.findByUrtID(id)
             def message = event,line
             message = message.substring(message.indexOf(':') + 1)
             message = message.substring(message.indexOf(':') + 2)
-            sendMessage(channel, "$player.nick: $message")
+            sendMessage(channel, "$player?.nick: $message")
         }
     }
 
