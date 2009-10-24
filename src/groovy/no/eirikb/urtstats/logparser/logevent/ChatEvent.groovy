@@ -50,6 +50,7 @@ class ChatEvent extends Event {
             }
             log.info "[ChatEvent] Player: " + player + ". Message: " + message
             if (message.charAt(0) == '!') {
+                def orig = message
                 message = message.substring(1)
                 int space = message.indexOf(' ')
                 def cmd = ""
@@ -61,6 +62,7 @@ class ChatEvent extends Event {
                     message = null
                 }
                 command(player, cmd, message)
+                message = orig
             } else {
                 translated = Translate.translate(message)
                 if (translated != message) {
