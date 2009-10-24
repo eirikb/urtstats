@@ -25,11 +25,14 @@ import org.htmlparser.util.ParserException
  */
 class Translate {
     static def translate(text) {
-        Parser parser = new Parser("http://translate.google.com/translate_t?sl=auto&tl=en&text=" + URLEncoder.encode(text, "UTF-8"));
-        NodeList list = parser.parse(new HasAttributeFilter("id", "result_box"));
-        for (Node node : list.toNodeArray()) {
-            return node.getFirstChild().getText();
-        }
+        try {
+            Parser parser = new Parser("http://translate.google.com/translate_t?sl=auto&tl=en&text=" + URLEncoder.encode(text, "UTF-8"));
+            NodeList list = parser.parse(new HasAttributeFilter("id", "result_box"));
+            for (Node node : list.toNodeArray()) {
+                return node.getFirstChild().getText();
+            }
+        } catch (Exception e) {}
+        return null
     }
 }
 
