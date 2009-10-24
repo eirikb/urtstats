@@ -42,7 +42,7 @@ class IrcBot extends PircBot {
         } else if (event instanceof ChatEvent) {
             def id = event.getId()
             def player = Player.findByUrtID(id)
-            def message = event,line
+            def message = event.line
             message = message.substring(message.indexOf(':') + 1)
             message = message.substring(message.indexOf(':') + 2)
             sendMessage(channel, "$player?.nick: $message")
