@@ -59,7 +59,7 @@ class KillEvent extends Event {
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
                     }
                     if (spreeEnd != null) {
-                        RCon.rcon("say \"^7" + killer.getColorNick() + " ^7ended " + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
+                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
 
 
