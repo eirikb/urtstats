@@ -35,8 +35,6 @@ class IrcBot extends PircBot {
 
     def execute(event) {
         if (event instanceof KillEvent) {
-            //Prevent excess flood
-            //sendMessage(channel, "    " + c(5, "KILL: ") + event.killer?.nick?.trim() + c(2, " killed ") + event.killed?.nick?.trim())
             if (event.didLevel) {
                 sendMessage(channel, "    " + c(5, "LEVEL: ") + event.killer?.nick?.trim() + " is now level " + c(3, event.killer?.level))
             }
