@@ -67,10 +67,10 @@ class ChatEvent extends Event {
                     RCon.rcon("say \"^7(trans) " + player.nick?.trim() + ": " + translated + '"')
                 }
             }
+            super.execute()
         } else {
             log.warn "[ChatEvent] Player not found by UrtID. UrtID: " + id
         }
-        super.execute()
     }
 
     void command(player, cmd, message) {
