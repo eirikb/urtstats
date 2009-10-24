@@ -20,10 +20,12 @@ class Event {
     def line
     def log
     def id
+    def static eventListeners
 
     public Event(line) {
         this.line = line
         log = LogFactory.getLog("grails.app.task")
+        eventListeners.each { it.execute(this) }
     }
 
     void execute(){}
