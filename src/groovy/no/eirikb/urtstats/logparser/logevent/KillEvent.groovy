@@ -59,7 +59,7 @@ class KillEvent extends Event {
                     }
                     def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
                     if (spreeEnd != null) {
-                        RCon.rcon("say \"^7" + killer.getColorNick() + " ^7ended " + killed.getColorNick() + "^7s " + spreeEnd.end)
+                        RCon.rcon("say \"^7" + killer.getColorNick() + " ^7ended " + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
 
 
