@@ -55,7 +55,7 @@ class IrcBot extends PircBot {
     }
 
     public void onMessage(String channel, String sender, String login, String hostname, String message) {
-        RCon.rcon("say\"^1$sender: $message\"")
+        RCon.rcon("say\"^7$sender: $message\"")
     }
 }
 
