@@ -64,7 +64,7 @@ class ChatEvent extends Event {
             } else {
                 translated = Translate.translate(message)
                 if (translated != message) {
-                    RCon.rcon("say \"^7(trans) " + player.nick?.trim() + ": " + translated)
+                    RCon.rcon("say \"^7(trans) " + player.nick?.trim() + ": " + translated + '"')
                 }
             }
         } else {
