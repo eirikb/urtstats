@@ -39,6 +39,7 @@ class KillEvent extends Event {
 
     void execute() {
         def ids = getIDs()
+        didLevel = false
         killer = Player.findByUrtID(ids[1])
         killed = Player.findByUrtID(ids[2])
         if (killer != null && killed != null) {
