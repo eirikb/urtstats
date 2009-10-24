@@ -25,10 +25,11 @@ class Event {
     public Event(line) {
         this.line = line
         log = LogFactory.getLog("grails.app.task")
-        eventListeners.each { it.execute(this) }
     }
 
-    void execute(){}
+    void execute(){
+        eventListeners.each { it.execute(this) }
+    }
 
     def getId() {
         return id == null ?  id = PlayerTool.getId(line) : id

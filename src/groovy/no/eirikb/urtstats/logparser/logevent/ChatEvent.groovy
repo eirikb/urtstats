@@ -18,6 +18,7 @@ import security.JsecDbRealm
 import no.eirikb.urtstats.utils.RCon
 import no.eirikb.urtstats.utils.PlayerTool
 import java.text.DecimalFormat
+import no.eirikb.utils.translate.Translate
 import org.jsecurity.grails.JsecBasicPermission
 
 /**
@@ -26,6 +27,9 @@ import org.jsecurity.grails.JsecBasicPermission
  */
 class ChatEvent extends Event {
     def teammessage
+    def message
+    def translated
+    def player
 
     public ChatEvent(line, teammessage) {
         super(line)
@@ -34,9 +38,9 @@ class ChatEvent extends Event {
 
     void execute() {
         def id = getId()
-        def player = Player.findByUrtID(id)
+        player = Player.findByUrtID(id)
         if (player != null) {
-            def message = line
+            message = line
             message = message.substring(message.indexOf(':') + 1)
             message = message.substring(message.indexOf(':') + 2)
             def chat = new Chat(player:player, teamMessage:teammessage, message:message)
@@ -57,10 +61,16 @@ class ChatEvent extends Event {
                     message = null
                 }
                 command(player, cmd, message)
+            } else {
+                translated = Translate.translate(message)
+                if (translated != message) {
+                    RCon.rcon("say \"^7(trans) " + player.nick?.trim() + ": " + translated)
+                }
             }
         } else {
             log.warn "[ChatEvent] Player not found by UrtID. UrtID: " + id
         }
+        super.execute()
     }
 
     void command(player, cmd, message) {

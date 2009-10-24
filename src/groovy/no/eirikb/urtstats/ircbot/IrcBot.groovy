@@ -35,17 +35,19 @@ class IrcBot extends PircBot {
 
     def execute(event) {
         if (event instanceof KillEvent) {
-            def ids = event.getIDs()
-            def killer = Player.findByUrtID(ids[1])
-            def killed = Player.findByUrtID(ids[2])
-            sendMessage(channel, "    " + c(5, "KILL: ") + killer?.nick?.trim() + c(2, " killed ") + killed?.nick?.trim())
+            //Prevent excess flood
+            //sendMessage(channel, "    " + c(5, "KILL: ") + event.killer?.nick?.trim() + c(2, " killed ") + event.killed?.nick?.trim())
+            if (event.didLevel) {
+                sendMessage(channel, "    " + c(5, "LEVEL: ") + event.killer?.nick?.trim() + " is now level " + c(3, event.killer?.level))
+            }
+            if (event.spree != null) {
+                sendMessage(channel, "    " + c(5, "SPREE: ") + event.killer?.nick?.trim() + " is on killing spree (" + c(2, event.spree?.end) + ") " + event.kills + " kills")
+            }
         } else if (event instanceof ChatEvent) {
-            def id = event.getId()
-            def player = Player.findByUrtID(id)
-            def message = event.line
-            message = message.substring(message.indexOf(':') + 1)
-            message = message.substring(message.indexOf(':') + 2)
-            sendMessage(channel, player?.nick?.trim() + ": " + message)
+            sendMessage(channel, event.player?.nick?.trim() + ": " + event.message)
+            if (event.translated != null && event.message != event.translated) {
+                sendMessage(channel, "(trans) " + event.player?.nick?.trim() + ": " + event.translated)
+            }
         }
     }
 

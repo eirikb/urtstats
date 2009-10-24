@@ -21,6 +21,17 @@ import no.eirikb.urtstats.utils.PlayerTool
  */
 class KillEvent extends Event {
     final double NEXTLEVELMAGIC = 1.2
+    def killer
+    def killed
+    def didLevel
+    def spree
+    def kills
+    def spreeMessage = [
+        5:[text:"is on a ^1killing spree!", end:"killing spree"],
+        10:[text:"is on a ^3MADNESS spree!", end:"MADNESS spree"],
+        15:[text:"is UNSTOPPABLE!", end:"UNSTOPPABLE run"]
+    ]
+
 
     public KillEvent(line) {
         super(line)
@@ -28,8 +39,8 @@ class KillEvent extends Event {
 
     void execute() {
         def ids = getIDs()
-        def killer = Player.findByUrtID(ids[1])
-        def killed = Player.findByUrtID(ids[2])
+        killer = Player.findByUrtID(ids[1])
+        killed = Player.findByUrtID(ids[2])
         if (killer != null && killed != null) {
             def friendlyfire = killer.team == killed.team
             def death = DeathCause.findByUrtID(ids[3])
@@ -40,13 +51,14 @@ class KillEvent extends Event {
                     log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
-                    switch (PlayerTool.countKillStreak(killer)) {
-                        case 5:
-                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^1killing spree! ^7(5 in a row)\"")
-                        break
-                        case 10:
-                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7is on a ^3MADNESS spree! ^7(10 in a row)\"")
-                        break
+                    kills = PlayerTool.countKillStreak(killer)
+                    spree = spreeMessage[kills]
+                    if (spree != null) {
+                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
+                    }
+                    def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
+                    if (spreeEnd != null) {
+                        RCon.rcon("say \"^7" + killer.getColorNick() + " ^7ended " + killed.getColorNick() + "^7s " + spreeEnd.end)
                     }
 
 
@@ -71,6 +83,7 @@ class KillEvent extends Event {
             log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
             ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
         }
+        super.execute()
     }
 
     Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
