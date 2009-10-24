@@ -46,6 +46,7 @@ class KillEvent extends Event {
             def friendlyfire = killer.team == killed.team
             def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
+                def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 // No need to catch here no error can emerge
                 if(kill.hasErrors() || !kill.save(flush:true)) {
@@ -57,7 +58,6 @@ class KillEvent extends Event {
                     if (spree != null) {
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
                     }
-                    def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
                     if (spreeEnd != null) {
                         RCon.rcon("say \"^7" + killer.getColorNick() + " ^7ended " + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
