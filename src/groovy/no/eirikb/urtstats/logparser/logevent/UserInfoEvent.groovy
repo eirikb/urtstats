@@ -53,6 +53,8 @@ class UserInfoEvent extends Event{
             }
 
             if (first) {
+                // Make sure noone in db have the id
+                Player.findByUrtID(getId())?.setUrtID(-1)
                 player.setJoinGameDate(new Date())
                 player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("say \"^7Join: " + player.getColorNick() + ". Level: ^1" + player.getLevel() + "\"")
