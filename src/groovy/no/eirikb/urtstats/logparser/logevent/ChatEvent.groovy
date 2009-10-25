@@ -58,12 +58,12 @@ class ChatEvent extends Event {
                     cmd = message.substring(0, space)
                     message = message.substring(space + 1)
                 } else {
-                    cmd = message
+                    cmd = message.toLowerCase()
                     message = null
                 }
                 command(player, cmd, message)
                 message = orig
-            } else {
+            } else if (message.split(" ")?.length() > 2) {
                 translated = Translate.translate(message)
                 if (translated != message) {
                     RCon.rcon("say \"^7(trans) " + player.nick?.trim() + ": " + translated + '"')
