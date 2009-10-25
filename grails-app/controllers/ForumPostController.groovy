@@ -44,27 +44,35 @@ class ForumPostController {
     def update = {
         def forumPostInstance = ForumPost.get( params.id )
         if(forumPostInstance) {
-            if(params.version) {
-                def version = params.version.toLong()
-                if(forumPostInstance.version > version) {
+            def user = JsecUser.findByUsername(SecurityUtils?.getSubject()?.getPrincipal())
+            println forumPostInstance.getUser()
+            println user
+            if (forumPostInstance.getUser() == user) {
+                if(params.version) {
+                    def version = params.version.toLong()
+                    if(forumPostInstance.version > version) {
                     
-                    forumPostInstance.errors.rejectValue("version", "forumPost.optimistic.locking.failure", "Another user has updated this ForumPost while you were editing.")
-                    render(view:'edit',model:[forumPostInstance:forumPostInstance])
-                    return
+                        forumPostInstance.errors.rejectValue("version", "forumPost.optimistic.locking.failure", "Another user has updated this ForumPost while you were editing.")
+                        render(view:'edit',model:[forumPostInstance:forumPostInstance])
+                        return
+                    }
                 }
-            }
-            forumPostInstance.properties = params
-            if(!forumPostInstance.hasErrors() && forumPostInstance.save()) {
-                flash.message = "ForumPost ${params.id} updated"
-                redirect(action:show,id:forumPostInstance.id)
-            }
-            else {
-                render(view:'edit',model:[forumPostInstance:forumPostInstance])
+                forumPostInstance.properties = params
+                if(!forumPostInstance.hasErrors() && forumPostInstance.save()) {
+                    flash.message = "ForumPost ${params.id} updated"
+                    redirect(controller:'forumTopic',action:show,id:forumPostInstance.topic?.id)
+                } else {
+                    flash.message = "ERROR!"
+                    redirect(controller:'forumTopic',action:'show',params:[id:forumPostInstance?.getTopic()?.getId()])
+                }
+            } else {
+                flash.message = "Not your post!"
+                redirect(controller:'forumTopic',action:'show',params:[id:forumPostInstance?.getTopic()?.getId()])
             }
         }
         else {
             flash.message = "ForumPost not found with id ${params.id}"
-            redirect(action:list)
+            redirect(controller:'forumTopic',action:'list')
         }
     }
 
