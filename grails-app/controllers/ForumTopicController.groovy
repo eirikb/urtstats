@@ -23,11 +23,13 @@ class ForumTopicController {
         } else {
             def forumGenre = forumTopic.getGenre()
             def forumPostList = ForumPost.findAllByTopic(forumTopic, [sort:"lastUpdated", order:"asc"])
-            def user = JsecUser.findByUsername(SecurityUtils.getSubject().getPrincipal())
-            ForumPost.findAll("from ForumPost as fp where fp.id not in (select rp.post.id \
+            if (SecurityUtils.getSubject().getPrincipal() != null) {
+                def user = JsecUser.findByUsername(SecurityUtils.getSubject().getPrincipal())
+                ForumPost.findAll("from ForumPost as fp where fp.id not in (select rp.post.id \
                 from ReadPost rp where rp.user=:user) AND fp.topic=:topic",
-                [user: user, topic: forumTopic]).each() {
-                new ReadPost(user: user, post: it).save(flush:true)
+                    [user: user, topic: forumTopic]).each() {
+                    new ReadPost(user: user, post: it).save(flush:true)
+                }
             }
             return [ forumTopic : forumTopic, forumGenre:forumGenre, forumPostList:forumPostList ]
         }
