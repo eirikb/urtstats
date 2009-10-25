@@ -63,7 +63,7 @@ class ChatEvent extends Event {
                 }
                 command(player, cmd, message)
                 message = orig
-            } else if (message.split(" ")?.length() > 2) {
+            } else if (message.split(" ")?.length > 2) {
                 translated = Translate.translate(message)
                 if (translated != message) {
                     RCon.rcon("say \"^7(trans) " + player.nick?.trim() + ": " + translated + '"')
