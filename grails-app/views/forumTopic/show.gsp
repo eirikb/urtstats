@@ -23,10 +23,12 @@
       <h1>${forumTopic.getName()}</h1>
 
       <g:each in="${forumPostList}" var="forumPost">
+        <isMyPost post="${forumPost}">
+          <g:link controller="forumPost" action="edit" id="${forumPost.id}">Edit</g:link>
+        </isMyPost>
         <prettytime:display date="${forumPost.getLastUpdated()}" />
 ${fieldValue(bean:forumPost.getUser(), field:'firstname')} ${fieldValue(bean:forumPost.getUser(), field:'lastname')}
         (<b>${fieldValue(bean:forumPost.getUser(), field:'username')}</b>) wrote:
-
 ${fieldValue(bean:forumPost, field:'body').decodeHTML()}
         <br />
 
