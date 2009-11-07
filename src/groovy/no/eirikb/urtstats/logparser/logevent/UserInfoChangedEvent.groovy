@@ -39,7 +39,7 @@ class UserInfoChangedEvent extends Event {
                     RCon.rcon("tell " + getId() + "\"^7Remember to register at ^2www.urtstats.net^7 with your PIN: ^1" + player.getPin() +
                 "^7. Your level is ^1" + player.getLevel() + "^7.")
                 }
-                log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam().getUrtID()
+                //log.info "[UserInfoChangedEvent] Player: " + player + ". Team: " + player.getTeam().getUrtID()
             }
         } else {
             log.error "[UserInfoChangedEvent] Unkown player: " + id + ". " + userInfo

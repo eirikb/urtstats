@@ -44,6 +44,7 @@ class KillEvent extends Event {
         killed = Player.findByUrtID(ids[2])
         if (killer != null && killed != null) {
             // def friendlyfire = killer.team == killed.team
+            def friendlyfire = false
             def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
                 //def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
@@ -54,13 +55,13 @@ class KillEvent extends Event {
                 }
                 if (!friendlyfire) {
                     kills = PlayerTool.countKillStreak(killer)
-                    spree = spreeMessage[kills]
-                    if (spree != null) {
-                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
-                    }
-                    if (spreeEnd != null) {
-                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
-                    }
+//                    spree = spreeMessage[kills]
+//                    if (spree != null) {
+//                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
+//                    }
+//                    if (spreeEnd != null) {
+//                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
+//                    }
 
 
                     killer.exp +=  calculateExpGain(killer, killed,
