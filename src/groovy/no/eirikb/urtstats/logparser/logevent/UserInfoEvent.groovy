@@ -56,7 +56,7 @@ class UserInfoEvent extends Event{
                 // Make sure noone in db have the id
                 Player.findByUrtID(getId())?.setUrtID(-1)
                 player.setJoinGameDate(new Date())
-                player.addToPlayerLogs(new PlayerLog())
+              //  player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("say \"^7Join: " + player.getColorNick() + ". Level: ^1" + player.getLevel() + "\"")
                 RCon.rcon("tell " + getId() + "\"^7Welcome ^2" + player.getColorNick() +
                     "^7. Your level: ^2" + player.getLevel() + "^7.\"")

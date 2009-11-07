@@ -32,8 +32,8 @@ class LeaveEvent extends Event {
             if(player.hasErrors() || !player.save()) {
                 log.error "[LeaveEvent] Error while updating leave for player: " + player
             } else {
-                TeamTool.removePlayerFromTeam(player)
-                updatePlayerLog(player)
+              //  TeamTool.removePlayerFromTeam(player)
+               // updatePlayerLog(player)
                 log.info "[LeaveEvent] Player: " + player
             }
         } else {
