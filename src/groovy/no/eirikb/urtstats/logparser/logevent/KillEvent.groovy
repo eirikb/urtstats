@@ -43,10 +43,10 @@ class KillEvent extends Event {
         killer = Player.findByUrtID(ids[1])
         killed = Player.findByUrtID(ids[2])
         if (killer != null && killed != null) {
-            def friendlyfire = killer.team == killed.team
+            // def friendlyfire = killer.team == killed.team
             def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
-                def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
+                //def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
                 def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 // No need to catch here no error can emerge
                 if(kill.hasErrors() || !kill.save(flush:true)) {

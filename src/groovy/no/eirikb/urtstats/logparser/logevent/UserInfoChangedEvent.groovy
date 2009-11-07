@@ -30,11 +30,11 @@ class UserInfoChangedEvent extends Event {
             def userInfo = getUserInfo()
             if (userInfo != null) {
                 def urtID = Integer.parseInt(userInfo.t)
-                if (player.getTeam()?.getUrtID() != urtID) {
-                    TeamTool.addPlayerToTeam(player, urtID)
-                } else if (player.getTeam() == null) {
-                    TeamTool.addPlayerToTeam(player, urtID)
-                }
+                //if (player.getTeam()?.getUrtID() != urtID) {
+                //    TeamTool.addPlayerToTeam(player, urtID)
+                //} else if (player.getTeam() == null) {
+                //    TeamTool.addPlayerToTeam(player, urtID)
+               // }
                 if (player.getUser() == null) {
                     RCon.rcon("tell " + getId() + "\"^7Remember to register at ^2www.urtstats.net^7 with your PIN: ^1" + player.getPin() +
                 "^7. Your level is ^1" + player.getLevel() + "^7.")

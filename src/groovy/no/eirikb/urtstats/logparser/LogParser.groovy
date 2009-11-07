@@ -42,7 +42,12 @@ class LogParser {
             if (synced) {
                 def line
                 while ((line = tail.parse()) != null) {
+                    def time = System.currentTimeMillis();
                     readLine(line)
+                    time = System.currentTimeMillis() - time;
+                    if (time > 0) {
+                        println "                                                                                                                                                                                                      " + time
+                    }
                 }
                 if (!RCon.isActive()) {
                     RCon.setActive(true)
@@ -78,9 +83,9 @@ class LogParser {
                 new ChatEvent(line, cmd == "SAYTEAM").execute()
                 break
                 // SPEED IT UP!
-               // case "HIT":
-               // new HitEvent(line).execute()
-               // break
+                // case "HIT":
+                // new HitEvent(line).execute()
+                // break
                 case "INITROUND":
                 new ServerEvent(cmd, line).execute()
                 break
