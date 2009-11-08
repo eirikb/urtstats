@@ -54,7 +54,7 @@ class KillEvent extends Event {
                     log.error "[KillEvent] Could not persist kill: " + kill
                 }
                 if (!friendlyfire) {
-                    kills = PlayerTool.countKillStreak(killer)
+//                    kills = PlayerTool.countKillStreak(killer)
 //                    spree = spreeMessage[kills]
 //                    if (spree != null) {
 //                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
