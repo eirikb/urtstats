@@ -165,14 +165,17 @@ class ChatEvent extends Event {
             case "forceteam":
             case "move":
             cmd = "forceteam"
+            /*
             def clos = {
-                if (it.getTeam().getUrtID() == 1) {
-                    RCon.rcon(cmd + ' ' + it.getUrtID() + " blue")
-                } else {
-                    RCon.rcon(cmd + ' ' + it.getUrtID() + " red")
-                }
+            if (it.getTeam().getUrtID() == 1) {
+            RCon.rcon(cmd + ' ' + it.getUrtID() + " blue")
+            } else {
+            RCon.rcon(cmd + ' ' + it.getUrtID() + " red")
             }
-            rconCommand(player, "forceteam", message, clos)
+            }
+             */
+            //rconCommand(player, "forceteam", message, clos)
+            RCon.rcon("tell " + player.getUrtID() + "\"Sorry but this command is currently disabled\"")
             break
 
             case "fixteams":
