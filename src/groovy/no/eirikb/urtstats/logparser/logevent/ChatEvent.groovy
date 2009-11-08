@@ -100,6 +100,7 @@ class ChatEvent extends Event {
 
             case "status":
             case "stats":
+            case "stat":
             def p = player
             if (message != null) {
                 p = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
@@ -112,7 +113,7 @@ class ChatEvent extends Event {
                     " ^7Level: ^1" + player.getLevel() +
                     " ^7kills: ^1"  + Kill.countByKiller(player) +
                     " ^7Ratio: ^1"  + new DecimalFormat("#,###.##").format(PlayerTool.getTotalRatio(p)) +
-                    " ^7NextLevel in: ^1" + (player.getNextlevel() - player.getLevel()) +
+                    " ^7NextLevel in: ^1" + (player.getNextlevel() - player.getExp()) +
                     '"'
                 RCon.rcon(text)
             } else{
