@@ -142,20 +142,22 @@ class ChatEvent extends Event {
             break
 
             case "slap":
-            cmd = "slap"
-            def space = message.indexOf(' ')
-            def times = 1
-            if (space > 0) {
-                try {
-                    times = Integer.parseInt(message.substring(space + 1))
-                } catch (NumberFormatException e) {
-                    times = 1
+            if (message != null) {
+                cmd = "slap"
+                def space = message.indexOf(' ')
+                def times = 1
+                if (space > 0) {
+                    try {
+                        times = Integer.parseInt(message.substring(space + 1))
+                    } catch (NumberFormatException e) {
+                        times = 1
+                    }
+                    message = message.substring(0, space)
                 }
-                message = message.substring(0, space)
-            }
-            def clos = {RCon.rcon(cmd + ' ' + it.getUrtID())}
-            for (i in 1..times) {
-                rconCommand(player, cmd, message, clos)
+                def clos = {RCon.rcon(cmd + ' ' + it.getUrtID())}
+                for (i in 1..times) {
+                    rconCommand(player, cmd, message, clos)
+                }
             }
             break
 
