@@ -55,7 +55,7 @@ class KillEvent extends Event {
                 // }
                 if (!friendlyfire) {
                     kills = killer.gameKillCount
-                    spreeEnd = killed.gameKillCount
+                    def spreeEnd = spreeMessage[killed.gameKillCount]
                     spree = spreeMessage[kills]
                     if (spree != null) {
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
@@ -64,8 +64,8 @@ class KillEvent extends Event {
                         RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
 
-                    def gameRatio = ((player.gameKillCount + 1) / (player.gameDeathCount + 1))
-                    def totalRatio = ((player.killCount + 1) / (player.killCount + 1))
+                    def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1))
+                    def totalRatio = ((killer.killCount + 1) / (killer.killCount + 1))
                         killer.exp +=  calculateExpGain(killer, killed,
                             gameRatio, totalRatio)
 
