@@ -48,56 +48,68 @@ class KillEvent extends Event {
             def death = DeathCause.findByUrtID(ids[3])
             if (death != null) {
                 //def spreeEnd = spreeMessage[PlayerTool.countKillStreak(killed)]
-                def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
+                //def kill = new Kill(killer:killer, killed:killed, friendlyfire:friendlyfire, deathCause:death)
                 // No need to catch here no error can emerge
-                if(kill.hasErrors() || !kill.save(flush:true)) {
-                    log.error "[KillEvent] Could not persist kill: " + kill
-                }
+                //if(kill.hasErrors() || !kill.save(flush:true)) {
+                //    log.error "[KillEvent] Could not persist kill: " + kill
+                // }
                 if (!friendlyfire) {
-//                    kills = PlayerTool.countKillStreak(killer)
-//                    spree = spreeMessage[kills]
-//                    if (spree != null) {
-//                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
-//                    }
-//                    if (spreeEnd != null) {
-//                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
-//                    }
-
-
-                    killer.exp +=  calculateExpGain(killer, killed,
-                        PlayerTool.getGameRatio(killer), PlayerTool.getTotalRatio(killer))
-
-                    if (killer.exp > killer.nextlevel) {
-                        level(killer)
+                    kills = killer.gameKillCount
+                    spreeEnd = killed.gameKillCount
+                    spree = spreeMessage[kills]
+                    if (spree != null) {
+                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
                     }
-                    // No need to flush here - or it could be, but probably not
-                    if (killer.hasErrors() || !killer.save()) {
-                        log.error "[KillEvnent] Unale to update player after gain, player: " + killer
+                    if (spreeEnd != null) {
+                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
 
-                }
-                log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
+                    def gameRatio = ((player.gameKillCount + 1) / (player.gameDeathCount + 1))
+                    def totalRatio = ((player.killCount + 1) / (player.killCount + 1))
+                        killer.exp +=  calculateExpGain(killer, killed,
+                            gameRatio, totalRatio)
+
+                        if (killer.exp > killer.nextlevel) {
+                            level(killer)
+                        }
+
+                        killer.killCount++
+                        killer.gameKillCount++
+                        if (killer.hasErrors() || !killer.save(flush:true)) {
+                            log.error "[KillEvnent] Unale to update player after gain, player: " + killer
+                        }
+
+                        killed.deathCount++
+                        killed.gameDeathCount++
+                        killed.gameKillCount = 0
+                        if (killed.hasErrors() || !killed.save(flush:true)) {
+                            log.error "[KillEvnent] Unale to update player after gain, player: " + killed
+                        }
+
+
+                    }
+                    log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
                 ". Killer level: " + killer.getLevel() + ". Killer exp: " + killer.getExp()
+                } else {
+                    log.error "[KillEvent] No DeathCause for type:" + ids[3]
+                }
             } else {
-                log.error "[KillEvent] No DeathCause for type:" + ids[3]
-            }
-        } else {
-            log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
+                log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
             ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
+            }
+            super.execute()
         }
-        super.execute()
-    }
 
-    Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
-        def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killer.getLevel() : 1
-        def ratio = ((gameRatio + totalRatio)) / 2
-        return levelBoost * ratio
-    }
+        Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
+            def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killer.getLevel() : 1
+            def ratio = ((gameRatio + totalRatio)) / 2
+            return levelBoost * ratio
+        }
 
-    void level(player) {
-        player.level++;
-        player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
-        RCon.rcon("bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7! You are now level ^1" + player.level + '"')
+        void level(player) {
+            player.level++;
+            player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
+            RCon.rcon("bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7! You are now level ^1" + player.level + '"')
+        }
     }
-}
 

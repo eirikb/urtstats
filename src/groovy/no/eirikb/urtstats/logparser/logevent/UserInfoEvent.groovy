@@ -15,7 +15,6 @@ import domain.urt.Team
 import domain.urt.PlayerLog
 import domain.urt.Item
 import no.eirikb.urtstats.utils.PlayerTool
-import no.eirikb.urtstats.utils.TeamTool
 import no.eirikb.urtstats.utils.RCon
 
 /**
@@ -56,17 +55,19 @@ class UserInfoEvent extends Event{
                 // Make sure noone in db have the id
                 Player.findByUrtID(getId())?.setUrtID(-1)
                 player.setJoinGameDate(new Date())
-              //  player.addToPlayerLogs(new PlayerLog())
+                player.gameKillCount = 0
+                player gameDeathCount = 0
+                //  player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("say \"^7Join: " + player.getColorNick() + ". Level: ^1" + player.getLevel() + "\"")
                 RCon.rcon("tell " + getId() + "\"^7Welcome ^2" + player.getColorNick() +
                     "^7. Your level: ^2" + player.getLevel() + "^7.\"")
             }
 
-//            if (addGear(player, userInfo)) {
-//                log.info "[UserInfoEvent] Items added to player: " + player
-//            } else {
-//                log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
-//            }
+            //            if (addGear(player, userInfo)) {
+            //                log.info "[UserInfoEvent] Items added to player: " + player
+            //            } else {
+            //                log.info "[UserInfoEvent] No items found for player: " + player + ". With userInfo: " + userInfo
+            //            }
 
             try {
                 if (player.getColorNick() == null) {
@@ -75,7 +76,7 @@ class UserInfoEvent extends Event{
                 if(player.hasErrors() || !player.save(flush:true)) {
                     log.error "[UserInfoEvent] Unable to persist on UserInfoEvent: " + player
                 } else {
-                   // TeamTool.addPlayerToTeam(player, 0)
+                    // TeamTool.addPlayerToTeam(player, 0)
                 }
             } catch(org.springframework.dao.OptimisticLockingFailureException e) {
                 log.error "[UserInfoEvent] Unable to persist player - " + e.dump()
