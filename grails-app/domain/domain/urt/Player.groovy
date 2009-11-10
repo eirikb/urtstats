@@ -21,6 +21,12 @@ class Player {
     Date joinGameDate = new Date()
     Integer pin = 1000 + (int) (Math.random() * 1000)
     String welcomeMessage
+    Integer killCount = 0
+    Integer deathCount = 0
+    Integer gameKillCount = 0
+    Integer gameDeathCount = 0
+    Integer teamID
+
 
     Date dateCreated
     Date lastUpdated
