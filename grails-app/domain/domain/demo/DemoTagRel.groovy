@@ -9,8 +9,8 @@ class DemoTagRel {
     Tag tag
 
     String description
-    int start
-    int end
+    Integer start
+    Integer end
     Player player
 
     static constraints = {
