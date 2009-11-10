@@ -25,7 +25,7 @@ class Player {
     Integer deathCount = 0
     Integer gameKillCount = 0
     Integer gameDeathCount = 0
-    Integer teamID
+    Integer teamID = 0
 
 
     Date dateCreated
