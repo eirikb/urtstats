@@ -12,11 +12,11 @@ println ""
 println ""
 println "Starting mergescript for Players kill count to Player itself..."
 
-def total = domain.urt.Player.count()
+def total = domain.urt.Player.countByKillCount(0)
 println "Total players: " + total
 def i = 0
 
-domain.urt.Player.list().each() {
+domain.urt.Player.findAllByKillCount(0).each() {
     println "" + (total - i++) + " - " + it.getNick() + " - " + domain.urt.Kill.countByKiller(it)
     it.killCount = domain.urt.Kill.countByKiller(it)
     it.deathCount = domain.urt.Kill.countByKilled(it)
