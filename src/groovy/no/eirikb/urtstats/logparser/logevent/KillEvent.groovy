@@ -54,6 +54,10 @@ class KillEvent extends Event {
                 //    log.error "[KillEvent] Could not persist kill: " + kill
                 // }
                 if (!friendlyfire) {
+                    killer.killCount++
+                    killer.spreeCount++
+                    killer.gameKillCount++
+
                     kills = killer.spreeCount
                     def spreeEnd = spreeMessage[killed.spreeCount]
                     spree = spreeMessage[kills]
@@ -63,10 +67,6 @@ class KillEvent extends Event {
                     if (spreeEnd != null) {
                         RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
-
-                    killer.killCount++
-                    killer.spreeCount++
-                    killer.gameKillCount++
 
                     def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1)) + 1
                     def totalRatio = ((killer.killCount + 1) / (killer.deathCount + 1)) + 1
