@@ -54,15 +54,15 @@ class KillEvent extends Event {
                 //    log.error "[KillEvent] Could not persist kill: " + kill
                 // }
                 if (!friendlyfire) {
-                    // kills = killer.gameKillCount
-                    // def spreeEnd = spreeMessage[killed.gameKillCount]
-                    // spree = spreeMessage[kills]
-                    // if (spree != null) {
-                    //     RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
-                    // }
-                    // if (spreeEnd != null) {
-                    //     RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
-                    // }
+                    kills = killer.spreeCount
+                    def spreeEnd = spreeMessage[killed.spreeCount]
+                    spree = spreeMessage[kills]
+                    if (spree != null) {
+                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
+                    }
+                    if (spreeEnd != null) {
+                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
+                    }
 
                     killer.killCount++
                     killer.gameKillCount++
@@ -82,7 +82,6 @@ class KillEvent extends Event {
 
                     killed.deathCount++
                     killed.gameDeathCount++
-                    //killed.gameKillCount = 0
                     if (killed.hasErrors() || !killed.save(flush:true)) {
                         log.error "[KillEvnent] Unale to update player after gain, player: " + killed
                     }

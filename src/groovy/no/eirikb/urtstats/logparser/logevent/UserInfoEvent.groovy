@@ -57,6 +57,7 @@ class UserInfoEvent extends Event{
                 player.setJoinGameDate(new Date())
                 player.gameKillCount = 0
                 player.gameDeathCount = 0
+                player.spreeCount = 0
                 //  player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("say \"^7Join: " + player.getColorNick() + ". Level: ^1" + player.getLevel() + "\"")
                 RCon.rcon("tell " + getId() + "\"^7Welcome ^2" + player.getColorNick() +

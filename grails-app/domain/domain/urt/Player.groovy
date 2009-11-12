@@ -26,6 +26,7 @@ class Player {
     Integer gameKillCount = 0
     Integer gameDeathCount = 0
     Integer teamID = 0
+    Integer spreeCount = 0
 
 
     Date dateCreated
