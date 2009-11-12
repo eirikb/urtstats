@@ -54,15 +54,15 @@ class KillEvent extends Event {
                 //    log.error "[KillEvent] Could not persist kill: " + kill
                 // }
                 if (!friendlyfire) {
-                    kills = killer.gameKillCount
-                    def spreeEnd = spreeMessage[killed.gameKillCount]
-                    spree = spreeMessage[kills]
-                    if (spree != null) {
-                        RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
-                    }
-                    if (spreeEnd != null) {
-                        RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
-                    }
+                    // kills = killer.gameKillCount
+                    // def spreeEnd = spreeMessage[killed.gameKillCount]
+                    // spree = spreeMessage[kills]
+                    // if (spree != null) {
+                    //     RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
+                    // }
+                    // if (spreeEnd != null) {
+                    //     RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
+                    // }
 
                     killer.killCount++
                     killer.gameKillCount++
@@ -72,7 +72,7 @@ class KillEvent extends Event {
 
                     killed.deathCount++
                     killed.gameDeathCount++
-                    killed.gameKillCount = 0
+                    //killed.gameKillCount = 0
                     if (killed.hasErrors() || !killed.save(flush:true)) {
                         log.error "[KillEvnent] Unale to update player after gain, player: " + killed
                     }
@@ -110,5 +110,5 @@ class KillEvent extends Event {
         player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
         RCon.rcon("bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7! You are now level ^1" + player.level + '"')
     }
-}
+    }
 
