@@ -46,7 +46,7 @@ class LogParser {
                     readLine(line)
                     time = System.currentTimeMillis() - time;
                     if (time > 0) {
-                        println "                                                                                                                                                                                                      " + time
+                        println "  Time: " + time
                     }
                 }
                 if (!RCon.isActive()) {
