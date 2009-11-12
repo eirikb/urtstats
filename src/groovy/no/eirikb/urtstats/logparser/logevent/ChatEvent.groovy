@@ -79,7 +79,26 @@ class ChatEvent extends Event {
         log.info "[ChatEvent] Command. Player: " + player + ". cmd: " + cmd + ". message: " + message
         switch (cmd) {
             case "help":
-            RCon.rcon("tell " + player.getUrtID() + " \"^Commands: level, pin\"")
+            case "h":
+            if (message == null) {
+                RCon.rcon("tell " + player.getUrtID() + " \"^7Oh hai there. Use !help command to get more info on command. Check out !about\"")
+                RCon.rcon("tell " + player.getUrtID() + " \"^7Commands: level, pin, stats, say\"")
+            } else {
+                switch (message) {
+                    case "level":
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7Level is the level you get by killing other players. This can not decrement. Aliases: lvl\"")
+                    break;
+                    case "stats":
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7Status will show more information about your player, like level and ratio. Aliases: status, stat, s\"")
+                    break;
+                    case "pin":
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7Pin is the pin-code you need to register on urtstats.net\"")
+                    break;
+                    case "say":
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7Say is a simple command you can use if you want to talk while in spec\"")
+                    break;
+                }
+            }
             break
 
             case "lvl":
@@ -101,6 +120,7 @@ class ChatEvent extends Event {
             case "status":
             case "stats":
             case "stat":
+            case "s":
             def p = player
             if (message != null) {
                 p = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
