@@ -64,52 +64,51 @@ class KillEvent extends Event {
                         RCon.rcon("say \"^2" + killer.getColorNick() + " ^7ended ^2" + killed.getColorNick() + "^7s " + spreeEnd.end + '"')
                     }
 
-                    def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1))
-                    def totalRatio = ((killer.killCount + 1) / (killer.killCount + 1))
-                        killer.exp +=  calculateExpGain(killer, killed,
-                            gameRatio, totalRatio)
-
-                        if (killer.exp > killer.nextlevel) {
-                            level(killer)
-                        }
-
-                        killer.killCount++
-                        killer.gameKillCount++
-                        if (killer.hasErrors() || !killer.save(flush:true)) {
-                            log.error "[KillEvnent] Unale to update player after gain, player: " + killer
-                        }
-
-                        killed.deathCount++
-                        killed.gameDeathCount++
-                        killed.gameKillCount = 0
-                        if (killed.hasErrors() || !killed.save(flush:true)) {
-                            log.error "[KillEvnent] Unale to update player after gain, player: " + killed
-                        }
-
-
+                    killer.killCount++
+                    killer.gameKillCount++
+                    if (killer.hasErrors() || !killer.save(flush:true)) {
+                        log.error "[KillEvnent] Unale to update player after gain, player: " + killer
                     }
-                    log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
-                ". Killer level: " + killer.getLevel() + ". Killer exp: " + killer.getExp()
-                } else {
-                    log.error "[KillEvent] No DeathCause for type:" + ids[3]
+
+                    killed.deathCount++
+                    killed.gameDeathCount++
+                    killed.gameKillCount = 0
+                    if (killed.hasErrors() || !killed.save(flush:true)) {
+                        log.error "[KillEvnent] Unale to update player after gain, player: " + killed
+                    }
+
+                    def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1)) + 1
+                    def totalRatio = ((killer.killCount + 1) / (killer.deathCount + 1)) + 1
+                    killer.exp +=  calculateExpGain(killer, killed,
+                        gameRatio, totalRatio)
+
+                    if (killer.exp > killer.nextlevel) {
+                        level(killer)
+                    }
+
                 }
+                log.info "[KillEvent] Killer: " + killer + ". Killed: " + killed + ". DeathCause: " + death +
+                ". Killer level: " + killer.getLevel() + ". Killer exp: " + killer.getExp()
             } else {
-                log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
-            ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
+                log.error "[KillEvent] No DeathCause for type:" + ids[3]
             }
-            super.execute()
+        } else {
+            log.error "[KillEvent] One of the players were null. killer: " + killer + ". killed: " + killed +
+            ". killerID: " + ids[1] + ". killedID: " + ids[2] + ". PlayerList: " + Player.findAllByUrtIDGreaterThanEquals(0)
         }
-
-        Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
-            def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killer.getLevel() : 1
-            def ratio = ((gameRatio + totalRatio)) / 2
-            return levelBoost * ratio
-        }
-
-        void level(player) {
-            player.level++;
-            player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
-            RCon.rcon("bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7! You are now level ^1" + player.level + '"')
-        }
+        super.execute()
     }
+
+    Integer calculateExpGain(killer, killed, gameRatio, totalRatio) {
+        def levelBoost = killed.getLevel() - killer.getLevel() > 0 ? killed.getLevel() - killer.getLevel() : 1
+        def ratio = ((gameRatio + totalRatio)) / 2
+        return levelBoost * ratio
+    }
+
+    void level(player) {
+        player.level++;
+        player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
+        RCon.rcon("bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7! You are now level ^1" + player.level + '"')
+    }
+}
 
