@@ -65,6 +65,7 @@ class KillEvent extends Event {
                     }
 
                     killer.killCount++
+                    killer.spreeCount++
                     killer.gameKillCount++
 
                     def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1)) + 1
