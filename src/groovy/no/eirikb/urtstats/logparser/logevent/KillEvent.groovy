@@ -83,6 +83,7 @@ class KillEvent extends Event {
 
                     killed.deathCount++
                     killed.gameDeathCount++
+                    killed.spreeCount = 0
                     if (killed.hasErrors() || !killed.save(flush:true)) {
                         log.error "[KillEvnent] Unale to update player after gain, player: " + killed
                     }
