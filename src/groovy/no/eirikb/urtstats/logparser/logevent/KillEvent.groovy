@@ -66,6 +66,16 @@ class KillEvent extends Event {
 
                     killer.killCount++
                     killer.gameKillCount++
+
+                    def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1)) + 1
+                    def totalRatio = ((killer.killCount + 1) / (killer.deathCount + 1)) + 1
+                    killer.exp +=  calculateExpGain(killer, killed,
+                        gameRatio, totalRatio)
+
+                    if (killer.exp > killer.nextlevel) {
+                        level(killer)
+                    }
+
                     if (killer.hasErrors() || !killer.save(flush:true)) {
                         log.error "[KillEvnent] Unale to update player after gain, player: " + killer
                     }
@@ -75,15 +85,6 @@ class KillEvent extends Event {
                     //killed.gameKillCount = 0
                     if (killed.hasErrors() || !killed.save(flush:true)) {
                         log.error "[KillEvnent] Unale to update player after gain, player: " + killed
-                    }
-
-                    def gameRatio = ((killer.gameKillCount + 1) / (killer.gameDeathCount + 1)) + 1
-                    def totalRatio = ((killer.killCount + 1) / (killer.deathCount + 1)) + 1
-                    killer.exp +=  calculateExpGain(killer, killed,
-                        gameRatio, totalRatio)
-
-                    if (killer.exp > killer.nextlevel) {
-                        level(killer)
                     }
 
                 }
@@ -110,5 +111,5 @@ class KillEvent extends Event {
         player.nextlevel = player.exp * NEXTLEVELMAGIC + Math.sqrt(player.getExp())
         RCon.rcon("bigtext \"^7Congratulations ^2" + player.nick.trim() + "^7! You are now level ^1" + player.level + '"')
     }
-    }
+}
 
