@@ -28,8 +28,10 @@ class KillEvent extends Event {
     def kills
     def spreeMessage = [
         5:[text:"is on a ^1killing spree!", end:"killing spree"],
-        10:[text:"is on a ^3MADNESS spree!", end:"MADNESS spree"],
-        15:[text:"is UNSTOPPABLE!", end:"UNSTOPPABLE run"]
+        10:[text:"is on a ^EagleEye-spree!", end:"EagleEye-spree"],
+        15:[text:"is UNSTOPPABLE!", end:"UNSTOPPABLE run"],
+        20:[text:"is GODLIKE!", end:"GODLIKE run"],
+        25:[text:"is Cheeta!", end:"Cheeta run"]
     ]
 
 

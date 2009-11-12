@@ -172,8 +172,7 @@ class ChatEvent extends Event {
                     RCon.rcon(cmd + ' ' + it.getUrtID() + " red")
                 }
             }
-            //rconCommand(player, "forceteam", message, clos)
-            RCon.rcon("tell " + player.getUrtID() + "\"Sorry but this command is currently disabled\"")
+            rconCommand(player, "forceteam", message, clos)
             break
 
             case "fixteams":
