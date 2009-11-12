@@ -111,8 +111,8 @@ class ChatEvent extends Event {
             if (p != null) {
                 def text = "say \"^2" + player.getColorNick() +
                     " ^7Level: ^1" + player.getLevel() +
-                    " ^7kills: ^1"  + Kill.countByKiller(player) +
-                    " ^7Ratio: ^1"  + new DecimalFormat("#,###.##").format(PlayerTool.getTotalRatio(p)) +
+                    " ^7kills: ^1"  + player.killCount +
+                    " ^7Ratio: ^1"  + new DecimalFormat("#,###.##").format((player.killCount + 1) / (player.deathCount + 1)) +
                     " ^7NextLevel in: ^1" + (player.getNextlevel() - player.getExp()) +
                     '"'
                 RCon.rcon(text)
