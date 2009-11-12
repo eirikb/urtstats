@@ -61,7 +61,7 @@ class UserInfoEvent extends Event{
                 //  player.addToPlayerLogs(new PlayerLog())
                 RCon.rcon("say \"^7Join: " + player.getColorNick() + ". Level: ^1" + player.getLevel() + "\"")
                 RCon.rcon("tell " + getId() + "\"^7Welcome ^2" + player.getColorNick() +
-                    "^7. Your level: ^2" + player.getLevel() + "^7.\"")
+                    "^7. Your level: ^2" + player.getLevel() + "^7. For help say !help\"")
             }
 
             //            if (addGear(player, userInfo)) {
