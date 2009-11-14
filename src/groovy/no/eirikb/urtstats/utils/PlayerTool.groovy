@@ -66,11 +66,11 @@ class PlayerTool {
     }
 
     static Double getTotalRatio(player) {
-        return ((player.killCount + 1) / (player.deathCount + 1)) + 1
+        return ((player.killCount + 1) / (player.deathCount + 1))
     }
 
     static Double getGameRatio(player) {
-        return ((player.gameKillCount + 1) / (player.gameDeathCount + 1)) + 1
+        return ((player.gameKillCount + 1) / (player.gameDeathCount + 1)) 
     }
 }
 
