@@ -62,7 +62,7 @@ class PlayerTool {
 
 
     static int countKillStreak(player) {
-        return player.killStreak
+        return player.spreeCount
     }
 
     static Double getTotalRatio(player) {
