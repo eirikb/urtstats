@@ -65,7 +65,8 @@ class Sync {
             if (done == max) {
                 RCon.rcon("say \"^7All players were synced.\"")
             } else {
-                RCon.rcon("say \"^7Not all players were synced! Check logs.\"")
+                RCon.rcon("say \"^7Not all players were synced! Check logs.  -- Trying again!\"")
+                return false
             }
         } else {
             log.error "[Sync] Status return from RCon was null"
@@ -76,6 +77,7 @@ class Sync {
         Player.findByUrtIDGreaterThanEquals(0).each {
             log.info "[Sync] Guid: " + it.getGuids() + ". UrtID: " + it.getUrtID() + ". Nick: " + it.getNick() + ". IP: " + it.getIp()
         }
+        return true
     }
 
     def statusToMap(status) {
