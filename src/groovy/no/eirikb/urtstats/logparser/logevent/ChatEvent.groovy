@@ -270,13 +270,13 @@ class ChatEvent extends Event {
             if (infoMessage != null) {
                 if (!infoMessage.getTell()) {
                     def s = ""
-                    if (message == null) {
+                    if (message != null) {
                         def toNick = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)?.getNick()
                         s = toNick != null ? toNick + ": " : ""
                     }
                     RCon.rcon("say \"^7" + s + infoMessage.getInfoMessage() + '"')
                 } else {
-                    RCon.rcon("tell " + player.getUrtID() + "\"^7" + s + infoMessage.getInfoMessage() + '"')
+                    RCon.rcon("tell " + player.getUrtID() + "\"^7" + infoMessage.getInfoMessage() + '"')
                 }
             }
             break
