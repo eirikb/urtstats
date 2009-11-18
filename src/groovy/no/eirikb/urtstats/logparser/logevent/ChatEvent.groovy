@@ -244,6 +244,8 @@ class ChatEvent extends Event {
                 if (space > 0)  {
                     cmd2 = message.substring(0, space)
                     message = message.substring(space + 1)
+                } else {
+                    message = null
                 }
                 createInfoMessage(cmd2, message, false)
             }
@@ -256,6 +258,8 @@ class ChatEvent extends Event {
                 if (space > 0)  {
                     cmd2 = message.substring(0, space)
                     message = message.substring(space + 1)
+                } else {
+                    message = null
                 }
                 createInfoMessage(cmd2, message, true)
             }
@@ -280,9 +284,9 @@ class ChatEvent extends Event {
     }
 
     def createInfoMessage(cmd, message, tell) {
+        def infoMessage = InfoMessage.findByCommand(cmd)
         if (message != null) {
-            def infoMessage = InfoMessage.findByCommand(cmd)
-            if (infoMessage != null) {
+            if (infoMessage == null) {
                 new InfoMessage(command: cmd, infoMessage: message, tell: tell).save(flush:true)
             } else {
                 infoMessage.setMessage(message)
@@ -290,7 +294,6 @@ class ChatEvent extends Event {
             }
             RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd + " created! Use '!set " + cmd +"' to delete the message.\"")
         } else {
-            def infoMessage = InfoMessage.findByCommand(cmd)
             if (infoMessage != null) {
                 infoMessage.delete(flush:true)
                 RCon.rcon("tell " + player.getUrtID() + " \"^7Message deleted\"")
