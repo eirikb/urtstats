@@ -288,9 +288,9 @@ class ChatEvent extends Event {
                 infoMessage.setMessage(message)
                 infoMessage.save(flush:true)
             }
-            RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd2 + " created! Use '!set " + cmd2 +"' to delete the message.\"")
+            RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd + " created! Use '!set " + cmd +"' to delete the message.\"")
         } else {
-            def infoMessage = InfoMessage.findByCommand(cmd2)
+            def infoMessage = InfoMessage.findByCommand(cmd)
             if (infoMessage != null) {
                 infoMessage.delete(flush:true)
                 RCon.rcon("tell " + player.getUrtID() + " \"^7Message deleted\"")
