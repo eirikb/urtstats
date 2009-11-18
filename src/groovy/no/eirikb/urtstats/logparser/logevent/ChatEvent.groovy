@@ -20,6 +20,7 @@ import no.eirikb.urtstats.utils.RCon
 import no.eirikb.urtstats.utils.PlayerTool
 import java.text.DecimalFormat
 import no.eirikb.utils.translate.Translate
+import no.eirikb.utils.Geolocation
 import org.jsecurity.grails.JsecBasicPermission
 
 /**
@@ -262,6 +263,17 @@ class ChatEvent extends Event {
                     message = null
                 }
                 createInfoMessage(cmd2, message, true)
+            }
+            break
+
+            case "where":
+            if (isPremitted(player, "geolocation")) {
+                def p =  Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
+                if (p != null) {
+                    RCon.rcon("say \"^2" + p.getNick() + "^7 - " + Geolocation.geoLocation(p.getIp()))
+                } else  {
+                    RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
+                }
             }
             break
 
