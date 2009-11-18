@@ -239,29 +239,64 @@ class ChatEvent extends Event {
 
             case "set":
             if (isPermitted(player, "infomessage")) {
-                if (message != null) {
-                    def space = message.indexOf(' ')
-                    if (space > 0) {
-                        new InfoMessage(command: message.substring(0, space).trim(), 
-                            infoMessage: message.substring(space + 1).trim()).save(flush:true)
-                        RCon.rcon("tell " + player.getUrtID() + " \"^7Message created!\"")
-                    } else {
-                        RCon.rcon("tell " + player.getUrtID() + " \"^7You must specify a command, like !set spec Please spec\"")
-                    }
-                } else {
-                    RCon.rcon("tell " + player.getUrtID() + " \"^7Message can not be null\"")
+                def space = message.indexOf(' ')
+                def cmd2 = message
+                if (space > 0)  {
+                    cmd2 = message.substring(0, space)
+                    message = message.substring(space + 1)
                 }
-            } else {
-                RCon.rcon("tell " + player.getUrtID() + " \"^7You don't have permission\"")
+                createInfoMessage(cmd2, message, false)
+            }
+            break
+
+            case "settell":
+            if (isPermitted(player, "infomessage")) {
+                def space = message.indexOf(' ')
+                def cmd2 = message
+                if (space > 0)  {
+                    cmd2 = message.substring(0, space)
+                    message = message.substring(space + 1)
+                }
+                createInfoMessage(cmd2, message, true)
             }
             break
 
             default:
             def infoMessage = InfoMessage.findByCommand(cmd)
             if (infoMessage != null) {
-                RCon.rcon("say \"^7" + infoMessage.getInfoMessage() + '"')
+                if (!infoMessage.getTell()) {
+                    def s = ""
+                    if (message == null) {
+                        def toNick = Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)?.getNick()
+                        s = toNick != null ? toNick + ": " : ""
+                    }
+                    RCon.rcon("say \"^7" + s + infoMessage.getInfoMessage() + '"')
+                } else {
+                    RCon.rcon("tell " + player.getUrtID() + "\"^7" + s + infoMessage.getInfoMessage() + '"')
+                }
             }
             break
+        }
+    }
+
+    def createInfoMessage(cmd, message, tell) {
+        if (message != null) {
+            def infoMessage = InfoMessage.findByCommand(cmd)
+            if (infoMessage != null) {
+                new InfoMessage(command: cmd, infoMessage: message, tell: tell).save(flush:true)
+            } else {
+                infoMessage.setMessage(message)
+                infoMessage.save(flush:true)
+            }
+            RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd2 + " created! Use '!set " + cmd2 +"' to delete the message.\"")
+        } else {
+            def infoMessage = InfoMessage.findByCommand(cmd2)
+            if (infoMessage != null) {
+                infoMessage.delete(flush:true)
+                RCon.rcon("tell " + player.getUrtID() + " \"^7Message deleted\"")
+            } else {
+                RCon.rcon("tell " + player.getUrtID() + " \"^7You must specify a message\"")
+            }
         }
     }
 
