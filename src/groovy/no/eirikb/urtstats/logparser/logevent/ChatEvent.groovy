@@ -272,7 +272,7 @@ class ChatEvent extends Event {
                 if (p != null) {
                     def ip = p.getIp()
                     ip = ip.substring(0, ip.indexOf(':'))
-                    RCon.rcon("say \"^2" + p.getNick() + "^7 - " + Geolocation.getLocation(p.getIp().subs))
+                    RCon.rcon("say \"^2" + p.getNick() + "^7 - " + Geolocation.getLocation(ip))
                 } else  {
                     RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
                 }
