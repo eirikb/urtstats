@@ -239,7 +239,7 @@ class ChatEvent extends Event {
 
             case "set":
             if (isPermitted(player, "infomessage")) {
-                def space = message?.indexOf(' ')
+                def space = message != null ? message.indexOf(' ') : -1
                 def cmd2 = message
                 if (space > 0)  {
                     cmd2 = message.substring(0, space)
