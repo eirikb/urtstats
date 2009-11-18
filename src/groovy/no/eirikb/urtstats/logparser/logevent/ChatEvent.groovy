@@ -270,7 +270,7 @@ class ChatEvent extends Event {
             if (isPermitted(player, "geolocation")) {
                 def p =  Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
                 if (p != null) {
-                    RCon.rcon("say \"^2" + p.getNick() + "^7 - " + Geolocation.geoLocation(p.getIp()))
+                    RCon.rcon("say \"^2" + p.getNick() + "^7 - " + Geolocation.getLocation(p.getIp()))
                 } else  {
                     RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
                 }
