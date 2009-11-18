@@ -289,7 +289,7 @@ class ChatEvent extends Event {
             if (infoMessage == null) {
                 new InfoMessage(command: cmd, infoMessage: message, tell: tell).save(flush:true)
             } else {
-                infoMessage.setMessage(message)
+                infoMessage.setInfoMessage(message)
                 infoMessage.save(flush:true)
             }
             RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd + " created! Use '!set " + cmd +"' to delete the message.\"")
