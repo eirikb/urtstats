@@ -284,23 +284,25 @@ class ChatEvent extends Event {
     }
 
     def createInfoMessage(cmd, message, tell) {
-        def infoMessage = InfoMessage.findByCommand(cmd)
-        if (message != null) {
-            if (infoMessage == null) {
-                new InfoMessage(command: cmd, infoMessage: message, tell: tell).save(flush:true)
+        if (cmd != null) {
+            def infoMessage = InfoMessage.findByCommand(cmd)
+            if (message != null) {
+                if (infoMessage == null) {
+                    new InfoMessage(command: cmd, infoMessage: message, tell: tell).save(flush:true)
+                } else {
+                    infoMessage.setInfoMessage(message)
+                    infoMessage.save(flush:true)
+                }
+                RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd + " created! Use '!set " + cmd +"' to delete the message.\"")
             } else {
-                infoMessage.setInfoMessage(message)
-                infoMessage.save(flush:true)
+                if (infoMessage != null) {
+                    infoMessage.delete(flush:true)
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7Message deleted\"")
+                } else {
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7You must specify a message\"")
+                }
             }
-            RCon.rcon("tell " + player.getUrtID() + " \"^7Message with command " + cmd + " created! Use '!set " + cmd +"' to delete the message.\"")
-        } else {
-            if (infoMessage != null) {
-                infoMessage.delete(flush:true)
-                RCon.rcon("tell " + player.getUrtID() + " \"^7Message deleted\"")
-            } else {
-                RCon.rcon("tell " + player.getUrtID() + " \"^7You must specify a message\"")
-            }
-        }
+        } 
     }
 
     def rconCommand(player, cmd, message, clos) {
