@@ -267,7 +267,7 @@ class ChatEvent extends Event {
             break
 
             case "where":
-            if (isPremitted(player, "geolocation")) {
+            if (isPermitted(player, "geolocation")) {
                 def p =  Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
                 if (p != null) {
                     RCon.rcon("say \"^2" + p.getNick() + "^7 - " + Geolocation.geoLocation(p.getIp()))
