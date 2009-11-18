@@ -29,8 +29,8 @@ class ServerEvent extends Event {
             case "INITROUND":
             log.info "[ServerEvent] INITROUND"
             RCon.rcon("bigtext \"UrTStats is now running! Check out ^2www.urtstats.\"")
-            def players = Player.findAllByUrtIDGreaterThanEquals(0)
-            players.each() { it.setJoinGameDate(new Date()) }
+            //def players = Player.findAllByUrtIDGreaterThanEquals(0)
+            //players.each() { it.setJoinGameDate(new Date()) }
             break
 
             case "SERVER":

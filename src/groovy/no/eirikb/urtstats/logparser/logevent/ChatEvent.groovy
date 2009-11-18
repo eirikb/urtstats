@@ -13,6 +13,7 @@ import domain.urt.Chat
 import domain.urt.Player
 import domain.urt.Kill
 import domain.urt.Hit
+import domain.urt.InfoMessage
 import domain.security.*
 import security.JsecDbRealm
 import no.eirikb.urtstats.utils.RCon
@@ -43,11 +44,11 @@ class ChatEvent extends Event {
             message = line
             message = message.substring(message.indexOf(':') + 1)
             message = message.substring(message.indexOf(':') + 2)
-            // def chat = new Chat(player:player, teamMessage:teammessage, message:message)
-            // Saving of chat messages does not need to be flushed
-            // if(chat.hasErrors() || !chat.save()) {
-            //    log.error "[ChatEvent] Unable to persist. Chat: " + chat
-            // }
+            def chat = new Chat(player:player, teamMessage:teammessage, message:message)
+            //Saving of chat messages does not need to be flushed
+            if(chat.hasErrors() || !chat.save()) {
+                log.error "[ChatEvent] Unable to persist. Chat: " + chat
+            }
             log.info "[ChatEvent] Player: " + player + ". Message: " + message
             if (message.charAt(0) == '!') {
                 def orig = message
@@ -234,6 +235,32 @@ class ChatEvent extends Event {
 
             case "say":
             RCon.rcon("say \"^7" + player.getColorNick() + ": " + message + '"')
+            break
+
+            case "set":
+            if (isPermitted(player, "infomessage")) {
+                if (message != null) {
+                    def space = message.indexOf(' ')
+                    if (space > 0) {
+                        new InfoMessage(command: message.substring(0, space).trim(), 
+                            infoMessage: message.substring(space + 1).trim()).save(flush:true)
+                        RCon.rcon("tell " + player.getUrtID() + " \"^7Message created!\"")
+                    } else {
+                        RCon.rcon("tell " + player.getUrtID() + " \"^7You must specify a command, like !set spec Please spec\"")
+                    }
+                } else {
+                    RCon.rcon("tell " + player.getUrtID() + " \"^7Message can not be null\"")
+                }
+            } else {
+                RCon.rcon("tell " + player.getUrtID() + " \"^7You don't have permission\"")
+            }
+            break
+
+            default:
+            def infoMessage = InfoMessage.findByCommand(cmd)
+            if (infoMessage != null) {
+                RCon.rcon("say \"^7" + infoMessage.getInfoMessage() + '"')
+            }
             break
         }
     }
