@@ -44,21 +44,23 @@ class Sync {
             RCon.setActive(false)
             while (done >= 0 && done < max) {
                 def line = tail.parseReverse()
-                if (line.indexOf("ClientUserinfoChanged") == 0) {
-                    def line2 = tail.parseReverse()
-                    if (line2.indexOf("ClientUserinfo") == 0) {
-                        if (addPlayer(map, line2)) {
-                            new UserInfoEvent(line2).execute()
-                            new UserInfoChangedEvent(line).execute()
-                            done++
+                if (line != null) {
+                    if (line.indexOf("ClientUserinfoChanged") == 0) {
+                        def line2 = tail.parseReverse()
+                        if (line2.indexOf("ClientUserinfo") == 0) {
+                            if (addPlayer(map, line2)) {
+                                new UserInfoEvent(line2).execute()
+                                new UserInfoChangedEvent(line).execute()
+                                done++
+                            }
+                        } else if (line2.indexOf("InitGame") == 0) {
+                            done = -1
+                        } else {
+                            log.error "[Sync] ClientUserInfo did not come before ClientUserInfoChanged!"
                         }
-                    } else if (line2.indexOf("InitGame") == 0) {
+                    } else if (line.indexOf("InitGame") == 0) {
                         done = -1
-                    } else {
-                        log.error "[Sync] ClientUserInfo did not come before ClientUserInfoChanged!"
                     }
-                } else if (line.indexOf("InitGame") == 0) {
-                    done = -1
                 }
             }
             RCon.setActive(true)
