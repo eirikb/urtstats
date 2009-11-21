@@ -322,10 +322,13 @@ class ChatEvent extends Event {
     def rconCommand(player, cmd, message, clos) {
         if (isPermitted(player, cmd)) {
             def found = false
-            def p = Player.findByUrtID(message);
-            if (p != null) {
+            int i = -1;
+            try {
+                i = Integer.parseInt(message)
+            } catch (NumberFormatException e) {}
+            if (i >= 0) {
                 found = true
-                doRconCommand(player, cmd, p, clos);
+                doRconCommand(player, cmd, Player.findByUrtID(i), clos);
             } else {
                 Player.findAllByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0).each {
                     found = true
