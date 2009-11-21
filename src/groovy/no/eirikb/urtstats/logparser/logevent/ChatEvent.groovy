@@ -322,11 +322,10 @@ class ChatEvent extends Event {
     def rconCommand(player, cmd, message, clos) {
         if (isPermitted(player, cmd)) {
             def found = false
-            int i = -1;
             try {
-                i = Integer.parseInt(message)
+                p =  Player.findByUrtID(Integer.parseInt(message))
             } catch (NumberFormatException e) {}
-            if (i >= 0) {
+            if (p != null) {
                 found = true
                 doRconCommand(player, cmd, Player.findByUrtID(i), clos);
             } else {
