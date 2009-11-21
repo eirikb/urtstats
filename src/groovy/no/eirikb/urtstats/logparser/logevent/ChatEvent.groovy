@@ -322,19 +322,29 @@ class ChatEvent extends Event {
     def rconCommand(player, cmd, message, clos) {
         if (isPermitted(player, cmd)) {
             def found = false
-            Player.findAllByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0).each {
+            def p = Player.findByUrtId(message);
+            if (p != null) {
                 found = true
-                if (!isAdmin(it)) {
-                    clos(it)
-                } else {
-                    RCon.rcon("slap " + player.getUrtID())
-                    RCon.rcon("say \"^2" + player.getColorNick() + " ^7 tried to " + cmd + " an admin!\"")
+                doRconCommand(player, cmd, p, clos);
+            } else {
+                Player.findAllByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0).each {
+                    found = true
+                    doRconCommand(player, cmd, it, clos);
                 }
             }
             if (!found) {
                 RCon.rcon("tell " + player.getUrtID() + "\"^7No players found\"")
             }
 
+        }
+    }
+
+    def doRconCommand(player, cmd, it, clos) {
+        if (!isAdmin(it)) {
+            clos(it)
+        } else {
+            RCon.rcon("slap " + player.getUrtID())
+            RCon.rcon("say \"^2" + player.getColorNick() + " ^7 tried to " + cmd + " an admin!\"")
         }
     }
 

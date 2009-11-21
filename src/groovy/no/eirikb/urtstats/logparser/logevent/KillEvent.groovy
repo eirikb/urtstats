@@ -65,8 +65,8 @@ class KillEvent extends Event {
                     if (kills > killer.spreeMax) {
                         killer.spreeMax = kills
                     }
-
-                    def spreeEnd = spreeMessage[killed.spreeCount]
+                    int spreeI = (int)(killed.spreeCount / 5) * 5
+                    def spreeEnd = spreeMessage[spreeI]
                     spree = spreeMessage[kills]
                     if (spree != null) {
                         RCon.rcon("bigtext \"^2" + killer.getColorNick() + " ^7" + spree.text + " ^7(" + kills + " in a row)\"")
