@@ -328,7 +328,7 @@ class ChatEvent extends Event {
             } catch (NumberFormatException e) {}
             if (p != null) {
                 found = true
-                doRconCommand(player, cmd, Player.findByUrtID(i), clos);
+                doRconCommand(player, cmd, p, clos);
             } else {
                 Player.findAllByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0).each {
                     found = true
