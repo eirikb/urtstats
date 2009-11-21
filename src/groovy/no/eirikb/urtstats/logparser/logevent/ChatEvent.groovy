@@ -322,7 +322,7 @@ class ChatEvent extends Event {
     def rconCommand(player, cmd, message, clos) {
         if (isPermitted(player, cmd)) {
             def found = false
-            def p = Player.findByUrtId(message);
+            def p = Player.findByUrtID(message);
             if (p != null) {
                 found = true
                 doRconCommand(player, cmd, p, clos);
