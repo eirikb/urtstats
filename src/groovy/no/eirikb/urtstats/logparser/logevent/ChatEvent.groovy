@@ -298,7 +298,7 @@ class ChatEvent extends Event {
                             RCon.rcon("tell " + p.getUrtID() + "\"^7Congratulations! You are now moderator\"")
                         }
                     } else {
-                        RCon.rcon("tell " + player.getUrtID() + "\"^7Player has no user, user !createuser\"")
+                        RCon.rcon("tell " + player.getUrtID() + "\"^7Player has no user\"")
                     }
                 } else  {
                     RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
@@ -314,7 +314,7 @@ class ChatEvent extends Event {
                 if (p != null) {
                     JsecUser user = p.getUser()
                     if (user == null) {
-                        def u = new JsecUser(username:p.getNick(), passwordHash:new Sha1Hash("admin").toHex()).save(flush:true)
+                        def u = new domain.security.JsecUser(username:p.getNick(), passwordHash:new Sha1Hash("lolol").toHex()).save(flush:true)
                         p.setUser(user)
                         p.save(flush:true)
                     } else {
