@@ -22,6 +22,7 @@ import java.text.DecimalFormat
 import no.eirikb.utils.translate.Translate
 import no.eirikb.utils.Geolocation
 import org.jsecurity.grails.JsecBasicPermission
+import org.jsecurity.crypto.hash.Sha1Hash
 
 /**
  *
@@ -276,6 +277,54 @@ class ChatEvent extends Event {
                 } else  {
                     RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
                 }
+            }
+            break
+
+            case "mod":
+            if (isAdmin(player)) {
+                def p =  Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
+                if (p != null) {
+                    JsecUser user = p.getUser()
+                    if (user != null) {
+                        JsecRole role = JsecRole.findByName("MOD")
+                        JsecUserRoleRel userRole = JsecUserRoleRel.findByUserAndRole(user, role)
+                        if (userRole != null) {
+                            userRole.delete()
+                            RCon.rcon("tell " + player.getUrtID() + "\"^7Player is no longer moderator\"")
+                            RCon.rcon("tell " + p.getUrtID() + "\"^7You are no longer moderator\"")
+                        } else {
+                            new JsecUserRoleRel(user, role).save(flush:true)
+                            RCon.rcon("tell " + player.getUrtID() + "\"^7Player is now moderator\"")
+                            RCon.rcon("tell " + p.getUrtID() + "\"^7Congratulations! You are now moderator\"")
+                        }
+                    } else {
+                        RCon.rcon("tell " + player.getUrtID() + "\"^7Player has no user, user !createuser\"")
+                    }
+                } else  {
+                    RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
+                }
+            } else {
+                RCon.rcon("tell " + player.getUrtID() + "\"^7Must be admin...\"")
+            }
+            break
+
+            case "createuser":
+            if (isAdmin(player)) {
+                def p =  Player.findByNickIlikeAndUrtIDGreaterThanEquals('%' + message + '%', 0)
+                if (p != null) {
+                    JsecUser user = p.getUser()
+                    if (user == null) {
+                        def u = new JsecUser(username:p.getNick(), passwordHash:new Sha1Hash("admin").toHex()).save(flush:true)
+                        p.setUser(user)
+                        p.save(flush:true)
+                    } else {
+                        RCon.rcon("tell " + player.getUrtID() + "\"^7Player already have a user\"")
+                    }
+                } else  {
+                    RCon.rcon("tell " + player.getUrtID() + "\"^7Player not found.\"")
+                }
+            } else {
+                RCon.rcon("tell " + player.getUrtID() + "\"^7Must be admin...\"")
             }
             break
 
