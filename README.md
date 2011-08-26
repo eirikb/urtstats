@@ -6,4 +6,4 @@ Urban Terror stats bot + webpage
 Old project imported from private mercurial repo
 
 
-You need <b>[http://grails.org/](grails)</b> to run this!
+You need <b>[Grails](http://grails.org/)</b> to run this!
